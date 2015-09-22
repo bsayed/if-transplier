@@ -134,15 +134,15 @@ function iFTranspily () {
             estraverse.attachComments(tree, licenses, tree.tokens);
         }
 
+        // Perform the transformations first
         tree = ifTranspiler.transform(tree, null, {
             destructive: true,
             directive: true,
             preserveCompletionValue: argv.preserveCompletionValue
         });
-        //tree = ifTranspiler.inline(tree, {
-        //    destructive: true,
-        //    distinguishFunctionExpressionScope: false
-        //});
+
+        // Then perform the inlining
+        tree = ifTranspiler.inline(tree);
 
         if (propagateLicenseComment) {
             tree.leadingComments = licenses;
