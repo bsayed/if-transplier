@@ -4,36 +4,40 @@
 //blah:while(true) {
 //    break ;
 //}
-while(true) {
-    if(true) {
-        x[y] = a;
-        z['w'] = new b[c]();
-        a.b = 'blah';
-        k = 8;
-        break
-    } else {
-        done = true;
-        throw x;
-    }
-}
+//while(true) {
+//    if(true) {
+//        x[y] = a;
+//        z['w'] = new b[c]();
+//        a.b = 'blah';
+//        k = 8;
+//        break
+//    } else {
+//        done = true;
+//        throw x;
+//    }
+//}
 
 
 foo.x = function (){
     function bar(){
-        while(true) {
-            if(true) {
-                x[y] = a;
-                z['w'] = new b[c]();
-                a.b = 'blah';
-                k = 8;
-                break
-            } else {
-                done = true;
-                throw x;
-            }
-        }
 
-        return 'asdf';
+        doWhile:do {
+            while(x > 0) {
+                if (true) {
+                    x[y] = a;
+                    z['w'] = new b[c]();
+                    a.b = 'blah';
+                    k = 8;
+                    //break
+                } else {
+                    done = true;
+                    throw x;
+                }
+            }
+        }while(y < 0 );
+
+        return a;
+
     }
     return;
 };
