@@ -121,7 +121,7 @@ function iFTranspily () {
         });
 
         // Print the generated AST for inspection
-        //console.log(JSON.stringify(tree, null, 4));
+        console.log(JSON.stringify(tree, null, 4));
 
         if (preserveLicenseComment || propagateLicenseComment) {
             licenses = tree.comments.filter(function (comment) {
