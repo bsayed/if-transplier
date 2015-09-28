@@ -24,30 +24,32 @@
 //} finally {
 //k();
 //}
-foo.z.y = function (x,y,z){
-    function bar(a,b){
-
-        doWhile:do {
-            while(x > 0) {
-                if (true) {
-                    x[y] = a;
-                    z['w'] = new b[c]();
-                    a.b = 'blah';
-                    k = 8;
-                    //break
-                } else {
-                    done = true;
-                    throw x;
-                }
-            }
-        }while(y < 0 );
-
-        return a;
-
-    }
-    return;
-};
+//foo.z.y = function (x,y,z){
+//    function bar(a,b){
+//
+//        doWhile:do {
+//            while(x > 0) {
+//                if (true) {
+//                    x[y] = a;
+//                    z['w'] = new b[c]();
+//                    a.b = 'blah';
+//                    k = 8;
+//                    //break
+//                } else {
+//                    done = true;
+//                    throw x;
+//                }
+//            }
+//        }while(y < 0 );
+//
+//        return a;
+//
+//    }
+//    return;
+//};
 //foo instanceof Object;
-//obj = {label:""}
+//var obj;
+//obj.x = {label:"",first:k,second:g()};
+var ar = [x, y,z,w]
 //$Λ[$Λ.len - 2].l;
 //$Λ[$Λ.len − 2] ;
