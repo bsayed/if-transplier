@@ -24,7 +24,7 @@
 //} finally {
 //k();
 //}
-//foo.x = function (){
+foo.z.y = function (x,y,z){
     function bar(a,b){
 
         doWhile:do {
@@ -45,8 +45,8 @@
         return a;
 
     }
-//    return;
-//};
+    return;
+};
 //foo instanceof Object;
 //obj = {label:""}
 //$Λ[$Λ.len - 2].l;
