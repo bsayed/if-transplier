@@ -49,8 +49,7 @@ x.foo.z = function (x, y, z) {
 
     return bar('x', 'y');
 };
-
-a = x.foo.z(1)
+a = new x.foo.z(1)
 //foo instanceof Object;
 //var obj;
 //obj.x = {label:"",first:k,second:g()};
