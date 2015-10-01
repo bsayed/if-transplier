@@ -17,6 +17,8 @@
 //    }
 //}
 
+var a, b,c;
+
 //try{
 //    //g();
 //} catch(x) {
@@ -25,32 +27,33 @@
 //k();
 //}
 //(x instanceof Object)? a=b: x=z;
-x.y = 'hello';
-//x.foo.z = function (x, y, z) {
-//    function bar(a, b) {
-//
-//        //doWhile:do {
-//        //    while(x > 0) {
-//        //        if (true) {
-//        //            x[y] = a;
-//        //            z['w'] = new b[c]();
-//        //            a.b = 'blah';
-//        //            k = 8;
-//        //            //break
-//        //        } else {
-//        //            done = true;
-//        //            throw x;
-//        //        }
-//        //    }
-//        //}while(y < 0 );
-//
-//        return a;
-//
-//    }
-//
-//    return bar('x', 'y');
-//};
-//a = new x.foo.z(1)
+//x.y = 'hello';
+x.foo.z = function (x, y, z) {
+    function bar(a, b) {
+
+        //doWhile:do {
+        //    while(x > 0) {
+        //        if (true) {
+        //            x[y] = a;
+        //            z['w'] = new b[c]();
+        //            a.b = 'blah';
+        //            k = 8;
+        //            //break
+        //        } else {
+        //            done = true;
+        //            throw x;
+        //        }
+        //    }
+        //}while(y < 0 );
+
+        return a;
+
+    }
+
+    return bar('x', 'y');
+};
+a = new x.foo.z(1);
+
 //foo instanceof Object;
 //var obj;
 //obj.x = {label:"",first:k,second:g()};
