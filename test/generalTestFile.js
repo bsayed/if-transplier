@@ -154,16 +154,24 @@ function $prop(obj, prop, $$cs) {
     return $tmp.Σ;
 }
 
-function $comp() {
+function $comp(lbl, lvl) {
+    var i = $Λ.length;
+    while (i > 1 && $Λ[i].id !== lbl) {
+        i--;
+        $Λ[i].l = ($Λ[i].l > lvl) ? $Λ[i].l : lvl;
+    }
+    i--;
+    $Λ[i].l = ($Λ[i].l > lvl) ? $Λ[i].l : lvl;
 }
 
-function $upgrade() {
+function $upgrade(varArray,lvl,$$cs) {
+
 }
 
 function sec_lvl(obj, prop, getValue, $$cs) {
     var result;
     if (prop) {
-        result = $prop(obj, prop, $$cs);
+        result = $prop(obj, ""+prop, $$cs);
     } else {
         result = $scope($$cs, obj, false);
     }
@@ -176,8 +184,8 @@ function sec_lvl(obj, prop, getValue, $$cs) {
 
 
 function qsort(arr) {
-    var stack, sorted, $tmp1, $tmp2;
-    $Γ['global']['qsort']['$tmp2'] = $Γ['global']['qsort']['$tmp1'] = $Γ['global']['qsort']['sorted'] = $Γ['global']['qsort']['stack'] = 0;
+    var stack, sorted, $tmp0, $tmp1;
+    $Γ['global']['qsort']['$tmp1'] = $Γ['global']['qsort']['$tmp0'] = $Γ['global']['qsort']['sorted'] = $Γ['global']['qsort']['stack'] = 0;
     stack = [arr];
     $scope($Γ['global']['qsort'], 'stack', true)['stack'] = $lub(sec_lvl('arr', null, false, $Γ['global']['qsort']));
     $scope($Γ['global']['qsort'], 'stack', true)['stack'] instanceof Object ? $scope($Γ['global']['qsort'], 'stack', true)['stack'].Σ = $lub($scope($Γ['global']['qsort'], 'stack', true)['stack'].Σ, $pc().l) : $scope($Γ['global']['qsort'], 'stack', true)['stack'] = $lub($scope($Γ['global']['qsort'], 'stack', true)['stack'], $pc().l);
@@ -193,50 +201,50 @@ function qsort(arr) {
         __proto__: null,
         Σ: $lub($pc().l)
     };
-    $tmp1 = stack.length;
-    $scope($Γ['global']['qsort'], '$tmp1', true)['$tmp1'] = sec_lvl('stack', 'length', false, $Γ['global']['qsort']);
-    $scope($Γ['global']['qsort'], '$tmp1', true)['$tmp1'] instanceof Object ? $scope($Γ['global']['qsort'], '$tmp1', true)['$tmp1'].Σ = $lub($scope($Γ['global']['qsort'], '$tmp1', true)['$tmp1'].Σ, $pc().l) : $scope($Γ['global']['qsort'], '$tmp1', true)['$tmp1'] = $lub($scope($Γ['global']['qsort'], '$tmp1', true)['$tmp1'], $pc().l);
+    $tmp0 = stack.length;
+    $scope($Γ['global']['qsort'], '$tmp0', true)['$tmp0'] = sec_lvl('stack', length, false, $Γ['global']['qsort']);
+    $scope($Γ['global']['qsort'], '$tmp0', true)['$tmp0'] instanceof Object ? $scope($Γ['global']['qsort'], '$tmp0', true)['$tmp0'].Σ = $lub($scope($Γ['global']['qsort'], '$tmp0', true)['$tmp0'].Σ, $pc().l) : $scope($Γ['global']['qsort'], '$tmp0', true)['$tmp0'] = $lub($scope($Γ['global']['qsort'], '$tmp0', true)['$tmp0'], $pc().l);
     $Λ.push({
-        l: $lub($pc().l, sec_lvl('$tmp1', null, true, $Γ['global']['qsort'])),
+        l: $lub($pc().l, sec_lvl('$tmp0', null, true, $Γ['global']['qsort'])),
         id: 'LOOP'
     });
-    while ($tmp1) {
-        var temp, tl, $tmp3, pivot, left, i, $tmp5, $tmp6, $tmp7, $tmp8, $tmp1;
-        $Γ['global']['qsort']['$tmp1'] = $Γ['global']['qsort']['$tmp8'] = $Γ['global']['qsort']['$tmp7'] = $Γ['global']['qsort']['$tmp6'] = $Γ['global']['qsort']['$tmp5'] = $Γ['global']['qsort']['i'] = $Γ['global']['qsort']['left'] = $Γ['global']['qsort']['pivot'] = $Γ['global']['qsort']['$tmp3'] = $Γ['global']['qsort']['tl'] = $Γ['global']['qsort']['temp'] = 0;
+    while ($tmp0) {
+        var temp, tl, $tmp2, pivot, left, i, $tmp4, $tmp5, $tmp6, $tmp7, $tmp0;
+        $Γ['global']['qsort']['$tmp0'] = $Γ['global']['qsort']['$tmp7'] = $Γ['global']['qsort']['$tmp6'] = $Γ['global']['qsort']['$tmp5'] = $Γ['global']['qsort']['$tmp4'] = $Γ['global']['qsort']['i'] = $Γ['global']['qsort']['left'] = $Γ['global']['qsort']['pivot'] = $Γ['global']['qsort']['$tmp2'] = $Γ['global']['qsort']['tl'] = $Γ['global']['qsort']['temp'] = 0;
         temp = stack.pop();
         tl = temp.length;
-        $scope($Γ['global']['qsort'], 'tl', true)['tl'] = sec_lvl('temp', 'length', false, $Γ['global']['qsort']);
+        $scope($Γ['global']['qsort'], 'tl', true)['tl'] = sec_lvl('temp', length, false, $Γ['global']['qsort']);
         $scope($Γ['global']['qsort'], 'tl', true)['tl'] instanceof Object ? $scope($Γ['global']['qsort'], 'tl', true)['tl'].Σ = $lub($scope($Γ['global']['qsort'], 'tl', true)['tl'].Σ, $pc().l) : $scope($Γ['global']['qsort'], 'tl', true)['tl'] = $lub($scope($Γ['global']['qsort'], 'tl', true)['tl'], $pc().l);
-        $tmp3 = tl == 1;
-        $scope($Γ['global']['qsort'], '$tmp3', true)['$tmp3'] = $lub(sec_lvl('tl', null, true, $Γ['global']['qsort']), 0);
-        $scope($Γ['global']['qsort'], '$tmp3', true)['$tmp3'] instanceof Object ? $scope($Γ['global']['qsort'], '$tmp3', true)['$tmp3'].Σ = $lub($scope($Γ['global']['qsort'], '$tmp3', true)['$tmp3'].Σ, $pc().l) : $scope($Γ['global']['qsort'], '$tmp3', true)['$tmp3'] = $lub($scope($Γ['global']['qsort'], '$tmp3', true)['$tmp3'], $pc().l);
+        $tmp2 = tl == 1;
+        $scope($Γ['global']['qsort'], '$tmp2', true)['$tmp2'] = $lub(sec_lvl('tl', null, true, $Γ['global']['qsort']), 0);
+        $scope($Γ['global']['qsort'], '$tmp2', true)['$tmp2'] instanceof Object ? $scope($Γ['global']['qsort'], '$tmp2', true)['$tmp2'].Σ = $lub($scope($Γ['global']['qsort'], '$tmp2', true)['$tmp2'].Σ, $pc().l) : $scope($Γ['global']['qsort'], '$tmp2', true)['$tmp2'] = $lub($scope($Γ['global']['qsort'], '$tmp2', true)['$tmp2'], $pc().l);
         $Λ.push({
-            l: $lub($pc().l, sec_lvl('$tmp3', null, true, $Γ['global']['qsort'])),
+            l: $lub($pc().l, sec_lvl('$tmp2', null, true, $Γ['global']['qsort'])),
             id: 'IF'
         });
-        if ($tmp3) {
-            var $tmp9, $tmp10, $tmp1;
-            $Γ['global']['qsort']['$tmp1'] = $Γ['global']['qsort']['$tmp10'] = $Γ['global']['qsort']['$tmp9'] = 0;
-            $tmp10 = temp[0];
-            $scope($Γ['global']['qsort'], '$tmp10', true)['$tmp10'] = sec_lvl('temp', '0', false, $Γ['global']['qsort']);
-            $scope($Γ['global']['qsort'], '$tmp10', true)['$tmp10'] instanceof Object ? $scope($Γ['global']['qsort'], '$tmp10', true)['$tmp10'].Σ = $lub($scope($Γ['global']['qsort'], '$tmp10', true)['$tmp10'].Σ, $pc().l) : $scope($Γ['global']['qsort'], '$tmp10', true)['$tmp10'] = $lub($scope($Γ['global']['qsort'], '$tmp10', true)['$tmp10'], $pc().l);
-            $tmp9 = sorted.push($tmp10);
-            $tmp1 = stack.length;
-            $scope($Γ['global']['qsort'], '$tmp1', true)['$tmp1'] = sec_lvl('stack', 'length', false, $Γ['global']['qsort']);
-            $scope($Γ['global']['qsort'], '$tmp1', true)['$tmp1'] instanceof Object ? $scope($Γ['global']['qsort'], '$tmp1', true)['$tmp1'].Σ = $lub($scope($Γ['global']['qsort'], '$tmp1', true)['$tmp1'].Σ, $pc().l) : $scope($Γ['global']['qsort'], '$tmp1', true)['$tmp1'] = $lub($scope($Γ['global']['qsort'], '$tmp1', true)['$tmp1'], $pc().l);
+        if ($tmp2) {
+            var $tmp8, $tmp9, $tmp0;
+            $Γ['global']['qsort']['$tmp0'] = $Γ['global']['qsort']['$tmp9'] = $Γ['global']['qsort']['$tmp8'] = 0;
+            $tmp9 = temp[0];
+            $scope($Γ['global']['qsort'], '$tmp9', true)['$tmp9'] = sec_lvl('temp', 0, false, $Γ['global']['qsort']);
+            $scope($Γ['global']['qsort'], '$tmp9', true)['$tmp9'] instanceof Object ? $scope($Γ['global']['qsort'], '$tmp9', true)['$tmp9'].Σ = $lub($scope($Γ['global']['qsort'], '$tmp9', true)['$tmp9'].Σ, $pc().l) : $scope($Γ['global']['qsort'], '$tmp9', true)['$tmp9'] = $lub($scope($Γ['global']['qsort'], '$tmp9', true)['$tmp9'], $pc().l);
+            $tmp8 = sorted.push($tmp9);
+            $tmp0 = stack.length;
+            $scope($Γ['global']['qsort'], '$tmp0', true)['$tmp0'] = sec_lvl('stack', length, false, $Γ['global']['qsort']);
+            $scope($Γ['global']['qsort'], '$tmp0', true)['$tmp0'] instanceof Object ? $scope($Γ['global']['qsort'], '$tmp0', true)['$tmp0'].Σ = $lub($scope($Γ['global']['qsort'], '$tmp0', true)['$tmp0'].Σ, $pc().l) : $scope($Γ['global']['qsort'], '$tmp0', true)['$tmp0'] = $lub($scope($Γ['global']['qsort'], '$tmp0', true)['$tmp0'], $pc().l);
             continue;
             var $shouldComp = { 'lbl': 'LOOP' };
         } else {
             $upgrade([
                 'sorted.push',
-                '$tmp9'
+                '$tmp8'
             ], $pc().l, $Γ['global']['qsort']);
         }
         if ($shouldComp)
             $comp($shouldComp.lbl, $pc().l);
         $Λ.pop();
         pivot = temp[0];
-        $scope($Γ['global']['qsort'], 'pivot', true)['pivot'] = sec_lvl('temp', '0', false, $Γ['global']['qsort']);
+        $scope($Γ['global']['qsort'], 'pivot', true)['pivot'] = sec_lvl('temp', 0, false, $Γ['global']['qsort']);
         $scope($Γ['global']['qsort'], 'pivot', true)['pivot'] instanceof Object ? $scope($Γ['global']['qsort'], 'pivot', true)['pivot'].Σ = $lub($scope($Γ['global']['qsort'], 'pivot', true)['pivot'].Σ, $pc().l) : $scope($Γ['global']['qsort'], 'pivot', true)['pivot'] = $lub($scope($Γ['global']['qsort'], 'pivot', true)['pivot'], $pc().l);
         left = [];
         $scope($Γ['global']['qsort'], 'left', true)['left'] = 0;
@@ -255,67 +263,85 @@ function qsort(arr) {
         i = 1;
         $scope($Γ['global']['qsort'], 'i', true)['i'] = 0;
         $scope($Γ['global']['qsort'], 'i', true)['i'] instanceof Object ? $scope($Γ['global']['qsort'], 'i', true)['i'].Σ = $lub($scope($Γ['global']['qsort'], 'i', true)['i'].Σ, $pc().l) : $scope($Γ['global']['qsort'], 'i', true)['i'] = $lub($scope($Γ['global']['qsort'], 'i', true)['i'], $pc().l);
-        $tmp5 = i < tl;
-        $scope($Γ['global']['qsort'], '$tmp5', true)['$tmp5'] = $lub(sec_lvl('i', null, true, $Γ['global']['qsort']), sec_lvl('tl', null, true, $Γ['global']['qsort']));
-        $scope($Γ['global']['qsort'], '$tmp5', true)['$tmp5'] instanceof Object ? $scope($Γ['global']['qsort'], '$tmp5', true)['$tmp5'].Σ = $lub($scope($Γ['global']['qsort'], '$tmp5', true)['$tmp5'].Σ, $pc().l) : $scope($Γ['global']['qsort'], '$tmp5', true)['$tmp5'] = $lub($scope($Γ['global']['qsort'], '$tmp5', true)['$tmp5'], $pc().l);
+        $tmp4 = i < tl;
+        $scope($Γ['global']['qsort'], '$tmp4', true)['$tmp4'] = $lub(sec_lvl('i', null, true, $Γ['global']['qsort']), sec_lvl('tl', null, true, $Γ['global']['qsort']));
+        $scope($Γ['global']['qsort'], '$tmp4', true)['$tmp4'] instanceof Object ? $scope($Γ['global']['qsort'], '$tmp4', true)['$tmp4'].Σ = $lub($scope($Γ['global']['qsort'], '$tmp4', true)['$tmp4'].Σ, $pc().l) : $scope($Γ['global']['qsort'], '$tmp4', true)['$tmp4'] = $lub($scope($Γ['global']['qsort'], '$tmp4', true)['$tmp4'], $pc().l);
         $Λ.push({
-            l: $lub($pc().l, sec_lvl('$tmp5', null, true, $Γ['global']['qsort'])),
+            l: $lub($pc().l, sec_lvl('$tmp4', null, true, $Γ['global']['qsort'])),
             id: 'LOOP'
         });
-        for (; $tmp5;) {
-            var $tmp11, $tmp12, $tmp4, $tmp5;
-            $Γ['global']['qsort']['$tmp5'] = $Γ['global']['qsort']['$tmp4'] = $Γ['global']['qsort']['$tmp12'] = $Γ['global']['qsort']['$tmp11'] = 0;
-            $tmp12 = temp[i];
-            $scope($Γ['global']['qsort'], '$tmp12', true)['$tmp12'] = sec_lvl('temp', 'i', false, $Γ['global']['qsort']);
-            $scope($Γ['global']['qsort'], '$tmp12', true)['$tmp12'] instanceof Object ? $scope($Γ['global']['qsort'], '$tmp12', true)['$tmp12'].Σ = $lub($scope($Γ['global']['qsort'], '$tmp12', true)['$tmp12'].Σ, $pc().l) : $scope($Γ['global']['qsort'], '$tmp12', true)['$tmp12'] = $lub($scope($Γ['global']['qsort'], '$tmp12', true)['$tmp12'], $pc().l);
-            $tmp11 = $tmp12 < pivot;
-            $scope($Γ['global']['qsort'], '$tmp11', true)['$tmp11'] = $lub(sec_lvl('$tmp12', null, true, $Γ['global']['qsort']), sec_lvl('pivot', null, true, $Γ['global']['qsort']));
+        for (; $tmp4;) {
+            var $tmp10, $tmp11, $tmp3, $tmp4;
+            $Γ['global']['qsort']['$tmp4'] = $Γ['global']['qsort']['$tmp3'] = $Γ['global']['qsort']['$tmp11'] = $Γ['global']['qsort']['$tmp10'] = 0;
+            $tmp11 = temp[i];
+            $scope($Γ['global']['qsort'], '$tmp11', true)['$tmp11'] = sec_lvl('temp', i, false, $Γ['global']['qsort']);
             $scope($Γ['global']['qsort'], '$tmp11', true)['$tmp11'] instanceof Object ? $scope($Γ['global']['qsort'], '$tmp11', true)['$tmp11'].Σ = $lub($scope($Γ['global']['qsort'], '$tmp11', true)['$tmp11'].Σ, $pc().l) : $scope($Γ['global']['qsort'], '$tmp11', true)['$tmp11'] = $lub($scope($Γ['global']['qsort'], '$tmp11', true)['$tmp11'], $pc().l);
+            $tmp10 = $tmp11 < pivot;
+            $scope($Γ['global']['qsort'], '$tmp10', true)['$tmp10'] = $lub(sec_lvl('$tmp11', null, true, $Γ['global']['qsort']), sec_lvl('pivot', null, true, $Γ['global']['qsort']));
+            $scope($Γ['global']['qsort'], '$tmp10', true)['$tmp10'] instanceof Object ? $scope($Γ['global']['qsort'], '$tmp10', true)['$tmp10'].Σ = $lub($scope($Γ['global']['qsort'], '$tmp10', true)['$tmp10'].Σ, $pc().l) : $scope($Γ['global']['qsort'], '$tmp10', true)['$tmp10'] = $lub($scope($Γ['global']['qsort'], '$tmp10', true)['$tmp10'], $pc().l);
             $Λ.push({
-                l: $lub($pc().l, sec_lvl('$tmp11', null, true, $Γ['global']['qsort'])),
+                l: $lub($pc().l, sec_lvl('$tmp10', null, true, $Γ['global']['qsort'])),
                 id: 'IF'
             });
-            if ($tmp11) {
+            if ($tmp10) {
                 $upgrade([
                     'right.push',
-                    '$tmp15'
+                    '$tmp14'
                 ], $pc().l, $Γ['global']['qsort']);
-                var $tmp13, $tmp14;
-                $Γ['global']['qsort']['$tmp14'] = $Γ['global']['qsort']['$tmp13'] = 0;
-                $tmp14 = temp[i];
-                $scope($Γ['global']['qsort'], '$tmp14', true)['$tmp14'] = sec_lvl('temp', 'i', false, $Γ['global']['qsort']);
-                $scope($Γ['global']['qsort'], '$tmp14', true)['$tmp14'] instanceof Object ? $scope($Γ['global']['qsort'], '$tmp14', true)['$tmp14'].Σ = $lub($scope($Γ['global']['qsort'], '$tmp14', true)['$tmp14'].Σ, $pc().l) : $scope($Γ['global']['qsort'], '$tmp14', true)['$tmp14'] = $lub($scope($Γ['global']['qsort'], '$tmp14', true)['$tmp14'], $pc().l);
-                $tmp13 = left.push($tmp14);
+                var $tmp12, $tmp13;
+                $Γ['global']['qsort']['$tmp13'] = $Γ['global']['qsort']['$tmp12'] = 0;
+                $tmp13 = temp[i];
+                $scope($Γ['global']['qsort'], '$tmp13', true)['$tmp13'] = sec_lvl('temp', i, false, $Γ['global']['qsort']);
+                $scope($Γ['global']['qsort'], '$tmp13', true)['$tmp13'] instanceof Object ? $scope($Γ['global']['qsort'], '$tmp13', true)['$tmp13'].Σ = $lub($scope($Γ['global']['qsort'], '$tmp13', true)['$tmp13'].Σ, $pc().l) : $scope($Γ['global']['qsort'], '$tmp13', true)['$tmp13'] = $lub($scope($Γ['global']['qsort'], '$tmp13', true)['$tmp13'], $pc().l);
+                $tmp12 = left.push($tmp13);
             } else {
                 $upgrade([
                     'left.push',
-                    '$tmp13'
+                    '$tmp12'
                 ], $pc().l, $Γ['global']['qsort']);
-                var $tmp15, $tmp16;
-                $Γ['global']['qsort']['$tmp16'] = $Γ['global']['qsort']['$tmp15'] = 0;
-                $tmp16 = temp[i];
-                $scope($Γ['global']['qsort'], '$tmp16', true)['$tmp16'] = sec_lvl('temp', 'i', false, $Γ['global']['qsort']);
-                $scope($Γ['global']['qsort'], '$tmp16', true)['$tmp16'] instanceof Object ? $scope($Γ['global']['qsort'], '$tmp16', true)['$tmp16'].Σ = $lub($scope($Γ['global']['qsort'], '$tmp16', true)['$tmp16'].Σ, $pc().l) : $scope($Γ['global']['qsort'], '$tmp16', true)['$tmp16'] = $lub($scope($Γ['global']['qsort'], '$tmp16', true)['$tmp16'], $pc().l);
-                $tmp15 = right.push($tmp16);
+                var $tmp14, $tmp15;
+                $Γ['global']['qsort']['$tmp15'] = $Γ['global']['qsort']['$tmp14'] = 0;
+                $tmp15 = temp[i];
+                $scope($Γ['global']['qsort'], '$tmp15', true)['$tmp15'] = sec_lvl('temp', i, false, $Γ['global']['qsort']);
+                $scope($Γ['global']['qsort'], '$tmp15', true)['$tmp15'] instanceof Object ? $scope($Γ['global']['qsort'], '$tmp15', true)['$tmp15'].Σ = $lub($scope($Γ['global']['qsort'], '$tmp15', true)['$tmp15'].Σ, $pc().l) : $scope($Γ['global']['qsort'], '$tmp15', true)['$tmp15'] = $lub($scope($Γ['global']['qsort'], '$tmp15', true)['$tmp15'], $pc().l);
+                $tmp14 = right.push($tmp15);
             }
             $Λ.pop();
-            $tmp4 = i++;
-            $scope($Γ['global']['qsort'], '$tmp4', true)['$tmp4'] = sec_lvl('i', null, false, $Γ['global']['qsort']);
+            $tmp3 = i++;
+            $scope($Γ['global']['qsort'], '$tmp3', true)['$tmp3'] = sec_lvl('i', null, false, $Γ['global']['qsort']);
+            $scope($Γ['global']['qsort'], '$tmp3', true)['$tmp3'] instanceof Object ? $scope($Γ['global']['qsort'], '$tmp3', true)['$tmp3'].Σ = $lub($scope($Γ['global']['qsort'], '$tmp3', true)['$tmp3'].Σ, $pc().l) : $scope($Γ['global']['qsort'], '$tmp3', true)['$tmp3'] = $lub($scope($Γ['global']['qsort'], '$tmp3', true)['$tmp3'], $pc().l);
+            $tmp4 = i < tl;
+            $scope($Γ['global']['qsort'], '$tmp4', true)['$tmp4'] = $lub(sec_lvl('i', null, true, $Γ['global']['qsort']), sec_lvl('tl', null, true, $Γ['global']['qsort']));
             $scope($Γ['global']['qsort'], '$tmp4', true)['$tmp4'] instanceof Object ? $scope($Γ['global']['qsort'], '$tmp4', true)['$tmp4'].Σ = $lub($scope($Γ['global']['qsort'], '$tmp4', true)['$tmp4'].Σ, $pc().l) : $scope($Γ['global']['qsort'], '$tmp4', true)['$tmp4'] = $lub($scope($Γ['global']['qsort'], '$tmp4', true)['$tmp4'], $pc().l);
-            $tmp5 = i < tl;
-            $scope($Γ['global']['qsort'], '$tmp5', true)['$tmp5'] = $lub(sec_lvl('i', null, true, $Γ['global']['qsort']), sec_lvl('tl', null, true, $Γ['global']['qsort']));
-            $scope($Γ['global']['qsort'], '$tmp5', true)['$tmp5'] instanceof Object ? $scope($Γ['global']['qsort'], '$tmp5', true)['$tmp5'].Σ = $lub($scope($Γ['global']['qsort'], '$tmp5', true)['$tmp5'].Σ, $pc().l) : $scope($Γ['global']['qsort'], '$tmp5', true)['$tmp5'] = $lub($scope($Γ['global']['qsort'], '$tmp5', true)['$tmp5'], $pc().l);
         }
         $upgrade([
             'left.push',
-            '$tmp13',
+            '$tmp12',
             'right.push',
-            '$tmp15'
+            '$tmp14'
         ], $pc().l, $Γ['global']['qsort']);
         $Λ.pop();
-        $tmp6 = left.push(pivot);
-        $tmp7 = right.length;
-        $scope($Γ['global']['qsort'], '$tmp7', true)['$tmp7'] = sec_lvl('right', 'length', false, $Γ['global']['qsort']);
+        $tmp5 = left.push(pivot);
+        $tmp6 = right.length;
+        $scope($Γ['global']['qsort'], '$tmp6', true)['$tmp6'] = sec_lvl('right', length, false, $Γ['global']['qsort']);
+        $scope($Γ['global']['qsort'], '$tmp6', true)['$tmp6'] instanceof Object ? $scope($Γ['global']['qsort'], '$tmp6', true)['$tmp6'].Σ = $lub($scope($Γ['global']['qsort'], '$tmp6', true)['$tmp6'].Σ, $pc().l) : $scope($Γ['global']['qsort'], '$tmp6', true)['$tmp6'] = $lub($scope($Γ['global']['qsort'], '$tmp6', true)['$tmp6'], $pc().l);
+        $Λ.push({
+            l: $lub($pc().l, sec_lvl('$tmp6', null, true, $Γ['global']['qsort'])),
+            id: 'IF'
+        });
+        if ($tmp6) {
+            var $tmp16;
+            $Γ['global']['qsort']['$tmp16'] = 0;
+            $tmp16 = stack.push(right);
+        } else {
+            $upgrade([
+                'stack.push',
+                '$tmp16'
+            ], $pc().l, $Γ['global']['qsort']);
+        }
+        $Λ.pop();
+        $tmp7 = left.length;
+        $scope($Γ['global']['qsort'], '$tmp7', true)['$tmp7'] = sec_lvl('left', length, false, $Γ['global']['qsort']);
         $scope($Γ['global']['qsort'], '$tmp7', true)['$tmp7'] instanceof Object ? $scope($Γ['global']['qsort'], '$tmp7', true)['$tmp7'].Σ = $lub($scope($Γ['global']['qsort'], '$tmp7', true)['$tmp7'].Σ, $pc().l) : $scope($Γ['global']['qsort'], '$tmp7', true)['$tmp7'] = $lub($scope($Γ['global']['qsort'], '$tmp7', true)['$tmp7'], $pc().l);
         $Λ.push({
             l: $lub($pc().l, sec_lvl('$tmp7', null, true, $Γ['global']['qsort'])),
@@ -324,7 +350,7 @@ function qsort(arr) {
         if ($tmp7) {
             var $tmp17;
             $Γ['global']['qsort']['$tmp17'] = 0;
-            $tmp17 = stack.push(right);
+            $tmp17 = stack.push(left);
         } else {
             $upgrade([
                 'stack.push',
@@ -332,44 +358,26 @@ function qsort(arr) {
             ], $pc().l, $Γ['global']['qsort']);
         }
         $Λ.pop();
-        $tmp8 = left.length;
-        $scope($Γ['global']['qsort'], '$tmp8', true)['$tmp8'] = sec_lvl('left', 'length', false, $Γ['global']['qsort']);
-        $scope($Γ['global']['qsort'], '$tmp8', true)['$tmp8'] instanceof Object ? $scope($Γ['global']['qsort'], '$tmp8', true)['$tmp8'].Σ = $lub($scope($Γ['global']['qsort'], '$tmp8', true)['$tmp8'].Σ, $pc().l) : $scope($Γ['global']['qsort'], '$tmp8', true)['$tmp8'] = $lub($scope($Γ['global']['qsort'], '$tmp8', true)['$tmp8'], $pc().l);
-        $Λ.push({
-            l: $lub($pc().l, sec_lvl('$tmp8', null, true, $Γ['global']['qsort'])),
-            id: 'IF'
-        });
-        if ($tmp8) {
-            var $tmp18;
-            $Γ['global']['qsort']['$tmp18'] = 0;
-            $tmp18 = stack.push(left);
-        } else {
-            $upgrade([
-                'stack.push',
-                '$tmp18'
-            ], $pc().l, $Γ['global']['qsort']);
-        }
-        $Λ.pop();
-        $tmp1 = stack.length;
-        $scope($Γ['global']['qsort'], '$tmp1', true)['$tmp1'] = sec_lvl('stack', 'length', false, $Γ['global']['qsort']);
-        $scope($Γ['global']['qsort'], '$tmp1', true)['$tmp1'] instanceof Object ? $scope($Γ['global']['qsort'], '$tmp1', true)['$tmp1'].Σ = $lub($scope($Γ['global']['qsort'], '$tmp1', true)['$tmp1'].Σ, $pc().l) : $scope($Γ['global']['qsort'], '$tmp1', true)['$tmp1'] = $lub($scope($Γ['global']['qsort'], '$tmp1', true)['$tmp1'], $pc().l);
+        $tmp0 = stack.length;
+        $scope($Γ['global']['qsort'], '$tmp0', true)['$tmp0'] = sec_lvl('stack', length, false, $Γ['global']['qsort']);
+        $scope($Γ['global']['qsort'], '$tmp0', true)['$tmp0'] instanceof Object ? $scope($Γ['global']['qsort'], '$tmp0', true)['$tmp0'].Σ = $lub($scope($Γ['global']['qsort'], '$tmp0', true)['$tmp0'].Σ, $pc().l) : $scope($Γ['global']['qsort'], '$tmp0', true)['$tmp0'] = $lub($scope($Γ['global']['qsort'], '$tmp0', true)['$tmp0'], $pc().l);
     }
     $upgrade([
         'stack.pop',
         'temp',
         'sorted.push',
-        '$tmp9',
+        '$tmp8',
         'left.push',
-        '$tmp13',
+        '$tmp12',
         'right.push',
-        '$tmp15',
-        '$tmp6',
+        '$tmp14',
+        '$tmp5',
         'stack.push',
-        '$tmp17',
-        '$tmp18'
+        '$tmp16',
+        '$tmp17'
     ], $pc().l, $Γ['global']['qsort']);
     $Λ.pop();
-    $tmp2 = console.log(sorted);
+    $tmp1 = console.log(sorted);
 }
 $Γ['global']['qsort'] = {
     $fscope: $pc().l,
@@ -377,7 +385,12 @@ $Γ['global']['qsort'] = {
     Σ: $pc().l,
     arr: $pc().l
 };
-
+$Γ['global']['qsort'] = {
+    $fscope: $pc().l,
+    prototype: {Σ: $pc().l},
+    Σ: $pc().l,
+    arr: $pc().l
+};
 
 
 //function qsort(arr) {
