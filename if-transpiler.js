@@ -144,6 +144,8 @@ function iFTranspily () {
         // Then perform the inlining
         tree = ifTranspiler.inline(tree);
 
+
+
         if (propagateLicenseComment) {
             tree.leadingComments = licenses;
         }
