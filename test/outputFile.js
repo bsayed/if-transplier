@@ -1,426 +1,445 @@
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
-/*  AES implementation in JavaScript                     (c) Chris Veness 2005-2014 / MIT Licence */
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 
-/* jshint node:true *//* global define */
+//var print = print || console.log;
 
 
-/**
- * AES (Rijndael cipher) encryption routines,
- *
- * Reference implementation of FIPS-197 http://csrc.nist.gov/publications/fips/fips197/fips-197.pdf.
- *
- * @namespace
- */
-var Aes = {};
+// Copyright 2009 the V8 project authors. All rights reserved.
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions are
+// met:
+//
+//     * Redistributions of source code must retain the above copyright
+//       notice, this list of conditions and the following disclaimer.
+//     * Redistributions in binary form must reproduce the above
+//       copyright notice, this list of conditions and the following
+//       disclaimer in the documentation and/or other materials provided
+//       with the distribution.
+//     * Neither the name of Google Inc. nor the names of its
+//       contributors may be used to endorse or promote products derived
+//       from this software without specific prior written permission.
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+// This benchmark is based on a JavaScript log processing module used
+// by the V8 profiler to generate execution time profiles for runs of
+// JavaScript applications, and it effectively measures how fast the
+// JavaScript engine is at allocating nodes and reclaiming the memory
+// used for old nodes. Because of the way splay trees work, the engine
+// also has to deal with a lot of changes to the large tree object
+// graph.
+// Performance.now is used in latency benchmarks, the fallback is Date.now.
+var performance = {};
+performance.now = Date.now;
 
-/**
- * AES Cipher function: encrypt 'input' state with Rijndael algorithm [§5.1];
- *   applies Nr rounds (10/12/14) using key schedule w for 'add round key' stage.
- *
- * @param   {number[]}   input - 16-byte (128-bit) input state array.
- * @param   {number[][]} w - Key schedule as 2D byte-array (Nr+1 x Nb bytes).
- * @returns {number[]}   Encrypted output state array.
- */
-Aes.cipher = function(input, w) {
-    var Nb = 4;               // block size (in words): no of columns in state (fixed at 4 for AES)
-    var Nr = w.length/Nb - 1; // no of rounds: 10/12/14 for 128/192/256-bit keys
+// Configuration.
+var kSplayTreeSize = 8000;
+var kSplayTreeModifications = 80;
+var kSplayTreePayloadDepth = 5;
 
-    var state = [[],[],[],[]];  // initialise 4xNb byte-array 'state' with input [§3.4]
-    for (var i=0; i<4*Nb; i++) state[i%4][Math.floor(i/4)] = input[i];
+var splayTree = null;
+var splaySampleTimeStart = 0.0;
 
-    state = Aes.addRoundKey(state, w, 0, Nb);
+function GeneratePayloadTree(depth, tag) {
+    //console.log('Depth: '+ depth + "  Tag: "+tag);
 
-    for (var round=1; round<Nr; round++) {
-        state = Aes.subBytes(state, Nb);
-        state = Aes.shiftRows(state, Nb);
-        state = Aes.mixColumns(state, Nb);
-        state = Aes.addRoundKey(state, w, round, Nb);
+    if (depth == 0) {
+        return {
+            array  : [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ],
+            string : 'String for key ' + tag + ' in leaf node'
+        };
+    } else {
+        return {
+            left:  GeneratePayloadTree(depth - 1, tag),
+            right: GeneratePayloadTree(depth - 1, tag)
+        };
     }
-
-    state = Aes.subBytes(state, Nb);
-    state = Aes.shiftRows(state, Nb);
-    state = Aes.addRoundKey(state, w, Nr, Nb);
-
-    var output = new Array(4*Nb);  // convert state to 1-d array before returning [§3.4]
-    for (var i=0; i<4*Nb; i++) output[i] = state[i%4][Math.floor(i/4)];
-
-    return output;
-};
-
-
-/**
- * Perform key expansion to generate a key schedule from a cipher key [§5.2].
- *
- * @param   {number[]}   key - Cipher key as 16/24/32-byte array.
- * @returns {number[][]} Expanded key schedule as 2D byte-array (Nr+1 x Nb bytes).
- */
-Aes.keyExpansion = function(key) {
-    var Nb = 4;            // block size (in words): no of columns in state (fixed at 4 for AES)
-    var Nk = key.length/4; // key length (in words): 4/6/8 for 128/192/256-bit keys
-    var Nr = Nk + 6;       // no of rounds: 10/12/14 for 128/192/256-bit keys
-
-    var w = new Array(Nb*(Nr+1));
-    var temp = new Array(4);
-
-    // initialise first Nk words of expanded key with cipher key
-    for (var i=0; i<Nk; i++) {
-        var r = [key[4*i], key[4*i+1], key[4*i+2], key[4*i+3]];
-        w[i] = r;
-    }
-
-    // expand the key into the remainder of the schedule
-    for (var i=Nk; i<(Nb*(Nr+1)); i++) {
-        w[i] = new Array(4);
-        for (var t=0; t<4; t++) temp[t] = w[i-1][t];
-        // each Nk'th word has extra transformation
-        if (i % Nk == 0) {
-            temp = Aes.subWord(Aes.rotWord(temp));
-            for (var t=0; t<4; t++) temp[t] ^= Aes.rCon[i/Nk][t];
-        }
-        // 256-bit key has subWord applied every 4th word
-        else if (Nk > 6 && i%Nk == 4) {
-            temp = Aes.subWord(temp);
-        }
-        // xor w[i] with w[i-1] and w[i-Nk]
-        for (var t=0; t<4; t++) w[i][t] = w[i-Nk][t] ^ temp[t];
-    }
-
-    return w;
-};
-
-
-/**
- * Apply SBox to state S [§5.1.1]
- * @private
- */
-Aes.subBytes = function(s, Nb) {
-    for (var r=0; r<4; r++) {
-        for (var c=0; c<Nb; c++) s[r][c] = Aes.sBox[s[r][c]];
-    }
-    return s;
-};
-
-
-/**
- * Shift row r of state S left by r bytes [§5.1.2]
- * @private
- */
-Aes.shiftRows = function(s, Nb) {
-    var t = new Array(4);
-    for (var r=1; r<4; r++) {
-        for (var c=0; c<4; c++) t[c] = s[r][(c+r)%Nb];  // shift into temp copy
-        for (var c=0; c<4; c++) s[r][c] = t[c];         // and copy back
-    }          // note that this will work for Nb=4,5,6, but not 7,8 (always 4 for AES):
-    return s;  // see asmaes.sourceforge.net/rijndael/rijndaelImplementation.pdf
-};
-
-
-/**
- * Combine bytes of each col of state S [§5.1.3]
- * @private
- */
-Aes.mixColumns = function(s, Nb) {
-    for (var c=0; c<4; c++) {
-        var a = new Array(4);  // 'a' is a copy of the current column from 's'
-        var b = new Array(4);  // 'b' is a•{02} in GF(2^8)
-        for (var i=0; i<4; i++) {
-            a[i] = s[i][c];
-            b[i] = s[i][c]&0x80 ? s[i][c]<<1 ^ 0x011b : s[i][c]<<1;
-        }
-        // a[n] ^ b[n] is a•{03} in GF(2^8)
-        s[0][c] = b[0] ^ a[1] ^ b[1] ^ a[2] ^ a[3]; // {02}•a0 + {03}•a1 + a2 + a3
-        s[1][c] = a[0] ^ b[1] ^ a[2] ^ b[2] ^ a[3]; // a0 • {02}•a1 + {03}•a2 + a3
-        s[2][c] = a[0] ^ a[1] ^ b[2] ^ a[3] ^ b[3]; // a0 + a1 + {02}•a2 + {03}•a3
-        s[3][c] = a[0] ^ b[0] ^ a[1] ^ a[2] ^ b[3]; // {03}•a0 + a1 + a2 + {02}•a3
-    }
-    return s;
-};
-
-
-/**
- * Xor Round Key into state S [§5.1.4]
- * @private
- */
-Aes.addRoundKey = function(state, w, rnd, Nb) {
-    for (var r=0; r<4; r++) {
-        for (var c=0; c<Nb; c++) state[r][c] ^= w[rnd*4+c][r];
-    }
-    return state;
-};
-
-
-/**
- * Apply SBox to 4-byte word w
- * @private
- */
-Aes.subWord = function(w) {
-    for (var i=0; i<4; i++) w[i] = Aes.sBox[w[i]];
-    return w;
-};
-
-
-/**
- * Rotate 4-byte word w left by one byte
- * @private
- */
-Aes.rotWord = function(w) {
-    var tmp = w[0];
-    for (var i=0; i<3; i++) w[i] = w[i+1];
-    w[3] = tmp;
-    return w;
-};
-
-
-// sBox is pre-computed multiplicative inverse in GF(2^8) used in subBytes and keyExpansion [§5.1.1]
-Aes.sBox =  [0x63,0x7c,0x77,0x7b,0xf2,0x6b,0x6f,0xc5,0x30,0x01,0x67,0x2b,0xfe,0xd7,0xab,0x76,
-    0xca,0x82,0xc9,0x7d,0xfa,0x59,0x47,0xf0,0xad,0xd4,0xa2,0xaf,0x9c,0xa4,0x72,0xc0,
-    0xb7,0xfd,0x93,0x26,0x36,0x3f,0xf7,0xcc,0x34,0xa5,0xe5,0xf1,0x71,0xd8,0x31,0x15,
-    0x04,0xc7,0x23,0xc3,0x18,0x96,0x05,0x9a,0x07,0x12,0x80,0xe2,0xeb,0x27,0xb2,0x75,
-    0x09,0x83,0x2c,0x1a,0x1b,0x6e,0x5a,0xa0,0x52,0x3b,0xd6,0xb3,0x29,0xe3,0x2f,0x84,
-    0x53,0xd1,0x00,0xed,0x20,0xfc,0xb1,0x5b,0x6a,0xcb,0xbe,0x39,0x4a,0x4c,0x58,0xcf,
-    0xd0,0xef,0xaa,0xfb,0x43,0x4d,0x33,0x85,0x45,0xf9,0x02,0x7f,0x50,0x3c,0x9f,0xa8,
-    0x51,0xa3,0x40,0x8f,0x92,0x9d,0x38,0xf5,0xbc,0xb6,0xda,0x21,0x10,0xff,0xf3,0xd2,
-    0xcd,0x0c,0x13,0xec,0x5f,0x97,0x44,0x17,0xc4,0xa7,0x7e,0x3d,0x64,0x5d,0x19,0x73,
-    0x60,0x81,0x4f,0xdc,0x22,0x2a,0x90,0x88,0x46,0xee,0xb8,0x14,0xde,0x5e,0x0b,0xdb,
-    0xe0,0x32,0x3a,0x0a,0x49,0x06,0x24,0x5c,0xc2,0xd3,0xac,0x62,0x91,0x95,0xe4,0x79,
-    0xe7,0xc8,0x37,0x6d,0x8d,0xd5,0x4e,0xa9,0x6c,0x56,0xf4,0xea,0x65,0x7a,0xae,0x08,
-    0xba,0x78,0x25,0x2e,0x1c,0xa6,0xb4,0xc6,0xe8,0xdd,0x74,0x1f,0x4b,0xbd,0x8b,0x8a,
-    0x70,0x3e,0xb5,0x66,0x48,0x03,0xf6,0x0e,0x61,0x35,0x57,0xb9,0x86,0xc1,0x1d,0x9e,
-    0xe1,0xf8,0x98,0x11,0x69,0xd9,0x8e,0x94,0x9b,0x1e,0x87,0xe9,0xce,0x55,0x28,0xdf,
-    0x8c,0xa1,0x89,0x0d,0xbf,0xe6,0x42,0x68,0x41,0x99,0x2d,0x0f,0xb0,0x54,0xbb,0x16];
-
-
-// rCon is Round Constant used for the Key Expansion [1st col is 2^(r-1) in GF(2^8)] [§5.2]
-Aes.rCon = [ [0x00, 0x00, 0x00, 0x00],
-    [0x01, 0x00, 0x00, 0x00],
-    [0x02, 0x00, 0x00, 0x00],
-    [0x04, 0x00, 0x00, 0x00],
-    [0x08, 0x00, 0x00, 0x00],
-    [0x10, 0x00, 0x00, 0x00],
-    [0x20, 0x00, 0x00, 0x00],
-    [0x40, 0x00, 0x00, 0x00],
-    [0x80, 0x00, 0x00, 0x00],
-    [0x1b, 0x00, 0x00, 0x00],
-    [0x36, 0x00, 0x00, 0x00] ];
-
-
-
-
-
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
-/*  AES Counter-mode implementation in JavaScript       (c) Chris Veness 2005-2014 / MIT Licence  */
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
-
-/* jshint node:true *//* global define, escape, unescape, btoa, atob */
-
-
-/**
- * Aes.Ctr: Counter-mode (CTR) wrapper for AES.
- *
- * This encrypts a Unicode string to produces a base64 ciphertext using 128/192/256-bit AES,
- * and the converse to decrypt an encrypted ciphertext.
- *
- * See http://csrc.nist.gov/publications/nistpubs/800-38a/sp800-38a.pdf
- *
- * @augments Aes
- */
-Aes.Ctr = {};
-
-
-/**
- * Encrypt a text using AES encryption in Counter mode of operation.
- *
- * Unicode multi-byte character safe
- *
- * @param   {string} plaintext - Source text to be encrypted.
- * @param   {string} password - The password to use to generate a key.
- * @param   {number} nBits - Number of bits to be used in the key; 128 / 192 / 256.
- * @returns {string} Encrypted text.
- *
- * @example
- *   var encr = Aes.Ctr.encrypt('big secret', 'pāşšŵōřđ', 256); // encr: 'lwGl66VVwVObKIr6of8HVqJr'
- */
-Aes.Ctr.encrypt = function(plaintext, password, nBits) {
-    var blockSize = 16;  // block size fixed at 16 bytes / 128 bits (Nb=4) for AES
-    if (!(nBits==128 || nBits==192 || nBits==256)) return ''; // standard allows 128/192/256 bit keys
-    plaintext = String(plaintext).utf8Encode();
-    password = String(password).utf8Encode();
-
-    // use AES itself to encrypt password to get cipher key (using plain password as source for key
-    // expansion) - gives us well encrypted key (though hashed key might be preferred for prod'n use)
-    var nBytes = nBits/8;  // no bytes in key (16/24/32)
-    var pwBytes = new Array(nBytes);
-    for (var i=0; i<nBytes; i++) {  // use 1st 16/24/32 chars of password for key
-        pwBytes[i] = isNaN(password.charCodeAt(i)) ? 0 : password.charCodeAt(i);
-    }
-    var key = Aes.cipher(pwBytes, Aes.keyExpansion(pwBytes)); // gives us 16-byte key
-    key = key.concat(key.slice(0, nBytes-16));  // expand key to 16/24/32 bytes long
-
-    // initialise 1st 8 bytes of counter block with nonce (NIST SP800-38A §B.2): [0-1] = millisec,
-    // [2-3] = random, [4-7] = seconds, together giving full sub-millisec uniqueness up to Feb 2106
-    var counterBlock = new Array(blockSize);
-
-    var nonce = (new Date()).getTime();  // timestamp: milliseconds since 1-Jan-1970
-    var nonceMs = nonce%1000;
-    var nonceSec = Math.floor(nonce/1000);
-    var nonceRnd = Math.floor(Math.random()*0xffff);
-    // for debugging: nonce = nonceMs = nonceSec = nonceRnd = 0;
-
-    for (var i=0; i<2; i++) counterBlock[i]   = (nonceMs  >>> i*8) & 0xff;
-    for (var i=0; i<2; i++) counterBlock[i+2] = (nonceRnd >>> i*8) & 0xff;
-    for (var i=0; i<4; i++) counterBlock[i+4] = (nonceSec >>> i*8) & 0xff;
-
-    // and convert it to a string to go on the front of the ciphertext
-    var ctrTxt = '';
-    for (var i=0; i<8; i++) ctrTxt += String.fromCharCode(counterBlock[i]);
-
-    // generate key schedule - an expansion of the key into distinct Key Rounds for each round
-    var keySchedule = Aes.keyExpansion(key);
-
-    var blockCount = Math.ceil(plaintext.length/blockSize);
-    var ciphertxt = new Array(blockCount);  // ciphertext as array of strings
-
-    for (var b=0; b<blockCount; b++) {
-        // set counter (block #) in last 8 bytes of counter block (leaving nonce in 1st 8 bytes)
-        // done in two stages for 32-bit ops: using two words allows us to go past 2^32 blocks (68GB)
-        for (var c=0; c<4; c++) counterBlock[15-c] = (b >>> c*8) & 0xff;
-        for (var c=0; c<4; c++) counterBlock[15-c-4] = (b/0x100000000 >>> c*8);
-
-        var cipherCntr = Aes.cipher(counterBlock, keySchedule);  // -- encrypt counter block --
-
-        // block size is reduced on final block
-        var blockLength = b<blockCount-1 ? blockSize : (plaintext.length-1)%blockSize+1;
-        var cipherChar = new Array(blockLength);
-
-        for (var i=0; i<blockLength; i++) {  // -- xor plaintext with ciphered counter char-by-char --
-            cipherChar[i] = cipherCntr[i] ^ plaintext.charCodeAt(b*blockSize+i);
-            cipherChar[i] = String.fromCharCode(cipherChar[i]);
-        }
-        ciphertxt[b] = cipherChar.join('');
-    }
-
-    // use Array.join() for better performance than repeated string appends
-    var ciphertext = ctrTxt + ciphertxt.join('');
-    ciphertext = ciphertext.base64Encode();
-
-    return ciphertext;
-};
-
-
-/**
- * Decrypt a text encrypted by AES in counter mode of operation
- *
- * @param   {string} ciphertext - Source text to be encrypted.
- * @param   {string} password - Password to use to generate a key.
- * @param   {number} nBits - Number of bits to be used in the key; 128 / 192 / 256.
- * @returns {string} Decrypted text
- *
- * @example
- *   var decr = Aes.Ctr.encrypt('lwGl66VVwVObKIr6of8HVqJr', 'pāşšŵōřđ', 256); // decr: 'big secret'
- */
-Aes.Ctr.decrypt = function(ciphertext, password, nBits) {
-    var blockSize = 16;  // block size fixed at 16 bytes / 128 bits (Nb=4) for AES
-    if (!(nBits==128 || nBits==192 || nBits==256)) return ''; // standard allows 128/192/256 bit keys
-    ciphertext = String(ciphertext).base64Decode();
-    password = String(password).utf8Encode();
-
-    // use AES to encrypt password (mirroring encrypt routine)
-    var nBytes = nBits/8;  // no bytes in key
-    var pwBytes = new Array(nBytes);
-    for (var i=0; i<nBytes; i++) {
-        pwBytes[i] = isNaN(password.charCodeAt(i)) ? 0 : password.charCodeAt(i);
-    }
-    var key = Aes.cipher(pwBytes, Aes.keyExpansion(pwBytes));
-    key = key.concat(key.slice(0, nBytes-16));  // expand key to 16/24/32 bytes long
-
-    // recover nonce from 1st 8 bytes of ciphertext
-    var counterBlock = new Array(8);
-    var ctrTxt = ciphertext.slice(0, 8);
-    for (var i=0; i<8; i++) counterBlock[i] = ctrTxt.charCodeAt(i);
-
-    // generate key schedule
-    var keySchedule = Aes.keyExpansion(key);
-
-    // separate ciphertext into blocks (skipping past initial 8 bytes)
-    var nBlocks = Math.ceil((ciphertext.length-8) / blockSize);
-    var ct = new Array(nBlocks);
-    for (var b=0; b<nBlocks; b++) ct[b] = ciphertext.slice(8+b*blockSize, 8+b*blockSize+blockSize);
-    ciphertext = ct;  // ciphertext is now array of block-length strings
-
-    // plaintext will get generated block-by-block into array of block-length strings
-    var plaintxt = new Array(ciphertext.length);
-
-    for (var b=0; b<nBlocks; b++) {
-        // set counter (block #) in last 8 bytes of counter block (leaving nonce in 1st 8 bytes)
-        for (var c=0; c<4; c++) counterBlock[15-c] = ((b) >>> c*8) & 0xff;
-        for (var c=0; c<4; c++) counterBlock[15-c-4] = (((b+1)/0x100000000-1) >>> c*8) & 0xff;
-
-        var cipherCntr = Aes.cipher(counterBlock, keySchedule);  // encrypt counter block
-
-        var plaintxtByte = new Array(ciphertext[b].length);
-        for (var i=0; i<ciphertext[b].length; i++) {
-            // -- xor plaintxt with ciphered counter byte-by-byte --
-            plaintxtByte[i] = cipherCntr[i] ^ ciphertext[b].charCodeAt(i);
-            plaintxtByte[i] = String.fromCharCode(plaintxtByte[i]);
-        }
-        plaintxt[b] = plaintxtByte.join('');
-    }
-
-    // join array of blocks into single plaintext string
-    var plaintext = plaintxt.join('');
-    plaintext = plaintext.utf8Decode();  // decode from UTF8 back to Unicode multi-byte chars
-
-    return plaintext;
-};
-
-
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
-
-
-/** Extend String object with method to encode multi-byte string to utf8
- *  - monsur.hossa.in/2012/07/20/utf-8-in-javascript.html */
-if (typeof String.prototype.utf8Encode == 'undefined') {
-    String.prototype.utf8Encode = function() {
-        return unescape( encodeURIComponent( this ) );
-    };
-}
-
-/** Extend String object with method to decode utf8 string to multi-byte */
-if (typeof String.prototype.utf8Decode == 'undefined') {
-    String.prototype.utf8Decode = function() {
-        try {
-            return decodeURIComponent( escape( this ) );
-        } catch (e) {
-            return this; // invalid UTF-8? return as-is
-        }
-    };
 }
 
 
-/** Extend String object with method to encode base64
- *  - developer.mozilla.org/en-US/docs/Web/API/window.btoa, nodejs.org/api/buffer.html
- *  note: if btoa()/atob() are not available (eg IE9-), try github.com/davidchambers/Base64.js */
-if (typeof String.prototype.base64Encode == 'undefined') {
-    String.prototype.base64Encode = function() {
-        //if (typeof btoa != 'undefined') return btoa(this); // browser
-        if (typeof Buffer != 'undefined') return new Buffer(this, 'utf8').toString('base64'); // Node.js
-        throw new Error('No Base64 Encode');
-    };
+function GenerateKey() {
+    // The benchmark framework guarantees that Math.random is
+    // deterministic; see base.js.
+    return Math.random();
 }
 
-/** Extend String object with method to decode base64 */
-if (typeof String.prototype.base64Decode == 'undefined') {
-    String.prototype.base64Decode = function() {
-        //if (typeof atob != 'undefined') return atob(this); // browser
-        if (typeof Buffer != 'undefined') return new Buffer(this, 'base64').toString('utf8'); // Node.js
-        throw new Error('No Base64 Decode');
-    };
+var splaySamples = 0;
+var splaySumOfSquaredPauses = 0;
+
+function SplayRMS() {
+    return Math.round(Math.sqrt(splaySumOfSquaredPauses / splaySamples) * 10000);
 }
 
-var encr = Aes.Ctr.encrypt('In this section we present the results of two experiments. The first experiment compares our modified JavaScript code that contains the information flow statements to the original code.', 'password', 256);
-var decr = Aes.Ctr.decrypt(encr, 'password', 256);
-var print = print || console.log;
-print('encr output ==> ' + encr);
-print('decr output ==> ' + decr);
+function SplayUpdateStats(time) {
+    var pause = time - splaySampleTimeStart;
+    splaySampleTimeStart = time;
+    splaySamples++;
+    splaySumOfSquaredPauses += pause * pause;
+}
+
+function InsertNewNode() {
+    // Insert new node with a unique key.
+    var key;
+    do {
+        key = GenerateKey();
+    } while (splayTree.find(key) != null);
+    var payload = GeneratePayloadTree(kSplayTreePayloadDepth, String(key));
+    splayTree.insert(key, payload);
+    return key;
+}
+
+
+function SplaySetup() {
+    // Check if the platform has the performance.now high resolution timer.
+    // If not, throw exception and quit.
+    if (!performance.now) {
+        throw "PerformanceNowUnsupported";
+    }
+
+    splayTree = new SplayTree();
+    splaySampleTimeStart = performance.now()
+    for (var i = 0; i < kSplayTreeSize; i++) {
+        InsertNewNode();
+        if ((i+1) % 20 == 19) {
+            SplayUpdateStats(performance.now());
+        }
+    }
+}
+
+
+function SplayTearDown() {
+    // Allow the garbage collector to reclaim the memory
+    // used by the splay tree no matter how we exit the
+    // tear down function.
+    var keys = splayTree.exportKeys();
+    splayTree = null;
+
+    splaySamples = 0;
+    splaySumOfSquaredPauses = 0;
+
+    // Verify that the splay tree has the right size.
+    var length = keys.length;
+    if (length != kSplayTreeSize) {
+        throw new Error("Splay tree has wrong size");
+    }
+
+    // Verify that the splay tree has sorted, unique keys.
+    for (var i = 0; i < length - 1; i++) {
+        if (keys[i] >= keys[i + 1]) {
+            throw new Error("Splay tree not sorted");
+        }
+    }
+}
+
+
+function SplayRun() {
+    // Replace a few nodes in the splay tree.
+    for (var i = 0; i < kSplayTreeModifications; i++) {
+        var key = InsertNewNode();
+
+
+        //console.log(key + ' inserted.');
+
+
+
+        var greatest = splayTree.findGreatestLessThan(key);
+        if (greatest == null) {
+            //console.log('Remove key '+key);
+            splayTree.remove(key);
+        }
+        else {
+            //console.log('Remove key '+key);
+            splayTree.remove(greatest.key);
+        }
+    }
+    SplayUpdateStats(performance.now());
+}
+
+
+/**
+ * Constructs a Splay tree.  A splay tree is a self-balancing binary
+ * search tree with the additional property that recently accessed
+ * elements are quick to access again. It performs basic operations
+ * such as insertion, look-up and removal in O(log(n)) amortized time.
+ *
+ * @constructor
+ */
+function SplayTree() {
+};
+
+
+/**
+ * Pointer to the root node of the tree.
+ *
+ * @type {SplayTree.Node}
+ * @private
+ */
+SplayTree.prototype.root_ = null;
+
+
+/**
+ * @return {boolean} Whether the tree is empty.
+ */
+SplayTree.prototype.isEmpty = function() {
+    return !this.root_;
+};
+
+
+/**
+ * Inserts a node into the tree with the specified key and value if
+ * the tree does not already contain a node with the specified key. If
+ * the value is inserted, it becomes the root of the tree.
+ *
+ * @param {number} key Key to insert into the tree.
+ * @param {*} value Value to insert into the tree.
+ */
+SplayTree.prototype.insert = function(key, value) {
+    if (this.isEmpty()) {
+        this.root_ = new SplayTree.Node(key, value);
+        return;
+    }
+    // Splay on the key to move the last node on the search path for
+    // the key to the root of the tree.
+    this.splay_(key);
+    if (this.root_.key == key) {
+        return;
+    }
+    var node = new SplayTree.Node(key, value);
+    if (key > this.root_.key) {
+        node.left = this.root_;
+        node.right = this.root_.right;
+        this.root_.right = null;
+    } else {
+        node.right = this.root_;
+        node.left = this.root_.left;
+        this.root_.left = null;
+    }
+    this.root_ = node;
+};
+
+
+/**
+ * Removes a node with the specified key from the tree if the tree
+ * contains a node with this key. The removed node is returned. If the
+ * key is not found, an exception is thrown.
+ *
+ * @param {number} key Key to find and remove from the tree.
+ * @return {SplayTree.Node} The removed node.
+ */
+SplayTree.prototype.remove = function(key) {
+    if (this.isEmpty()) {
+        throw Error('Key not found: ' + key);
+    }
+    this.splay_(key);
+    if (this.root_.key != key) {
+        throw Error('Key not found: ' + key);
+    }
+    var removed = this.root_;
+    if (!this.root_.left) {
+        this.root_ = this.root_.right;
+    } else {
+        var right = this.root_.right;
+        this.root_ = this.root_.left;
+        // Splay to make sure that the new root has an empty right child.
+        this.splay_(key);
+        // Insert the original right child as the right child of the new
+        // root.
+        this.root_.right = right;
+    }
+    return removed;
+};
+
+
+/**
+ * Returns the node having the specified key or null if the tree doesn't contain
+ * a node with the specified key.
+ *
+ * @param {number} key Key to find in the tree.
+ * @return {SplayTree.Node} Node having the specified key.
+ */
+SplayTree.prototype.find = function(key) {
+    if (this.isEmpty()) {
+        return null;
+    }
+    this.splay_(key);
+    return this.root_.key == key ? this.root_ : null;
+};
+
+
+/**
+ * @return {SplayTree.Node} Node having the maximum key value.
+ */
+SplayTree.prototype.findMax = function(opt_startNode) {
+    if (this.isEmpty()) {
+        return null;
+    }
+    var current = opt_startNode || this.root_;
+    while (current.right) {
+        current = current.right;
+    }
+    return current;
+};
+
+
+/**
+ * @return {SplayTree.Node} Node having the maximum key value that
+ *     is less than the specified key value.
+ */
+SplayTree.prototype.findGreatestLessThan = function(key) {
+    if (this.isEmpty()) {
+        return null;
+    }
+    // Splay on the key to move the node with the given key or the last
+    // node on the search path to the top of the tree.
+    this.splay_(key);
+    // Now the result is either the root node or the greatest node in
+    // the left subtree.
+    if (this.root_.key < key) {
+        return this.root_;
+    } else if (this.root_.left) {
+        return this.findMax(this.root_.left);
+    } else {
+        return null;
+    }
+};
+
+
+/**
+ * @return {Array<*>} An array containing all the keys of tree's nodes.
+ */
+SplayTree.prototype.exportKeys = function() {
+    var result = [];
+    if (!this.isEmpty()) {
+        this.root_.traverse_(function(node) { result.push(node.key); });
+    }
+    return result;
+};
+
+
+/**
+ * Perform the splay operation for the given key. Moves the node with
+ * the given key to the top of the tree.  If no node has the given
+ * key, the last node on the search path is moved to the top of the
+ * tree. This is the simplified top-down splaying algorithm from:
+ * "Self-adjusting Binary Search Trees" by Sleator and Tarjan
+ *
+ * @param {number} key Key to splay the tree on.
+ * @private
+ */
+SplayTree.prototype.splay_ = function(key) {
+    if (this.isEmpty()) {
+        return;
+    }
+    // Create a dummy node.  The use of the dummy node is a bit
+    // counter-intuitive: The right child of the dummy node will hold
+    // the L tree of the algorithm.  The left child of the dummy node
+    // will hold the R tree of the algorithm.  Using a dummy node, left
+    // and right will always be nodes and we avoid special cases.
+    var dummy, left, right;
+    dummy = left = right = new SplayTree.Node(null, null);
+    var current = this.root_;
+    while (true) {
+        if (key < current.key) {
+            if (!current.left) {
+                break;
+            }
+            if (key < current.left.key) {
+                // Rotate right.
+                var tmp = current.left;
+                current.left = tmp.right;
+                tmp.right = current;
+                current = tmp;
+                if (!current.left) {
+                    break;
+                }
+            }
+            // Link right.
+            right.left = current;
+            right = current;
+            current = current.left;
+        } else if (key > current.key) {
+            if (!current.right) {
+                break;
+            }
+            if (key > current.right.key) {
+                // Rotate left.
+                var tmp = current.right;
+                current.right = tmp.left;
+                tmp.left = current;
+                current = tmp;
+                if (!current.right) {
+                    break;
+                }
+            }
+            // Link left.
+            left.right = current;
+            left = current;
+            current = current.right;
+        } else {
+            break;
+        }
+    }
+    // Assemble.
+    left.right = current.left;
+    right.left = current.right;
+    current.left = dummy.right;
+    current.right = dummy.left;
+    this.root_ = current;
+};
+
+
+/**
+ * Constructs a Splay tree node.
+ *
+ * @param {number} key Key.
+ * @param {*} value Value.
+ */
+SplayTree.Node = function(key, value) {
+    this.key = key;
+    this.value = value;
+};
+
+
+/**
+ * @type {SplayTree.Node}
+ */
+SplayTree.Node.prototype.left = null;
+
+
+/**
+ * @type {SplayTree.Node}
+ */
+SplayTree.Node.prototype.right = null;
+
+
+/**
+ * Performs an ordered traversal of the subtree starting at
+ * this SplayTree.Node.
+ *
+ * @param {function(SplayTree.Node)} f Visitor function.
+ * @private
+ */
+SplayTree.Node.prototype.traverse_ = function(f) {
+    var current = this;
+    while (current) {
+        var left = current.left;
+        if (left) left.traverse_(f);
+        f(current);
+        current = current.right;
+    }
+};
+
+//_____________________________________________________
+
+
+SplaySetup();
+SplayRun();
+SplayTearDown();
