@@ -38,7 +38,9 @@ function $prop(obj, prop, $$cs) {
         if ($ro[prop] !== undefined)
             return $ro[prop];
     } while ($ro = $ro['__proto__']);
-    // if isFuncProb
+
+    // if we looked up a property that doesn't exist return
+    // the objects sec level.
     return $t.Σ;
 }
 
@@ -75,6 +77,7 @@ function sec_lvl(obj, prop, getValue, $$cs) {
     }
 }
 //-------------------------------------------------------------------------------
+
 
 var performance, kSplayTreeSize, kSplayTreeModifications, kSplayTreePayloadDepth, splayTree, splaySampleTimeStart, splaySamples, splaySumOfSquaredPauses, $tmp0, $tmp1, $tmp2, $tmp3, $tmp4;
 $Γ['global']['$tmp4'] = $Γ['global']['$tmp3'] = $Γ['global']['$tmp2'] = $Γ['global']['$tmp1'] = $Γ['global']['$tmp0'] = $Γ['global']['splaySumOfSquaredPauses'] = $Γ['global']['splaySamples'] = $Γ['global']['splaySampleTimeStart'] = $Γ['global']['splayTree'] = $Γ['global']['kSplayTreePayloadDepth'] = $Γ['global']['kSplayTreeModifications'] = $Γ['global']['kSplayTreeSize'] = $Γ['global']['performance'] = 0;
@@ -250,6 +253,17 @@ function GeneratePayloadTree(depth, tag) {
     if ($shouldComp)
         $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
     $Λ.pop();
+    $old_pc = $pc();
+    while ($pc().id !== 'FUNC') {
+        $Λ.pop();
+    }
+    if ($Γ['global']['GeneratePayloadTree'].InvokedAsContr) {
+        $Γ['global']['GeneratePayloadTree'].this.Σ = $lub($Γ['global']['GeneratePayloadTree'].this.Σ, $old_pc.l);
+        $Λ[$Λ.len - 1] = { 'l': $Γ['global']['GeneratePayloadTree'].this };
+    } else {
+        $Λ[$Λ.len - 1] = { 'l': $old_pc.l };
+    }
+    return;
 }
 $Γ['global']['GeneratePayloadTree'] = {
     $fscope: $Λ[$Λ.length - 1].l,
@@ -338,6 +352,17 @@ function SplayUpdateStats(time) {
     splaySumOfSquaredPauses += pause * pause;
     $scope($Γ['global']['SplayUpdateStats'], 'splaySumOfSquaredPauses', true)['splaySumOfSquaredPauses'] = $lub(sec_lvl('pause', null, true, $Γ['global']['SplayUpdateStats']), sec_lvl('pause', null, true, $Γ['global']['SplayUpdateStats']));
     $scope($Γ['global']['SplayUpdateStats'], 'splaySumOfSquaredPauses', true)['splaySumOfSquaredPauses'] instanceof Object ? $scope($Γ['global']['SplayUpdateStats'], 'splaySumOfSquaredPauses', true)['splaySumOfSquaredPauses'].Σ = $lub($scope($Γ['global']['SplayUpdateStats'], 'splaySumOfSquaredPauses', true)['splaySumOfSquaredPauses'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['SplayUpdateStats'], 'splaySumOfSquaredPauses', true)['splaySumOfSquaredPauses'] = $lub($scope($Γ['global']['SplayUpdateStats'], 'splaySumOfSquaredPauses', true)['splaySumOfSquaredPauses'], $Λ[$Λ.length - 1].l);
+    $old_pc = $pc();
+    while ($pc().id !== 'FUNC') {
+        $Λ.pop();
+    }
+    if ($Γ['global']['SplayUpdateStats'].InvokedAsContr) {
+        $Γ['global']['SplayUpdateStats'].this.Σ = $lub($Γ['global']['SplayUpdateStats'].this.Σ, $old_pc.l);
+        $Λ[$Λ.len - 1] = { 'l': $Γ['global']['SplayUpdateStats'].this };
+    } else {
+        $Λ[$Λ.len - 1] = { 'l': $old_pc.l };
+    }
+    return;
 }
 $Γ['global']['SplayUpdateStats'] = {
     $fscope: $Λ[$Λ.length - 1].l,
@@ -449,7 +474,7 @@ function SplaySetup() {
     $Λ.pop();
     $rf = $scope($Γ['global']['SplaySetup'], 'SplayTree', false)['SplayTree'];
     $rf.scope = $Γ['global']['SplaySetup'];
-    $rf.this = $scope($Γ['global']['SplaySetup'], 'SplayTree', true)['SplayTree'] = {
+    $rf.this = {
         Σ: $Λ[$Λ.length - 1].l,
         __proto__: $rf.prototype
     };
@@ -534,6 +559,17 @@ function SplaySetup() {
         '$tmp35'
     ], $Λ[$Λ.length - 1].l, $Γ['global']['SplaySetup']);
     $Λ.pop();
+    $old_pc = $pc();
+    while ($pc().id !== 'FUNC') {
+        $Λ.pop();
+    }
+    if ($Γ['global']['SplaySetup'].InvokedAsContr) {
+        $Γ['global']['SplaySetup'].this.Σ = $lub($Γ['global']['SplaySetup'].this.Σ, $old_pc.l);
+        $Λ[$Λ.len - 1] = { 'l': $Γ['global']['SplaySetup'].this };
+    } else {
+        $Λ[$Λ.len - 1] = { 'l': $old_pc.l };
+    }
+    return;
 }
 $Γ['global']['SplaySetup'] = {
     $fscope: $Λ[$Λ.length - 1].l,
@@ -646,6 +682,17 @@ function SplayTearDown() {
         '$tmp47'
     ], $Λ[$Λ.length - 1].l, $Γ['global']['SplayTearDown']);
     $Λ.pop();
+    $old_pc = $pc();
+    while ($pc().id !== 'FUNC') {
+        $Λ.pop();
+    }
+    if ($Γ['global']['SplayTearDown'].InvokedAsContr) {
+        $Γ['global']['SplayTearDown'].this.Σ = $lub($Γ['global']['SplayTearDown'].this.Σ, $old_pc.l);
+        $Λ[$Λ.len - 1] = { 'l': $Γ['global']['SplayTearDown'].this };
+    } else {
+        $Λ[$Λ.len - 1] = { 'l': $old_pc.l };
+    }
+    return;
 }
 $Γ['global']['SplayTearDown'] = {
     $fscope: $Λ[$Λ.length - 1].l,
@@ -734,6 +781,17 @@ function SplayRun() {
     $tmp50 = SplayUpdateStats($tmp51);
     $Γ['global']['SplayRun']['$tmp50'] = $Λ.pop().l;
     $Γ['global']['SplayRun']['$tmp50'] instanceof Object ? $Γ['global']['SplayRun']['$tmp50'].Σ = $lub($Γ['global']['SplayRun']['$tmp50'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplayRun']['$tmp50'] = $lub($Γ['global']['SplayRun']['$tmp50'], $Λ[$Λ.length - 1].l);
+    $old_pc = $pc();
+    while ($pc().id !== 'FUNC') {
+        $Λ.pop();
+    }
+    if ($Γ['global']['SplayRun'].InvokedAsContr) {
+        $Γ['global']['SplayRun'].this.Σ = $lub($Γ['global']['SplayRun'].this.Σ, $old_pc.l);
+        $Λ[$Λ.len - 1] = { 'l': $Γ['global']['SplayRun'].this };
+    } else {
+        $Λ[$Λ.len - 1] = { 'l': $old_pc.l };
+    }
+    return;
 }
 $Γ['global']['SplayRun'] = {
     $fscope: $Λ[$Λ.length - 1].l,
@@ -741,6 +799,17 @@ $Γ['global']['SplayRun'] = {
     Σ: $Λ[$Λ.length - 1].l
 };
 function SplayTree() {
+    $old_pc = $pc();
+    while ($pc().id !== 'FUNC') {
+        $Λ.pop();
+    }
+    if ($Γ['global']['SplayTree'].InvokedAsContr) {
+        $Γ['global']['SplayTree'].this.Σ = $lub($Γ['global']['SplayTree'].this.Σ, $old_pc.l);
+        $Λ[$Λ.len - 1] = { 'l': $Γ['global']['SplayTree'].this };
+    } else {
+        $Λ[$Λ.len - 1] = { 'l': $old_pc.l };
+    }
+    return;
 }
 $Γ['global']['SplayTree'] = {
     $fscope: $Λ[$Λ.length - 1].l,
@@ -802,7 +871,7 @@ $tmp0.insert = function (key, value) {
     if ($tmp58) {
         $rf = $prop('SplayTree', 'Node', $Γ['global']['$tmp0']['insert']);
         $rf.scope = $Γ['global']['$tmp0']['insert'];
-        $rf.this = $scope($Γ['global']['$tmp0']['insert'], 'SplayTree', true)['SplayTree'] = {
+        $rf.this = {
             Σ: $Λ[$Λ.length - 1].l,
             __proto__: $rf.prototype
         };
@@ -868,7 +937,7 @@ $tmp0.insert = function (key, value) {
     $Λ.pop();
     $rf = $prop('SplayTree', 'Node', $Γ['global']['$tmp0']['insert']);
     $rf.scope = $Γ['global']['$tmp0']['insert'];
-    $rf.this = $scope($Γ['global']['$tmp0']['insert'], 'SplayTree', true)['SplayTree'] = {
+    $rf.this = {
         Σ: $Λ[$Λ.length - 1].l,
         __proto__: $rf.prototype
     };
@@ -934,6 +1003,17 @@ $tmp0.insert = function (key, value) {
     this.root_ = node;
     $scope($Γ['global']['$tmp0']['insert'], 'this', false)['root_'] = sec_lvl('node', null, false, $Γ['global']['$tmp0']['insert']);
     $scope($Γ['global']['$tmp0']['insert'], 'this', false)['root_'] instanceof Object ? $scope($Γ['global']['$tmp0']['insert'], 'this', false)['root_'].Σ = $lub($scope($Γ['global']['$tmp0']['insert'], 'this', false)['root_'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp0']['insert'], 'this', false)['root_'] = $lub($scope($Γ['global']['$tmp0']['insert'], 'this', false)['root_'], $Λ[$Λ.length - 1].l);
+    $old_pc = $pc();
+    while ($pc().id !== 'FUNC') {
+        $Λ.pop();
+    }
+    if ($Γ['global']['$tmp0']['insert'].InvokedAsContr) {
+        $Γ['global']['$tmp0']['insert'].this.Σ = $lub($Γ['global']['$tmp0']['insert'].this.Σ, $old_pc.l);
+        $Λ[$Λ.len - 1] = { 'l': $Γ['global']['$tmp0']['insert'].this };
+    } else {
+        $Λ[$Λ.len - 1] = { 'l': $old_pc.l };
+    }
+    return;
 };
 $Γ['global']['$tmp0']['insert'] = {
     $fscope: $Λ[$Λ.length - 1].l,
@@ -1414,6 +1494,17 @@ $tmp0.findGreatestLessThan = function (key) {
     if ($shouldComp)
         $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
     $Λ.pop();
+    $old_pc = $pc();
+    while ($pc().id !== 'FUNC') {
+        $Λ.pop();
+    }
+    if ($Γ['global']['$tmp0']['findGreatestLessThan'].InvokedAsContr) {
+        $Γ['global']['$tmp0']['findGreatestLessThan'].this.Σ = $lub($Γ['global']['$tmp0']['findGreatestLessThan'].this.Σ, $old_pc.l);
+        $Λ[$Λ.len - 1] = { 'l': $Γ['global']['$tmp0']['findGreatestLessThan'].this };
+    } else {
+        $Λ[$Λ.len - 1] = { 'l': $old_pc.l };
+    }
+    return;
 };
 $Γ['global']['$tmp0']['findGreatestLessThan'] = {
     $fscope: $Λ[$Λ.length - 1].l,
@@ -1456,6 +1547,17 @@ $tmp0.exportKeys = function () {
             $Γ['global']['$tmp0']['exportKeys']['$tmp95']['$tmp97'] = sec_lvl('node', 'key', false, $Γ['global']['$tmp0']['exportKeys']['$tmp95']);
             $Γ['global']['$tmp0']['exportKeys']['$tmp95']['$tmp97'] instanceof Object ? $Γ['global']['$tmp0']['exportKeys']['$tmp95']['$tmp97'].Σ = $lub($Γ['global']['$tmp0']['exportKeys']['$tmp95']['$tmp97'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['exportKeys']['$tmp95']['$tmp97'] = $lub($Γ['global']['$tmp0']['exportKeys']['$tmp95']['$tmp97'], $Λ[$Λ.length - 1].l);
             $tmp96 = result.push($tmp97);
+            $old_pc = $pc();
+            while ($pc().id !== 'FUNC') {
+                $Λ.pop();
+            }
+            if ($Γ['global']['$tmp0']['exportKeys']['$tmp95'].InvokedAsContr) {
+                $Γ['global']['$tmp0']['exportKeys']['$tmp95'].this.Σ = $lub($Γ['global']['$tmp0']['exportKeys']['$tmp95'].this.Σ, $old_pc.l);
+                $Λ[$Λ.len - 1] = { 'l': $Γ['global']['$tmp0']['exportKeys']['$tmp95'].this };
+            } else {
+                $Λ[$Λ.len - 1] = { 'l': $old_pc.l };
+            }
+            return;
         };
         $Γ['global']['$tmp0']['exportKeys']['$tmp95'] = {
             $fscope: $Λ[$Λ.length - 1].l,
@@ -1528,7 +1630,7 @@ $tmp0.splay_ = function (key) {
     $Λ.pop();
     $rf = $prop('SplayTree', 'Node', $Γ['global']['$tmp0']['splay_']);
     $rf.scope = $Γ['global']['$tmp0']['splay_'];
-    $rf.this = $scope($Γ['global']['$tmp0']['splay_'], 'SplayTree', true)['SplayTree'] = {
+    $rf.this = {
         Σ: $Λ[$Λ.length - 1].l,
         __proto__: $rf.prototype
     };
@@ -1765,6 +1867,17 @@ $tmp0.splay_ = function (key) {
     this.root_ = current;
     $scope($Γ['global']['$tmp0']['splay_'], 'this', false)['root_'] = sec_lvl('current', null, false, $Γ['global']['$tmp0']['splay_']);
     $scope($Γ['global']['$tmp0']['splay_'], 'this', false)['root_'] instanceof Object ? $scope($Γ['global']['$tmp0']['splay_'], 'this', false)['root_'].Σ = $lub($scope($Γ['global']['$tmp0']['splay_'], 'this', false)['root_'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp0']['splay_'], 'this', false)['root_'] = $lub($scope($Γ['global']['$tmp0']['splay_'], 'this', false)['root_'], $Λ[$Λ.length - 1].l);
+    $old_pc = $pc();
+    while ($pc().id !== 'FUNC') {
+        $Λ.pop();
+    }
+    if ($Γ['global']['$tmp0']['splay_'].InvokedAsContr) {
+        $Γ['global']['$tmp0']['splay_'].this.Σ = $lub($Γ['global']['$tmp0']['splay_'].this.Σ, $old_pc.l);
+        $Λ[$Λ.len - 1] = { 'l': $Γ['global']['$tmp0']['splay_'].this };
+    } else {
+        $Λ[$Λ.len - 1] = { 'l': $old_pc.l };
+    }
+    return;
 };
 $Γ['global']['$tmp0']['splay_'] = {
     $fscope: $Λ[$Λ.length - 1].l,
@@ -1779,6 +1892,17 @@ SplayTree.Node = function (key, value) {
     this.value = value;
     $scope($Γ['global']['SplayTree']['Node'], 'this', false)['value'] = sec_lvl('value', null, false, $Γ['global']['SplayTree']['Node']);
     $scope($Γ['global']['SplayTree']['Node'], 'this', false)['value'] instanceof Object ? $scope($Γ['global']['SplayTree']['Node'], 'this', false)['value'].Σ = $lub($scope($Γ['global']['SplayTree']['Node'], 'this', false)['value'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['SplayTree']['Node'], 'this', false)['value'] = $lub($scope($Γ['global']['SplayTree']['Node'], 'this', false)['value'], $Λ[$Λ.length - 1].l);
+    $old_pc = $pc();
+    while ($pc().id !== 'FUNC') {
+        $Λ.pop();
+    }
+    if ($Γ['global']['SplayTree']['Node'].InvokedAsContr) {
+        $Γ['global']['SplayTree']['Node'].this.Σ = $lub($Γ['global']['SplayTree']['Node'].this.Σ, $old_pc.l);
+        $Λ[$Λ.len - 1] = { 'l': $Γ['global']['SplayTree']['Node'].this };
+    } else {
+        $Λ[$Λ.len - 1] = { 'l': $old_pc.l };
+    }
+    return;
 };
 $Γ['global']['SplayTree']['Node'] = {
     $fscope: $Λ[$Λ.length - 1].l,
@@ -1852,6 +1976,17 @@ $tmp.traverse_ = function (f) {
         '$tmp115'
     ], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp']['traverse_']);
     $Λ.pop();
+    $old_pc = $pc();
+    while ($pc().id !== 'FUNC') {
+        $Λ.pop();
+    }
+    if ($Γ['global']['$tmp']['traverse_'].InvokedAsContr) {
+        $Γ['global']['$tmp']['traverse_'].this.Σ = $lub($Γ['global']['$tmp']['traverse_'].this.Σ, $old_pc.l);
+        $Λ[$Λ.len - 1] = { 'l': $Γ['global']['$tmp']['traverse_'].this };
+    } else {
+        $Λ[$Λ.len - 1] = { 'l': $old_pc.l };
+    }
+    return;
 };
 $Γ['global']['$tmp']['traverse_'] = {
     $fscope: $Λ[$Λ.length - 1].l,
