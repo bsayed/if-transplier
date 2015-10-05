@@ -1,3 +1,14 @@
+//
+//x.y.z = 10;
+//x[y].z = 4;
+//x[4].z = 55;
+//g().z = 22;
+//
+//x.y.a = 'blah';
+//x[y].b = 78;
+//x[4].c = 33;
+//g().d = b;
+
 
 //var print = print || console.log;
 
