@@ -1,36 +1,17 @@
-////splayTree = function () {
+////////splayTree = function () {
+////////
+////////};
+////////splayTree.__proto__ = {a:'bye bye'};
+////////splayTree.prototype.x = 'hello';
+////////tree = new splayTree();
+////////console.log(tree.x);
+////////console.log(splayTree.a);
 ////
-////};
-////splayTree.__proto__ = {a:'bye bye'};
-////splayTree.prototype.x = 'hello';
-////tree = new splayTree();
-////console.log(tree.x);
-////console.log(splayTree.a);
-
-function SplayTree() {
-};
+////
 
 
-/**
- * Pointer to the root node of the tree.
- *
- * @type {SplayTree.Node}
- * @private
- */
-SplayTree.prototype.root_ = null;
-
-
-/**
- * @return {boolean} Whether the tree is empty.
- */
-SplayTree.prototype.isEmpty = function() {
-    return !this.root_;
-};
-
-b = new SplayTree();
-
-bool = b.isEmpty();
-
+this.root_ = new SplayTree.Node(key, value);
+//
 //
 ////var print = print || console.log;
 //
