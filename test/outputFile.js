@@ -1,18 +1,45 @@
-////////splayTree = function () {
-////////
-////////};
-////////splayTree.__proto__ = {a:'bye bye'};
-////////splayTree.prototype.x = 'hello';
-////////tree = new splayTree();
-////////console.log(tree.x);
-////////console.log(splayTree.a);
-////
-////
 
 
-this.root_ = new SplayTree.Node(key, value);
-//
-//
+
+
+var kSplayTreeSize = 8000;
+var kSplayTreeModifications = 80;
+var kSplayTreePayloadDepth = 5;
+
+var splayTree = null;
+var splaySampleTimeStart = 0.0;
+
+payload = new this.GeneratePayloadTree(kSplayTreePayloadDepth, "3.4");
+
+function GeneratePayloadTree(depth, tag) {
+    //console.log('Depth: '+ depth + "  Tag: "+tag);
+
+    this.bassam = 'blah';
+    if (depth == 0) {
+        //console.log(this.kSplayTreeModifications);
+        return {
+            array  : [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ],
+            string : 'String for key ' + tag + ' in leaf node'
+        };
+    } else {
+        //console.log(this.kSplayTreePayloadDepth);
+        return {
+            left:  GeneratePayloadTree(depth - 1, tag),
+            right: GeneratePayloadTree(depth - 1, tag)
+        };
+    }
+
+}
+
+
+
+
+console.log(payload.bassam);
+
+
+
+
+
 ////var print = print || console.log;
 //
 //
@@ -51,8 +78,16 @@ this.root_ = new SplayTree.Node(key, value);
 //// also has to deal with a lot of changes to the large tree object
 //// graph.
 //// Performance.now is used in latency benchmarks, the fallback is Date.now.
-//var performance = {};
-//performance.now = Date.now;
+//var performance = performance || {};
+//performance.now = (function() {
+//    return performance.now       ||
+//        performance.mozNow    ||
+//        performance.msNow     ||
+//        performance.oNow      ||
+//        performance.webkitNow ||
+//        Date.now;
+//})();
+//
 //
 //// Configuration.
 //var kSplayTreeSize = 8000;
