@@ -2,39 +2,33 @@
 
 
 
-var kSplayTreeSize = 8000;
-var kSplayTreeModifications = 80;
-var kSplayTreePayloadDepth = 5;
+function SplayTree() {
+};
 
-var splayTree = null;
-var splaySampleTimeStart = 0.0;
 
-payload = new this.GeneratePayloadTree(kSplayTreePayloadDepth, "3.4");
+SplayTree.prototype.root_ = null;
 
-function GeneratePayloadTree(depth, tag) {
-    //console.log('Depth: '+ depth + "  Tag: "+tag);
 
-    this.bassam = 'blah';
-    if (depth == 0) {
-        //console.log(this.kSplayTreeModifications);
-        return {
-            array  : [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ],
-            string : 'String for key ' + tag + ' in leaf node'
-        };
-    } else {
-        //console.log(this.kSplayTreePayloadDepth);
-        return {
-            left:  GeneratePayloadTree(depth - 1, tag),
-            right: GeneratePayloadTree(depth - 1, tag)
-        };
+SplayTree.prototype.isEmpty = function(Mykey) {
+    return !this.root_;
+};
+
+
+SplayTree.prototype.find = function(key) {
+    if (this.isEmpty()) {
+        return null;
     }
+    //this.splay_(key);
+    return this.root_.key == key ? this.root_ : null;
+};
 
-}
+var sp = new SplayTree();
+sp.root_ = {key: 44};
+console.log(sp.isEmpty());
+console.log(sp.find(44));
 
 
 
-
-console.log(payload.bassam);
 
 
 
