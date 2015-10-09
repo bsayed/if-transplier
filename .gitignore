@@ -32,3 +32,6 @@ node_modules
 
 # WebStorm folder
 .idea
+
+# Visual Studio code folder
+.vscode
