@@ -1,2033 +1,1766 @@
-$Γ['global']['Packet'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global'],
-    link: $Λ[$Λ.length - 1].l,
-    id: $Λ[$Λ.length - 1].l,
-    kind: $Λ[$Λ.length - 1].l
-};
-$Γ['global']['HandlerTask'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global'],
-    scheduler: $Λ[$Λ.length - 1].l
-};
-$Γ['global']['WorkerTask'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global'],
-    scheduler: $Λ[$Λ.length - 1].l,
-    v1: $Λ[$Λ.length - 1].l,
-    v2: $Λ[$Λ.length - 1].l
-};
-$Γ['global']['DeviceTask'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global'],
-    scheduler: $Λ[$Λ.length - 1].l
-};
-$Γ['global']['IdleTask'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global'],
-    scheduler: $Λ[$Λ.length - 1].l,
-    v1: $Λ[$Λ.length - 1].l,
-    count: $Λ[$Λ.length - 1].l
-};
-$Γ['global']['TaskControlBlock'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global'],
-    link: $Λ[$Λ.length - 1].l,
-    id: $Λ[$Λ.length - 1].l,
-    priority: $Λ[$Λ.length - 1].l,
-    queue: $Λ[$Λ.length - 1].l,
-    task: $Λ[$Λ.length - 1].l
-};
-$Γ['global']['Scheduler'] = {
+$Γ['global']['SplayTree'] = {
     $fscope: $Λ[$Λ.length - 1].l,
     prototype: { Σ: $Λ[$Λ.length - 1].l },
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global']
 };
-$Γ['global']['runRichards'] = {
+$Γ['global']['SplayRun'] = {
     $fscope: $Λ[$Λ.length - 1].l,
     prototype: { Σ: $Λ[$Λ.length - 1].l },
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global']
 };
-function runRichards() {
-    var scheduler, $tmp8, queue, $tmp9, $tmp10, $tmp11, $tmp12, $tmp13, $tmp14, $tmp15, $tmp16, $tmp17, $tmp18, $tmp19;
-    $Γ['global']['runRichards']['$tmp19'] = $Γ['global']['runRichards']['$tmp18'] = $Γ['global']['runRichards']['$tmp17'] = $Γ['global']['runRichards']['$tmp16'] = $Γ['global']['runRichards']['$tmp15'] = $Γ['global']['runRichards']['$tmp14'] = $Γ['global']['runRichards']['$tmp13'] = $Γ['global']['runRichards']['$tmp12'] = $Γ['global']['runRichards']['$tmp11'] = $Γ['global']['runRichards']['$tmp10'] = $Γ['global']['runRichards']['$tmp9'] = $Γ['global']['runRichards']['queue'] = $Γ['global']['runRichards']['$tmp8'] = $Γ['global']['runRichards']['scheduler'] = 0;
-    $rf = $scope($Γ['global']['runRichards'], 'Scheduler', false)['Scheduler'];
-    $rf.scope = $Γ['global']['runRichards'];
-    $rf.$this = {
-        Σ: $Λ[$Λ.length - 1].l,
-        __$proto__: $rf.prototype
+$Γ['global']['SplayTearDown'] = {
+    $fscope: $Λ[$Λ.length - 1].l,
+    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    Σ: $Λ[$Λ.length - 1].l,
+    scope: $Γ['global']
+};
+$Γ['global']['SplaySetup'] = {
+    $fscope: $Λ[$Λ.length - 1].l,
+    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    Σ: $Λ[$Λ.length - 1].l,
+    scope: $Γ['global']
+};
+$Γ['global']['InsertNewNode'] = {
+    $fscope: $Λ[$Λ.length - 1].l,
+    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    Σ: $Λ[$Λ.length - 1].l,
+    scope: $Γ['global']
+};
+$Γ['global']['SplayUpdateStats'] = {
+    $fscope: $Λ[$Λ.length - 1].l,
+    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    Σ: $Λ[$Λ.length - 1].l,
+    scope: $Γ['global'],
+    time: $Λ[$Λ.length - 1].l
+};
+$Γ['global']['SplayRMS'] = {
+    $fscope: $Λ[$Λ.length - 1].l,
+    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    Σ: $Λ[$Λ.length - 1].l,
+    scope: $Γ['global']
+};
+$Γ['global']['GenerateKey'] = {
+    $fscope: $Λ[$Λ.length - 1].l,
+    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    Σ: $Λ[$Λ.length - 1].l,
+    scope: $Γ['global']
+};
+$Γ['global']['GeneratePayloadTree'] = {
+    $fscope: $Λ[$Λ.length - 1].l,
+    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    Σ: $Λ[$Λ.length - 1].l,
+    scope: $Γ['global'],
+    depth: $Λ[$Λ.length - 1].l,
+    tag: $Λ[$Λ.length - 1].l
+};
+var performance, $tmp0, $λ0, kSplayTreeSize, kSplayTreeModifications, kSplayTreePayloadDepth, splayTree, splaySampleTimeStart, splaySamples, splaySumOfSquaredPauses, $tmp1, $tmp2, $tmp3, $tmp4, $tmp5;
+$Γ['global']['$tmp5'] = $Γ['global']['$tmp4'] = $Γ['global']['$tmp3'] = $Γ['global']['$tmp2'] = $Γ['global']['$tmp1'] = $Γ['global']['splaySumOfSquaredPauses'] = $Γ['global']['splaySamples'] = $Γ['global']['splaySampleTimeStart'] = $Γ['global']['splayTree'] = $Γ['global']['kSplayTreePayloadDepth'] = $Γ['global']['kSplayTreeModifications'] = $Γ['global']['kSplayTreeSize'] = $Γ['global']['$\u03BB0'] = $Γ['global']['$tmp0'] = $Γ['global']['performance'] = 0;
+$tmp0 = {};
+$Γ['global']['$tmp0'] = {
+    __proto__: {},
+    Σ: $Λ[$Λ.length - 1].l
+};
+performance = performance || $tmp0;
+$Γ['global']['performance'] = $lub(sec_lvl('performance', null, true, $Γ['global']), sec_lvl('$tmp0', null, true, $Γ['global']));
+$Γ['global']['performance'] instanceof Object ? $Γ['global']['performance'].Σ = $lub($Γ['global']['performance'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['performance'] = $lub($Γ['global']['performance'], $Λ[$Λ.length - 1].l);
+$λ0 = function () {
+    var $tmp6, $tmp7, $tmp8, $tmp9, $tmp10, $tmp11, $tmp12, $tmp13, $tmp14, $tmp15, $tmp16;
+    $Γ['global']['$\u03BB0']['$tmp16'] = $Γ['global']['$\u03BB0']['$tmp15'] = $Γ['global']['$\u03BB0']['$tmp14'] = $Γ['global']['$\u03BB0']['$tmp13'] = $Γ['global']['$\u03BB0']['$tmp12'] = $Γ['global']['$\u03BB0']['$tmp11'] = $Γ['global']['$\u03BB0']['$tmp10'] = $Γ['global']['$\u03BB0']['$tmp9'] = $Γ['global']['$\u03BB0']['$tmp8'] = $Γ['global']['$\u03BB0']['$tmp7'] = $Γ['global']['$\u03BB0']['$tmp6'] = 0;
+    $tmp11 = performance.now;
+    $Γ['global']['$\u03BB0']['$tmp11'] = sec_lvl('performance', 'now', false, $Γ['global']['$\u03BB0']);
+    $Γ['global']['$\u03BB0']['$tmp11'] instanceof Object ? $Γ['global']['$\u03BB0']['$tmp11'].Σ = $lub($Γ['global']['$\u03BB0']['$tmp11'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$\u03BB0']['$tmp11'] = $lub($Γ['global']['$\u03BB0']['$tmp11'], $Λ[$Λ.length - 1].l);
+    $tmp12 = performance.mozNow;
+    $Γ['global']['$\u03BB0']['$tmp12'] = sec_lvl('performance', 'mozNow', false, $Γ['global']['$\u03BB0']);
+    $Γ['global']['$\u03BB0']['$tmp12'] instanceof Object ? $Γ['global']['$\u03BB0']['$tmp12'].Σ = $lub($Γ['global']['$\u03BB0']['$tmp12'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$\u03BB0']['$tmp12'] = $lub($Γ['global']['$\u03BB0']['$tmp12'], $Λ[$Λ.length - 1].l);
+    $tmp10 = $tmp11 || $tmp12;
+    $Γ['global']['$\u03BB0']['$tmp10'] = $lub(sec_lvl('$tmp11', null, true, $Γ['global']['$\u03BB0']), sec_lvl('$tmp12', null, true, $Γ['global']['$\u03BB0']));
+    $Γ['global']['$\u03BB0']['$tmp10'] instanceof Object ? $Γ['global']['$\u03BB0']['$tmp10'].Σ = $lub($Γ['global']['$\u03BB0']['$tmp10'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$\u03BB0']['$tmp10'] = $lub($Γ['global']['$\u03BB0']['$tmp10'], $Λ[$Λ.length - 1].l);
+    $tmp13 = performance.msNow;
+    $Γ['global']['$\u03BB0']['$tmp13'] = sec_lvl('performance', 'msNow', false, $Γ['global']['$\u03BB0']);
+    $Γ['global']['$\u03BB0']['$tmp13'] instanceof Object ? $Γ['global']['$\u03BB0']['$tmp13'].Σ = $lub($Γ['global']['$\u03BB0']['$tmp13'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$\u03BB0']['$tmp13'] = $lub($Γ['global']['$\u03BB0']['$tmp13'], $Λ[$Λ.length - 1].l);
+    $tmp9 = $tmp10 || $tmp13;
+    $Γ['global']['$\u03BB0']['$tmp9'] = $lub(sec_lvl('$tmp10', null, true, $Γ['global']['$\u03BB0']), sec_lvl('$tmp13', null, true, $Γ['global']['$\u03BB0']));
+    $Γ['global']['$\u03BB0']['$tmp9'] instanceof Object ? $Γ['global']['$\u03BB0']['$tmp9'].Σ = $lub($Γ['global']['$\u03BB0']['$tmp9'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$\u03BB0']['$tmp9'] = $lub($Γ['global']['$\u03BB0']['$tmp9'], $Λ[$Λ.length - 1].l);
+    $tmp14 = performance.oNow;
+    $Γ['global']['$\u03BB0']['$tmp14'] = sec_lvl('performance', 'oNow', false, $Γ['global']['$\u03BB0']);
+    $Γ['global']['$\u03BB0']['$tmp14'] instanceof Object ? $Γ['global']['$\u03BB0']['$tmp14'].Σ = $lub($Γ['global']['$\u03BB0']['$tmp14'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$\u03BB0']['$tmp14'] = $lub($Γ['global']['$\u03BB0']['$tmp14'], $Λ[$Λ.length - 1].l);
+    $tmp8 = $tmp9 || $tmp14;
+    $Γ['global']['$\u03BB0']['$tmp8'] = $lub(sec_lvl('$tmp9', null, true, $Γ['global']['$\u03BB0']), sec_lvl('$tmp14', null, true, $Γ['global']['$\u03BB0']));
+    $Γ['global']['$\u03BB0']['$tmp8'] instanceof Object ? $Γ['global']['$\u03BB0']['$tmp8'].Σ = $lub($Γ['global']['$\u03BB0']['$tmp8'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$\u03BB0']['$tmp8'] = $lub($Γ['global']['$\u03BB0']['$tmp8'], $Λ[$Λ.length - 1].l);
+    $tmp15 = performance.webkitNow;
+    $Γ['global']['$\u03BB0']['$tmp15'] = sec_lvl('performance', 'webkitNow', false, $Γ['global']['$\u03BB0']);
+    $Γ['global']['$\u03BB0']['$tmp15'] instanceof Object ? $Γ['global']['$\u03BB0']['$tmp15'].Σ = $lub($Γ['global']['$\u03BB0']['$tmp15'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$\u03BB0']['$tmp15'] = $lub($Γ['global']['$\u03BB0']['$tmp15'], $Λ[$Λ.length - 1].l);
+    $tmp7 = $tmp8 || $tmp15;
+    $Γ['global']['$\u03BB0']['$tmp7'] = $lub(sec_lvl('$tmp8', null, true, $Γ['global']['$\u03BB0']), sec_lvl('$tmp15', null, true, $Γ['global']['$\u03BB0']));
+    $Γ['global']['$\u03BB0']['$tmp7'] instanceof Object ? $Γ['global']['$\u03BB0']['$tmp7'].Σ = $lub($Γ['global']['$\u03BB0']['$tmp7'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$\u03BB0']['$tmp7'] = $lub($Γ['global']['$\u03BB0']['$tmp7'], $Λ[$Λ.length - 1].l);
+    $tmp16 = Date.now;
+    $Γ['global']['$\u03BB0']['$tmp16'] = {
+        Σ: 0,
+        prototype: { Σ: $Λ[$Λ.length - 1].l }
     };
-    $rf.InvokedAsContr = true;
+    $Γ['global']['$\u03BB0']['$tmp16'] instanceof Object ? $Γ['global']['$\u03BB0']['$tmp16'].Σ = $lub($Γ['global']['$\u03BB0']['$tmp16'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$\u03BB0']['$tmp16'] = $lub($Γ['global']['$\u03BB0']['$tmp16'], $Λ[$Λ.length - 1].l);
+    $tmp6 = $tmp7 || $tmp16;
+    $Γ['global']['$\u03BB0']['$tmp6'] = $lub(sec_lvl('$tmp7', null, true, $Γ['global']['$\u03BB0']), sec_lvl('$tmp16', null, true, $Γ['global']['$\u03BB0']));
+    $Γ['global']['$\u03BB0']['$tmp6'] instanceof Object ? $Γ['global']['$\u03BB0']['$tmp6'].Σ = $lub($Γ['global']['$\u03BB0']['$tmp6'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$\u03BB0']['$tmp6'] = $lub($Γ['global']['$\u03BB0']['$tmp6'], $Λ[$Λ.length - 1].l);
+    return $tmp6;
+};
+$Γ['global']['$\u03BB0'] = {
+    $fscope: $Λ[$Λ.length - 1].l,
+    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    Σ: $Λ[$Λ.length - 1].l,
+    scope: $Γ['global']
+};
+performance.now = $λ0();
+kSplayTreeSize = 8000;
+$Γ['global']['kSplayTreeSize'] = $Λ[$Λ.length - 1].l;
+kSplayTreeModifications = 80;
+$Γ['global']['kSplayTreeModifications'] = $Λ[$Λ.length - 1].l;
+kSplayTreePayloadDepth = 5;
+$Γ['global']['kSplayTreePayloadDepth'] = $Λ[$Λ.length - 1].l;
+splayTree = null;
+$Γ['global']['splayTree'] = $Λ[$Λ.length - 1].l;
+splaySampleTimeStart = 0;
+$Γ['global']['splaySampleTimeStart'] = $Λ[$Λ.length - 1].l;
+function GeneratePayloadTree(depth, tag) {
+    var $tmp17;
+    $Γ['global']['GeneratePayloadTree']['$tmp17'] = 0;
+    $tmp17 = depth == 0;
+    $Γ['global']['GeneratePayloadTree']['$tmp17'] = $lub(sec_lvl('depth', null, true, $Γ['global']['GeneratePayloadTree']), $Λ[$Λ.length - 1].l);
+    $Γ['global']['GeneratePayloadTree']['$tmp17'] instanceof Object ? $Γ['global']['GeneratePayloadTree']['$tmp17'].Σ = $lub($Γ['global']['GeneratePayloadTree']['$tmp17'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['GeneratePayloadTree']['$tmp17'] = $lub($Γ['global']['GeneratePayloadTree']['$tmp17'], $Λ[$Λ.length - 1].l);
     $Λ.push({
-        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
-        id: 'FUNC'
-    });
-    scheduler = new Scheduler();
-    $scope($Γ['global']['runRichards'], 'scheduler', true)['scheduler'] = $Λ.pop().l;
-    $scope($Γ['global']['runRichards'], 'scheduler', true)['scheduler'] instanceof Object ? $scope($Γ['global']['runRichards'], 'scheduler', true)['scheduler'].Σ = $lub($scope($Γ['global']['runRichards'], 'scheduler', true)['scheduler'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['runRichards'], 'scheduler', true)['scheduler'] = $lub($scope($Γ['global']['runRichards'], 'scheduler', true)['scheduler'], $Λ[$Λ.length - 1].l);
-    $rf = $prop('scheduler', 'addIdleTask', $Γ['global']['runRichards']);
-    $rf.scope = $Γ['global']['runRichards'];
-    $rf.$this = $scope($Γ['global']['runRichards'], 'scheduler', false)['scheduler'];
-    $rf['id'] = $lub(sec_lvl('ID_IDLE', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $rf['priority'] = $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l);
-    $rf['queue'] = $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l);
-    $rf['count'] = $lub(sec_lvl('COUNT', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $Λ.push({
-        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
-        id: 'FUNC'
-    });
-    $tmp8 = scheduler.addIdleTask(ID_IDLE, 0, null, COUNT);
-    $Γ['global']['runRichards']['$tmp8'] = $Λ.pop().l;
-    $Γ['global']['runRichards']['$tmp8'] instanceof Object ? $Γ['global']['runRichards']['$tmp8'].Σ = $lub($Γ['global']['runRichards']['$tmp8'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['runRichards']['$tmp8'] = $lub($Γ['global']['runRichards']['$tmp8'], $Λ[$Λ.length - 1].l);
-    $rf = $scope($Γ['global']['runRichards'], 'Packet', false)['Packet'];
-    $rf.scope = $Γ['global']['runRichards'];
-    $rf.$this = {
-        Σ: $Λ[$Λ.length - 1].l,
-        __$proto__: $rf.prototype
-    };
-    $rf['link'] = $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l);
-    $rf['id'] = $lub(sec_lvl('ID_WORKER', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $rf['kind'] = $lub(sec_lvl('KIND_WORK', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $rf.InvokedAsContr = true;
-    $Λ.push({
-        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
-        id: 'FUNC'
-    });
-    queue = new Packet(null, ID_WORKER, KIND_WORK);
-    $scope($Γ['global']['runRichards'], 'queue', true)['queue'] = $Λ.pop().l;
-    $scope($Γ['global']['runRichards'], 'queue', true)['queue'] instanceof Object ? $scope($Γ['global']['runRichards'], 'queue', true)['queue'].Σ = $lub($scope($Γ['global']['runRichards'], 'queue', true)['queue'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['runRichards'], 'queue', true)['queue'] = $lub($scope($Γ['global']['runRichards'], 'queue', true)['queue'], $Λ[$Λ.length - 1].l);
-    $rf = $scope($Γ['global']['runRichards'], 'Packet', false)['Packet'];
-    $rf.scope = $Γ['global']['runRichards'];
-    $rf.$this = {
-        Σ: $Λ[$Λ.length - 1].l,
-        __$proto__: $rf.prototype
-    };
-    $rf['link'] = $lub(sec_lvl('queue', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $rf['id'] = $lub(sec_lvl('ID_WORKER', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $rf['kind'] = $lub(sec_lvl('KIND_WORK', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $rf.InvokedAsContr = true;
-    $Λ.push({
-        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
-        id: 'FUNC'
-    });
-    queue = new Packet(queue, ID_WORKER, KIND_WORK);
-    $scope($Γ['global']['runRichards'], 'queue', true)['queue'] = $Λ.pop().l;
-    $scope($Γ['global']['runRichards'], 'queue', true)['queue'] instanceof Object ? $scope($Γ['global']['runRichards'], 'queue', true)['queue'].Σ = $lub($scope($Γ['global']['runRichards'], 'queue', true)['queue'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['runRichards'], 'queue', true)['queue'] = $lub($scope($Γ['global']['runRichards'], 'queue', true)['queue'], $Λ[$Λ.length - 1].l);
-    $rf = $prop('scheduler', 'addWorkerTask', $Γ['global']['runRichards']);
-    $rf.scope = $Γ['global']['runRichards'];
-    $rf.$this = $scope($Γ['global']['runRichards'], 'scheduler', false)['scheduler'];
-    $rf['id'] = $lub(sec_lvl('ID_WORKER', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $rf['priority'] = $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l);
-    $rf['queue'] = $lub(sec_lvl('queue', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $Λ.push({
-        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
-        id: 'FUNC'
-    });
-    $tmp9 = scheduler.addWorkerTask(ID_WORKER, 1000, queue);
-    $Γ['global']['runRichards']['$tmp9'] = $Λ.pop().l;
-    $Γ['global']['runRichards']['$tmp9'] instanceof Object ? $Γ['global']['runRichards']['$tmp9'].Σ = $lub($Γ['global']['runRichards']['$tmp9'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['runRichards']['$tmp9'] = $lub($Γ['global']['runRichards']['$tmp9'], $Λ[$Λ.length - 1].l);
-    $rf = $scope($Γ['global']['runRichards'], 'Packet', false)['Packet'];
-    $rf.scope = $Γ['global']['runRichards'];
-    $rf.$this = {
-        Σ: $Λ[$Λ.length - 1].l,
-        __$proto__: $rf.prototype
-    };
-    $rf['link'] = $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l);
-    $rf['id'] = $lub(sec_lvl('ID_DEVICE_A', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $rf['kind'] = $lub(sec_lvl('KIND_DEVICE', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $rf.InvokedAsContr = true;
-    $Λ.push({
-        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
-        id: 'FUNC'
-    });
-    queue = new Packet(null, ID_DEVICE_A, KIND_DEVICE);
-    $scope($Γ['global']['runRichards'], 'queue', true)['queue'] = $Λ.pop().l;
-    $scope($Γ['global']['runRichards'], 'queue', true)['queue'] instanceof Object ? $scope($Γ['global']['runRichards'], 'queue', true)['queue'].Σ = $lub($scope($Γ['global']['runRichards'], 'queue', true)['queue'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['runRichards'], 'queue', true)['queue'] = $lub($scope($Γ['global']['runRichards'], 'queue', true)['queue'], $Λ[$Λ.length - 1].l);
-    $rf = $scope($Γ['global']['runRichards'], 'Packet', false)['Packet'];
-    $rf.scope = $Γ['global']['runRichards'];
-    $rf.$this = {
-        Σ: $Λ[$Λ.length - 1].l,
-        __$proto__: $rf.prototype
-    };
-    $rf['link'] = $lub(sec_lvl('queue', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $rf['id'] = $lub(sec_lvl('ID_DEVICE_A', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $rf['kind'] = $lub(sec_lvl('KIND_DEVICE', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $rf.InvokedAsContr = true;
-    $Λ.push({
-        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
-        id: 'FUNC'
-    });
-    queue = new Packet(queue, ID_DEVICE_A, KIND_DEVICE);
-    $scope($Γ['global']['runRichards'], 'queue', true)['queue'] = $Λ.pop().l;
-    $scope($Γ['global']['runRichards'], 'queue', true)['queue'] instanceof Object ? $scope($Γ['global']['runRichards'], 'queue', true)['queue'].Σ = $lub($scope($Γ['global']['runRichards'], 'queue', true)['queue'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['runRichards'], 'queue', true)['queue'] = $lub($scope($Γ['global']['runRichards'], 'queue', true)['queue'], $Λ[$Λ.length - 1].l);
-    $rf = $scope($Γ['global']['runRichards'], 'Packet', false)['Packet'];
-    $rf.scope = $Γ['global']['runRichards'];
-    $rf.$this = {
-        Σ: $Λ[$Λ.length - 1].l,
-        __$proto__: $rf.prototype
-    };
-    $rf['link'] = $lub(sec_lvl('queue', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $rf['id'] = $lub(sec_lvl('ID_DEVICE_A', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $rf['kind'] = $lub(sec_lvl('KIND_DEVICE', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $rf.InvokedAsContr = true;
-    $Λ.push({
-        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
-        id: 'FUNC'
-    });
-    queue = new Packet(queue, ID_DEVICE_A, KIND_DEVICE);
-    $scope($Γ['global']['runRichards'], 'queue', true)['queue'] = $Λ.pop().l;
-    $scope($Γ['global']['runRichards'], 'queue', true)['queue'] instanceof Object ? $scope($Γ['global']['runRichards'], 'queue', true)['queue'].Σ = $lub($scope($Γ['global']['runRichards'], 'queue', true)['queue'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['runRichards'], 'queue', true)['queue'] = $lub($scope($Γ['global']['runRichards'], 'queue', true)['queue'], $Λ[$Λ.length - 1].l);
-    $rf = $prop('scheduler', 'addHandlerTask', $Γ['global']['runRichards']);
-    $rf.scope = $Γ['global']['runRichards'];
-    $rf.$this = $scope($Γ['global']['runRichards'], 'scheduler', false)['scheduler'];
-    $rf['id'] = $lub(sec_lvl('ID_HANDLER_A', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $rf['priority'] = $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l);
-    $rf['queue'] = $lub(sec_lvl('queue', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $Λ.push({
-        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
-        id: 'FUNC'
-    });
-    $tmp10 = scheduler.addHandlerTask(ID_HANDLER_A, 2000, queue);
-    $Γ['global']['runRichards']['$tmp10'] = $Λ.pop().l;
-    $Γ['global']['runRichards']['$tmp10'] instanceof Object ? $Γ['global']['runRichards']['$tmp10'].Σ = $lub($Γ['global']['runRichards']['$tmp10'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['runRichards']['$tmp10'] = $lub($Γ['global']['runRichards']['$tmp10'], $Λ[$Λ.length - 1].l);
-    $rf = $scope($Γ['global']['runRichards'], 'Packet', false)['Packet'];
-    $rf.scope = $Γ['global']['runRichards'];
-    $rf.$this = {
-        Σ: $Λ[$Λ.length - 1].l,
-        __$proto__: $rf.prototype
-    };
-    $rf['link'] = $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l);
-    $rf['id'] = $lub(sec_lvl('ID_DEVICE_B', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $rf['kind'] = $lub(sec_lvl('KIND_DEVICE', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $rf.InvokedAsContr = true;
-    $Λ.push({
-        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
-        id: 'FUNC'
-    });
-    queue = new Packet(null, ID_DEVICE_B, KIND_DEVICE);
-    $scope($Γ['global']['runRichards'], 'queue', true)['queue'] = $Λ.pop().l;
-    $scope($Γ['global']['runRichards'], 'queue', true)['queue'] instanceof Object ? $scope($Γ['global']['runRichards'], 'queue', true)['queue'].Σ = $lub($scope($Γ['global']['runRichards'], 'queue', true)['queue'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['runRichards'], 'queue', true)['queue'] = $lub($scope($Γ['global']['runRichards'], 'queue', true)['queue'], $Λ[$Λ.length - 1].l);
-    $rf = $scope($Γ['global']['runRichards'], 'Packet', false)['Packet'];
-    $rf.scope = $Γ['global']['runRichards'];
-    $rf.$this = {
-        Σ: $Λ[$Λ.length - 1].l,
-        __$proto__: $rf.prototype
-    };
-    $rf['link'] = $lub(sec_lvl('queue', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $rf['id'] = $lub(sec_lvl('ID_DEVICE_B', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $rf['kind'] = $lub(sec_lvl('KIND_DEVICE', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $rf.InvokedAsContr = true;
-    $Λ.push({
-        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
-        id: 'FUNC'
-    });
-    queue = new Packet(queue, ID_DEVICE_B, KIND_DEVICE);
-    $scope($Γ['global']['runRichards'], 'queue', true)['queue'] = $Λ.pop().l;
-    $scope($Γ['global']['runRichards'], 'queue', true)['queue'] instanceof Object ? $scope($Γ['global']['runRichards'], 'queue', true)['queue'].Σ = $lub($scope($Γ['global']['runRichards'], 'queue', true)['queue'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['runRichards'], 'queue', true)['queue'] = $lub($scope($Γ['global']['runRichards'], 'queue', true)['queue'], $Λ[$Λ.length - 1].l);
-    $rf = $scope($Γ['global']['runRichards'], 'Packet', false)['Packet'];
-    $rf.scope = $Γ['global']['runRichards'];
-    $rf.$this = {
-        Σ: $Λ[$Λ.length - 1].l,
-        __$proto__: $rf.prototype
-    };
-    $rf['link'] = $lub(sec_lvl('queue', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $rf['id'] = $lub(sec_lvl('ID_DEVICE_B', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $rf['kind'] = $lub(sec_lvl('KIND_DEVICE', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $rf.InvokedAsContr = true;
-    $Λ.push({
-        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
-        id: 'FUNC'
-    });
-    queue = new Packet(queue, ID_DEVICE_B, KIND_DEVICE);
-    $scope($Γ['global']['runRichards'], 'queue', true)['queue'] = $Λ.pop().l;
-    $scope($Γ['global']['runRichards'], 'queue', true)['queue'] instanceof Object ? $scope($Γ['global']['runRichards'], 'queue', true)['queue'].Σ = $lub($scope($Γ['global']['runRichards'], 'queue', true)['queue'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['runRichards'], 'queue', true)['queue'] = $lub($scope($Γ['global']['runRichards'], 'queue', true)['queue'], $Λ[$Λ.length - 1].l);
-    $rf = $prop('scheduler', 'addHandlerTask', $Γ['global']['runRichards']);
-    $rf.scope = $Γ['global']['runRichards'];
-    $rf.$this = $scope($Γ['global']['runRichards'], 'scheduler', false)['scheduler'];
-    $rf['id'] = $lub(sec_lvl('ID_HANDLER_B', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $rf['priority'] = $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l);
-    $rf['queue'] = $lub(sec_lvl('queue', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $Λ.push({
-        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
-        id: 'FUNC'
-    });
-    $tmp11 = scheduler.addHandlerTask(ID_HANDLER_B, 3000, queue);
-    $Γ['global']['runRichards']['$tmp11'] = $Λ.pop().l;
-    $Γ['global']['runRichards']['$tmp11'] instanceof Object ? $Γ['global']['runRichards']['$tmp11'].Σ = $lub($Γ['global']['runRichards']['$tmp11'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['runRichards']['$tmp11'] = $lub($Γ['global']['runRichards']['$tmp11'], $Λ[$Λ.length - 1].l);
-    $rf = $prop('scheduler', 'addDeviceTask', $Γ['global']['runRichards']);
-    $rf.scope = $Γ['global']['runRichards'];
-    $rf.$this = $scope($Γ['global']['runRichards'], 'scheduler', false)['scheduler'];
-    $rf['id'] = $lub(sec_lvl('ID_DEVICE_A', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $rf['priority'] = $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l);
-    $rf['queue'] = $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l);
-    $Λ.push({
-        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
-        id: 'FUNC'
-    });
-    $tmp12 = scheduler.addDeviceTask(ID_DEVICE_A, 4000, null);
-    $Γ['global']['runRichards']['$tmp12'] = $Λ.pop().l;
-    $Γ['global']['runRichards']['$tmp12'] instanceof Object ? $Γ['global']['runRichards']['$tmp12'].Σ = $lub($Γ['global']['runRichards']['$tmp12'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['runRichards']['$tmp12'] = $lub($Γ['global']['runRichards']['$tmp12'], $Λ[$Λ.length - 1].l);
-    $rf = $prop('scheduler', 'addDeviceTask', $Γ['global']['runRichards']);
-    $rf.scope = $Γ['global']['runRichards'];
-    $rf.$this = $scope($Γ['global']['runRichards'], 'scheduler', false)['scheduler'];
-    $rf['id'] = $lub(sec_lvl('ID_DEVICE_B', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-    $rf['priority'] = $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l);
-    $rf['queue'] = $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l);
-    $Λ.push({
-        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
-        id: 'FUNC'
-    });
-    $tmp13 = scheduler.addDeviceTask(ID_DEVICE_B, 5000, null);
-    $Γ['global']['runRichards']['$tmp13'] = $Λ.pop().l;
-    $Γ['global']['runRichards']['$tmp13'] instanceof Object ? $Γ['global']['runRichards']['$tmp13'].Σ = $lub($Γ['global']['runRichards']['$tmp13'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['runRichards']['$tmp13'] = $lub($Γ['global']['runRichards']['$tmp13'], $Λ[$Λ.length - 1].l);
-    $rf = $prop('scheduler', 'schedule', $Γ['global']['runRichards']);
-    $rf.scope = $Γ['global']['runRichards'];
-    $rf.$this = $scope($Γ['global']['runRichards'], 'scheduler', false)['scheduler'];
-    $Λ.push({
-        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
-        id: 'FUNC'
-    });
-    $tmp14 = scheduler.schedule();
-    $Γ['global']['runRichards']['$tmp14'] = $Λ.pop().l;
-    $Γ['global']['runRichards']['$tmp14'] instanceof Object ? $Γ['global']['runRichards']['$tmp14'].Σ = $lub($Γ['global']['runRichards']['$tmp14'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['runRichards']['$tmp14'] = $lub($Γ['global']['runRichards']['$tmp14'], $Λ[$Λ.length - 1].l);
-    $tmp17 = scheduler.queueCount;
-    $Γ['global']['runRichards']['$tmp17'] = sec_lvl('scheduler', 'queueCount', false, $Γ['global']['runRichards']);
-    $Γ['global']['runRichards']['$tmp17'] instanceof Object ? $Γ['global']['runRichards']['$tmp17'].Σ = $lub($Γ['global']['runRichards']['$tmp17'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['runRichards']['$tmp17'] = $lub($Γ['global']['runRichards']['$tmp17'], $Λ[$Λ.length - 1].l);
-    $tmp16 = $tmp17 != EXPECTED_QUEUE_COUNT;
-    $Γ['global']['runRichards']['$tmp16'] = $lub(sec_lvl('$tmp17', null, true, $Γ['global']['runRichards']), sec_lvl('EXPECTED_QUEUE_COUNT', null, true, $Γ['global']['runRichards']));
-    $Γ['global']['runRichards']['$tmp16'] instanceof Object ? $Γ['global']['runRichards']['$tmp16'].Σ = $lub($Γ['global']['runRichards']['$tmp16'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['runRichards']['$tmp16'] = $lub($Γ['global']['runRichards']['$tmp16'], $Λ[$Λ.length - 1].l);
-    $tmp19 = scheduler.holdCount;
-    $Γ['global']['runRichards']['$tmp19'] = sec_lvl('scheduler', 'holdCount', false, $Γ['global']['runRichards']);
-    $Γ['global']['runRichards']['$tmp19'] instanceof Object ? $Γ['global']['runRichards']['$tmp19'].Σ = $lub($Γ['global']['runRichards']['$tmp19'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['runRichards']['$tmp19'] = $lub($Γ['global']['runRichards']['$tmp19'], $Λ[$Λ.length - 1].l);
-    $tmp18 = $tmp19 != EXPECTED_HOLD_COUNT;
-    $Γ['global']['runRichards']['$tmp18'] = $lub(sec_lvl('$tmp19', null, true, $Γ['global']['runRichards']), sec_lvl('EXPECTED_HOLD_COUNT', null, true, $Γ['global']['runRichards']));
-    $Γ['global']['runRichards']['$tmp18'] instanceof Object ? $Γ['global']['runRichards']['$tmp18'].Σ = $lub($Γ['global']['runRichards']['$tmp18'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['runRichards']['$tmp18'] = $lub($Γ['global']['runRichards']['$tmp18'], $Λ[$Λ.length - 1].l);
-    $tmp15 = $tmp16 || $tmp18;
-    $Γ['global']['runRichards']['$tmp15'] = $lub(sec_lvl('$tmp16', null, true, $Γ['global']['runRichards']), sec_lvl('$tmp18', null, true, $Γ['global']['runRichards']));
-    $Γ['global']['runRichards']['$tmp15'] instanceof Object ? $Γ['global']['runRichards']['$tmp15'].Σ = $lub($Γ['global']['runRichards']['$tmp15'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['runRichards']['$tmp15'] = $lub($Γ['global']['runRichards']['$tmp15'], $Λ[$Λ.length - 1].l);
-    $Λ.push({
-        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp15', null, true, $Γ['global']['runRichards'])),
+        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp17', null, true, $Γ['global']['GeneratePayloadTree'])),
         id: 'IF'
     });
-    if ($tmp15) {
-        var msg, $tmp20, $tmp21, $tmp22, $tmp23, $tmp24, $tmp25;
-        $Γ['global']['runRichards']['$tmp25'] = $Γ['global']['runRichards']['$tmp24'] = $Γ['global']['runRichards']['$tmp23'] = $Γ['global']['runRichards']['$tmp22'] = $Γ['global']['runRichards']['$tmp21'] = $Γ['global']['runRichards']['$tmp20'] = $Γ['global']['runRichards']['msg'] = 0;
-        $tmp23 = scheduler.queueCount;
-        $Γ['global']['runRichards']['$tmp23'] = sec_lvl('scheduler', 'queueCount', false, $Γ['global']['runRichards']);
-        $Γ['global']['runRichards']['$tmp23'] instanceof Object ? $Γ['global']['runRichards']['$tmp23'].Σ = $lub($Γ['global']['runRichards']['$tmp23'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['runRichards']['$tmp23'] = $lub($Γ['global']['runRichards']['$tmp23'], $Λ[$Λ.length - 1].l);
-        $tmp22 = 'Error during execution: queueCount = ' + $tmp23;
-        $Γ['global']['runRichards']['$tmp22'] = $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp23', null, true, $Γ['global']['runRichards']));
-        $Γ['global']['runRichards']['$tmp22'] instanceof Object ? $Γ['global']['runRichards']['$tmp22'].Σ = $lub($Γ['global']['runRichards']['$tmp22'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['runRichards']['$tmp22'] = $lub($Γ['global']['runRichards']['$tmp22'], $Λ[$Λ.length - 1].l);
-        $tmp21 = $tmp22 + ', holdCount = ';
-        $Γ['global']['runRichards']['$tmp21'] = $lub(sec_lvl('$tmp22', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-        $Γ['global']['runRichards']['$tmp21'] instanceof Object ? $Γ['global']['runRichards']['$tmp21'].Σ = $lub($Γ['global']['runRichards']['$tmp21'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['runRichards']['$tmp21'] = $lub($Γ['global']['runRichards']['$tmp21'], $Λ[$Λ.length - 1].l);
-        $tmp24 = scheduler.holdCount;
-        $Γ['global']['runRichards']['$tmp24'] = sec_lvl('scheduler', 'holdCount', false, $Γ['global']['runRichards']);
-        $Γ['global']['runRichards']['$tmp24'] instanceof Object ? $Γ['global']['runRichards']['$tmp24'].Σ = $lub($Γ['global']['runRichards']['$tmp24'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['runRichards']['$tmp24'] = $lub($Γ['global']['runRichards']['$tmp24'], $Λ[$Λ.length - 1].l);
-        $tmp20 = $tmp21 + $tmp24;
-        $Γ['global']['runRichards']['$tmp20'] = $lub(sec_lvl('$tmp21', null, true, $Γ['global']['runRichards']), sec_lvl('$tmp24', null, true, $Γ['global']['runRichards']));
-        $Γ['global']['runRichards']['$tmp20'] instanceof Object ? $Γ['global']['runRichards']['$tmp20'].Σ = $lub($Γ['global']['runRichards']['$tmp20'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['runRichards']['$tmp20'] = $lub($Γ['global']['runRichards']['$tmp20'], $Λ[$Λ.length - 1].l);
-        msg = $tmp20 + '.';
-        $scope($Γ['global']['runRichards'], 'msg', true)['msg'] = $lub(sec_lvl('$tmp20', null, true, $Γ['global']['runRichards']), $Λ[$Λ.length - 1].l);
-        $scope($Γ['global']['runRichards'], 'msg', true)['msg'] instanceof Object ? $scope($Γ['global']['runRichards'], 'msg', true)['msg'].Σ = $lub($scope($Γ['global']['runRichards'], 'msg', true)['msg'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['runRichards'], 'msg', true)['msg'] = $lub($scope($Γ['global']['runRichards'], 'msg', true)['msg'], $Λ[$Λ.length - 1].l);
-        $tmp25 = new Error(msg);
-        $old_pc = $pc();
-        while ($pc().id !== 'FUNC' && $pc().id !== 'TRY') {
-            $Λ.pop();
-        }
-        $Λ[$Λ.length - 1] = { 'l': $lub($old_pc.l, sec_lvl('$tmp25', null, true, $Γ['global']['runRichards'])) };
-        throw $tmp25;
+    if ($tmp17) {
+        $upgrade([
+            '$tmp23',
+            '$tmp25',
+            '$tmp22'
+        ], $Λ[$Λ.length - 1].l, $Γ['global']['GeneratePayloadTree']);
+        var $tmp18, $tmp19, $tmp20, $tmp21;
+        $Γ['global']['GeneratePayloadTree']['$tmp21'] = $Γ['global']['GeneratePayloadTree']['$tmp20'] = $Γ['global']['GeneratePayloadTree']['$tmp19'] = $Γ['global']['GeneratePayloadTree']['$tmp18'] = 0;
+        $tmp19 = [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+        ];
+        $Γ['global']['GeneratePayloadTree']['$tmp19'] = {
+            __proto__: {},
+            scope: $Γ['global']['GeneratePayloadTree'],
+            0: $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l),
+            1: $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l),
+            2: $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l),
+            3: $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l),
+            4: $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l),
+            5: $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l),
+            6: $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l),
+            7: $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l),
+            8: $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l),
+            9: $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l),
+            Σ: $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l)
+        };
+        $tmp21 = 'String for key ' + tag;
+        $Γ['global']['GeneratePayloadTree']['$tmp21'] = $lub($Λ[$Λ.length - 1].l, sec_lvl('tag', null, true, $Γ['global']['GeneratePayloadTree']));
+        $Γ['global']['GeneratePayloadTree']['$tmp21'] instanceof Object ? $Γ['global']['GeneratePayloadTree']['$tmp21'].Σ = $lub($Γ['global']['GeneratePayloadTree']['$tmp21'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['GeneratePayloadTree']['$tmp21'] = $lub($Γ['global']['GeneratePayloadTree']['$tmp21'], $Λ[$Λ.length - 1].l);
+        $tmp20 = $tmp21 + ' in leaf node';
+        $Γ['global']['GeneratePayloadTree']['$tmp20'] = $lub(sec_lvl('$tmp21', null, true, $Γ['global']['GeneratePayloadTree']), $Λ[$Λ.length - 1].l);
+        $Γ['global']['GeneratePayloadTree']['$tmp20'] instanceof Object ? $Γ['global']['GeneratePayloadTree']['$tmp20'].Σ = $lub($Γ['global']['GeneratePayloadTree']['$tmp20'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['GeneratePayloadTree']['$tmp20'] = $lub($Γ['global']['GeneratePayloadTree']['$tmp20'], $Λ[$Λ.length - 1].l);
+        $tmp18 = {
+            array: $tmp19,
+            string: $tmp20
+        };
+        $Γ['global']['GeneratePayloadTree']['$tmp18'] = {
+            __proto__: {},
+            array: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp19', null, true, $Γ['global']['GeneratePayloadTree'])),
+            string: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp20', null, true, $Γ['global']['GeneratePayloadTree'])),
+            Σ: $lub(sec_lvl('$tmp19', null, true, $Γ['global']['GeneratePayloadTree']), sec_lvl('$tmp20', null, true, $Γ['global']['GeneratePayloadTree']), $Λ[$Λ.length - 1].l)
+        };
+        return $tmp18;
         var $shouldComp = { 'lbl': 'FUNC' };
     } else {
         $upgrade([
-            'Error',
-            '$tmp25'
-        ], $Λ[$Λ.length - 1].l, $Γ['global']['runRichards']);
-    }
-    if ($shouldComp)
-        $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
-    $Λ.pop();
-    return;
-}
-var COUNT, EXPECTED_QUEUE_COUNT, EXPECTED_HOLD_COUNT, ID_IDLE, ID_WORKER, ID_HANDLER_A, ID_HANDLER_B, ID_DEVICE_A, ID_DEVICE_B, NUMBER_OF_IDS, KIND_DEVICE, KIND_WORK, $tmp0, STATE_RUNNING, STATE_RUNNABLE, STATE_SUSPENDED, STATE_HELD, STATE_SUSPENDED_RUNNABLE, STATE_NOT_HELD, $tmp1, $tmp2, $tmp3, $tmp4, $tmp5, DATA_SIZE, $tmp6, $tmp7;
-$Γ['global']['$tmp7'] = $Γ['global']['$tmp6'] = $Γ['global']['DATA_SIZE'] = $Γ['global']['$tmp5'] = $Γ['global']['$tmp4'] = $Γ['global']['$tmp3'] = $Γ['global']['$tmp2'] = $Γ['global']['$tmp1'] = $Γ['global']['STATE_NOT_HELD'] = $Γ['global']['STATE_SUSPENDED_RUNNABLE'] = $Γ['global']['STATE_HELD'] = $Γ['global']['STATE_SUSPENDED'] = $Γ['global']['STATE_RUNNABLE'] = $Γ['global']['STATE_RUNNING'] = $Γ['global']['$tmp0'] = $Γ['global']['KIND_WORK'] = $Γ['global']['KIND_DEVICE'] = $Γ['global']['NUMBER_OF_IDS'] = $Γ['global']['ID_DEVICE_B'] = $Γ['global']['ID_DEVICE_A'] = $Γ['global']['ID_HANDLER_B'] = $Γ['global']['ID_HANDLER_A'] = $Γ['global']['ID_WORKER'] = $Γ['global']['ID_IDLE'] = $Γ['global']['EXPECTED_HOLD_COUNT'] = $Γ['global']['EXPECTED_QUEUE_COUNT'] = $Γ['global']['COUNT'] = 0;
-COUNT = 1000;
-$Γ['global']['COUNT'] = $Λ[$Λ.length - 1].l;
-EXPECTED_QUEUE_COUNT = 2322;
-$Γ['global']['EXPECTED_QUEUE_COUNT'] = $Λ[$Λ.length - 1].l;
-EXPECTED_HOLD_COUNT = 928;
-$Γ['global']['EXPECTED_HOLD_COUNT'] = $Λ[$Λ.length - 1].l;
-function Scheduler() {
-    this.queueCount = 0;
-    $Γ['global']['Scheduler']['$this']['queueCount'] = $Λ[$Λ.length - 1].l;
-    this.holdCount = 0;
-    $Γ['global']['Scheduler']['$this']['holdCount'] = $Λ[$Λ.length - 1].l;
-    this.blocks = new Array(NUMBER_OF_IDS);
-    this.list = null;
-    $Γ['global']['Scheduler']['$this']['list'] = $Λ[$Λ.length - 1].l;
-    this.currentTcb = null;
-    $Γ['global']['Scheduler']['$this']['currentTcb'] = $Λ[$Λ.length - 1].l;
-    this.currentId = null;
-    $Γ['global']['Scheduler']['$this']['currentId'] = $Λ[$Λ.length - 1].l;
-    return;
-}
-ID_IDLE = 0;
-$Γ['global']['ID_IDLE'] = $Λ[$Λ.length - 1].l;
-ID_WORKER = 1;
-$Γ['global']['ID_WORKER'] = $Λ[$Λ.length - 1].l;
-ID_HANDLER_A = 2;
-$Γ['global']['ID_HANDLER_A'] = $Λ[$Λ.length - 1].l;
-ID_HANDLER_B = 3;
-$Γ['global']['ID_HANDLER_B'] = $Λ[$Λ.length - 1].l;
-ID_DEVICE_A = 4;
-$Γ['global']['ID_DEVICE_A'] = $Λ[$Λ.length - 1].l;
-ID_DEVICE_B = 5;
-$Γ['global']['ID_DEVICE_B'] = $Λ[$Λ.length - 1].l;
-NUMBER_OF_IDS = 6;
-$Γ['global']['NUMBER_OF_IDS'] = $Λ[$Λ.length - 1].l;
-KIND_DEVICE = 0;
-$Γ['global']['KIND_DEVICE'] = $Λ[$Λ.length - 1].l;
-KIND_WORK = 1;
-$Γ['global']['KIND_WORK'] = $Λ[$Λ.length - 1].l;
-$tmp0 = Scheduler.prototype;
-$Γ['global']['$tmp0'] = sec_lvl('Scheduler', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp0'] instanceof Object ? $Γ['global']['$tmp0'].Σ = $lub($Γ['global']['$tmp0'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0'] = $lub($Γ['global']['$tmp0'], $Λ[$Λ.length - 1].l);
-$tmp0.addIdleTask = function (id, priority, queue, count) {
-    var $tmp26, $tmp27, $tmp28;
-    $Γ['global']['$tmp0']['addIdleTask']['$tmp28'] = $Γ['global']['$tmp0']['addIdleTask']['$tmp27'] = $Γ['global']['$tmp0']['addIdleTask']['$tmp26'] = 0;
-    $tmp28 = this;
-    $Γ['global']['$tmp0']['addIdleTask']['$tmp28'] = $Γ['global']['$tmp0']['addIdleTask'].$this;
-    $Γ['global']['$tmp0']['addIdleTask']['$tmp28'] instanceof Object ? $Γ['global']['$tmp0']['addIdleTask']['$tmp28'].Σ = $lub($Γ['global']['$tmp0']['addIdleTask']['$tmp28'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['addIdleTask']['$tmp28'] = $lub($Γ['global']['$tmp0']['addIdleTask']['$tmp28'], $Λ[$Λ.length - 1].l);
-    $rf = $scope($Γ['global']['$tmp0']['addIdleTask'], 'IdleTask', false)['IdleTask'];
-    $rf.scope = $Γ['global']['$tmp0']['addIdleTask'];
-    $rf.$this = {
-        Σ: $Λ[$Λ.length - 1].l,
-        __$proto__: $rf.prototype
-    };
-    $rf['scheduler'] = $lub(sec_lvl('$tmp28', null, true, $Γ['global']['$tmp0']['addIdleTask']), $Λ[$Λ.length - 1].l);
-    $rf['v1'] = $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l);
-    $rf['count'] = $lub(sec_lvl('count', null, true, $Γ['global']['$tmp0']['addIdleTask']), $Λ[$Λ.length - 1].l);
-    $rf.InvokedAsContr = true;
-    $Λ.push({
-        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
-        id: 'FUNC'
-    });
-    $tmp27 = new IdleTask($tmp28, 1, count);
-    $Γ['global']['$tmp0']['addIdleTask']['$tmp27'] = $Λ.pop().l;
-    $Γ['global']['$tmp0']['addIdleTask']['$tmp27'] instanceof Object ? $Γ['global']['$tmp0']['addIdleTask']['$tmp27'].Σ = $lub($Γ['global']['$tmp0']['addIdleTask']['$tmp27'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['addIdleTask']['$tmp27'] = $lub($Γ['global']['$tmp0']['addIdleTask']['$tmp27'], $Λ[$Λ.length - 1].l);
-    $rf = $prop('$tmp0', 'addRunningTask', $Γ['global']['$tmp0']['addIdleTask']);
-    $rf.scope = $Γ['global']['$tmp0']['addIdleTask'];
-    $rf.$this = $Γ['global']['$tmp0']['addIdleTask']['$this'];
-    $rf['id'] = $lub(sec_lvl('id', null, true, $Γ['global']['$tmp0']['addIdleTask']), $Λ[$Λ.length - 1].l);
-    $rf['priority'] = $lub(sec_lvl('priority', null, true, $Γ['global']['$tmp0']['addIdleTask']), $Λ[$Λ.length - 1].l);
-    $rf['queue'] = $lub(sec_lvl('queue', null, true, $Γ['global']['$tmp0']['addIdleTask']), $Λ[$Λ.length - 1].l);
-    $rf['task'] = $lub(sec_lvl('$tmp27', null, true, $Γ['global']['$tmp0']['addIdleTask']), $Λ[$Λ.length - 1].l);
-    $Λ.push({
-        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
-        id: 'FUNC'
-    });
-    $tmp26 = this.addRunningTask(id, priority, queue, $tmp27);
-    $Γ['global']['$tmp0']['addIdleTask']['$tmp26'] = $Λ.pop().l;
-    $Γ['global']['$tmp0']['addIdleTask']['$tmp26'] instanceof Object ? $Γ['global']['$tmp0']['addIdleTask']['$tmp26'].Σ = $lub($Γ['global']['$tmp0']['addIdleTask']['$tmp26'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['addIdleTask']['$tmp26'] = $lub($Γ['global']['$tmp0']['addIdleTask']['$tmp26'], $Λ[$Λ.length - 1].l);
-    return;
-};
-$Γ['global']['$tmp0']['addIdleTask'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global'],
-    id: $Λ[$Λ.length - 1].l,
-    priority: $Λ[$Λ.length - 1].l,
-    queue: $Λ[$Λ.length - 1].l,
-    count: $Λ[$Λ.length - 1].l
-};
-$tmp0 = Scheduler.prototype;
-$Γ['global']['$tmp0'] = sec_lvl('Scheduler', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp0'] instanceof Object ? $Γ['global']['$tmp0'].Σ = $lub($Γ['global']['$tmp0'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0'] = $lub($Γ['global']['$tmp0'], $Λ[$Λ.length - 1].l);
-$tmp0.addWorkerTask = function (id, priority, queue) {
-    var $tmp29, $tmp30, $tmp31;
-    $Γ['global']['$tmp0']['addWorkerTask']['$tmp31'] = $Γ['global']['$tmp0']['addWorkerTask']['$tmp30'] = $Γ['global']['$tmp0']['addWorkerTask']['$tmp29'] = 0;
-    $tmp31 = this;
-    $Γ['global']['$tmp0']['addWorkerTask']['$tmp31'] = $Γ['global']['$tmp0']['addWorkerTask'].$this;
-    $Γ['global']['$tmp0']['addWorkerTask']['$tmp31'] instanceof Object ? $Γ['global']['$tmp0']['addWorkerTask']['$tmp31'].Σ = $lub($Γ['global']['$tmp0']['addWorkerTask']['$tmp31'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['addWorkerTask']['$tmp31'] = $lub($Γ['global']['$tmp0']['addWorkerTask']['$tmp31'], $Λ[$Λ.length - 1].l);
-    $rf = $scope($Γ['global']['$tmp0']['addWorkerTask'], 'WorkerTask', false)['WorkerTask'];
-    $rf.scope = $Γ['global']['$tmp0']['addWorkerTask'];
-    $rf.$this = {
-        Σ: $Λ[$Λ.length - 1].l,
-        __$proto__: $rf.prototype
-    };
-    $rf['scheduler'] = $lub(sec_lvl('$tmp31', null, true, $Γ['global']['$tmp0']['addWorkerTask']), $Λ[$Λ.length - 1].l);
-    $rf['v1'] = $lub(sec_lvl('ID_HANDLER_A', null, true, $Γ['global']['$tmp0']['addWorkerTask']), $Λ[$Λ.length - 1].l);
-    $rf['v2'] = $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l);
-    $rf.InvokedAsContr = true;
-    $Λ.push({
-        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
-        id: 'FUNC'
-    });
-    $tmp30 = new WorkerTask($tmp31, ID_HANDLER_A, 0);
-    $Γ['global']['$tmp0']['addWorkerTask']['$tmp30'] = $Λ.pop().l;
-    $Γ['global']['$tmp0']['addWorkerTask']['$tmp30'] instanceof Object ? $Γ['global']['$tmp0']['addWorkerTask']['$tmp30'].Σ = $lub($Γ['global']['$tmp0']['addWorkerTask']['$tmp30'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['addWorkerTask']['$tmp30'] = $lub($Γ['global']['$tmp0']['addWorkerTask']['$tmp30'], $Λ[$Λ.length - 1].l);
-    $rf = $prop('$tmp0', 'addTask', $Γ['global']['$tmp0']['addWorkerTask']);
-    $rf.scope = $Γ['global']['$tmp0']['addWorkerTask'];
-    $rf.$this = $Γ['global']['$tmp0']['addWorkerTask']['$this'];
-    $rf['id'] = $lub(sec_lvl('id', null, true, $Γ['global']['$tmp0']['addWorkerTask']), $Λ[$Λ.length - 1].l);
-    $rf['priority'] = $lub(sec_lvl('priority', null, true, $Γ['global']['$tmp0']['addWorkerTask']), $Λ[$Λ.length - 1].l);
-    $rf['queue'] = $lub(sec_lvl('queue', null, true, $Γ['global']['$tmp0']['addWorkerTask']), $Λ[$Λ.length - 1].l);
-    $rf['task'] = $lub(sec_lvl('$tmp30', null, true, $Γ['global']['$tmp0']['addWorkerTask']), $Λ[$Λ.length - 1].l);
-    $Λ.push({
-        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
-        id: 'FUNC'
-    });
-    $tmp29 = this.addTask(id, priority, queue, $tmp30);
-    $Γ['global']['$tmp0']['addWorkerTask']['$tmp29'] = $Λ.pop().l;
-    $Γ['global']['$tmp0']['addWorkerTask']['$tmp29'] instanceof Object ? $Γ['global']['$tmp0']['addWorkerTask']['$tmp29'].Σ = $lub($Γ['global']['$tmp0']['addWorkerTask']['$tmp29'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['addWorkerTask']['$tmp29'] = $lub($Γ['global']['$tmp0']['addWorkerTask']['$tmp29'], $Λ[$Λ.length - 1].l);
-    return;
-};
-$Γ['global']['$tmp0']['addWorkerTask'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global'],
-    id: $Λ[$Λ.length - 1].l,
-    priority: $Λ[$Λ.length - 1].l,
-    queue: $Λ[$Λ.length - 1].l
-};
-$tmp0 = Scheduler.prototype;
-$Γ['global']['$tmp0'] = sec_lvl('Scheduler', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp0'] instanceof Object ? $Γ['global']['$tmp0'].Σ = $lub($Γ['global']['$tmp0'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0'] = $lub($Γ['global']['$tmp0'], $Λ[$Λ.length - 1].l);
-$tmp0.addHandlerTask = function (id, priority, queue) {
-    var $tmp32, $tmp33, $tmp34;
-    $Γ['global']['$tmp0']['addHandlerTask']['$tmp34'] = $Γ['global']['$tmp0']['addHandlerTask']['$tmp33'] = $Γ['global']['$tmp0']['addHandlerTask']['$tmp32'] = 0;
-    $tmp34 = this;
-    $Γ['global']['$tmp0']['addHandlerTask']['$tmp34'] = $Γ['global']['$tmp0']['addHandlerTask'].$this;
-    $Γ['global']['$tmp0']['addHandlerTask']['$tmp34'] instanceof Object ? $Γ['global']['$tmp0']['addHandlerTask']['$tmp34'].Σ = $lub($Γ['global']['$tmp0']['addHandlerTask']['$tmp34'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['addHandlerTask']['$tmp34'] = $lub($Γ['global']['$tmp0']['addHandlerTask']['$tmp34'], $Λ[$Λ.length - 1].l);
-    $rf = $scope($Γ['global']['$tmp0']['addHandlerTask'], 'HandlerTask', false)['HandlerTask'];
-    $rf.scope = $Γ['global']['$tmp0']['addHandlerTask'];
-    $rf.$this = {
-        Σ: $Λ[$Λ.length - 1].l,
-        __$proto__: $rf.prototype
-    };
-    $rf['scheduler'] = $lub(sec_lvl('$tmp34', null, true, $Γ['global']['$tmp0']['addHandlerTask']), $Λ[$Λ.length - 1].l);
-    $rf.InvokedAsContr = true;
-    $Λ.push({
-        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
-        id: 'FUNC'
-    });
-    $tmp33 = new HandlerTask($tmp34);
-    $Γ['global']['$tmp0']['addHandlerTask']['$tmp33'] = $Λ.pop().l;
-    $Γ['global']['$tmp0']['addHandlerTask']['$tmp33'] instanceof Object ? $Γ['global']['$tmp0']['addHandlerTask']['$tmp33'].Σ = $lub($Γ['global']['$tmp0']['addHandlerTask']['$tmp33'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['addHandlerTask']['$tmp33'] = $lub($Γ['global']['$tmp0']['addHandlerTask']['$tmp33'], $Λ[$Λ.length - 1].l);
-    $rf = $prop('$tmp0', 'addTask', $Γ['global']['$tmp0']['addHandlerTask']);
-    $rf.scope = $Γ['global']['$tmp0']['addHandlerTask'];
-    $rf.$this = $Γ['global']['$tmp0']['addHandlerTask']['$this'];
-    $rf['id'] = $lub(sec_lvl('id', null, true, $Γ['global']['$tmp0']['addHandlerTask']), $Λ[$Λ.length - 1].l);
-    $rf['priority'] = $lub(sec_lvl('priority', null, true, $Γ['global']['$tmp0']['addHandlerTask']), $Λ[$Λ.length - 1].l);
-    $rf['queue'] = $lub(sec_lvl('queue', null, true, $Γ['global']['$tmp0']['addHandlerTask']), $Λ[$Λ.length - 1].l);
-    $rf['task'] = $lub(sec_lvl('$tmp33', null, true, $Γ['global']['$tmp0']['addHandlerTask']), $Λ[$Λ.length - 1].l);
-    $Λ.push({
-        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
-        id: 'FUNC'
-    });
-    $tmp32 = this.addTask(id, priority, queue, $tmp33);
-    $Γ['global']['$tmp0']['addHandlerTask']['$tmp32'] = $Λ.pop().l;
-    $Γ['global']['$tmp0']['addHandlerTask']['$tmp32'] instanceof Object ? $Γ['global']['$tmp0']['addHandlerTask']['$tmp32'].Σ = $lub($Γ['global']['$tmp0']['addHandlerTask']['$tmp32'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['addHandlerTask']['$tmp32'] = $lub($Γ['global']['$tmp0']['addHandlerTask']['$tmp32'], $Λ[$Λ.length - 1].l);
-    return;
-};
-$Γ['global']['$tmp0']['addHandlerTask'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global'],
-    id: $Λ[$Λ.length - 1].l,
-    priority: $Λ[$Λ.length - 1].l,
-    queue: $Λ[$Λ.length - 1].l
-};
-$tmp0 = Scheduler.prototype;
-$Γ['global']['$tmp0'] = sec_lvl('Scheduler', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp0'] instanceof Object ? $Γ['global']['$tmp0'].Σ = $lub($Γ['global']['$tmp0'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0'] = $lub($Γ['global']['$tmp0'], $Λ[$Λ.length - 1].l);
-$tmp0.addDeviceTask = function (id, priority, queue) {
-    var $tmp35, $tmp36, $tmp37;
-    $Γ['global']['$tmp0']['addDeviceTask']['$tmp37'] = $Γ['global']['$tmp0']['addDeviceTask']['$tmp36'] = $Γ['global']['$tmp0']['addDeviceTask']['$tmp35'] = 0;
-    $tmp37 = this;
-    $Γ['global']['$tmp0']['addDeviceTask']['$tmp37'] = $Γ['global']['$tmp0']['addDeviceTask'].$this;
-    $Γ['global']['$tmp0']['addDeviceTask']['$tmp37'] instanceof Object ? $Γ['global']['$tmp0']['addDeviceTask']['$tmp37'].Σ = $lub($Γ['global']['$tmp0']['addDeviceTask']['$tmp37'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['addDeviceTask']['$tmp37'] = $lub($Γ['global']['$tmp0']['addDeviceTask']['$tmp37'], $Λ[$Λ.length - 1].l);
-    $rf = $scope($Γ['global']['$tmp0']['addDeviceTask'], 'DeviceTask', false)['DeviceTask'];
-    $rf.scope = $Γ['global']['$tmp0']['addDeviceTask'];
-    $rf.$this = {
-        Σ: $Λ[$Λ.length - 1].l,
-        __$proto__: $rf.prototype
-    };
-    $rf['scheduler'] = $lub(sec_lvl('$tmp37', null, true, $Γ['global']['$tmp0']['addDeviceTask']), $Λ[$Λ.length - 1].l);
-    $rf.InvokedAsContr = true;
-    $Λ.push({
-        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
-        id: 'FUNC'
-    });
-    $tmp36 = new DeviceTask($tmp37);
-    $Γ['global']['$tmp0']['addDeviceTask']['$tmp36'] = $Λ.pop().l;
-    $Γ['global']['$tmp0']['addDeviceTask']['$tmp36'] instanceof Object ? $Γ['global']['$tmp0']['addDeviceTask']['$tmp36'].Σ = $lub($Γ['global']['$tmp0']['addDeviceTask']['$tmp36'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['addDeviceTask']['$tmp36'] = $lub($Γ['global']['$tmp0']['addDeviceTask']['$tmp36'], $Λ[$Λ.length - 1].l);
-    $rf = $prop('$tmp0', 'addTask', $Γ['global']['$tmp0']['addDeviceTask']);
-    $rf.scope = $Γ['global']['$tmp0']['addDeviceTask'];
-    $rf.$this = $Γ['global']['$tmp0']['addDeviceTask']['$this'];
-    $rf['id'] = $lub(sec_lvl('id', null, true, $Γ['global']['$tmp0']['addDeviceTask']), $Λ[$Λ.length - 1].l);
-    $rf['priority'] = $lub(sec_lvl('priority', null, true, $Γ['global']['$tmp0']['addDeviceTask']), $Λ[$Λ.length - 1].l);
-    $rf['queue'] = $lub(sec_lvl('queue', null, true, $Γ['global']['$tmp0']['addDeviceTask']), $Λ[$Λ.length - 1].l);
-    $rf['task'] = $lub(sec_lvl('$tmp36', null, true, $Γ['global']['$tmp0']['addDeviceTask']), $Λ[$Λ.length - 1].l);
-    $Λ.push({
-        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
-        id: 'FUNC'
-    });
-    $tmp35 = this.addTask(id, priority, queue, $tmp36);
-    $Γ['global']['$tmp0']['addDeviceTask']['$tmp35'] = $Λ.pop().l;
-    $Γ['global']['$tmp0']['addDeviceTask']['$tmp35'] instanceof Object ? $Γ['global']['$tmp0']['addDeviceTask']['$tmp35'].Σ = $lub($Γ['global']['$tmp0']['addDeviceTask']['$tmp35'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['addDeviceTask']['$tmp35'] = $lub($Γ['global']['$tmp0']['addDeviceTask']['$tmp35'], $Λ[$Λ.length - 1].l);
-    return;
-};
-$Γ['global']['$tmp0']['addDeviceTask'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global'],
-    id: $Λ[$Λ.length - 1].l,
-    priority: $Λ[$Λ.length - 1].l,
-    queue: $Λ[$Λ.length - 1].l
-};
-$tmp0 = Scheduler.prototype;
-$Γ['global']['$tmp0'] = sec_lvl('Scheduler', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp0'] instanceof Object ? $Γ['global']['$tmp0'].Σ = $lub($Γ['global']['$tmp0'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0'] = $lub($Γ['global']['$tmp0'], $Λ[$Λ.length - 1].l);
-$tmp0.addRunningTask = function (id, priority, queue, task) {
-    var $tmp38, $tmp39, $tmp40;
-    $Γ['global']['$tmp0']['addRunningTask']['$tmp40'] = $Γ['global']['$tmp0']['addRunningTask']['$tmp39'] = $Γ['global']['$tmp0']['addRunningTask']['$tmp38'] = 0;
-    $rf = $prop('$tmp0', 'addTask', $Γ['global']['$tmp0']['addRunningTask']);
-    $rf.scope = $Γ['global']['$tmp0']['addRunningTask'];
-    $rf.$this = $Γ['global']['$tmp0']['addRunningTask']['$this'];
-    $rf['id'] = $lub(sec_lvl('id', null, true, $Γ['global']['$tmp0']['addRunningTask']), $Λ[$Λ.length - 1].l);
-    $rf['priority'] = $lub(sec_lvl('priority', null, true, $Γ['global']['$tmp0']['addRunningTask']), $Λ[$Λ.length - 1].l);
-    $rf['queue'] = $lub(sec_lvl('queue', null, true, $Γ['global']['$tmp0']['addRunningTask']), $Λ[$Λ.length - 1].l);
-    $rf['task'] = $lub(sec_lvl('task', null, true, $Γ['global']['$tmp0']['addRunningTask']), $Λ[$Λ.length - 1].l);
-    $Λ.push({
-        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
-        id: 'FUNC'
-    });
-    $tmp38 = this.addTask(id, priority, queue, task);
-    $Γ['global']['$tmp0']['addRunningTask']['$tmp38'] = $Λ.pop().l;
-    $Γ['global']['$tmp0']['addRunningTask']['$tmp38'] instanceof Object ? $Γ['global']['$tmp0']['addRunningTask']['$tmp38'].Σ = $lub($Γ['global']['$tmp0']['addRunningTask']['$tmp38'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['addRunningTask']['$tmp38'] = $lub($Γ['global']['$tmp0']['addRunningTask']['$tmp38'], $Λ[$Λ.length - 1].l);
-    $tmp40 = this.currentTcb;
-    $Γ['global']['$tmp0']['addRunningTask']['$tmp40'] = sec_lvl('$tmp0', 'currentTcb', false, $Γ['global']['$tmp0']['addRunningTask']);
-    $Γ['global']['$tmp0']['addRunningTask']['$tmp40'] instanceof Object ? $Γ['global']['$tmp0']['addRunningTask']['$tmp40'].Σ = $lub($Γ['global']['$tmp0']['addRunningTask']['$tmp40'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['addRunningTask']['$tmp40'] = $lub($Γ['global']['$tmp0']['addRunningTask']['$tmp40'], $Λ[$Λ.length - 1].l);
-    $tmp39 = $tmp40.setRunning();
-    return;
-};
-$Γ['global']['$tmp0']['addRunningTask'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global'],
-    id: $Λ[$Λ.length - 1].l,
-    priority: $Λ[$Λ.length - 1].l,
-    queue: $Λ[$Λ.length - 1].l,
-    task: $Λ[$Λ.length - 1].l
-};
-$tmp0 = Scheduler.prototype;
-$Γ['global']['$tmp0'] = sec_lvl('Scheduler', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp0'] instanceof Object ? $Γ['global']['$tmp0'].Σ = $lub($Γ['global']['$tmp0'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0'] = $lub($Γ['global']['$tmp0'], $Λ[$Λ.length - 1].l);
-$tmp0.addTask = function (id, priority, queue, task) {
-    var $tmp41, $tmp42;
-    $Γ['global']['$tmp0']['addTask']['$tmp42'] = $Γ['global']['$tmp0']['addTask']['$tmp41'] = 0;
-    $tmp41 = this.list;
-    $Γ['global']['$tmp0']['addTask']['$tmp41'] = sec_lvl('$tmp0', 'list', false, $Γ['global']['$tmp0']['addTask']);
-    $Γ['global']['$tmp0']['addTask']['$tmp41'] instanceof Object ? $Γ['global']['$tmp0']['addTask']['$tmp41'].Σ = $lub($Γ['global']['$tmp0']['addTask']['$tmp41'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['addTask']['$tmp41'] = $lub($Γ['global']['$tmp0']['addTask']['$tmp41'], $Λ[$Λ.length - 1].l);
-    $rf = $scope($Γ['global']['$tmp0']['addTask'], 'TaskControlBlock', false)['TaskControlBlock'];
-    $rf.scope = $Γ['global']['$tmp0']['addTask'];
-    $rf.$this = {
-        Σ: $Λ[$Λ.length - 1].l,
-        __$proto__: $rf.prototype
-    };
-    $rf['link'] = $lub(sec_lvl('$tmp41', null, true, $Γ['global']['$tmp0']['addTask']), $Λ[$Λ.length - 1].l);
-    $rf['id'] = $lub(sec_lvl('id', null, true, $Γ['global']['$tmp0']['addTask']), $Λ[$Λ.length - 1].l);
-    $rf['priority'] = $lub(sec_lvl('priority', null, true, $Γ['global']['$tmp0']['addTask']), $Λ[$Λ.length - 1].l);
-    $rf['queue'] = $lub(sec_lvl('queue', null, true, $Γ['global']['$tmp0']['addTask']), $Λ[$Λ.length - 1].l);
-    $rf['task'] = $lub(sec_lvl('task', null, true, $Γ['global']['$tmp0']['addTask']), $Λ[$Λ.length - 1].l);
-    $rf.InvokedAsContr = true;
-    $Λ.push({
-        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
-        id: 'FUNC'
-    });
-    this.currentTcb = new TaskControlBlock($tmp41, id, priority, queue, task);
-    $Γ['global']['$tmp0']['addTask']['$this']['currentTcb'] = $Λ.pop().l;
-    $Γ['global']['$tmp0']['addTask']['$this']['currentTcb'] instanceof Object ? $Γ['global']['$tmp0']['addTask']['$this']['currentTcb'].Σ = $lub($Γ['global']['$tmp0']['addTask']['$this']['currentTcb'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['addTask']['$this']['currentTcb'] = $lub($Γ['global']['$tmp0']['addTask']['$this']['currentTcb'], $Λ[$Λ.length - 1].l);
-    this.list = this.currentTcb;
-    $Γ['global']['$tmp0']['addTask']['$this']['list'] = sec_lvl('$tmp0', 'currentTcb', false, $Γ['global']['$tmp0']['addTask']);
-    $Γ['global']['$tmp0']['addTask']['$this']['list'] instanceof Object ? $Γ['global']['$tmp0']['addTask']['$this']['list'].Σ = $lub($Γ['global']['$tmp0']['addTask']['$this']['list'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['addTask']['$this']['list'] = $lub($Γ['global']['$tmp0']['addTask']['$this']['list'], $Λ[$Λ.length - 1].l);
-    $tmp42 = this.blocks;
-    $Γ['global']['$tmp0']['addTask']['$tmp42'] = sec_lvl('$tmp0', 'blocks', false, $Γ['global']['$tmp0']['addTask']);
-    $Γ['global']['$tmp0']['addTask']['$tmp42'] instanceof Object ? $Γ['global']['$tmp0']['addTask']['$tmp42'].Σ = $lub($Γ['global']['$tmp0']['addTask']['$tmp42'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['addTask']['$tmp42'] = $lub($Γ['global']['$tmp0']['addTask']['$tmp42'], $Λ[$Λ.length - 1].l);
-    $tmp42[id] = this.currentTcb;
-    $Γ['global']['$tmp0']['addTask']['$tmp42']['id'] = sec_lvl('$tmp0', 'currentTcb', false, $Γ['global']['$tmp0']['addTask']);
-    _$tmp = sec_lvl('id', null, false, $Γ['global']['$tmp0']['addTask']) instanceof Object ? sec_lvl('id', null, false, $Γ['global']['$tmp0']['addTask']).Σ : sec_lvl('id', null, false, $Γ['global']['$tmp0']['addTask']);
-    $Γ['global']['$tmp0']['addTask']['$tmp42']['id'] instanceof Object ? $Γ['global']['$tmp0']['addTask']['$tmp42']['id'].Σ = $lub($Γ['global']['$tmp0']['addTask']['$tmp42']['id'].Σ, _$tmp, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['addTask']['$tmp42']['id'] = $lub($Γ['global']['$tmp0']['addTask']['$tmp42']['id'], _$tmp, $Λ[$Λ.length - 1].l);
-    return;
-};
-$Γ['global']['$tmp0']['addTask'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global'],
-    id: $Λ[$Λ.length - 1].l,
-    priority: $Λ[$Λ.length - 1].l,
-    queue: $Λ[$Λ.length - 1].l,
-    task: $Λ[$Λ.length - 1].l
-};
-$tmp0 = Scheduler.prototype;
-$Γ['global']['$tmp0'] = sec_lvl('Scheduler', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp0'] instanceof Object ? $Γ['global']['$tmp0'].Σ = $lub($Γ['global']['$tmp0'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0'] = $lub($Γ['global']['$tmp0'], $Λ[$Λ.length - 1].l);
-$tmp0.schedule = function () {
-    this.currentTcb = this.list;
-    $Γ['global']['$tmp0']['schedule']['$this']['currentTcb'] = sec_lvl('$tmp0', 'list', false, $Γ['global']['$tmp0']['schedule']);
-    $Γ['global']['$tmp0']['schedule']['$this']['currentTcb'] instanceof Object ? $Γ['global']['$tmp0']['schedule']['$this']['currentTcb'].Σ = $lub($Γ['global']['$tmp0']['schedule']['$this']['currentTcb'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['schedule']['$this']['currentTcb'] = $lub($Γ['global']['$tmp0']['schedule']['$this']['currentTcb'], $Λ[$Λ.length - 1].l);
-    var $tmp43, $tmp44;
-    $Γ['global']['$tmp0']['schedule']['$tmp44'] = $Γ['global']['$tmp0']['schedule']['$tmp43'] = 0;
-    $tmp44 = this.currentTcb;
-    $Γ['global']['$tmp0']['schedule']['$tmp44'] = sec_lvl('$tmp0', 'currentTcb', false, $Γ['global']['$tmp0']['schedule']);
-    $Γ['global']['$tmp0']['schedule']['$tmp44'] instanceof Object ? $Γ['global']['$tmp0']['schedule']['$tmp44'].Σ = $lub($Γ['global']['$tmp0']['schedule']['$tmp44'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['schedule']['$tmp44'] = $lub($Γ['global']['$tmp0']['schedule']['$tmp44'], $Λ[$Λ.length - 1].l);
-    $tmp43 = $tmp44 != null;
-    $Γ['global']['$tmp0']['schedule']['$tmp43'] = $lub(sec_lvl('$tmp44', null, true, $Γ['global']['$tmp0']['schedule']), $Λ[$Λ.length - 1].l);
-    $Γ['global']['$tmp0']['schedule']['$tmp43'] instanceof Object ? $Γ['global']['$tmp0']['schedule']['$tmp43'].Σ = $lub($Γ['global']['$tmp0']['schedule']['$tmp43'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['schedule']['$tmp43'] = $lub($Γ['global']['$tmp0']['schedule']['$tmp43'], $Λ[$Λ.length - 1].l);
-    $Λ.push({
-        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp43', null, true, $Γ['global']['$tmp0']['schedule'])),
-        id: 'LOOP'
-    });
-    while ($tmp43) {
-        var $tmp45, $tmp40, $tmp43, $tmp46;
-        $Γ['global']['$tmp0']['schedule']['$tmp46'] = $Γ['global']['$tmp0']['schedule']['$tmp43'] = $Γ['global']['$tmp0']['schedule']['$tmp40'] = $Γ['global']['$tmp0']['schedule']['$tmp45'] = 0;
-        $tmp40 = this.currentTcb;
-        $Γ['global']['$tmp0']['schedule']['$tmp40'] = sec_lvl('$tmp0', 'currentTcb', false, $Γ['global']['$tmp0']['schedule']);
-        $Γ['global']['$tmp0']['schedule']['$tmp40'] instanceof Object ? $Γ['global']['$tmp0']['schedule']['$tmp40'].Σ = $lub($Γ['global']['$tmp0']['schedule']['$tmp40'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['schedule']['$tmp40'] = $lub($Γ['global']['$tmp0']['schedule']['$tmp40'], $Λ[$Λ.length - 1].l);
-        $tmp45 = $tmp40.isHeldOrSuspended();
-        $Λ.push({
-            l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp45', null, true, $Γ['global']['$tmp0']['schedule'])),
-            id: 'IF'
-        });
-        if ($tmp45) {
-            $upgrade([
-                '$tmp40.run',
-                'this'
-            ], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp0']['schedule']);
-            var $tmp40;
-            $Γ['global']['$tmp0']['schedule']['$tmp40'] = 0;
-            $tmp40 = this.currentTcb;
-            $Γ['global']['$tmp0']['schedule']['$tmp40'] = sec_lvl('$tmp0', 'currentTcb', false, $Γ['global']['$tmp0']['schedule']);
-            $Γ['global']['$tmp0']['schedule']['$tmp40'] instanceof Object ? $Γ['global']['$tmp0']['schedule']['$tmp40'].Σ = $lub($Γ['global']['$tmp0']['schedule']['$tmp40'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['schedule']['$tmp40'] = $lub($Γ['global']['$tmp0']['schedule']['$tmp40'], $Λ[$Λ.length - 1].l);
-            this.currentTcb = $tmp40.link;
-            $Γ['global']['$tmp0']['schedule']['$this']['currentTcb'] = sec_lvl('$tmp40', 'link', false, $Γ['global']['$tmp0']['schedule']);
-            $Γ['global']['$tmp0']['schedule']['$this']['currentTcb'] instanceof Object ? $Γ['global']['$tmp0']['schedule']['$this']['currentTcb'].Σ = $lub($Γ['global']['$tmp0']['schedule']['$this']['currentTcb'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['schedule']['$this']['currentTcb'] = $lub($Γ['global']['$tmp0']['schedule']['$this']['currentTcb'], $Λ[$Λ.length - 1].l);
-        } else {
-            var $tmp40;
-            $Γ['global']['$tmp0']['schedule']['$tmp40'] = 0;
-            $tmp40 = this.currentTcb;
-            $Γ['global']['$tmp0']['schedule']['$tmp40'] = sec_lvl('$tmp0', 'currentTcb', false, $Γ['global']['$tmp0']['schedule']);
-            $Γ['global']['$tmp0']['schedule']['$tmp40'] instanceof Object ? $Γ['global']['$tmp0']['schedule']['$tmp40'].Σ = $lub($Γ['global']['$tmp0']['schedule']['$tmp40'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['schedule']['$tmp40'] = $lub($Γ['global']['$tmp0']['schedule']['$tmp40'], $Λ[$Λ.length - 1].l);
-            this.currentId = $tmp40.id;
-            $Γ['global']['$tmp0']['schedule']['$this']['currentId'] = sec_lvl('$tmp40', 'id', false, $Γ['global']['$tmp0']['schedule']);
-            $Γ['global']['$tmp0']['schedule']['$this']['currentId'] instanceof Object ? $Γ['global']['$tmp0']['schedule']['$this']['currentId'].Σ = $lub($Γ['global']['$tmp0']['schedule']['$this']['currentId'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['schedule']['$this']['currentId'] = $lub($Γ['global']['$tmp0']['schedule']['$this']['currentId'], $Λ[$Λ.length - 1].l);
-            $tmp40 = this.currentTcb;
-            $Γ['global']['$tmp0']['schedule']['$tmp40'] = sec_lvl('$tmp0', 'currentTcb', false, $Γ['global']['$tmp0']['schedule']);
-            $Γ['global']['$tmp0']['schedule']['$tmp40'] instanceof Object ? $Γ['global']['$tmp0']['schedule']['$tmp40'].Σ = $lub($Γ['global']['$tmp0']['schedule']['$tmp40'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['schedule']['$tmp40'] = $lub($Γ['global']['$tmp0']['schedule']['$tmp40'], $Λ[$Λ.length - 1].l);
-            this.currentTcb = $tmp40.run();
-        }
-        $Λ.pop();
-        $tmp46 = this.currentTcb;
-        $Γ['global']['$tmp0']['schedule']['$tmp46'] = sec_lvl('$tmp0', 'currentTcb', false, $Γ['global']['$tmp0']['schedule']);
-        $Γ['global']['$tmp0']['schedule']['$tmp46'] instanceof Object ? $Γ['global']['$tmp0']['schedule']['$tmp46'].Σ = $lub($Γ['global']['$tmp0']['schedule']['$tmp46'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['schedule']['$tmp46'] = $lub($Γ['global']['$tmp0']['schedule']['$tmp46'], $Λ[$Λ.length - 1].l);
-        $tmp43 = $tmp46 != null;
-        $Γ['global']['$tmp0']['schedule']['$tmp43'] = $lub(sec_lvl('$tmp46', null, true, $Γ['global']['$tmp0']['schedule']), $Λ[$Λ.length - 1].l);
-        $Γ['global']['$tmp0']['schedule']['$tmp43'] instanceof Object ? $Γ['global']['$tmp0']['schedule']['$tmp43'].Σ = $lub($Γ['global']['$tmp0']['schedule']['$tmp43'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['schedule']['$tmp43'] = $lub($Γ['global']['$tmp0']['schedule']['$tmp43'], $Λ[$Λ.length - 1].l);
-    }
-    $upgrade([
-        '$tmp40.isHeldOrSuspended',
-        '$tmp45',
-        '$tmp40.run',
-        'this'
-    ], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp0']['schedule']);
-    $Λ.pop();
-    return;
-};
-$Γ['global']['$tmp0']['schedule'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global']
-};
-$tmp0 = Scheduler.prototype;
-$Γ['global']['$tmp0'] = sec_lvl('Scheduler', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp0'] instanceof Object ? $Γ['global']['$tmp0'].Σ = $lub($Γ['global']['$tmp0'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0'] = $lub($Γ['global']['$tmp0'], $Λ[$Λ.length - 1].l);
-$tmp0.release = function (id) {
-    var tcb, $tmp42, $tmp47, $tmp48, $tmp49, $tmp50, $tmp51, $tmp40;
-    $Γ['global']['$tmp0']['release']['$tmp40'] = $Γ['global']['$tmp0']['release']['$tmp51'] = $Γ['global']['$tmp0']['release']['$tmp50'] = $Γ['global']['$tmp0']['release']['$tmp49'] = $Γ['global']['$tmp0']['release']['$tmp48'] = $Γ['global']['$tmp0']['release']['$tmp47'] = $Γ['global']['$tmp0']['release']['$tmp42'] = $Γ['global']['$tmp0']['release']['tcb'] = 0;
-    $tmp42 = this.blocks;
-    $Γ['global']['$tmp0']['release']['$tmp42'] = sec_lvl('$tmp0', 'blocks', false, $Γ['global']['$tmp0']['release']);
-    $Γ['global']['$tmp0']['release']['$tmp42'] instanceof Object ? $Γ['global']['$tmp0']['release']['$tmp42'].Σ = $lub($Γ['global']['$tmp0']['release']['$tmp42'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['release']['$tmp42'] = $lub($Γ['global']['$tmp0']['release']['$tmp42'], $Λ[$Λ.length - 1].l);
-    tcb = $tmp42[id];
-    $scope($Γ['global']['$tmp0']['release'], 'tcb', true)['tcb'] = sec_lvl('$tmp42', id, false, $Γ['global']['$tmp0']['release']);
-    $scope($Γ['global']['$tmp0']['release'], 'tcb', true)['tcb'] instanceof Object ? $scope($Γ['global']['$tmp0']['release'], 'tcb', true)['tcb'].Σ = $lub($scope($Γ['global']['$tmp0']['release'], 'tcb', true)['tcb'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp0']['release'], 'tcb', true)['tcb'] = $lub($scope($Γ['global']['$tmp0']['release'], 'tcb', true)['tcb'], $Λ[$Λ.length - 1].l);
-    $tmp47 = tcb == null;
-    $Γ['global']['$tmp0']['release']['$tmp47'] = $lub(sec_lvl('tcb', null, true, $Γ['global']['$tmp0']['release']), $Λ[$Λ.length - 1].l);
-    $Γ['global']['$tmp0']['release']['$tmp47'] instanceof Object ? $Γ['global']['$tmp0']['release']['$tmp47'].Σ = $lub($Γ['global']['$tmp0']['release']['$tmp47'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['release']['$tmp47'] = $lub($Γ['global']['$tmp0']['release']['$tmp47'], $Λ[$Λ.length - 1].l);
-    $Λ.push({
-        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp47', null, true, $Γ['global']['$tmp0']['release'])),
-        id: 'IF'
-    });
-    if ($tmp47) {
-        return tcb;
-        var $shouldComp = { 'lbl': 'FUNC' };
-    } else {
-    }
-    if ($shouldComp)
-        $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
-    $Λ.pop();
-    $tmp48 = tcb.markAsNotHeld();
-    $tmp50 = tcb.priority;
-    $Γ['global']['$tmp0']['release']['$tmp50'] = sec_lvl('tcb', 'priority', false, $Γ['global']['$tmp0']['release']);
-    $Γ['global']['$tmp0']['release']['$tmp50'] instanceof Object ? $Γ['global']['$tmp0']['release']['$tmp50'].Σ = $lub($Γ['global']['$tmp0']['release']['$tmp50'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['release']['$tmp50'] = $lub($Γ['global']['$tmp0']['release']['$tmp50'], $Λ[$Λ.length - 1].l);
-    $tmp40 = this.currentTcb;
-    $Γ['global']['$tmp0']['release']['$tmp40'] = sec_lvl('$tmp0', 'currentTcb', false, $Γ['global']['$tmp0']['release']);
-    $Γ['global']['$tmp0']['release']['$tmp40'] instanceof Object ? $Γ['global']['$tmp0']['release']['$tmp40'].Σ = $lub($Γ['global']['$tmp0']['release']['$tmp40'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['release']['$tmp40'] = $lub($Γ['global']['$tmp0']['release']['$tmp40'], $Λ[$Λ.length - 1].l);
-    $tmp51 = $tmp40.priority;
-    $Γ['global']['$tmp0']['release']['$tmp51'] = sec_lvl('$tmp40', 'priority', false, $Γ['global']['$tmp0']['release']);
-    $Γ['global']['$tmp0']['release']['$tmp51'] instanceof Object ? $Γ['global']['$tmp0']['release']['$tmp51'].Σ = $lub($Γ['global']['$tmp0']['release']['$tmp51'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['release']['$tmp51'] = $lub($Γ['global']['$tmp0']['release']['$tmp51'], $Λ[$Λ.length - 1].l);
-    $tmp49 = $tmp50 > $tmp51;
-    $Γ['global']['$tmp0']['release']['$tmp49'] = $lub(sec_lvl('$tmp50', null, true, $Γ['global']['$tmp0']['release']), sec_lvl('$tmp51', null, true, $Γ['global']['$tmp0']['release']));
-    $Γ['global']['$tmp0']['release']['$tmp49'] instanceof Object ? $Γ['global']['$tmp0']['release']['$tmp49'].Σ = $lub($Γ['global']['$tmp0']['release']['$tmp49'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['release']['$tmp49'] = $lub($Γ['global']['$tmp0']['release']['$tmp49'], $Λ[$Λ.length - 1].l);
-    $Λ.push({
-        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp49', null, true, $Γ['global']['$tmp0']['release'])),
-        id: 'IF'
-    });
-    if ($tmp49) {
-        return tcb;
-        var $shouldComp = { 'lbl': 'FUNC' };
-    } else {
-        var $tmp52;
-        $Γ['global']['$tmp0']['release']['$tmp52'] = 0;
-        $tmp52 = this.currentTcb;
-        $Γ['global']['$tmp0']['release']['$tmp52'] = sec_lvl('$tmp0', 'currentTcb', false, $Γ['global']['$tmp0']['release']);
-        $Γ['global']['$tmp0']['release']['$tmp52'] instanceof Object ? $Γ['global']['$tmp0']['release']['$tmp52'].Σ = $lub($Γ['global']['$tmp0']['release']['$tmp52'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['release']['$tmp52'] = $lub($Γ['global']['$tmp0']['release']['$tmp52'], $Λ[$Λ.length - 1].l);
-        return $tmp52;
-        var $shouldComp = { 'lbl': 'FUNC' };
-    }
-    if ($shouldComp)
-        $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
-    $Λ.pop();
-    return;
-};
-$Γ['global']['$tmp0']['release'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global'],
-    id: $Λ[$Λ.length - 1].l
-};
-$tmp0 = Scheduler.prototype;
-$Γ['global']['$tmp0'] = sec_lvl('Scheduler', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp0'] instanceof Object ? $Γ['global']['$tmp0'].Σ = $lub($Γ['global']['$tmp0'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0'] = $lub($Γ['global']['$tmp0'], $Λ[$Λ.length - 1].l);
-$tmp0.holdCurrent = function () {
-    var $tmp53, $tmp54, $tmp55, $tmp40, $tmp56;
-    $Γ['global']['$tmp0']['holdCurrent']['$tmp56'] = $Γ['global']['$tmp0']['holdCurrent']['$tmp40'] = $Γ['global']['$tmp0']['holdCurrent']['$tmp55'] = $Γ['global']['$tmp0']['holdCurrent']['$tmp54'] = $Γ['global']['$tmp0']['holdCurrent']['$tmp53'] = 0;
-    $tmp54 = this;
-    $Γ['global']['$tmp0']['holdCurrent']['$tmp54'] = $Γ['global']['$tmp0']['holdCurrent'].$this;
-    $Γ['global']['$tmp0']['holdCurrent']['$tmp54'] instanceof Object ? $Γ['global']['$tmp0']['holdCurrent']['$tmp54'].Σ = $lub($Γ['global']['$tmp0']['holdCurrent']['$tmp54'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['holdCurrent']['$tmp54'] = $lub($Γ['global']['$tmp0']['holdCurrent']['$tmp54'], $Λ[$Λ.length - 1].l);
-    $tmp53 = $tmp54.holdCount++;
-    $Γ['global']['$tmp0']['holdCurrent']['$tmp53'] = sec_lvl('$tmp54', 'holdCount', false, $Γ['global']['$tmp0']['holdCurrent']);
-    $Γ['global']['$tmp0']['holdCurrent']['$tmp53'] instanceof Object ? $Γ['global']['$tmp0']['holdCurrent']['$tmp53'].Σ = $lub($Γ['global']['$tmp0']['holdCurrent']['$tmp53'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['holdCurrent']['$tmp53'] = $lub($Γ['global']['$tmp0']['holdCurrent']['$tmp53'], $Λ[$Λ.length - 1].l);
-    $tmp40 = this.currentTcb;
-    $Γ['global']['$tmp0']['holdCurrent']['$tmp40'] = sec_lvl('$tmp0', 'currentTcb', false, $Γ['global']['$tmp0']['holdCurrent']);
-    $Γ['global']['$tmp0']['holdCurrent']['$tmp40'] instanceof Object ? $Γ['global']['$tmp0']['holdCurrent']['$tmp40'].Σ = $lub($Γ['global']['$tmp0']['holdCurrent']['$tmp40'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['holdCurrent']['$tmp40'] = $lub($Γ['global']['$tmp0']['holdCurrent']['$tmp40'], $Λ[$Λ.length - 1].l);
-    $tmp55 = $tmp40.markAsHeld();
-    $tmp40 = this.currentTcb;
-    $Γ['global']['$tmp0']['holdCurrent']['$tmp40'] = sec_lvl('$tmp0', 'currentTcb', false, $Γ['global']['$tmp0']['holdCurrent']);
-    $Γ['global']['$tmp0']['holdCurrent']['$tmp40'] instanceof Object ? $Γ['global']['$tmp0']['holdCurrent']['$tmp40'].Σ = $lub($Γ['global']['$tmp0']['holdCurrent']['$tmp40'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['holdCurrent']['$tmp40'] = $lub($Γ['global']['$tmp0']['holdCurrent']['$tmp40'], $Λ[$Λ.length - 1].l);
-    $tmp56 = $tmp40.link;
-    $Γ['global']['$tmp0']['holdCurrent']['$tmp56'] = sec_lvl('$tmp40', 'link', false, $Γ['global']['$tmp0']['holdCurrent']);
-    $Γ['global']['$tmp0']['holdCurrent']['$tmp56'] instanceof Object ? $Γ['global']['$tmp0']['holdCurrent']['$tmp56'].Σ = $lub($Γ['global']['$tmp0']['holdCurrent']['$tmp56'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['holdCurrent']['$tmp56'] = $lub($Γ['global']['$tmp0']['holdCurrent']['$tmp56'], $Λ[$Λ.length - 1].l);
-    return $tmp56;
-};
-$Γ['global']['$tmp0']['holdCurrent'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global']
-};
-$tmp0 = Scheduler.prototype;
-$Γ['global']['$tmp0'] = sec_lvl('Scheduler', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp0'] instanceof Object ? $Γ['global']['$tmp0'].Σ = $lub($Γ['global']['$tmp0'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0'] = $lub($Γ['global']['$tmp0'], $Λ[$Λ.length - 1].l);
-$tmp0.suspendCurrent = function () {
-    var $tmp57, $tmp40, $tmp58;
-    $Γ['global']['$tmp0']['suspendCurrent']['$tmp58'] = $Γ['global']['$tmp0']['suspendCurrent']['$tmp40'] = $Γ['global']['$tmp0']['suspendCurrent']['$tmp57'] = 0;
-    $tmp40 = this.currentTcb;
-    $Γ['global']['$tmp0']['suspendCurrent']['$tmp40'] = sec_lvl('$tmp0', 'currentTcb', false, $Γ['global']['$tmp0']['suspendCurrent']);
-    $Γ['global']['$tmp0']['suspendCurrent']['$tmp40'] instanceof Object ? $Γ['global']['$tmp0']['suspendCurrent']['$tmp40'].Σ = $lub($Γ['global']['$tmp0']['suspendCurrent']['$tmp40'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['suspendCurrent']['$tmp40'] = $lub($Γ['global']['$tmp0']['suspendCurrent']['$tmp40'], $Λ[$Λ.length - 1].l);
-    $tmp57 = $tmp40.markAsSuspended();
-    $tmp58 = this.currentTcb;
-    $Γ['global']['$tmp0']['suspendCurrent']['$tmp58'] = sec_lvl('$tmp0', 'currentTcb', false, $Γ['global']['$tmp0']['suspendCurrent']);
-    $Γ['global']['$tmp0']['suspendCurrent']['$tmp58'] instanceof Object ? $Γ['global']['$tmp0']['suspendCurrent']['$tmp58'].Σ = $lub($Γ['global']['$tmp0']['suspendCurrent']['$tmp58'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['suspendCurrent']['$tmp58'] = $lub($Γ['global']['$tmp0']['suspendCurrent']['$tmp58'], $Λ[$Λ.length - 1].l);
-    return $tmp58;
-};
-$Γ['global']['$tmp0']['suspendCurrent'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global']
-};
-$tmp0 = Scheduler.prototype;
-$Γ['global']['$tmp0'] = sec_lvl('Scheduler', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp0'] instanceof Object ? $Γ['global']['$tmp0'].Σ = $lub($Γ['global']['$tmp0'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0'] = $lub($Γ['global']['$tmp0'], $Λ[$Λ.length - 1].l);
-$tmp0.queue = function (packet) {
-    var t, $tmp42, $tmp59, $tmp60, $tmp61, $tmp62, $tmp63, $tmp64;
-    $Γ['global']['$tmp0']['queue']['$tmp64'] = $Γ['global']['$tmp0']['queue']['$tmp63'] = $Γ['global']['$tmp0']['queue']['$tmp62'] = $Γ['global']['$tmp0']['queue']['$tmp61'] = $Γ['global']['$tmp0']['queue']['$tmp60'] = $Γ['global']['$tmp0']['queue']['$tmp59'] = $Γ['global']['$tmp0']['queue']['$tmp42'] = $Γ['global']['$tmp0']['queue']['t'] = 0;
-    $tmp42 = this.blocks;
-    $Γ['global']['$tmp0']['queue']['$tmp42'] = sec_lvl('$tmp0', 'blocks', false, $Γ['global']['$tmp0']['queue']);
-    $Γ['global']['$tmp0']['queue']['$tmp42'] instanceof Object ? $Γ['global']['$tmp0']['queue']['$tmp42'].Σ = $lub($Γ['global']['$tmp0']['queue']['$tmp42'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['queue']['$tmp42'] = $lub($Γ['global']['$tmp0']['queue']['$tmp42'], $Λ[$Λ.length - 1].l);
-    $tmp59 = packet.id;
-    $Γ['global']['$tmp0']['queue']['$tmp59'] = sec_lvl('packet', 'id', false, $Γ['global']['$tmp0']['queue']);
-    $Γ['global']['$tmp0']['queue']['$tmp59'] instanceof Object ? $Γ['global']['$tmp0']['queue']['$tmp59'].Σ = $lub($Γ['global']['$tmp0']['queue']['$tmp59'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['queue']['$tmp59'] = $lub($Γ['global']['$tmp0']['queue']['$tmp59'], $Λ[$Λ.length - 1].l);
-    t = $tmp42[$tmp59];
-    $scope($Γ['global']['$tmp0']['queue'], 't', true)['t'] = sec_lvl('$tmp42', $tmp59, false, $Γ['global']['$tmp0']['queue']);
-    $scope($Γ['global']['$tmp0']['queue'], 't', true)['t'] instanceof Object ? $scope($Γ['global']['$tmp0']['queue'], 't', true)['t'].Σ = $lub($scope($Γ['global']['$tmp0']['queue'], 't', true)['t'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp0']['queue'], 't', true)['t'] = $lub($scope($Γ['global']['$tmp0']['queue'], 't', true)['t'], $Λ[$Λ.length - 1].l);
-    $tmp60 = t == null;
-    $Γ['global']['$tmp0']['queue']['$tmp60'] = $lub(sec_lvl('t', null, true, $Γ['global']['$tmp0']['queue']), $Λ[$Λ.length - 1].l);
-    $Γ['global']['$tmp0']['queue']['$tmp60'] instanceof Object ? $Γ['global']['$tmp0']['queue']['$tmp60'].Σ = $lub($Γ['global']['$tmp0']['queue']['$tmp60'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['queue']['$tmp60'] = $lub($Γ['global']['$tmp0']['queue']['$tmp60'], $Λ[$Λ.length - 1].l);
-    $Λ.push({
-        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp60', null, true, $Γ['global']['$tmp0']['queue'])),
-        id: 'IF'
-    });
-    if ($tmp60) {
-        return t;
-        var $shouldComp = { 'lbl': 'FUNC' };
-    } else {
-    }
-    if ($shouldComp)
-        $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
-    $Λ.pop();
-    $tmp62 = this;
-    $Γ['global']['$tmp0']['queue']['$tmp62'] = $Γ['global']['$tmp0']['queue'].$this;
-    $Γ['global']['$tmp0']['queue']['$tmp62'] instanceof Object ? $Γ['global']['$tmp0']['queue']['$tmp62'].Σ = $lub($Γ['global']['$tmp0']['queue']['$tmp62'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['queue']['$tmp62'] = $lub($Γ['global']['$tmp0']['queue']['$tmp62'], $Λ[$Λ.length - 1].l);
-    $tmp61 = $tmp62.queueCount++;
-    $Γ['global']['$tmp0']['queue']['$tmp61'] = sec_lvl('$tmp62', 'queueCount', false, $Γ['global']['$tmp0']['queue']);
-    $Γ['global']['$tmp0']['queue']['$tmp61'] instanceof Object ? $Γ['global']['$tmp0']['queue']['$tmp61'].Σ = $lub($Γ['global']['$tmp0']['queue']['$tmp61'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['queue']['$tmp61'] = $lub($Γ['global']['$tmp0']['queue']['$tmp61'], $Λ[$Λ.length - 1].l);
-    packet.link = null;
-    $scope($Γ['global']['$tmp0']['queue'], 'packet', false)['link'] = $Λ[$Λ.length - 1].l;
-    packet.id = this.currentId;
-    $scope($Γ['global']['$tmp0']['queue'], 'packet', false)['id'] = sec_lvl('$tmp0', 'currentId', false, $Γ['global']['$tmp0']['queue']);
-    $scope($Γ['global']['$tmp0']['queue'], 'packet', false)['id'] instanceof Object ? $scope($Γ['global']['$tmp0']['queue'], 'packet', false)['id'].Σ = $lub($scope($Γ['global']['$tmp0']['queue'], 'packet', false)['id'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp0']['queue'], 'packet', false)['id'] = $lub($scope($Γ['global']['$tmp0']['queue'], 'packet', false)['id'], $Λ[$Λ.length - 1].l);
-    $tmp64 = this.currentTcb;
-    $Γ['global']['$tmp0']['queue']['$tmp64'] = sec_lvl('$tmp0', 'currentTcb', false, $Γ['global']['$tmp0']['queue']);
-    $Γ['global']['$tmp0']['queue']['$tmp64'] instanceof Object ? $Γ['global']['$tmp0']['queue']['$tmp64'].Σ = $lub($Γ['global']['$tmp0']['queue']['$tmp64'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp0']['queue']['$tmp64'] = $lub($Γ['global']['$tmp0']['queue']['$tmp64'], $Λ[$Λ.length - 1].l);
-    $tmp63 = t.checkPriorityAdd($tmp64, packet);
-    return $tmp63;
-};
-$Γ['global']['$tmp0']['queue'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global'],
-    packet: $Λ[$Λ.length - 1].l
-};
-function TaskControlBlock(link, id, priority, queue, task) {
-    this.link = link;
-    $Γ['global']['TaskControlBlock']['$this']['link'] = sec_lvl('link', null, false, $Γ['global']['TaskControlBlock']);
-    $Γ['global']['TaskControlBlock']['$this']['link'] instanceof Object ? $Γ['global']['TaskControlBlock']['$this']['link'].Σ = $lub($Γ['global']['TaskControlBlock']['$this']['link'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['TaskControlBlock']['$this']['link'] = $lub($Γ['global']['TaskControlBlock']['$this']['link'], $Λ[$Λ.length - 1].l);
-    this.id = id;
-    $Γ['global']['TaskControlBlock']['$this']['id'] = sec_lvl('id', null, false, $Γ['global']['TaskControlBlock']);
-    $Γ['global']['TaskControlBlock']['$this']['id'] instanceof Object ? $Γ['global']['TaskControlBlock']['$this']['id'].Σ = $lub($Γ['global']['TaskControlBlock']['$this']['id'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['TaskControlBlock']['$this']['id'] = $lub($Γ['global']['TaskControlBlock']['$this']['id'], $Λ[$Λ.length - 1].l);
-    this.priority = priority;
-    $Γ['global']['TaskControlBlock']['$this']['priority'] = sec_lvl('priority', null, false, $Γ['global']['TaskControlBlock']);
-    $Γ['global']['TaskControlBlock']['$this']['priority'] instanceof Object ? $Γ['global']['TaskControlBlock']['$this']['priority'].Σ = $lub($Γ['global']['TaskControlBlock']['$this']['priority'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['TaskControlBlock']['$this']['priority'] = $lub($Γ['global']['TaskControlBlock']['$this']['priority'], $Λ[$Λ.length - 1].l);
-    this.queue = queue;
-    $Γ['global']['TaskControlBlock']['$this']['queue'] = sec_lvl('queue', null, false, $Γ['global']['TaskControlBlock']);
-    $Γ['global']['TaskControlBlock']['$this']['queue'] instanceof Object ? $Γ['global']['TaskControlBlock']['$this']['queue'].Σ = $lub($Γ['global']['TaskControlBlock']['$this']['queue'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['TaskControlBlock']['$this']['queue'] = $lub($Γ['global']['TaskControlBlock']['$this']['queue'], $Λ[$Λ.length - 1].l);
-    this.task = task;
-    $Γ['global']['TaskControlBlock']['$this']['task'] = sec_lvl('task', null, false, $Γ['global']['TaskControlBlock']);
-    $Γ['global']['TaskControlBlock']['$this']['task'] instanceof Object ? $Γ['global']['TaskControlBlock']['$this']['task'].Σ = $lub($Γ['global']['TaskControlBlock']['$this']['task'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['TaskControlBlock']['$this']['task'] = $lub($Γ['global']['TaskControlBlock']['$this']['task'], $Λ[$Λ.length - 1].l);
-    var $tmp65;
-    $Γ['global']['TaskControlBlock']['$tmp65'] = 0;
-    $tmp65 = queue == null;
-    $Γ['global']['TaskControlBlock']['$tmp65'] = $lub(sec_lvl('queue', null, true, $Γ['global']['TaskControlBlock']), $Λ[$Λ.length - 1].l);
-    $Γ['global']['TaskControlBlock']['$tmp65'] instanceof Object ? $Γ['global']['TaskControlBlock']['$tmp65'].Σ = $lub($Γ['global']['TaskControlBlock']['$tmp65'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['TaskControlBlock']['$tmp65'] = $lub($Γ['global']['TaskControlBlock']['$tmp65'], $Λ[$Λ.length - 1].l);
-    $Λ.push({
-        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp65', null, true, $Γ['global']['TaskControlBlock'])),
-        id: 'IF'
-    });
-    if ($tmp65) {
-        this.state = STATE_SUSPENDED;
-        $Γ['global']['TaskControlBlock']['$this']['state'] = sec_lvl('STATE_SUSPENDED', null, false, $Γ['global']['TaskControlBlock']);
-        $Γ['global']['TaskControlBlock']['$this']['state'] instanceof Object ? $Γ['global']['TaskControlBlock']['$this']['state'].Σ = $lub($Γ['global']['TaskControlBlock']['$this']['state'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['TaskControlBlock']['$this']['state'] = $lub($Γ['global']['TaskControlBlock']['$this']['state'], $Λ[$Λ.length - 1].l);
-    } else {
-        this.state = STATE_SUSPENDED_RUNNABLE;
-        $Γ['global']['TaskControlBlock']['$this']['state'] = sec_lvl('STATE_SUSPENDED_RUNNABLE', null, false, $Γ['global']['TaskControlBlock']);
-        $Γ['global']['TaskControlBlock']['$this']['state'] instanceof Object ? $Γ['global']['TaskControlBlock']['$this']['state'].Σ = $lub($Γ['global']['TaskControlBlock']['$this']['state'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['TaskControlBlock']['$this']['state'] = $lub($Γ['global']['TaskControlBlock']['$this']['state'], $Λ[$Λ.length - 1].l);
-    }
-    $Λ.pop();
-    return;
-}
-STATE_RUNNING = 0;
-$Γ['global']['STATE_RUNNING'] = $Λ[$Λ.length - 1].l;
-STATE_RUNNABLE = 1;
-$Γ['global']['STATE_RUNNABLE'] = $Λ[$Λ.length - 1].l;
-STATE_SUSPENDED = 2;
-$Γ['global']['STATE_SUSPENDED'] = $Λ[$Λ.length - 1].l;
-STATE_HELD = 4;
-$Γ['global']['STATE_HELD'] = $Λ[$Λ.length - 1].l;
-STATE_SUSPENDED_RUNNABLE = STATE_SUSPENDED | STATE_RUNNABLE;
-$Γ['global']['STATE_SUSPENDED_RUNNABLE'] = $lub(sec_lvl('STATE_SUSPENDED', null, true, $Γ['global']), sec_lvl('STATE_RUNNABLE', null, true, $Γ['global']));
-$Γ['global']['STATE_SUSPENDED_RUNNABLE'] instanceof Object ? $Γ['global']['STATE_SUSPENDED_RUNNABLE'].Σ = $lub($Γ['global']['STATE_SUSPENDED_RUNNABLE'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['STATE_SUSPENDED_RUNNABLE'] = $lub($Γ['global']['STATE_SUSPENDED_RUNNABLE'], $Λ[$Λ.length - 1].l);
-STATE_NOT_HELD = ~STATE_HELD;
-$Γ['global']['STATE_NOT_HELD'] = sec_lvl('STATE_HELD', null, false, $Γ['global']);
-$Γ['global']['STATE_NOT_HELD'] instanceof Object ? $Γ['global']['STATE_NOT_HELD'].Σ = $lub($Γ['global']['STATE_NOT_HELD'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['STATE_NOT_HELD'] = $lub($Γ['global']['STATE_NOT_HELD'], $Λ[$Λ.length - 1].l);
-$tmp1 = TaskControlBlock.prototype;
-$Γ['global']['$tmp1'] = sec_lvl('TaskControlBlock', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp1'] instanceof Object ? $Γ['global']['$tmp1'].Σ = $lub($Γ['global']['$tmp1'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1'] = $lub($Γ['global']['$tmp1'], $Λ[$Λ.length - 1].l);
-$tmp1.setRunning = function () {
-    this.state = STATE_RUNNING;
-    $Γ['global']['$tmp1']['setRunning']['$this']['state'] = sec_lvl('STATE_RUNNING', null, false, $Γ['global']['$tmp1']['setRunning']);
-    $Γ['global']['$tmp1']['setRunning']['$this']['state'] instanceof Object ? $Γ['global']['$tmp1']['setRunning']['$this']['state'].Σ = $lub($Γ['global']['$tmp1']['setRunning']['$this']['state'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['setRunning']['$this']['state'] = $lub($Γ['global']['$tmp1']['setRunning']['$this']['state'], $Λ[$Λ.length - 1].l);
-    return;
-};
-$Γ['global']['$tmp1']['setRunning'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global']
-};
-$tmp1 = TaskControlBlock.prototype;
-$Γ['global']['$tmp1'] = sec_lvl('TaskControlBlock', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp1'] instanceof Object ? $Γ['global']['$tmp1'].Σ = $lub($Γ['global']['$tmp1'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1'] = $lub($Γ['global']['$tmp1'], $Λ[$Λ.length - 1].l);
-$tmp1.markAsNotHeld = function () {
-    var $tmp66;
-    $Γ['global']['$tmp1']['markAsNotHeld']['$tmp66'] = 0;
-    $tmp66 = this.state;
-    $Γ['global']['$tmp1']['markAsNotHeld']['$tmp66'] = sec_lvl('$tmp1', 'state', false, $Γ['global']['$tmp1']['markAsNotHeld']);
-    $Γ['global']['$tmp1']['markAsNotHeld']['$tmp66'] instanceof Object ? $Γ['global']['$tmp1']['markAsNotHeld']['$tmp66'].Σ = $lub($Γ['global']['$tmp1']['markAsNotHeld']['$tmp66'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['markAsNotHeld']['$tmp66'] = $lub($Γ['global']['$tmp1']['markAsNotHeld']['$tmp66'], $Λ[$Λ.length - 1].l);
-    this.state = $tmp66 & STATE_NOT_HELD;
-    $Γ['global']['$tmp1']['markAsNotHeld']['$this']['state'] = $lub(sec_lvl('$tmp66', null, true, $Γ['global']['$tmp1']['markAsNotHeld']), sec_lvl('STATE_NOT_HELD', null, true, $Γ['global']['$tmp1']['markAsNotHeld']));
-    $Γ['global']['$tmp1']['markAsNotHeld']['$this']['state'] instanceof Object ? $Γ['global']['$tmp1']['markAsNotHeld']['$this']['state'].Σ = $lub($Γ['global']['$tmp1']['markAsNotHeld']['$this']['state'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['markAsNotHeld']['$this']['state'] = $lub($Γ['global']['$tmp1']['markAsNotHeld']['$this']['state'], $Λ[$Λ.length - 1].l);
-    return;
-};
-$Γ['global']['$tmp1']['markAsNotHeld'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global']
-};
-$tmp1 = TaskControlBlock.prototype;
-$Γ['global']['$tmp1'] = sec_lvl('TaskControlBlock', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp1'] instanceof Object ? $Γ['global']['$tmp1'].Σ = $lub($Γ['global']['$tmp1'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1'] = $lub($Γ['global']['$tmp1'], $Λ[$Λ.length - 1].l);
-$tmp1.markAsHeld = function () {
-    var $tmp67;
-    $Γ['global']['$tmp1']['markAsHeld']['$tmp67'] = 0;
-    $tmp67 = this.state;
-    $Γ['global']['$tmp1']['markAsHeld']['$tmp67'] = sec_lvl('$tmp1', 'state', false, $Γ['global']['$tmp1']['markAsHeld']);
-    $Γ['global']['$tmp1']['markAsHeld']['$tmp67'] instanceof Object ? $Γ['global']['$tmp1']['markAsHeld']['$tmp67'].Σ = $lub($Γ['global']['$tmp1']['markAsHeld']['$tmp67'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['markAsHeld']['$tmp67'] = $lub($Γ['global']['$tmp1']['markAsHeld']['$tmp67'], $Λ[$Λ.length - 1].l);
-    this.state = $tmp67 | STATE_HELD;
-    $Γ['global']['$tmp1']['markAsHeld']['$this']['state'] = $lub(sec_lvl('$tmp67', null, true, $Γ['global']['$tmp1']['markAsHeld']), sec_lvl('STATE_HELD', null, true, $Γ['global']['$tmp1']['markAsHeld']));
-    $Γ['global']['$tmp1']['markAsHeld']['$this']['state'] instanceof Object ? $Γ['global']['$tmp1']['markAsHeld']['$this']['state'].Σ = $lub($Γ['global']['$tmp1']['markAsHeld']['$this']['state'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['markAsHeld']['$this']['state'] = $lub($Γ['global']['$tmp1']['markAsHeld']['$this']['state'], $Λ[$Λ.length - 1].l);
-    return;
-};
-$Γ['global']['$tmp1']['markAsHeld'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global']
-};
-$tmp1 = TaskControlBlock.prototype;
-$Γ['global']['$tmp1'] = sec_lvl('TaskControlBlock', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp1'] instanceof Object ? $Γ['global']['$tmp1'].Σ = $lub($Γ['global']['$tmp1'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1'] = $lub($Γ['global']['$tmp1'], $Λ[$Λ.length - 1].l);
-$tmp1.isHeldOrSuspended = function () {
-    var $tmp68, $tmp69, $tmp70, $tmp71, $tmp72, $tmp73;
-    $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp73'] = $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp72'] = $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp71'] = $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp70'] = $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp69'] = $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp68'] = 0;
-    $tmp71 = this.state;
-    $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp71'] = sec_lvl('$tmp1', 'state', false, $Γ['global']['$tmp1']['isHeldOrSuspended']);
-    $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp71'] instanceof Object ? $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp71'].Σ = $lub($Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp71'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp71'] = $lub($Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp71'], $Λ[$Λ.length - 1].l);
-    $tmp70 = $tmp71 & STATE_HELD;
-    $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp70'] = $lub(sec_lvl('$tmp71', null, true, $Γ['global']['$tmp1']['isHeldOrSuspended']), sec_lvl('STATE_HELD', null, true, $Γ['global']['$tmp1']['isHeldOrSuspended']));
-    $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp70'] instanceof Object ? $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp70'].Σ = $lub($Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp70'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp70'] = $lub($Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp70'], $Λ[$Λ.length - 1].l);
-    $tmp69 = $tmp70 != 0;
-    $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp69'] = $lub(sec_lvl('$tmp70', null, true, $Γ['global']['$tmp1']['isHeldOrSuspended']), $Λ[$Λ.length - 1].l);
-    $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp69'] instanceof Object ? $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp69'].Σ = $lub($Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp69'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp69'] = $lub($Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp69'], $Λ[$Λ.length - 1].l);
-    $tmp73 = this.state;
-    $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp73'] = sec_lvl('$tmp1', 'state', false, $Γ['global']['$tmp1']['isHeldOrSuspended']);
-    $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp73'] instanceof Object ? $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp73'].Σ = $lub($Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp73'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp73'] = $lub($Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp73'], $Λ[$Λ.length - 1].l);
-    $tmp72 = $tmp73 == STATE_SUSPENDED;
-    $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp72'] = $lub(sec_lvl('$tmp73', null, true, $Γ['global']['$tmp1']['isHeldOrSuspended']), sec_lvl('STATE_SUSPENDED', null, true, $Γ['global']['$tmp1']['isHeldOrSuspended']));
-    $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp72'] instanceof Object ? $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp72'].Σ = $lub($Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp72'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp72'] = $lub($Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp72'], $Λ[$Λ.length - 1].l);
-    $tmp68 = $tmp69 || $tmp72;
-    $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp68'] = $lub(sec_lvl('$tmp69', null, true, $Γ['global']['$tmp1']['isHeldOrSuspended']), sec_lvl('$tmp72', null, true, $Γ['global']['$tmp1']['isHeldOrSuspended']));
-    $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp68'] instanceof Object ? $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp68'].Σ = $lub($Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp68'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp68'] = $lub($Γ['global']['$tmp1']['isHeldOrSuspended']['$tmp68'], $Λ[$Λ.length - 1].l);
-    return $tmp68;
-};
-$Γ['global']['$tmp1']['isHeldOrSuspended'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global']
-};
-$tmp1 = TaskControlBlock.prototype;
-$Γ['global']['$tmp1'] = sec_lvl('TaskControlBlock', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp1'] instanceof Object ? $Γ['global']['$tmp1'].Σ = $lub($Γ['global']['$tmp1'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1'] = $lub($Γ['global']['$tmp1'], $Λ[$Λ.length - 1].l);
-$tmp1.markAsSuspended = function () {
-    var $tmp74;
-    $Γ['global']['$tmp1']['markAsSuspended']['$tmp74'] = 0;
-    $tmp74 = this.state;
-    $Γ['global']['$tmp1']['markAsSuspended']['$tmp74'] = sec_lvl('$tmp1', 'state', false, $Γ['global']['$tmp1']['markAsSuspended']);
-    $Γ['global']['$tmp1']['markAsSuspended']['$tmp74'] instanceof Object ? $Γ['global']['$tmp1']['markAsSuspended']['$tmp74'].Σ = $lub($Γ['global']['$tmp1']['markAsSuspended']['$tmp74'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['markAsSuspended']['$tmp74'] = $lub($Γ['global']['$tmp1']['markAsSuspended']['$tmp74'], $Λ[$Λ.length - 1].l);
-    this.state = $tmp74 | STATE_SUSPENDED;
-    $Γ['global']['$tmp1']['markAsSuspended']['$this']['state'] = $lub(sec_lvl('$tmp74', null, true, $Γ['global']['$tmp1']['markAsSuspended']), sec_lvl('STATE_SUSPENDED', null, true, $Γ['global']['$tmp1']['markAsSuspended']));
-    $Γ['global']['$tmp1']['markAsSuspended']['$this']['state'] instanceof Object ? $Γ['global']['$tmp1']['markAsSuspended']['$this']['state'].Σ = $lub($Γ['global']['$tmp1']['markAsSuspended']['$this']['state'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['markAsSuspended']['$this']['state'] = $lub($Γ['global']['$tmp1']['markAsSuspended']['$this']['state'], $Λ[$Λ.length - 1].l);
-    return;
-};
-$Γ['global']['$tmp1']['markAsSuspended'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global']
-};
-$tmp1 = TaskControlBlock.prototype;
-$Γ['global']['$tmp1'] = sec_lvl('TaskControlBlock', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp1'] instanceof Object ? $Γ['global']['$tmp1'].Σ = $lub($Γ['global']['$tmp1'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1'] = $lub($Γ['global']['$tmp1'], $Λ[$Λ.length - 1].l);
-$tmp1.markAsRunnable = function () {
-    var $tmp75;
-    $Γ['global']['$tmp1']['markAsRunnable']['$tmp75'] = 0;
-    $tmp75 = this.state;
-    $Γ['global']['$tmp1']['markAsRunnable']['$tmp75'] = sec_lvl('$tmp1', 'state', false, $Γ['global']['$tmp1']['markAsRunnable']);
-    $Γ['global']['$tmp1']['markAsRunnable']['$tmp75'] instanceof Object ? $Γ['global']['$tmp1']['markAsRunnable']['$tmp75'].Σ = $lub($Γ['global']['$tmp1']['markAsRunnable']['$tmp75'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['markAsRunnable']['$tmp75'] = $lub($Γ['global']['$tmp1']['markAsRunnable']['$tmp75'], $Λ[$Λ.length - 1].l);
-    this.state = $tmp75 | STATE_RUNNABLE;
-    $Γ['global']['$tmp1']['markAsRunnable']['$this']['state'] = $lub(sec_lvl('$tmp75', null, true, $Γ['global']['$tmp1']['markAsRunnable']), sec_lvl('STATE_RUNNABLE', null, true, $Γ['global']['$tmp1']['markAsRunnable']));
-    $Γ['global']['$tmp1']['markAsRunnable']['$this']['state'] instanceof Object ? $Γ['global']['$tmp1']['markAsRunnable']['$this']['state'].Σ = $lub($Γ['global']['$tmp1']['markAsRunnable']['$this']['state'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['markAsRunnable']['$this']['state'] = $lub($Γ['global']['$tmp1']['markAsRunnable']['$this']['state'], $Λ[$Λ.length - 1].l);
-    return;
-};
-$Γ['global']['$tmp1']['markAsRunnable'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global']
-};
-$tmp1 = TaskControlBlock.prototype;
-$Γ['global']['$tmp1'] = sec_lvl('TaskControlBlock', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp1'] instanceof Object ? $Γ['global']['$tmp1'].Σ = $lub($Γ['global']['$tmp1'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1'] = $lub($Γ['global']['$tmp1'], $Λ[$Λ.length - 1].l);
-$tmp1.run = function () {
-    var packet, $tmp76, $tmp77, $tmp78, $tmp79;
-    $Γ['global']['$tmp1']['run']['$tmp79'] = $Γ['global']['$tmp1']['run']['$tmp78'] = $Γ['global']['$tmp1']['run']['$tmp77'] = $Γ['global']['$tmp1']['run']['$tmp76'] = $Γ['global']['$tmp1']['run']['packet'] = 0;
-    $tmp77 = this.state;
-    $Γ['global']['$tmp1']['run']['$tmp77'] = sec_lvl('$tmp1', 'state', false, $Γ['global']['$tmp1']['run']);
-    $Γ['global']['$tmp1']['run']['$tmp77'] instanceof Object ? $Γ['global']['$tmp1']['run']['$tmp77'].Σ = $lub($Γ['global']['$tmp1']['run']['$tmp77'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['run']['$tmp77'] = $lub($Γ['global']['$tmp1']['run']['$tmp77'], $Λ[$Λ.length - 1].l);
-    $tmp76 = $tmp77 == STATE_SUSPENDED_RUNNABLE;
-    $Γ['global']['$tmp1']['run']['$tmp76'] = $lub(sec_lvl('$tmp77', null, true, $Γ['global']['$tmp1']['run']), sec_lvl('STATE_SUSPENDED_RUNNABLE', null, true, $Γ['global']['$tmp1']['run']));
-    $Γ['global']['$tmp1']['run']['$tmp76'] instanceof Object ? $Γ['global']['$tmp1']['run']['$tmp76'].Σ = $lub($Γ['global']['$tmp1']['run']['$tmp76'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['run']['$tmp76'] = $lub($Γ['global']['$tmp1']['run']['$tmp76'], $Λ[$Λ.length - 1].l);
-    $Λ.push({
-        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp76', null, true, $Γ['global']['$tmp1']['run'])),
-        id: 'IF'
-    });
-    if ($tmp76) {
-        packet = this.queue;
-        $scope($Γ['global']['$tmp1']['run'], 'packet', true)['packet'] = sec_lvl('$tmp1', 'queue', false, $Γ['global']['$tmp1']['run']);
-        $scope($Γ['global']['$tmp1']['run'], 'packet', true)['packet'] instanceof Object ? $scope($Γ['global']['$tmp1']['run'], 'packet', true)['packet'].Σ = $lub($scope($Γ['global']['$tmp1']['run'], 'packet', true)['packet'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['run'], 'packet', true)['packet'] = $lub($scope($Γ['global']['$tmp1']['run'], 'packet', true)['packet'], $Λ[$Λ.length - 1].l);
-        this.queue = packet.link;
-        $Γ['global']['$tmp1']['run']['$this']['queue'] = sec_lvl('packet', 'link', false, $Γ['global']['$tmp1']['run']);
-        $Γ['global']['$tmp1']['run']['$this']['queue'] instanceof Object ? $Γ['global']['$tmp1']['run']['$this']['queue'].Σ = $lub($Γ['global']['$tmp1']['run']['$this']['queue'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['run']['$this']['queue'] = $lub($Γ['global']['$tmp1']['run']['$this']['queue'], $Λ[$Λ.length - 1].l);
-        var $tmp80, $tmp81;
-        $Γ['global']['$tmp1']['run']['$tmp81'] = $Γ['global']['$tmp1']['run']['$tmp80'] = 0;
-        $tmp81 = this.queue;
-        $Γ['global']['$tmp1']['run']['$tmp81'] = sec_lvl('$tmp1', 'queue', false, $Γ['global']['$tmp1']['run']);
-        $Γ['global']['$tmp1']['run']['$tmp81'] instanceof Object ? $Γ['global']['$tmp1']['run']['$tmp81'].Σ = $lub($Γ['global']['$tmp1']['run']['$tmp81'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['run']['$tmp81'] = $lub($Γ['global']['$tmp1']['run']['$tmp81'], $Λ[$Λ.length - 1].l);
-        $tmp80 = $tmp81 == null;
-        $Γ['global']['$tmp1']['run']['$tmp80'] = $lub(sec_lvl('$tmp81', null, true, $Γ['global']['$tmp1']['run']), $Λ[$Λ.length - 1].l);
-        $Γ['global']['$tmp1']['run']['$tmp80'] instanceof Object ? $Γ['global']['$tmp1']['run']['$tmp80'].Σ = $lub($Γ['global']['$tmp1']['run']['$tmp80'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['run']['$tmp80'] = $lub($Γ['global']['$tmp1']['run']['$tmp80'], $Λ[$Λ.length - 1].l);
-        $Λ.push({
-            l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp80', null, true, $Γ['global']['$tmp1']['run'])),
-            id: 'IF'
-        });
-        if ($tmp80) {
-            this.state = STATE_RUNNING;
-            $Γ['global']['$tmp1']['run']['$this']['state'] = sec_lvl('STATE_RUNNING', null, false, $Γ['global']['$tmp1']['run']);
-            $Γ['global']['$tmp1']['run']['$this']['state'] instanceof Object ? $Γ['global']['$tmp1']['run']['$this']['state'].Σ = $lub($Γ['global']['$tmp1']['run']['$this']['state'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['run']['$this']['state'] = $lub($Γ['global']['$tmp1']['run']['$this']['state'], $Λ[$Λ.length - 1].l);
-        } else {
-            this.state = STATE_RUNNABLE;
-            $Γ['global']['$tmp1']['run']['$this']['state'] = sec_lvl('STATE_RUNNABLE', null, false, $Γ['global']['$tmp1']['run']);
-            $Γ['global']['$tmp1']['run']['$this']['state'] instanceof Object ? $Γ['global']['$tmp1']['run']['$this']['state'].Σ = $lub($Γ['global']['$tmp1']['run']['$this']['state'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['run']['$this']['state'] = $lub($Γ['global']['$tmp1']['run']['$this']['state'], $Λ[$Λ.length - 1].l);
-        }
-        $Λ.pop();
-    } else {
-        packet = null;
-        $scope($Γ['global']['$tmp1']['run'], 'packet', true)['packet'] = $Λ[$Λ.length - 1].l;
-    }
-    $Λ.pop();
-    $tmp79 = this.task;
-    $Γ['global']['$tmp1']['run']['$tmp79'] = sec_lvl('$tmp1', 'task', false, $Γ['global']['$tmp1']['run']);
-    $Γ['global']['$tmp1']['run']['$tmp79'] instanceof Object ? $Γ['global']['$tmp1']['run']['$tmp79'].Σ = $lub($Γ['global']['$tmp1']['run']['$tmp79'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['run']['$tmp79'] = $lub($Γ['global']['$tmp1']['run']['$tmp79'], $Λ[$Λ.length - 1].l);
-    $tmp78 = $tmp79.run(packet);
-    return $tmp78;
-};
-$Γ['global']['$tmp1']['run'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global']
-};
-$tmp1 = TaskControlBlock.prototype;
-$Γ['global']['$tmp1'] = sec_lvl('TaskControlBlock', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp1'] instanceof Object ? $Γ['global']['$tmp1'].Σ = $lub($Γ['global']['$tmp1'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1'] = $lub($Γ['global']['$tmp1'], $Λ[$Λ.length - 1].l);
-$tmp1.checkPriorityAdd = function (task, packet) {
-    var $tmp82, $tmp83;
-    $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp83'] = $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp82'] = 0;
-    $tmp83 = this.queue;
-    $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp83'] = sec_lvl('$tmp1', 'queue', false, $Γ['global']['$tmp1']['checkPriorityAdd']);
-    $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp83'] instanceof Object ? $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp83'].Σ = $lub($Γ['global']['$tmp1']['checkPriorityAdd']['$tmp83'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp83'] = $lub($Γ['global']['$tmp1']['checkPriorityAdd']['$tmp83'], $Λ[$Λ.length - 1].l);
-    $tmp82 = $tmp83 == null;
-    $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp82'] = $lub(sec_lvl('$tmp83', null, true, $Γ['global']['$tmp1']['checkPriorityAdd']), $Λ[$Λ.length - 1].l);
-    $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp82'] instanceof Object ? $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp82'].Σ = $lub($Γ['global']['$tmp1']['checkPriorityAdd']['$tmp82'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp82'] = $lub($Γ['global']['$tmp1']['checkPriorityAdd']['$tmp82'], $Λ[$Λ.length - 1].l);
-    $Λ.push({
-        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp82', null, true, $Γ['global']['$tmp1']['checkPriorityAdd'])),
-        id: 'IF'
-    });
-    if ($tmp82) {
-        $upgrade([
-            'packet.addTo',
-            'this'
-        ], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp1']['checkPriorityAdd']);
-        this.queue = packet;
-        $Γ['global']['$tmp1']['checkPriorityAdd']['$this']['queue'] = sec_lvl('packet', null, false, $Γ['global']['$tmp1']['checkPriorityAdd']);
-        $Γ['global']['$tmp1']['checkPriorityAdd']['$this']['queue'] instanceof Object ? $Γ['global']['$tmp1']['checkPriorityAdd']['$this']['queue'].Σ = $lub($Γ['global']['$tmp1']['checkPriorityAdd']['$this']['queue'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['checkPriorityAdd']['$this']['queue'] = $lub($Γ['global']['$tmp1']['checkPriorityAdd']['$this']['queue'], $Λ[$Λ.length - 1].l);
-        var $tmp84, $tmp85, $tmp86, $tmp87;
-        $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp87'] = $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp86'] = $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp85'] = $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp84'] = 0;
-        $rf = $prop('$tmp1', 'markAsRunnable', $Γ['global']['$tmp1']['checkPriorityAdd']);
-        $rf.scope = $Γ['global']['$tmp1']['checkPriorityAdd'];
-        $rf.$this = $Γ['global']['$tmp1']['checkPriorityAdd']['$this'];
+            '$tmp19',
+            '$tmp18'
+        ], $Λ[$Λ.length - 1].l, $Γ['global']['GeneratePayloadTree']);
+        var $tmp22, $tmp23, $tmp24, $tmp25, $tmp26;
+        $Γ['global']['GeneratePayloadTree']['$tmp26'] = $Γ['global']['GeneratePayloadTree']['$tmp25'] = $Γ['global']['GeneratePayloadTree']['$tmp24'] = $Γ['global']['GeneratePayloadTree']['$tmp23'] = $Γ['global']['GeneratePayloadTree']['$tmp22'] = 0;
+        $tmp24 = depth - 1;
+        $Γ['global']['GeneratePayloadTree']['$tmp24'] = $lub(sec_lvl('depth', null, true, $Γ['global']['GeneratePayloadTree']), $Λ[$Λ.length - 1].l);
+        $Γ['global']['GeneratePayloadTree']['$tmp24'] instanceof Object ? $Γ['global']['GeneratePayloadTree']['$tmp24'].Σ = $lub($Γ['global']['GeneratePayloadTree']['$tmp24'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['GeneratePayloadTree']['$tmp24'] = $lub($Γ['global']['GeneratePayloadTree']['$tmp24'], $Λ[$Λ.length - 1].l);
+        $rf = $scope($Γ['global'], 'GeneratePayloadTree', false)['GeneratePayloadTree'];
+        $rf.scope = $Γ['global']['GeneratePayloadTree'];
+        $rf.$this = $Γ['global'];
+        $rf['depth'] = $lub(sec_lvl('$tmp24', null, true, $Γ['global']['GeneratePayloadTree']), $Λ[$Λ.length - 1].l);
+        $rf['tag'] = $lub(sec_lvl('tag', null, true, $Γ['global']['GeneratePayloadTree']), $Λ[$Λ.length - 1].l);
         $Λ.push({
             l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
             id: 'FUNC'
         });
-        $tmp84 = this.markAsRunnable();
-        $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp84'] = $Λ.pop().l;
-        $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp84'] instanceof Object ? $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp84'].Σ = $lub($Γ['global']['$tmp1']['checkPriorityAdd']['$tmp84'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp84'] = $lub($Γ['global']['$tmp1']['checkPriorityAdd']['$tmp84'], $Λ[$Λ.length - 1].l);
-        $tmp86 = this.priority;
-        $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp86'] = sec_lvl('$tmp1', 'priority', false, $Γ['global']['$tmp1']['checkPriorityAdd']);
-        $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp86'] instanceof Object ? $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp86'].Σ = $lub($Γ['global']['$tmp1']['checkPriorityAdd']['$tmp86'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp86'] = $lub($Γ['global']['$tmp1']['checkPriorityAdd']['$tmp86'], $Λ[$Λ.length - 1].l);
-        $tmp87 = task.priority;
-        $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp87'] = sec_lvl('task', 'priority', false, $Γ['global']['$tmp1']['checkPriorityAdd']);
-        $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp87'] instanceof Object ? $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp87'].Σ = $lub($Γ['global']['$tmp1']['checkPriorityAdd']['$tmp87'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp87'] = $lub($Γ['global']['$tmp1']['checkPriorityAdd']['$tmp87'], $Λ[$Λ.length - 1].l);
-        $tmp85 = $tmp86 > $tmp87;
-        $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp85'] = $lub(sec_lvl('$tmp86', null, true, $Γ['global']['$tmp1']['checkPriorityAdd']), sec_lvl('$tmp87', null, true, $Γ['global']['$tmp1']['checkPriorityAdd']));
-        $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp85'] instanceof Object ? $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp85'].Σ = $lub($Γ['global']['$tmp1']['checkPriorityAdd']['$tmp85'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp85'] = $lub($Γ['global']['$tmp1']['checkPriorityAdd']['$tmp85'], $Λ[$Λ.length - 1].l);
+        $tmp23 = GeneratePayloadTree($tmp24, tag);
+        $Γ['global']['GeneratePayloadTree']['$tmp23'] = $Λ.pop().l;
+        $Γ['global']['GeneratePayloadTree']['$tmp23'] instanceof Object ? $Γ['global']['GeneratePayloadTree']['$tmp23'].Σ = $lub($Γ['global']['GeneratePayloadTree']['$tmp23'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['GeneratePayloadTree']['$tmp23'] = $lub($Γ['global']['GeneratePayloadTree']['$tmp23'], $Λ[$Λ.length - 1].l);
+        $tmp26 = depth - 1;
+        $Γ['global']['GeneratePayloadTree']['$tmp26'] = $lub(sec_lvl('depth', null, true, $Γ['global']['GeneratePayloadTree']), $Λ[$Λ.length - 1].l);
+        $Γ['global']['GeneratePayloadTree']['$tmp26'] instanceof Object ? $Γ['global']['GeneratePayloadTree']['$tmp26'].Σ = $lub($Γ['global']['GeneratePayloadTree']['$tmp26'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['GeneratePayloadTree']['$tmp26'] = $lub($Γ['global']['GeneratePayloadTree']['$tmp26'], $Λ[$Λ.length - 1].l);
+        $rf = $scope($Γ['global'], 'GeneratePayloadTree', false)['GeneratePayloadTree'];
+        $rf.scope = $Γ['global']['GeneratePayloadTree'];
+        $rf.$this = $Γ['global'];
+        $rf['depth'] = $lub(sec_lvl('$tmp26', null, true, $Γ['global']['GeneratePayloadTree']), $Λ[$Λ.length - 1].l);
+        $rf['tag'] = $lub(sec_lvl('tag', null, true, $Γ['global']['GeneratePayloadTree']), $Λ[$Λ.length - 1].l);
         $Λ.push({
-            l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp85', null, true, $Γ['global']['$tmp1']['checkPriorityAdd'])),
-            id: 'IF'
+            l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+            id: 'FUNC'
         });
-        if ($tmp85) {
-            var $tmp149;
-            $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp149'] = 0;
-            $tmp149 = this;
-            $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp149'] = $Γ['global']['$tmp1']['checkPriorityAdd'].$this;
-            $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp149'] instanceof Object ? $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp149'].Σ = $lub($Γ['global']['$tmp1']['checkPriorityAdd']['$tmp149'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp149'] = $lub($Γ['global']['$tmp1']['checkPriorityAdd']['$tmp149'], $Λ[$Λ.length - 1].l);
-            return $tmp149;
-            var $shouldComp = { 'lbl': 'FUNC' };
-        } else {
+        $tmp25 = GeneratePayloadTree($tmp26, tag);
+        $Γ['global']['GeneratePayloadTree']['$tmp25'] = $Λ.pop().l;
+        $Γ['global']['GeneratePayloadTree']['$tmp25'] instanceof Object ? $Γ['global']['GeneratePayloadTree']['$tmp25'].Σ = $lub($Γ['global']['GeneratePayloadTree']['$tmp25'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['GeneratePayloadTree']['$tmp25'] = $lub($Γ['global']['GeneratePayloadTree']['$tmp25'], $Λ[$Λ.length - 1].l);
+        $tmp22 = {
+            left: $tmp23,
+            right: $tmp25
+        };
+        $Γ['global']['GeneratePayloadTree']['$tmp22'] = {
+            __proto__: {},
+            left: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp23', null, true, $Γ['global']['GeneratePayloadTree'])),
+            right: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp25', null, true, $Γ['global']['GeneratePayloadTree'])),
+            Σ: $lub(sec_lvl('$tmp23', null, true, $Γ['global']['GeneratePayloadTree']), sec_lvl('$tmp25', null, true, $Γ['global']['GeneratePayloadTree']), $Λ[$Λ.length - 1].l)
+        };
+        return $tmp22;
+        var $shouldComp = { 'lbl': 'FUNC' };
+    }
+    if ($shouldComp)
+        $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
+    $Λ.pop();
+    return;
+}
+function GenerateKey() {
+    var $tmp27;
+    $Γ['global']['GenerateKey']['$tmp27'] = 0;
+    $tmp27 = Math.random();
+    return $tmp27;
+}
+splaySamples = 0;
+$Γ['global']['splaySamples'] = $Λ[$Λ.length - 1].l;
+splaySumOfSquaredPauses = 0;
+$Γ['global']['splaySumOfSquaredPauses'] = $Λ[$Λ.length - 1].l;
+function SplayRMS() {
+    var $tmp28, $tmp29, $tmp30, $tmp31;
+    $Γ['global']['SplayRMS']['$tmp31'] = $Γ['global']['SplayRMS']['$tmp30'] = $Γ['global']['SplayRMS']['$tmp29'] = $Γ['global']['SplayRMS']['$tmp28'] = 0;
+    $tmp31 = splaySumOfSquaredPauses / splaySamples;
+    $Γ['global']['SplayRMS']['$tmp31'] = $lub(sec_lvl('splaySumOfSquaredPauses', null, true, $Γ['global']['SplayRMS']), sec_lvl('splaySamples', null, true, $Γ['global']['SplayRMS']));
+    $Γ['global']['SplayRMS']['$tmp31'] instanceof Object ? $Γ['global']['SplayRMS']['$tmp31'].Σ = $lub($Γ['global']['SplayRMS']['$tmp31'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplayRMS']['$tmp31'] = $lub($Γ['global']['SplayRMS']['$tmp31'], $Λ[$Λ.length - 1].l);
+    $tmp30 = Math.sqrt($tmp31);
+    $tmp29 = $tmp30 * 10000;
+    $Γ['global']['SplayRMS']['$tmp29'] = $lub(sec_lvl('$tmp30', null, true, $Γ['global']['SplayRMS']), $Λ[$Λ.length - 1].l);
+    $Γ['global']['SplayRMS']['$tmp29'] instanceof Object ? $Γ['global']['SplayRMS']['$tmp29'].Σ = $lub($Γ['global']['SplayRMS']['$tmp29'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplayRMS']['$tmp29'] = $lub($Γ['global']['SplayRMS']['$tmp29'], $Λ[$Λ.length - 1].l);
+    $tmp28 = Math.round($tmp29);
+    return $tmp28;
+}
+function SplayUpdateStats(time) {
+    var pause, $tmp32;
+    $Γ['global']['SplayUpdateStats']['$tmp32'] = $Γ['global']['SplayUpdateStats']['pause'] = 0;
+    pause = time - splaySampleTimeStart;
+    $scope($Γ['global']['SplayUpdateStats'], 'pause', true)['pause'] = $lub(sec_lvl('time', null, true, $Γ['global']['SplayUpdateStats']), sec_lvl('splaySampleTimeStart', null, true, $Γ['global']['SplayUpdateStats']));
+    $scope($Γ['global']['SplayUpdateStats'], 'pause', true)['pause'] instanceof Object ? $scope($Γ['global']['SplayUpdateStats'], 'pause', true)['pause'].Σ = $lub($scope($Γ['global']['SplayUpdateStats'], 'pause', true)['pause'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['SplayUpdateStats'], 'pause', true)['pause'] = $lub($scope($Γ['global']['SplayUpdateStats'], 'pause', true)['pause'], $Λ[$Λ.length - 1].l);
+    splaySampleTimeStart = time;
+    $scope($Γ['global']['SplayUpdateStats'], 'splaySampleTimeStart', true)['splaySampleTimeStart'] = sec_lvl('time', null, false, $Γ['global']['SplayUpdateStats']);
+    $scope($Γ['global']['SplayUpdateStats'], 'splaySampleTimeStart', true)['splaySampleTimeStart'] instanceof Object ? $scope($Γ['global']['SplayUpdateStats'], 'splaySampleTimeStart', true)['splaySampleTimeStart'].Σ = $lub($scope($Γ['global']['SplayUpdateStats'], 'splaySampleTimeStart', true)['splaySampleTimeStart'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['SplayUpdateStats'], 'splaySampleTimeStart', true)['splaySampleTimeStart'] = $lub($scope($Γ['global']['SplayUpdateStats'], 'splaySampleTimeStart', true)['splaySampleTimeStart'], $Λ[$Λ.length - 1].l);
+    $tmp32 = splaySamples++;
+    $Γ['global']['SplayUpdateStats']['$tmp32'] = sec_lvl('splaySamples', null, false, $Γ['global']['SplayUpdateStats']);
+    $Γ['global']['SplayUpdateStats']['$tmp32'] instanceof Object ? $Γ['global']['SplayUpdateStats']['$tmp32'].Σ = $lub($Γ['global']['SplayUpdateStats']['$tmp32'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplayUpdateStats']['$tmp32'] = $lub($Γ['global']['SplayUpdateStats']['$tmp32'], $Λ[$Λ.length - 1].l);
+    splaySumOfSquaredPauses += pause * pause;
+    $scope($Γ['global']['SplayUpdateStats'], 'splaySumOfSquaredPauses', true)['splaySumOfSquaredPauses'] = $lub(sec_lvl('pause', null, true, $Γ['global']['SplayUpdateStats']), sec_lvl('pause', null, true, $Γ['global']['SplayUpdateStats']));
+    $scope($Γ['global']['SplayUpdateStats'], 'splaySumOfSquaredPauses', true)['splaySumOfSquaredPauses'] instanceof Object ? $scope($Γ['global']['SplayUpdateStats'], 'splaySumOfSquaredPauses', true)['splaySumOfSquaredPauses'].Σ = $lub($scope($Γ['global']['SplayUpdateStats'], 'splaySumOfSquaredPauses', true)['splaySumOfSquaredPauses'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['SplayUpdateStats'], 'splaySumOfSquaredPauses', true)['splaySumOfSquaredPauses'] = $lub($scope($Γ['global']['SplayUpdateStats'], 'splaySumOfSquaredPauses', true)['splaySumOfSquaredPauses'], $Λ[$Λ.length - 1].l);
+    return;
+}
+function InsertNewNode() {
+    var key, $tmp33, payload, $tmp34, $tmp35;
+    $Γ['global']['InsertNewNode']['$tmp35'] = $Γ['global']['InsertNewNode']['$tmp34'] = $Γ['global']['InsertNewNode']['payload'] = $Γ['global']['InsertNewNode']['$tmp33'] = $Γ['global']['InsertNewNode']['key'] = 0;
+    $Λ.push({
+        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp33', null, true, $Γ['global']['InsertNewNode'])),
+        id: 'LOOP'
+    });
+    do {
+        $rf = $scope($Γ['global']['InsertNewNode'], 'GenerateKey', false)['GenerateKey'];
+        $rf.scope = $Γ['global']['InsertNewNode'];
+        $rf.$this = $Γ['global'];
+        $Λ.push({
+            l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+            id: 'FUNC'
+        });
+        key = GenerateKey();
+        $scope($Γ['global']['InsertNewNode'], 'key', true)['key'] = $Λ.pop().l;
+        $scope($Γ['global']['InsertNewNode'], 'key', true)['key'] instanceof Object ? $scope($Γ['global']['InsertNewNode'], 'key', true)['key'].Σ = $lub($scope($Γ['global']['InsertNewNode'], 'key', true)['key'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['InsertNewNode'], 'key', true)['key'] = $lub($scope($Γ['global']['InsertNewNode'], 'key', true)['key'], $Λ[$Λ.length - 1].l);
+        var $tmp33, $tmp36;
+        $Γ['global']['InsertNewNode']['$tmp36'] = $Γ['global']['InsertNewNode']['$tmp33'] = 0;
+        $rf = $prop('splayTree', 'find', $Γ['global']['InsertNewNode']);
+        $rf.scope = $Γ['global']['InsertNewNode'];
+        $rf.$this = $scope($Γ['global']['InsertNewNode'], 'splayTree', false)['splayTree'];
+        $rf['key'] = $lub(sec_lvl('key', null, true, $Γ['global']['InsertNewNode']), $Λ[$Λ.length - 1].l);
+        $Λ.push({
+            l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+            id: 'FUNC'
+        });
+        $tmp36 = splayTree.find(key);
+        $Γ['global']['InsertNewNode']['$tmp36'] = $Λ.pop().l;
+        $Γ['global']['InsertNewNode']['$tmp36'] instanceof Object ? $Γ['global']['InsertNewNode']['$tmp36'].Σ = $lub($Γ['global']['InsertNewNode']['$tmp36'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['InsertNewNode']['$tmp36'] = $lub($Γ['global']['InsertNewNode']['$tmp36'], $Λ[$Λ.length - 1].l);
+        $tmp33 = $tmp36 != null;
+        $Γ['global']['InsertNewNode']['$tmp33'] = $lub(sec_lvl('$tmp36', null, true, $Γ['global']['InsertNewNode']), $Λ[$Λ.length - 1].l);
+        $Γ['global']['InsertNewNode']['$tmp33'] instanceof Object ? $Γ['global']['InsertNewNode']['$tmp33'].Σ = $lub($Γ['global']['InsertNewNode']['$tmp33'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['InsertNewNode']['$tmp33'] = $lub($Γ['global']['InsertNewNode']['$tmp33'], $Λ[$Λ.length - 1].l);
+    } while ($tmp33);
+    $upgrade([
+        'key',
+        '$tmp36'
+    ], $Λ[$Λ.length - 1].l, $Γ['global']['InsertNewNode']);
+    $Λ.pop();
+    $tmp34 = String(key);
+    $rf = $scope($Γ['global']['InsertNewNode'], 'GeneratePayloadTree', false)['GeneratePayloadTree'];
+    $rf.scope = $Γ['global']['InsertNewNode'];
+    $rf.$this = $Γ['global'];
+    $rf['depth'] = $lub(sec_lvl('kSplayTreePayloadDepth', null, true, $Γ['global']['InsertNewNode']), $Λ[$Λ.length - 1].l);
+    $rf['tag'] = $lub(sec_lvl('$tmp34', null, true, $Γ['global']['InsertNewNode']), $Λ[$Λ.length - 1].l);
+    $Λ.push({
+        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+        id: 'FUNC'
+    });
+    payload = GeneratePayloadTree(kSplayTreePayloadDepth, $tmp34);
+    $scope($Γ['global']['InsertNewNode'], 'payload', true)['payload'] = $Λ.pop().l;
+    $scope($Γ['global']['InsertNewNode'], 'payload', true)['payload'] instanceof Object ? $scope($Γ['global']['InsertNewNode'], 'payload', true)['payload'].Σ = $lub($scope($Γ['global']['InsertNewNode'], 'payload', true)['payload'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['InsertNewNode'], 'payload', true)['payload'] = $lub($scope($Γ['global']['InsertNewNode'], 'payload', true)['payload'], $Λ[$Λ.length - 1].l);
+    $rf = $prop('splayTree', 'insert', $Γ['global']['InsertNewNode']);
+    $rf.scope = $Γ['global']['InsertNewNode'];
+    $rf.$this = $scope($Γ['global']['InsertNewNode'], 'splayTree', false)['splayTree'];
+    $rf['key'] = $lub(sec_lvl('key', null, true, $Γ['global']['InsertNewNode']), $Λ[$Λ.length - 1].l);
+    $rf['value'] = $lub(sec_lvl('payload', null, true, $Γ['global']['InsertNewNode']), $Λ[$Λ.length - 1].l);
+    $Λ.push({
+        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+        id: 'FUNC'
+    });
+    $tmp35 = splayTree.insert(key, payload);
+    $Γ['global']['InsertNewNode']['$tmp35'] = $Λ.pop().l;
+    $Γ['global']['InsertNewNode']['$tmp35'] instanceof Object ? $Γ['global']['InsertNewNode']['$tmp35'].Σ = $lub($Γ['global']['InsertNewNode']['$tmp35'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['InsertNewNode']['$tmp35'] = $lub($Γ['global']['InsertNewNode']['$tmp35'], $Λ[$Λ.length - 1].l);
+    return key;
+}
+function SplaySetup() {
+    var $tmp37, $tmp38, i, $tmp40;
+    $Γ['global']['SplaySetup']['$tmp40'] = $Γ['global']['SplaySetup']['i'] = $Γ['global']['SplaySetup']['$tmp38'] = $Γ['global']['SplaySetup']['$tmp37'] = 0;
+    $tmp38 = performance.now;
+    $Γ['global']['SplaySetup']['$tmp38'] = sec_lvl('performance', 'now', false, $Γ['global']['SplaySetup']);
+    $Γ['global']['SplaySetup']['$tmp38'] instanceof Object ? $Γ['global']['SplaySetup']['$tmp38'].Σ = $lub($Γ['global']['SplaySetup']['$tmp38'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplaySetup']['$tmp38'] = $lub($Γ['global']['SplaySetup']['$tmp38'], $Λ[$Λ.length - 1].l);
+    $tmp37 = !$tmp38;
+    $Γ['global']['SplaySetup']['$tmp37'] = sec_lvl('$tmp38', null, false, $Γ['global']['SplaySetup']);
+    $Γ['global']['SplaySetup']['$tmp37'] instanceof Object ? $Γ['global']['SplaySetup']['$tmp37'].Σ = $lub($Γ['global']['SplaySetup']['$tmp37'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplaySetup']['$tmp37'] = $lub($Γ['global']['SplaySetup']['$tmp37'], $Λ[$Λ.length - 1].l);
+    $Λ.push({
+        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp37', null, true, $Γ['global']['SplaySetup'])),
+        id: 'IF'
+    });
+    if ($tmp37) {
+        var $tmp41;
+        $Γ['global']['SplaySetup']['$tmp41'] = 0;
+        $tmp41 = 'PerformanceNowUnsupported';
+        $Γ['global']['SplaySetup']['$tmp41'] = $Λ[$Λ.length - 1].l;
+        $old_pc = $pc();
+        while ($pc().id !== 'FUNC' && $pc().id !== 'TRY') {
+            $Λ.pop();
         }
-        if ($shouldComp)
-            $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
-        $Λ.pop();
-    } else {
-        $upgrade(['$tmp84'], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp1']['checkPriorityAdd']);
-        var $tmp88;
-        $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp88'] = 0;
-        $tmp88 = this.queue;
-        $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp88'] = sec_lvl('$tmp1', 'queue', false, $Γ['global']['$tmp1']['checkPriorityAdd']);
-        $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp88'] instanceof Object ? $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp88'].Σ = $lub($Γ['global']['$tmp1']['checkPriorityAdd']['$tmp88'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['checkPriorityAdd']['$tmp88'] = $lub($Γ['global']['$tmp1']['checkPriorityAdd']['$tmp88'], $Λ[$Λ.length - 1].l);
-        this.queue = packet.addTo($tmp88);
-    }
-    $Λ.pop();
-    return task;
-};
-$Γ['global']['$tmp1']['checkPriorityAdd'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global'],
-    task: $Λ[$Λ.length - 1].l,
-    packet: $Λ[$Λ.length - 1].l
-};
-$tmp1 = TaskControlBlock.prototype;
-$Γ['global']['$tmp1'] = sec_lvl('TaskControlBlock', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp1'] instanceof Object ? $Γ['global']['$tmp1'].Σ = $lub($Γ['global']['$tmp1'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1'] = $lub($Γ['global']['$tmp1'], $Λ[$Λ.length - 1].l);
-$tmp1.toString = function () {
-    var $tmp89, $tmp90, $tmp91, $tmp92, $tmp93, $tmp94;
-    $Γ['global']['$tmp1']['toString']['$tmp94'] = $Γ['global']['$tmp1']['toString']['$tmp93'] = $Γ['global']['$tmp1']['toString']['$tmp92'] = $Γ['global']['$tmp1']['toString']['$tmp91'] = $Γ['global']['$tmp1']['toString']['$tmp90'] = $Γ['global']['$tmp1']['toString']['$tmp89'] = 0;
-    $tmp93 = this.task;
-    $Γ['global']['$tmp1']['toString']['$tmp93'] = sec_lvl('$tmp1', 'task', false, $Γ['global']['$tmp1']['toString']);
-    $Γ['global']['$tmp1']['toString']['$tmp93'] instanceof Object ? $Γ['global']['$tmp1']['toString']['$tmp93'].Σ = $lub($Γ['global']['$tmp1']['toString']['$tmp93'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['toString']['$tmp93'] = $lub($Γ['global']['$tmp1']['toString']['$tmp93'], $Λ[$Λ.length - 1].l);
-    $tmp92 = 'tcb { ' + $tmp93;
-    $Γ['global']['$tmp1']['toString']['$tmp92'] = $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp93', null, true, $Γ['global']['$tmp1']['toString']));
-    $Γ['global']['$tmp1']['toString']['$tmp92'] instanceof Object ? $Γ['global']['$tmp1']['toString']['$tmp92'].Σ = $lub($Γ['global']['$tmp1']['toString']['$tmp92'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['toString']['$tmp92'] = $lub($Γ['global']['$tmp1']['toString']['$tmp92'], $Λ[$Λ.length - 1].l);
-    $tmp91 = $tmp92 + '@';
-    $Γ['global']['$tmp1']['toString']['$tmp91'] = $lub(sec_lvl('$tmp92', null, true, $Γ['global']['$tmp1']['toString']), $Λ[$Λ.length - 1].l);
-    $Γ['global']['$tmp1']['toString']['$tmp91'] instanceof Object ? $Γ['global']['$tmp1']['toString']['$tmp91'].Σ = $lub($Γ['global']['$tmp1']['toString']['$tmp91'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['toString']['$tmp91'] = $lub($Γ['global']['$tmp1']['toString']['$tmp91'], $Λ[$Λ.length - 1].l);
-    $tmp94 = this.state;
-    $Γ['global']['$tmp1']['toString']['$tmp94'] = sec_lvl('$tmp1', 'state', false, $Γ['global']['$tmp1']['toString']);
-    $Γ['global']['$tmp1']['toString']['$tmp94'] instanceof Object ? $Γ['global']['$tmp1']['toString']['$tmp94'].Σ = $lub($Γ['global']['$tmp1']['toString']['$tmp94'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['toString']['$tmp94'] = $lub($Γ['global']['$tmp1']['toString']['$tmp94'], $Λ[$Λ.length - 1].l);
-    $tmp90 = $tmp91 + $tmp94;
-    $Γ['global']['$tmp1']['toString']['$tmp90'] = $lub(sec_lvl('$tmp91', null, true, $Γ['global']['$tmp1']['toString']), sec_lvl('$tmp94', null, true, $Γ['global']['$tmp1']['toString']));
-    $Γ['global']['$tmp1']['toString']['$tmp90'] instanceof Object ? $Γ['global']['$tmp1']['toString']['$tmp90'].Σ = $lub($Γ['global']['$tmp1']['toString']['$tmp90'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['toString']['$tmp90'] = $lub($Γ['global']['$tmp1']['toString']['$tmp90'], $Λ[$Λ.length - 1].l);
-    $tmp89 = $tmp90 + ' }';
-    $Γ['global']['$tmp1']['toString']['$tmp89'] = $lub(sec_lvl('$tmp90', null, true, $Γ['global']['$tmp1']['toString']), $Λ[$Λ.length - 1].l);
-    $Γ['global']['$tmp1']['toString']['$tmp89'] instanceof Object ? $Γ['global']['$tmp1']['toString']['$tmp89'].Σ = $lub($Γ['global']['$tmp1']['toString']['$tmp89'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['toString']['$tmp89'] = $lub($Γ['global']['$tmp1']['toString']['$tmp89'], $Λ[$Λ.length - 1].l);
-    return $tmp89;
-};
-$Γ['global']['$tmp1']['toString'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global']
-};
-function IdleTask(scheduler, v1, count) {
-    this.scheduler = scheduler;
-    $Γ['global']['IdleTask']['$this']['scheduler'] = sec_lvl('scheduler', null, false, $Γ['global']['IdleTask']);
-    $Γ['global']['IdleTask']['$this']['scheduler'] instanceof Object ? $Γ['global']['IdleTask']['$this']['scheduler'].Σ = $lub($Γ['global']['IdleTask']['$this']['scheduler'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['IdleTask']['$this']['scheduler'] = $lub($Γ['global']['IdleTask']['$this']['scheduler'], $Λ[$Λ.length - 1].l);
-    this.v1 = v1;
-    $Γ['global']['IdleTask']['$this']['v1'] = sec_lvl('v1', null, false, $Γ['global']['IdleTask']);
-    $Γ['global']['IdleTask']['$this']['v1'] instanceof Object ? $Γ['global']['IdleTask']['$this']['v1'].Σ = $lub($Γ['global']['IdleTask']['$this']['v1'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['IdleTask']['$this']['v1'] = $lub($Γ['global']['IdleTask']['$this']['v1'], $Λ[$Λ.length - 1].l);
-    this.count = count;
-    $Γ['global']['IdleTask']['$this']['count'] = sec_lvl('count', null, false, $Γ['global']['IdleTask']);
-    $Γ['global']['IdleTask']['$this']['count'] instanceof Object ? $Γ['global']['IdleTask']['$this']['count'].Σ = $lub($Γ['global']['IdleTask']['$this']['count'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['IdleTask']['$this']['count'] = $lub($Γ['global']['IdleTask']['$this']['count'], $Λ[$Λ.length - 1].l);
-    return;
-}
-$tmp2 = IdleTask.prototype;
-$Γ['global']['$tmp2'] = sec_lvl('IdleTask', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp2'] instanceof Object ? $Γ['global']['$tmp2'].Σ = $lub($Γ['global']['$tmp2'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp2'] = $lub($Γ['global']['$tmp2'], $Λ[$Λ.length - 1].l);
-$tmp2.run = function (packet) {
-    var $tmp95, $tmp96, $tmp97, $tmp98, $tmp99, $tmp100, $tmp101;
-    $Γ['global']['$tmp2']['run']['$tmp101'] = $Γ['global']['$tmp2']['run']['$tmp100'] = $Γ['global']['$tmp2']['run']['$tmp99'] = $Γ['global']['$tmp2']['run']['$tmp98'] = $Γ['global']['$tmp2']['run']['$tmp97'] = $Γ['global']['$tmp2']['run']['$tmp96'] = $Γ['global']['$tmp2']['run']['$tmp95'] = 0;
-    $tmp96 = this;
-    $Γ['global']['$tmp2']['run']['$tmp96'] = $Γ['global']['$tmp2']['run'].$this;
-    $Γ['global']['$tmp2']['run']['$tmp96'] instanceof Object ? $Γ['global']['$tmp2']['run']['$tmp96'].Σ = $lub($Γ['global']['$tmp2']['run']['$tmp96'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp2']['run']['$tmp96'] = $lub($Γ['global']['$tmp2']['run']['$tmp96'], $Λ[$Λ.length - 1].l);
-    $tmp95 = $tmp96.count--;
-    $Γ['global']['$tmp2']['run']['$tmp95'] = sec_lvl('$tmp96', 'count', false, $Γ['global']['$tmp2']['run']);
-    $Γ['global']['$tmp2']['run']['$tmp95'] instanceof Object ? $Γ['global']['$tmp2']['run']['$tmp95'].Σ = $lub($Γ['global']['$tmp2']['run']['$tmp95'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp2']['run']['$tmp95'] = $lub($Γ['global']['$tmp2']['run']['$tmp95'], $Λ[$Λ.length - 1].l);
-    $tmp98 = this.count;
-    $Γ['global']['$tmp2']['run']['$tmp98'] = sec_lvl('$tmp2', 'count', false, $Γ['global']['$tmp2']['run']);
-    $Γ['global']['$tmp2']['run']['$tmp98'] instanceof Object ? $Γ['global']['$tmp2']['run']['$tmp98'].Σ = $lub($Γ['global']['$tmp2']['run']['$tmp98'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp2']['run']['$tmp98'] = $lub($Γ['global']['$tmp2']['run']['$tmp98'], $Λ[$Λ.length - 1].l);
-    $tmp97 = $tmp98 == 0;
-    $Γ['global']['$tmp2']['run']['$tmp97'] = $lub(sec_lvl('$tmp98', null, true, $Γ['global']['$tmp2']['run']), $Λ[$Λ.length - 1].l);
-    $Γ['global']['$tmp2']['run']['$tmp97'] instanceof Object ? $Γ['global']['$tmp2']['run']['$tmp97'].Σ = $lub($Γ['global']['$tmp2']['run']['$tmp97'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp2']['run']['$tmp97'] = $lub($Γ['global']['$tmp2']['run']['$tmp97'], $Λ[$Λ.length - 1].l);
-    $Λ.push({
-        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp97', null, true, $Γ['global']['$tmp2']['run'])),
-        id: 'IF'
-    });
-    if ($tmp97) {
-        var $tmp150, $tmp104;
-        $Γ['global']['$tmp2']['run']['$tmp104'] = $Γ['global']['$tmp2']['run']['$tmp150'] = 0;
-        $tmp104 = this.scheduler;
-        $Γ['global']['$tmp2']['run']['$tmp104'] = sec_lvl('$tmp2', 'scheduler', false, $Γ['global']['$tmp2']['run']);
-        $Γ['global']['$tmp2']['run']['$tmp104'] instanceof Object ? $Γ['global']['$tmp2']['run']['$tmp104'].Σ = $lub($Γ['global']['$tmp2']['run']['$tmp104'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp2']['run']['$tmp104'] = $lub($Γ['global']['$tmp2']['run']['$tmp104'], $Λ[$Λ.length - 1].l);
-        $tmp150 = $tmp104.holdCurrent();
-        return $tmp150;
+        $Λ[$Λ.length - 1] = { 'l': $lub($old_pc.l, sec_lvl('$tmp41', null, true, $Γ['global']['SplaySetup'])) };
+        throw $tmp41;
         var $shouldComp = { 'lbl': 'FUNC' };
     } else {
-        $upgrade([
-            '$tmp104.holdCurrent',
-            '$tmp150'
-        ], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp2']['run']);
     }
     if ($shouldComp)
         $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
     $Λ.pop();
-    $tmp101 = this.v1;
-    $Γ['global']['$tmp2']['run']['$tmp101'] = sec_lvl('$tmp2', 'v1', false, $Γ['global']['$tmp2']['run']);
-    $Γ['global']['$tmp2']['run']['$tmp101'] instanceof Object ? $Γ['global']['$tmp2']['run']['$tmp101'].Σ = $lub($Γ['global']['$tmp2']['run']['$tmp101'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp2']['run']['$tmp101'] = $lub($Γ['global']['$tmp2']['run']['$tmp101'], $Λ[$Λ.length - 1].l);
-    $tmp100 = $tmp101 & 1;
-    $Γ['global']['$tmp2']['run']['$tmp100'] = $lub(sec_lvl('$tmp101', null, true, $Γ['global']['$tmp2']['run']), $Λ[$Λ.length - 1].l);
-    $Γ['global']['$tmp2']['run']['$tmp100'] instanceof Object ? $Γ['global']['$tmp2']['run']['$tmp100'].Σ = $lub($Γ['global']['$tmp2']['run']['$tmp100'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp2']['run']['$tmp100'] = $lub($Γ['global']['$tmp2']['run']['$tmp100'], $Λ[$Λ.length - 1].l);
-    $tmp99 = $tmp100 == 0;
-    $Γ['global']['$tmp2']['run']['$tmp99'] = $lub(sec_lvl('$tmp100', null, true, $Γ['global']['$tmp2']['run']), $Λ[$Λ.length - 1].l);
-    $Γ['global']['$tmp2']['run']['$tmp99'] instanceof Object ? $Γ['global']['$tmp2']['run']['$tmp99'].Σ = $lub($Γ['global']['$tmp2']['run']['$tmp99'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp2']['run']['$tmp99'] = $lub($Γ['global']['$tmp2']['run']['$tmp99'], $Λ[$Λ.length - 1].l);
+    $rf = $scope($Γ['global']['SplaySetup'], 'SplayTree', false)['SplayTree'];
+    $rf.scope = $Γ['global']['SplaySetup'];
+    $rf.$this = {
+        Σ: $Λ[$Λ.length - 1].l,
+        __$proto__: $rf.prototype
+    };
+    $rf.InvokedAsContr = true;
     $Λ.push({
-        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp99', null, true, $Γ['global']['$tmp2']['run'])),
-        id: 'IF'
+        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+        id: 'FUNC'
     });
-    if ($tmp99) {
-        $upgrade([
-            '$tmp104.release',
-            '$tmp107'
-        ], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp2']['run']);
-        var $tmp102, $tmp103, $tmp104;
-        $Γ['global']['$tmp2']['run']['$tmp104'] = $Γ['global']['$tmp2']['run']['$tmp103'] = $Γ['global']['$tmp2']['run']['$tmp102'] = 0;
-        $tmp102 = this.v1;
-        $Γ['global']['$tmp2']['run']['$tmp102'] = sec_lvl('$tmp2', 'v1', false, $Γ['global']['$tmp2']['run']);
-        $Γ['global']['$tmp2']['run']['$tmp102'] instanceof Object ? $Γ['global']['$tmp2']['run']['$tmp102'].Σ = $lub($Γ['global']['$tmp2']['run']['$tmp102'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp2']['run']['$tmp102'] = $lub($Γ['global']['$tmp2']['run']['$tmp102'], $Λ[$Λ.length - 1].l);
-        this.v1 = $tmp102 >> 1;
-        $Γ['global']['$tmp2']['run']['$this']['v1'] = $lub(sec_lvl('$tmp102', null, true, $Γ['global']['$tmp2']['run']), $Λ[$Λ.length - 1].l);
-        $Γ['global']['$tmp2']['run']['$this']['v1'] instanceof Object ? $Γ['global']['$tmp2']['run']['$this']['v1'].Σ = $lub($Γ['global']['$tmp2']['run']['$this']['v1'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp2']['run']['$this']['v1'] = $lub($Γ['global']['$tmp2']['run']['$this']['v1'], $Λ[$Λ.length - 1].l);
-        $tmp104 = this.scheduler;
-        $Γ['global']['$tmp2']['run']['$tmp104'] = sec_lvl('$tmp2', 'scheduler', false, $Γ['global']['$tmp2']['run']);
-        $Γ['global']['$tmp2']['run']['$tmp104'] instanceof Object ? $Γ['global']['$tmp2']['run']['$tmp104'].Σ = $lub($Γ['global']['$tmp2']['run']['$tmp104'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp2']['run']['$tmp104'] = $lub($Γ['global']['$tmp2']['run']['$tmp104'], $Λ[$Λ.length - 1].l);
-        $tmp103 = $tmp104.release(ID_DEVICE_A);
-        return $tmp103;
-        var $shouldComp = { 'lbl': 'FUNC' };
-    } else {
-        $upgrade([
-            '$tmp104.release',
-            '$tmp103'
-        ], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp2']['run']);
-        var $tmp105, $tmp106, $tmp107, $tmp104;
-        $Γ['global']['$tmp2']['run']['$tmp104'] = $Γ['global']['$tmp2']['run']['$tmp107'] = $Γ['global']['$tmp2']['run']['$tmp106'] = $Γ['global']['$tmp2']['run']['$tmp105'] = 0;
-        $tmp106 = this.v1;
-        $Γ['global']['$tmp2']['run']['$tmp106'] = sec_lvl('$tmp2', 'v1', false, $Γ['global']['$tmp2']['run']);
-        $Γ['global']['$tmp2']['run']['$tmp106'] instanceof Object ? $Γ['global']['$tmp2']['run']['$tmp106'].Σ = $lub($Γ['global']['$tmp2']['run']['$tmp106'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp2']['run']['$tmp106'] = $lub($Γ['global']['$tmp2']['run']['$tmp106'], $Λ[$Λ.length - 1].l);
-        $tmp105 = $tmp106 >> 1;
-        $Γ['global']['$tmp2']['run']['$tmp105'] = $lub(sec_lvl('$tmp106', null, true, $Γ['global']['$tmp2']['run']), $Λ[$Λ.length - 1].l);
-        $Γ['global']['$tmp2']['run']['$tmp105'] instanceof Object ? $Γ['global']['$tmp2']['run']['$tmp105'].Σ = $lub($Γ['global']['$tmp2']['run']['$tmp105'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp2']['run']['$tmp105'] = $lub($Γ['global']['$tmp2']['run']['$tmp105'], $Λ[$Λ.length - 1].l);
-        this.v1 = $tmp105 ^ 53256;
-        $Γ['global']['$tmp2']['run']['$this']['v1'] = $lub(sec_lvl('$tmp105', null, true, $Γ['global']['$tmp2']['run']), $Λ[$Λ.length - 1].l);
-        $Γ['global']['$tmp2']['run']['$this']['v1'] instanceof Object ? $Γ['global']['$tmp2']['run']['$this']['v1'].Σ = $lub($Γ['global']['$tmp2']['run']['$this']['v1'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp2']['run']['$this']['v1'] = $lub($Γ['global']['$tmp2']['run']['$this']['v1'], $Λ[$Λ.length - 1].l);
-        $tmp104 = this.scheduler;
-        $Γ['global']['$tmp2']['run']['$tmp104'] = sec_lvl('$tmp2', 'scheduler', false, $Γ['global']['$tmp2']['run']);
-        $Γ['global']['$tmp2']['run']['$tmp104'] instanceof Object ? $Γ['global']['$tmp2']['run']['$tmp104'].Σ = $lub($Γ['global']['$tmp2']['run']['$tmp104'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp2']['run']['$tmp104'] = $lub($Γ['global']['$tmp2']['run']['$tmp104'], $Λ[$Λ.length - 1].l);
-        $tmp107 = $tmp104.release(ID_DEVICE_B);
-        return $tmp107;
-        var $shouldComp = { 'lbl': 'FUNC' };
-    }
-    if ($shouldComp)
-        $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
-    $Λ.pop();
-    return;
-};
-$Γ['global']['$tmp2']['run'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global'],
-    packet: $Λ[$Λ.length - 1].l
-};
-$tmp2 = IdleTask.prototype;
-$Γ['global']['$tmp2'] = sec_lvl('IdleTask', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp2'] instanceof Object ? $Γ['global']['$tmp2'].Σ = $lub($Γ['global']['$tmp2'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp2'] = $lub($Γ['global']['$tmp2'], $Λ[$Λ.length - 1].l);
-$tmp2.toString = function () {
-    var $tmp108;
-    $Γ['global']['$tmp2']['toString']['$tmp108'] = 0;
-    $tmp108 = 'IdleTask';
-    $Γ['global']['$tmp2']['toString']['$tmp108'] = $Λ[$Λ.length - 1].l;
-    return $tmp108;
-};
-$Γ['global']['$tmp2']['toString'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global']
-};
-function DeviceTask(scheduler) {
-    this.scheduler = scheduler;
-    $Γ['global']['DeviceTask']['$this']['scheduler'] = sec_lvl('scheduler', null, false, $Γ['global']['DeviceTask']);
-    $Γ['global']['DeviceTask']['$this']['scheduler'] instanceof Object ? $Γ['global']['DeviceTask']['$this']['scheduler'].Σ = $lub($Γ['global']['DeviceTask']['$this']['scheduler'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['DeviceTask']['$this']['scheduler'] = $lub($Γ['global']['DeviceTask']['$this']['scheduler'], $Λ[$Λ.length - 1].l);
-    this.v1 = null;
-    $Γ['global']['DeviceTask']['$this']['v1'] = $Λ[$Λ.length - 1].l;
-    return;
-}
-$tmp3 = DeviceTask.prototype;
-$Γ['global']['$tmp3'] = sec_lvl('DeviceTask', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp3'] instanceof Object ? $Γ['global']['$tmp3'].Σ = $lub($Γ['global']['$tmp3'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp3'] = $lub($Γ['global']['$tmp3'], $Λ[$Λ.length - 1].l);
-$tmp3.run = function (packet) {
-    var $tmp109;
-    $Γ['global']['$tmp3']['run']['$tmp109'] = 0;
-    $tmp109 = packet == null;
-    $Γ['global']['$tmp3']['run']['$tmp109'] = $lub(sec_lvl('packet', null, true, $Γ['global']['$tmp3']['run']), $Λ[$Λ.length - 1].l);
-    $Γ['global']['$tmp3']['run']['$tmp109'] instanceof Object ? $Γ['global']['$tmp3']['run']['$tmp109'].Σ = $lub($Γ['global']['$tmp3']['run']['$tmp109'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp3']['run']['$tmp109'] = $lub($Γ['global']['$tmp3']['run']['$tmp109'], $Λ[$Λ.length - 1].l);
+    splayTree = new SplayTree();
+    $scope($Γ['global']['SplaySetup'], 'splayTree', true)['splayTree'] = $Λ.pop().l;
+    $scope($Γ['global']['SplaySetup'], 'splayTree', true)['splayTree'] instanceof Object ? $scope($Γ['global']['SplaySetup'], 'splayTree', true)['splayTree'].Σ = $lub($scope($Γ['global']['SplaySetup'], 'splayTree', true)['splayTree'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['SplaySetup'], 'splayTree', true)['splayTree'] = $lub($scope($Γ['global']['SplaySetup'], 'splayTree', true)['splayTree'], $Λ[$Λ.length - 1].l);
+    splaySampleTimeStart = performance.now();
+    i = 0;
+    $scope($Γ['global']['SplaySetup'], 'i', true)['i'] = $Λ[$Λ.length - 1].l;
+    $tmp40 = i < kSplayTreeSize;
+    $Γ['global']['SplaySetup']['$tmp40'] = $lub(sec_lvl('i', null, true, $Γ['global']['SplaySetup']), sec_lvl('kSplayTreeSize', null, true, $Γ['global']['SplaySetup']));
+    $Γ['global']['SplaySetup']['$tmp40'] instanceof Object ? $Γ['global']['SplaySetup']['$tmp40'].Σ = $lub($Γ['global']['SplaySetup']['$tmp40'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplaySetup']['$tmp40'] = $lub($Γ['global']['SplaySetup']['$tmp40'], $Λ[$Λ.length - 1].l);
     $Λ.push({
-        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp109', null, true, $Γ['global']['$tmp3']['run'])),
-        id: 'IF'
+        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp40', null, true, $Γ['global']['SplaySetup'])),
+        id: 'LOOP'
     });
-    if ($tmp109) {
-        $upgrade([
-            '$tmp104.holdCurrent',
-            '$tmp113'
-        ], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp3']['run']);
-        var $tmp110, $tmp111, v, $tmp112, $tmp104;
-        $Γ['global']['$tmp3']['run']['$tmp104'] = $Γ['global']['$tmp3']['run']['$tmp112'] = $Γ['global']['$tmp3']['run']['v'] = $Γ['global']['$tmp3']['run']['$tmp111'] = $Γ['global']['$tmp3']['run']['$tmp110'] = 0;
-        $tmp111 = this.v1;
-        $Γ['global']['$tmp3']['run']['$tmp111'] = sec_lvl('$tmp3', 'v1', false, $Γ['global']['$tmp3']['run']);
-        $Γ['global']['$tmp3']['run']['$tmp111'] instanceof Object ? $Γ['global']['$tmp3']['run']['$tmp111'].Σ = $lub($Γ['global']['$tmp3']['run']['$tmp111'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp3']['run']['$tmp111'] = $lub($Γ['global']['$tmp3']['run']['$tmp111'], $Λ[$Λ.length - 1].l);
-        $tmp110 = $tmp111 == null;
-        $Γ['global']['$tmp3']['run']['$tmp110'] = $lub(sec_lvl('$tmp111', null, true, $Γ['global']['$tmp3']['run']), $Λ[$Λ.length - 1].l);
-        $Γ['global']['$tmp3']['run']['$tmp110'] instanceof Object ? $Γ['global']['$tmp3']['run']['$tmp110'].Σ = $lub($Γ['global']['$tmp3']['run']['$tmp110'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp3']['run']['$tmp110'] = $lub($Γ['global']['$tmp3']['run']['$tmp110'], $Λ[$Λ.length - 1].l);
+    for (; $tmp40;) {
+        var $tmp42, $tmp43, $tmp44, $tmp45, $tmp39, $tmp40;
+        $Γ['global']['SplaySetup']['$tmp40'] = $Γ['global']['SplaySetup']['$tmp39'] = $Γ['global']['SplaySetup']['$tmp45'] = $Γ['global']['SplaySetup']['$tmp44'] = $Γ['global']['SplaySetup']['$tmp43'] = $Γ['global']['SplaySetup']['$tmp42'] = 0;
+        $rf = $scope($Γ['global']['SplaySetup'], 'InsertNewNode', false)['InsertNewNode'];
+        $rf.scope = $Γ['global']['SplaySetup'];
+        $rf.$this = $Γ['global'];
         $Λ.push({
-            l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp110', null, true, $Γ['global']['$tmp3']['run'])),
+            l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+            id: 'FUNC'
+        });
+        $tmp42 = InsertNewNode();
+        $Γ['global']['SplaySetup']['$tmp42'] = $Λ.pop().l;
+        $Γ['global']['SplaySetup']['$tmp42'] instanceof Object ? $Γ['global']['SplaySetup']['$tmp42'].Σ = $lub($Γ['global']['SplaySetup']['$tmp42'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplaySetup']['$tmp42'] = $lub($Γ['global']['SplaySetup']['$tmp42'], $Λ[$Λ.length - 1].l);
+        $tmp45 = i + 1;
+        $Γ['global']['SplaySetup']['$tmp45'] = $lub(sec_lvl('i', null, true, $Γ['global']['SplaySetup']), $Λ[$Λ.length - 1].l);
+        $Γ['global']['SplaySetup']['$tmp45'] instanceof Object ? $Γ['global']['SplaySetup']['$tmp45'].Σ = $lub($Γ['global']['SplaySetup']['$tmp45'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplaySetup']['$tmp45'] = $lub($Γ['global']['SplaySetup']['$tmp45'], $Λ[$Λ.length - 1].l);
+        $tmp44 = $tmp45 % 20;
+        $Γ['global']['SplaySetup']['$tmp44'] = $lub(sec_lvl('$tmp45', null, true, $Γ['global']['SplaySetup']), $Λ[$Λ.length - 1].l);
+        $Γ['global']['SplaySetup']['$tmp44'] instanceof Object ? $Γ['global']['SplaySetup']['$tmp44'].Σ = $lub($Γ['global']['SplaySetup']['$tmp44'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplaySetup']['$tmp44'] = $lub($Γ['global']['SplaySetup']['$tmp44'], $Λ[$Λ.length - 1].l);
+        $tmp43 = $tmp44 == 19;
+        $Γ['global']['SplaySetup']['$tmp43'] = $lub(sec_lvl('$tmp44', null, true, $Γ['global']['SplaySetup']), $Λ[$Λ.length - 1].l);
+        $Γ['global']['SplaySetup']['$tmp43'] instanceof Object ? $Γ['global']['SplaySetup']['$tmp43'].Σ = $lub($Γ['global']['SplaySetup']['$tmp43'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplaySetup']['$tmp43'] = $lub($Γ['global']['SplaySetup']['$tmp43'], $Λ[$Λ.length - 1].l);
+        $Λ.push({
+            l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp43', null, true, $Γ['global']['SplaySetup'])),
             id: 'IF'
         });
-        if ($tmp110) {
-            var $tmp151, $tmp104;
-            $Γ['global']['$tmp3']['run']['$tmp104'] = $Γ['global']['$tmp3']['run']['$tmp151'] = 0;
-            $tmp104 = this.scheduler;
-            $Γ['global']['$tmp3']['run']['$tmp104'] = sec_lvl('$tmp3', 'scheduler', false, $Γ['global']['$tmp3']['run']);
-            $Γ['global']['$tmp3']['run']['$tmp104'] instanceof Object ? $Γ['global']['$tmp3']['run']['$tmp104'].Σ = $lub($Γ['global']['$tmp3']['run']['$tmp104'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp3']['run']['$tmp104'] = $lub($Γ['global']['$tmp3']['run']['$tmp104'], $Λ[$Λ.length - 1].l);
-            $tmp151 = $tmp104.suspendCurrent();
-            return $tmp151;
+        if ($tmp43) {
+            var $tmp46, $tmp47;
+            $Γ['global']['SplaySetup']['$tmp47'] = $Γ['global']['SplaySetup']['$tmp46'] = 0;
+            $tmp47 = performance.now();
+            $rf = $scope($Γ['global']['SplaySetup'], 'SplayUpdateStats', false)['SplayUpdateStats'];
+            $rf.scope = $Γ['global']['SplaySetup'];
+            $rf.$this = $Γ['global'];
+            $rf['time'] = $lub(sec_lvl('$tmp47', null, true, $Γ['global']['SplaySetup']), $Λ[$Λ.length - 1].l);
+            $Λ.push({
+                l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+                id: 'FUNC'
+            });
+            $tmp46 = SplayUpdateStats($tmp47);
+            $Γ['global']['SplaySetup']['$tmp46'] = $Λ.pop().l;
+            $Γ['global']['SplaySetup']['$tmp46'] instanceof Object ? $Γ['global']['SplaySetup']['$tmp46'].Σ = $lub($Γ['global']['SplaySetup']['$tmp46'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplaySetup']['$tmp46'] = $lub($Γ['global']['SplaySetup']['$tmp46'], $Λ[$Λ.length - 1].l);
+        } else {
+            $upgrade([
+                'performance.now',
+                '$tmp47',
+                '$tmp46'
+            ], $Λ[$Λ.length - 1].l, $Γ['global']['SplaySetup']);
+        }
+        $Λ.pop();
+        $tmp39 = i++;
+        $Γ['global']['SplaySetup']['$tmp39'] = sec_lvl('i', null, false, $Γ['global']['SplaySetup']);
+        $Γ['global']['SplaySetup']['$tmp39'] instanceof Object ? $Γ['global']['SplaySetup']['$tmp39'].Σ = $lub($Γ['global']['SplaySetup']['$tmp39'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplaySetup']['$tmp39'] = $lub($Γ['global']['SplaySetup']['$tmp39'], $Λ[$Λ.length - 1].l);
+        $tmp40 = i < kSplayTreeSize;
+        $Γ['global']['SplaySetup']['$tmp40'] = $lub(sec_lvl('i', null, true, $Γ['global']['SplaySetup']), sec_lvl('kSplayTreeSize', null, true, $Γ['global']['SplaySetup']));
+        $Γ['global']['SplaySetup']['$tmp40'] instanceof Object ? $Γ['global']['SplaySetup']['$tmp40'].Σ = $lub($Γ['global']['SplaySetup']['$tmp40'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplaySetup']['$tmp40'] = $lub($Γ['global']['SplaySetup']['$tmp40'], $Λ[$Λ.length - 1].l);
+    }
+    $upgrade([
+        '$tmp42',
+        'performance.now',
+        '$tmp47',
+        '$tmp46'
+    ], $Λ[$Λ.length - 1].l, $Γ['global']['SplaySetup']);
+    $Λ.pop();
+    return;
+}
+function SplayTearDown() {
+    var keys, length, $tmp48, i, $tmp50, $tmp51;
+    $Γ['global']['SplayTearDown']['$tmp51'] = $Γ['global']['SplayTearDown']['$tmp50'] = $Γ['global']['SplayTearDown']['i'] = $Γ['global']['SplayTearDown']['$tmp48'] = $Γ['global']['SplayTearDown']['length'] = $Γ['global']['SplayTearDown']['keys'] = 0;
+    $rf = $prop('splayTree', 'exportKeys', $Γ['global']['SplayTearDown']);
+    $rf.scope = $Γ['global']['SplayTearDown'];
+    $rf.$this = $scope($Γ['global']['SplayTearDown'], 'splayTree', false)['splayTree'];
+    $Λ.push({
+        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+        id: 'FUNC'
+    });
+    keys = splayTree.exportKeys();
+    $scope($Γ['global']['SplayTearDown'], 'keys', true)['keys'] = $Λ.pop().l;
+    $scope($Γ['global']['SplayTearDown'], 'keys', true)['keys'] instanceof Object ? $scope($Γ['global']['SplayTearDown'], 'keys', true)['keys'].Σ = $lub($scope($Γ['global']['SplayTearDown'], 'keys', true)['keys'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['SplayTearDown'], 'keys', true)['keys'] = $lub($scope($Γ['global']['SplayTearDown'], 'keys', true)['keys'], $Λ[$Λ.length - 1].l);
+    splayTree = null;
+    $scope($Γ['global']['SplayTearDown'], 'splayTree', true)['splayTree'] = $Λ[$Λ.length - 1].l;
+    splaySamples = 0;
+    $scope($Γ['global']['SplayTearDown'], 'splaySamples', true)['splaySamples'] = $Λ[$Λ.length - 1].l;
+    splaySumOfSquaredPauses = 0;
+    $scope($Γ['global']['SplayTearDown'], 'splaySumOfSquaredPauses', true)['splaySumOfSquaredPauses'] = $Λ[$Λ.length - 1].l;
+    length = keys.length;
+    $scope($Γ['global']['SplayTearDown'], 'length', true)['length'] = sec_lvl('keys', 'length', false, $Γ['global']['SplayTearDown']);
+    $scope($Γ['global']['SplayTearDown'], 'length', true)['length'] instanceof Object ? $scope($Γ['global']['SplayTearDown'], 'length', true)['length'].Σ = $lub($scope($Γ['global']['SplayTearDown'], 'length', true)['length'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['SplayTearDown'], 'length', true)['length'] = $lub($scope($Γ['global']['SplayTearDown'], 'length', true)['length'], $Λ[$Λ.length - 1].l);
+    $tmp48 = length != kSplayTreeSize;
+    $Γ['global']['SplayTearDown']['$tmp48'] = $lub(sec_lvl('length', null, true, $Γ['global']['SplayTearDown']), sec_lvl('kSplayTreeSize', null, true, $Γ['global']['SplayTearDown']));
+    $Γ['global']['SplayTearDown']['$tmp48'] instanceof Object ? $Γ['global']['SplayTearDown']['$tmp48'].Σ = $lub($Γ['global']['SplayTearDown']['$tmp48'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplayTearDown']['$tmp48'] = $lub($Γ['global']['SplayTearDown']['$tmp48'], $Λ[$Λ.length - 1].l);
+    $Λ.push({
+        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp48', null, true, $Γ['global']['SplayTearDown'])),
+        id: 'IF'
+    });
+    if ($tmp48) {
+        var $tmp52;
+        $Γ['global']['SplayTearDown']['$tmp52'] = 0;
+        $tmp52 = new Error('Splay tree has wrong size');
+        $old_pc = $pc();
+        while ($pc().id !== 'FUNC' && $pc().id !== 'TRY') {
+            $Λ.pop();
+        }
+        $Λ[$Λ.length - 1] = { 'l': $lub($old_pc.l, sec_lvl('$tmp52', null, true, $Γ['global']['SplayTearDown'])) };
+        throw $tmp52;
+        var $shouldComp = { 'lbl': 'FUNC' };
+    } else {
+        $upgrade([
+            'Error',
+            '$tmp52'
+        ], $Λ[$Λ.length - 1].l, $Γ['global']['SplayTearDown']);
+    }
+    if ($shouldComp)
+        $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
+    $Λ.pop();
+    i = 0;
+    $scope($Γ['global']['SplayTearDown'], 'i', true)['i'] = $Λ[$Λ.length - 1].l;
+    $tmp51 = length - 1;
+    $Γ['global']['SplayTearDown']['$tmp51'] = $lub(sec_lvl('length', null, true, $Γ['global']['SplayTearDown']), $Λ[$Λ.length - 1].l);
+    $Γ['global']['SplayTearDown']['$tmp51'] instanceof Object ? $Γ['global']['SplayTearDown']['$tmp51'].Σ = $lub($Γ['global']['SplayTearDown']['$tmp51'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplayTearDown']['$tmp51'] = $lub($Γ['global']['SplayTearDown']['$tmp51'], $Λ[$Λ.length - 1].l);
+    $tmp50 = i < $tmp51;
+    $Γ['global']['SplayTearDown']['$tmp50'] = $lub(sec_lvl('i', null, true, $Γ['global']['SplayTearDown']), sec_lvl('$tmp51', null, true, $Γ['global']['SplayTearDown']));
+    $Γ['global']['SplayTearDown']['$tmp50'] instanceof Object ? $Γ['global']['SplayTearDown']['$tmp50'].Σ = $lub($Γ['global']['SplayTearDown']['$tmp50'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplayTearDown']['$tmp50'] = $lub($Γ['global']['SplayTearDown']['$tmp50'], $Λ[$Λ.length - 1].l);
+    $Λ.push({
+        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp50', null, true, $Γ['global']['SplayTearDown'])),
+        id: 'LOOP'
+    });
+    for (; $tmp50;) {
+        var $tmp53, $tmp54, $tmp55, $tmp56, $tmp49, $tmp50, $tmp57;
+        $Γ['global']['SplayTearDown']['$tmp57'] = $Γ['global']['SplayTearDown']['$tmp50'] = $Γ['global']['SplayTearDown']['$tmp49'] = $Γ['global']['SplayTearDown']['$tmp56'] = $Γ['global']['SplayTearDown']['$tmp55'] = $Γ['global']['SplayTearDown']['$tmp54'] = $Γ['global']['SplayTearDown']['$tmp53'] = 0;
+        $tmp54 = keys[i];
+        $Γ['global']['SplayTearDown']['$tmp54'] = sec_lvl('keys', i, false, $Γ['global']['SplayTearDown']);
+        $Γ['global']['SplayTearDown']['$tmp54'] instanceof Object ? $Γ['global']['SplayTearDown']['$tmp54'].Σ = $lub($Γ['global']['SplayTearDown']['$tmp54'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplayTearDown']['$tmp54'] = $lub($Γ['global']['SplayTearDown']['$tmp54'], $Λ[$Λ.length - 1].l);
+        $tmp56 = i + 1;
+        $Γ['global']['SplayTearDown']['$tmp56'] = $lub(sec_lvl('i', null, true, $Γ['global']['SplayTearDown']), $Λ[$Λ.length - 1].l);
+        $Γ['global']['SplayTearDown']['$tmp56'] instanceof Object ? $Γ['global']['SplayTearDown']['$tmp56'].Σ = $lub($Γ['global']['SplayTearDown']['$tmp56'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplayTearDown']['$tmp56'] = $lub($Γ['global']['SplayTearDown']['$tmp56'], $Λ[$Λ.length - 1].l);
+        $tmp55 = keys[$tmp56];
+        $Γ['global']['SplayTearDown']['$tmp55'] = sec_lvl('keys', $tmp56, false, $Γ['global']['SplayTearDown']);
+        $Γ['global']['SplayTearDown']['$tmp55'] instanceof Object ? $Γ['global']['SplayTearDown']['$tmp55'].Σ = $lub($Γ['global']['SplayTearDown']['$tmp55'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplayTearDown']['$tmp55'] = $lub($Γ['global']['SplayTearDown']['$tmp55'], $Λ[$Λ.length - 1].l);
+        $tmp53 = $tmp54 >= $tmp55;
+        $Γ['global']['SplayTearDown']['$tmp53'] = $lub(sec_lvl('$tmp54', null, true, $Γ['global']['SplayTearDown']), sec_lvl('$tmp55', null, true, $Γ['global']['SplayTearDown']));
+        $Γ['global']['SplayTearDown']['$tmp53'] instanceof Object ? $Γ['global']['SplayTearDown']['$tmp53'].Σ = $lub($Γ['global']['SplayTearDown']['$tmp53'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplayTearDown']['$tmp53'] = $lub($Γ['global']['SplayTearDown']['$tmp53'], $Λ[$Λ.length - 1].l);
+        $Λ.push({
+            l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp53', null, true, $Γ['global']['SplayTearDown'])),
+            id: 'IF'
+        });
+        if ($tmp53) {
+            var $tmp58;
+            $Γ['global']['SplayTearDown']['$tmp58'] = 0;
+            $tmp58 = new Error('Splay tree not sorted');
+            $old_pc = $pc();
+            while ($pc().id !== 'FUNC' && $pc().id !== 'TRY') {
+                $Λ.pop();
+            }
+            $Λ[$Λ.length - 1] = { 'l': $lub($old_pc.l, sec_lvl('$tmp58', null, true, $Γ['global']['SplayTearDown'])) };
+            throw $tmp58;
             var $shouldComp = { 'lbl': 'FUNC' };
         } else {
             $upgrade([
-                '$tmp104.suspendCurrent',
-                '$tmp151'
-            ], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp3']['run']);
+                'Error',
+                '$tmp58'
+            ], $Λ[$Λ.length - 1].l, $Γ['global']['SplayTearDown']);
         }
         if ($shouldComp)
             $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
         $Λ.pop();
-        v = this.v1;
-        $scope($Γ['global']['$tmp3']['run'], 'v', true)['v'] = sec_lvl('$tmp3', 'v1', false, $Γ['global']['$tmp3']['run']);
-        $scope($Γ['global']['$tmp3']['run'], 'v', true)['v'] instanceof Object ? $scope($Γ['global']['$tmp3']['run'], 'v', true)['v'].Σ = $lub($scope($Γ['global']['$tmp3']['run'], 'v', true)['v'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp3']['run'], 'v', true)['v'] = $lub($scope($Γ['global']['$tmp3']['run'], 'v', true)['v'], $Λ[$Λ.length - 1].l);
-        this.v1 = null;
-        $Γ['global']['$tmp3']['run']['$this']['v1'] = $Λ[$Λ.length - 1].l;
-        $tmp104 = this.scheduler;
-        $Γ['global']['$tmp3']['run']['$tmp104'] = sec_lvl('$tmp3', 'scheduler', false, $Γ['global']['$tmp3']['run']);
-        $Γ['global']['$tmp3']['run']['$tmp104'] instanceof Object ? $Γ['global']['$tmp3']['run']['$tmp104'].Σ = $lub($Γ['global']['$tmp3']['run']['$tmp104'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp3']['run']['$tmp104'] = $lub($Γ['global']['$tmp3']['run']['$tmp104'], $Λ[$Λ.length - 1].l);
-        $tmp112 = $tmp104.queue(v);
-        return $tmp112;
-        var $shouldComp = { 'lbl': 'FUNC' };
-    } else {
-        $upgrade([
-            '$tmp104.suspendCurrent',
-            '$tmp151',
-            '$tmp104.queue',
-            '$tmp112'
-        ], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp3']['run']);
-        this.v1 = packet;
-        $Γ['global']['$tmp3']['run']['$this']['v1'] = sec_lvl('packet', null, false, $Γ['global']['$tmp3']['run']);
-        $Γ['global']['$tmp3']['run']['$this']['v1'] instanceof Object ? $Γ['global']['$tmp3']['run']['$this']['v1'].Σ = $lub($Γ['global']['$tmp3']['run']['$this']['v1'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp3']['run']['$this']['v1'] = $lub($Γ['global']['$tmp3']['run']['$this']['v1'], $Λ[$Λ.length - 1].l);
-        var $tmp113, $tmp104;
-        $Γ['global']['$tmp3']['run']['$tmp104'] = $Γ['global']['$tmp3']['run']['$tmp113'] = 0;
-        $tmp104 = this.scheduler;
-        $Γ['global']['$tmp3']['run']['$tmp104'] = sec_lvl('$tmp3', 'scheduler', false, $Γ['global']['$tmp3']['run']);
-        $Γ['global']['$tmp3']['run']['$tmp104'] instanceof Object ? $Γ['global']['$tmp3']['run']['$tmp104'].Σ = $lub($Γ['global']['$tmp3']['run']['$tmp104'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp3']['run']['$tmp104'] = $lub($Γ['global']['$tmp3']['run']['$tmp104'], $Λ[$Λ.length - 1].l);
-        $tmp113 = $tmp104.holdCurrent();
-        return $tmp113;
-        var $shouldComp = { 'lbl': 'FUNC' };
+        $tmp49 = i++;
+        $Γ['global']['SplayTearDown']['$tmp49'] = sec_lvl('i', null, false, $Γ['global']['SplayTearDown']);
+        $Γ['global']['SplayTearDown']['$tmp49'] instanceof Object ? $Γ['global']['SplayTearDown']['$tmp49'].Σ = $lub($Γ['global']['SplayTearDown']['$tmp49'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplayTearDown']['$tmp49'] = $lub($Γ['global']['SplayTearDown']['$tmp49'], $Λ[$Λ.length - 1].l);
+        $tmp57 = length - 1;
+        $Γ['global']['SplayTearDown']['$tmp57'] = $lub(sec_lvl('length', null, true, $Γ['global']['SplayTearDown']), $Λ[$Λ.length - 1].l);
+        $Γ['global']['SplayTearDown']['$tmp57'] instanceof Object ? $Γ['global']['SplayTearDown']['$tmp57'].Σ = $lub($Γ['global']['SplayTearDown']['$tmp57'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplayTearDown']['$tmp57'] = $lub($Γ['global']['SplayTearDown']['$tmp57'], $Λ[$Λ.length - 1].l);
+        $tmp50 = i < $tmp57;
+        $Γ['global']['SplayTearDown']['$tmp50'] = $lub(sec_lvl('i', null, true, $Γ['global']['SplayTearDown']), sec_lvl('$tmp57', null, true, $Γ['global']['SplayTearDown']));
+        $Γ['global']['SplayTearDown']['$tmp50'] instanceof Object ? $Γ['global']['SplayTearDown']['$tmp50'].Σ = $lub($Γ['global']['SplayTearDown']['$tmp50'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplayTearDown']['$tmp50'] = $lub($Γ['global']['SplayTearDown']['$tmp50'], $Λ[$Λ.length - 1].l);
     }
-    if ($shouldComp)
-        $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
+    $upgrade([
+        'Error',
+        '$tmp58'
+    ], $Λ[$Λ.length - 1].l, $Γ['global']['SplayTearDown']);
     $Λ.pop();
     return;
-};
-$Γ['global']['$tmp3']['run'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global'],
-    packet: $Λ[$Λ.length - 1].l
-};
-$tmp3 = DeviceTask.prototype;
-$Γ['global']['$tmp3'] = sec_lvl('DeviceTask', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp3'] instanceof Object ? $Γ['global']['$tmp3'].Σ = $lub($Γ['global']['$tmp3'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp3'] = $lub($Γ['global']['$tmp3'], $Λ[$Λ.length - 1].l);
-$tmp3.toString = function () {
-    var $tmp114;
-    $Γ['global']['$tmp3']['toString']['$tmp114'] = 0;
-    $tmp114 = 'DeviceTask';
-    $Γ['global']['$tmp3']['toString']['$tmp114'] = $Λ[$Λ.length - 1].l;
-    return $tmp114;
-};
-$Γ['global']['$tmp3']['toString'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global']
-};
-function WorkerTask(scheduler, v1, v2) {
-    this.scheduler = scheduler;
-    $Γ['global']['WorkerTask']['$this']['scheduler'] = sec_lvl('scheduler', null, false, $Γ['global']['WorkerTask']);
-    $Γ['global']['WorkerTask']['$this']['scheduler'] instanceof Object ? $Γ['global']['WorkerTask']['$this']['scheduler'].Σ = $lub($Γ['global']['WorkerTask']['$this']['scheduler'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['WorkerTask']['$this']['scheduler'] = $lub($Γ['global']['WorkerTask']['$this']['scheduler'], $Λ[$Λ.length - 1].l);
-    this.v1 = v1;
-    $Γ['global']['WorkerTask']['$this']['v1'] = sec_lvl('v1', null, false, $Γ['global']['WorkerTask']);
-    $Γ['global']['WorkerTask']['$this']['v1'] instanceof Object ? $Γ['global']['WorkerTask']['$this']['v1'].Σ = $lub($Γ['global']['WorkerTask']['$this']['v1'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['WorkerTask']['$this']['v1'] = $lub($Γ['global']['WorkerTask']['$this']['v1'], $Λ[$Λ.length - 1].l);
-    this.v2 = v2;
-    $Γ['global']['WorkerTask']['$this']['v2'] = sec_lvl('v2', null, false, $Γ['global']['WorkerTask']);
-    $Γ['global']['WorkerTask']['$this']['v2'] instanceof Object ? $Γ['global']['WorkerTask']['$this']['v2'].Σ = $lub($Γ['global']['WorkerTask']['$this']['v2'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['WorkerTask']['$this']['v2'] = $lub($Γ['global']['WorkerTask']['$this']['v2'], $Λ[$Λ.length - 1].l);
-    return;
 }
-$tmp4 = WorkerTask.prototype;
-$Γ['global']['$tmp4'] = sec_lvl('WorkerTask', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp4'] instanceof Object ? $Γ['global']['$tmp4'].Σ = $lub($Γ['global']['$tmp4'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp4'] = $lub($Γ['global']['$tmp4'], $Λ[$Λ.length - 1].l);
-$tmp4.run = function (packet) {
-    var $tmp115;
-    $Γ['global']['$tmp4']['run']['$tmp115'] = 0;
-    $tmp115 = packet == null;
-    $Γ['global']['$tmp4']['run']['$tmp115'] = $lub(sec_lvl('packet', null, true, $Γ['global']['$tmp4']['run']), $Λ[$Λ.length - 1].l);
-    $Γ['global']['$tmp4']['run']['$tmp115'] instanceof Object ? $Γ['global']['$tmp4']['run']['$tmp115'].Σ = $lub($Γ['global']['$tmp4']['run']['$tmp115'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp4']['run']['$tmp115'] = $lub($Γ['global']['$tmp4']['run']['$tmp115'], $Λ[$Λ.length - 1].l);
+function SplayRun() {
+    var i, $tmp60, $tmp61, $tmp62;
+    $Γ['global']['SplayRun']['$tmp62'] = $Γ['global']['SplayRun']['$tmp61'] = $Γ['global']['SplayRun']['$tmp60'] = $Γ['global']['SplayRun']['i'] = 0;
+    i = 0;
+    $scope($Γ['global']['SplayRun'], 'i', true)['i'] = $Λ[$Λ.length - 1].l;
+    $tmp60 = i < kSplayTreeModifications;
+    $Γ['global']['SplayRun']['$tmp60'] = $lub(sec_lvl('i', null, true, $Γ['global']['SplayRun']), sec_lvl('kSplayTreeModifications', null, true, $Γ['global']['SplayRun']));
+    $Γ['global']['SplayRun']['$tmp60'] instanceof Object ? $Γ['global']['SplayRun']['$tmp60'].Σ = $lub($Γ['global']['SplayRun']['$tmp60'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplayRun']['$tmp60'] = $lub($Γ['global']['SplayRun']['$tmp60'], $Λ[$Λ.length - 1].l);
     $Λ.push({
-        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp115', null, true, $Γ['global']['$tmp4']['run'])),
-        id: 'IF'
+        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp60', null, true, $Γ['global']['SplayRun'])),
+        id: 'LOOP'
     });
-    if ($tmp115) {
-        $upgrade([
-            '$tmp104.queue',
-            '$tmp121'
-        ], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp4']['run']);
-        var $tmp116, $tmp104;
-        $Γ['global']['$tmp4']['run']['$tmp104'] = $Γ['global']['$tmp4']['run']['$tmp116'] = 0;
-        $tmp104 = this.scheduler;
-        $Γ['global']['$tmp4']['run']['$tmp104'] = sec_lvl('$tmp4', 'scheduler', false, $Γ['global']['$tmp4']['run']);
-        $Γ['global']['$tmp4']['run']['$tmp104'] instanceof Object ? $Γ['global']['$tmp4']['run']['$tmp104'].Σ = $lub($Γ['global']['$tmp4']['run']['$tmp104'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp4']['run']['$tmp104'] = $lub($Γ['global']['$tmp4']['run']['$tmp104'], $Λ[$Λ.length - 1].l);
-        $tmp116 = $tmp104.suspendCurrent();
-        return $tmp116;
-        var $shouldComp = { 'lbl': 'FUNC' };
-    } else {
-        $upgrade([
-            '$tmp104.suspendCurrent',
-            '$tmp116'
-        ], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp4']['run']);
-        var $tmp117, $tmp118, i, $tmp120, $tmp121, $tmp104;
-        $Γ['global']['$tmp4']['run']['$tmp104'] = $Γ['global']['$tmp4']['run']['$tmp121'] = $Γ['global']['$tmp4']['run']['$tmp120'] = $Γ['global']['$tmp4']['run']['i'] = $Γ['global']['$tmp4']['run']['$tmp118'] = $Γ['global']['$tmp4']['run']['$tmp117'] = 0;
-        $tmp118 = this.v1;
-        $Γ['global']['$tmp4']['run']['$tmp118'] = sec_lvl('$tmp4', 'v1', false, $Γ['global']['$tmp4']['run']);
-        $Γ['global']['$tmp4']['run']['$tmp118'] instanceof Object ? $Γ['global']['$tmp4']['run']['$tmp118'].Σ = $lub($Γ['global']['$tmp4']['run']['$tmp118'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp4']['run']['$tmp118'] = $lub($Γ['global']['$tmp4']['run']['$tmp118'], $Λ[$Λ.length - 1].l);
-        $tmp117 = $tmp118 == ID_HANDLER_A;
-        $Γ['global']['$tmp4']['run']['$tmp117'] = $lub(sec_lvl('$tmp118', null, true, $Γ['global']['$tmp4']['run']), sec_lvl('ID_HANDLER_A', null, true, $Γ['global']['$tmp4']['run']));
-        $Γ['global']['$tmp4']['run']['$tmp117'] instanceof Object ? $Γ['global']['$tmp4']['run']['$tmp117'].Σ = $lub($Γ['global']['$tmp4']['run']['$tmp117'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp4']['run']['$tmp117'] = $lub($Γ['global']['$tmp4']['run']['$tmp117'], $Λ[$Λ.length - 1].l);
+    for (; $tmp60;) {
+        var key, greatest, $tmp63, $tmp59, $tmp60;
+        $Γ['global']['SplayRun']['$tmp60'] = $Γ['global']['SplayRun']['$tmp59'] = $Γ['global']['SplayRun']['$tmp63'] = $Γ['global']['SplayRun']['greatest'] = $Γ['global']['SplayRun']['key'] = 0;
+        $rf = $scope($Γ['global']['SplayRun'], 'InsertNewNode', false)['InsertNewNode'];
+        $rf.scope = $Γ['global']['SplayRun'];
+        $rf.$this = $Γ['global'];
         $Λ.push({
-            l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp117', null, true, $Γ['global']['$tmp4']['run'])),
+            l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+            id: 'FUNC'
+        });
+        key = InsertNewNode();
+        $scope($Γ['global']['SplayRun'], 'key', true)['key'] = $Λ.pop().l;
+        $scope($Γ['global']['SplayRun'], 'key', true)['key'] instanceof Object ? $scope($Γ['global']['SplayRun'], 'key', true)['key'].Σ = $lub($scope($Γ['global']['SplayRun'], 'key', true)['key'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['SplayRun'], 'key', true)['key'] = $lub($scope($Γ['global']['SplayRun'], 'key', true)['key'], $Λ[$Λ.length - 1].l);
+        $rf = $prop('splayTree', 'findGreatestLessThan', $Γ['global']['SplayRun']);
+        $rf.scope = $Γ['global']['SplayRun'];
+        $rf.$this = $scope($Γ['global']['SplayRun'], 'splayTree', false)['splayTree'];
+        $rf['key'] = $lub(sec_lvl('key', null, true, $Γ['global']['SplayRun']), $Λ[$Λ.length - 1].l);
+        $Λ.push({
+            l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+            id: 'FUNC'
+        });
+        greatest = splayTree.findGreatestLessThan(key);
+        $scope($Γ['global']['SplayRun'], 'greatest', true)['greatest'] = $Λ.pop().l;
+        $scope($Γ['global']['SplayRun'], 'greatest', true)['greatest'] instanceof Object ? $scope($Γ['global']['SplayRun'], 'greatest', true)['greatest'].Σ = $lub($scope($Γ['global']['SplayRun'], 'greatest', true)['greatest'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['SplayRun'], 'greatest', true)['greatest'] = $lub($scope($Γ['global']['SplayRun'], 'greatest', true)['greatest'], $Λ[$Λ.length - 1].l);
+        $tmp63 = greatest == null;
+        $Γ['global']['SplayRun']['$tmp63'] = $lub(sec_lvl('greatest', null, true, $Γ['global']['SplayRun']), $Λ[$Λ.length - 1].l);
+        $Γ['global']['SplayRun']['$tmp63'] instanceof Object ? $Γ['global']['SplayRun']['$tmp63'].Σ = $lub($Γ['global']['SplayRun']['$tmp63'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplayRun']['$tmp63'] = $lub($Γ['global']['SplayRun']['$tmp63'], $Λ[$Λ.length - 1].l);
+        $Λ.push({
+            l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp63', null, true, $Γ['global']['SplayRun'])),
             id: 'IF'
         });
-        if ($tmp117) {
-            this.v1 = ID_HANDLER_B;
-            $Γ['global']['$tmp4']['run']['$this']['v1'] = sec_lvl('ID_HANDLER_B', null, false, $Γ['global']['$tmp4']['run']);
-            $Γ['global']['$tmp4']['run']['$this']['v1'] instanceof Object ? $Γ['global']['$tmp4']['run']['$this']['v1'].Σ = $lub($Γ['global']['$tmp4']['run']['$this']['v1'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp4']['run']['$this']['v1'] = $lub($Γ['global']['$tmp4']['run']['$this']['v1'], $Λ[$Λ.length - 1].l);
-        } else {
-            this.v1 = ID_HANDLER_A;
-            $Γ['global']['$tmp4']['run']['$this']['v1'] = sec_lvl('ID_HANDLER_A', null, false, $Γ['global']['$tmp4']['run']);
-            $Γ['global']['$tmp4']['run']['$this']['v1'] instanceof Object ? $Γ['global']['$tmp4']['run']['$this']['v1'].Σ = $lub($Γ['global']['$tmp4']['run']['$this']['v1'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp4']['run']['$this']['v1'] = $lub($Γ['global']['$tmp4']['run']['$this']['v1'], $Λ[$Λ.length - 1].l);
-        }
-        $Λ.pop();
-        packet.id = this.v1;
-        $scope($Γ['global']['$tmp4']['run'], 'packet', false)['id'] = sec_lvl('$tmp4', 'v1', false, $Γ['global']['$tmp4']['run']);
-        $scope($Γ['global']['$tmp4']['run'], 'packet', false)['id'] instanceof Object ? $scope($Γ['global']['$tmp4']['run'], 'packet', false)['id'].Σ = $lub($scope($Γ['global']['$tmp4']['run'], 'packet', false)['id'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp4']['run'], 'packet', false)['id'] = $lub($scope($Γ['global']['$tmp4']['run'], 'packet', false)['id'], $Λ[$Λ.length - 1].l);
-        packet.a1 = 0;
-        $scope($Γ['global']['$tmp4']['run'], 'packet', false)['a1'] = $Λ[$Λ.length - 1].l;
-        i = 0;
-        $scope($Γ['global']['$tmp4']['run'], 'i', true)['i'] = $Λ[$Λ.length - 1].l;
-        $tmp120 = i < DATA_SIZE;
-        $Γ['global']['$tmp4']['run']['$tmp120'] = $lub(sec_lvl('i', null, true, $Γ['global']['$tmp4']['run']), sec_lvl('DATA_SIZE', null, true, $Γ['global']['$tmp4']['run']));
-        $Γ['global']['$tmp4']['run']['$tmp120'] instanceof Object ? $Γ['global']['$tmp4']['run']['$tmp120'].Σ = $lub($Γ['global']['$tmp4']['run']['$tmp120'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp4']['run']['$tmp120'] = $lub($Γ['global']['$tmp4']['run']['$tmp120'], $Λ[$Λ.length - 1].l);
-        $Λ.push({
-            l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp120', null, true, $Γ['global']['$tmp4']['run'])),
-            id: 'LOOP'
-        });
-        for (; $tmp120;) {
-            var $tmp122, $tmp123, $tmp124, $tmp125, $tmp126, $tmp119, $tmp120;
-            $Γ['global']['$tmp4']['run']['$tmp120'] = $Γ['global']['$tmp4']['run']['$tmp119'] = $Γ['global']['$tmp4']['run']['$tmp126'] = $Γ['global']['$tmp4']['run']['$tmp125'] = $Γ['global']['$tmp4']['run']['$tmp124'] = $Γ['global']['$tmp4']['run']['$tmp123'] = $Γ['global']['$tmp4']['run']['$tmp122'] = 0;
-            $tmp123 = this;
-            $Γ['global']['$tmp4']['run']['$tmp123'] = $Γ['global']['$tmp4']['run'].$this;
-            $Γ['global']['$tmp4']['run']['$tmp123'] instanceof Object ? $Γ['global']['$tmp4']['run']['$tmp123'].Σ = $lub($Γ['global']['$tmp4']['run']['$tmp123'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp4']['run']['$tmp123'] = $lub($Γ['global']['$tmp4']['run']['$tmp123'], $Λ[$Λ.length - 1].l);
-            $tmp122 = $tmp123.v2++;
-            $Γ['global']['$tmp4']['run']['$tmp122'] = sec_lvl('$tmp123', 'v2', false, $Γ['global']['$tmp4']['run']);
-            $Γ['global']['$tmp4']['run']['$tmp122'] instanceof Object ? $Γ['global']['$tmp4']['run']['$tmp122'].Σ = $lub($Γ['global']['$tmp4']['run']['$tmp122'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp4']['run']['$tmp122'] = $lub($Γ['global']['$tmp4']['run']['$tmp122'], $Λ[$Λ.length - 1].l);
-            $tmp125 = this.v2;
-            $Γ['global']['$tmp4']['run']['$tmp125'] = sec_lvl('$tmp4', 'v2', false, $Γ['global']['$tmp4']['run']);
-            $Γ['global']['$tmp4']['run']['$tmp125'] instanceof Object ? $Γ['global']['$tmp4']['run']['$tmp125'].Σ = $lub($Γ['global']['$tmp4']['run']['$tmp125'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp4']['run']['$tmp125'] = $lub($Γ['global']['$tmp4']['run']['$tmp125'], $Λ[$Λ.length - 1].l);
-            $tmp124 = $tmp125 > 26;
-            $Γ['global']['$tmp4']['run']['$tmp124'] = $lub(sec_lvl('$tmp125', null, true, $Γ['global']['$tmp4']['run']), $Λ[$Λ.length - 1].l);
-            $Γ['global']['$tmp4']['run']['$tmp124'] instanceof Object ? $Γ['global']['$tmp4']['run']['$tmp124'].Σ = $lub($Γ['global']['$tmp4']['run']['$tmp124'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp4']['run']['$tmp124'] = $lub($Γ['global']['$tmp4']['run']['$tmp124'], $Λ[$Λ.length - 1].l);
+        if ($tmp63) {
+            $upgrade(['$tmp65'], $Λ[$Λ.length - 1].l, $Γ['global']['SplayRun']);
+            var $tmp64;
+            $Γ['global']['SplayRun']['$tmp64'] = 0;
+            $rf = $prop('splayTree', 'remove', $Γ['global']['SplayRun']);
+            $rf.scope = $Γ['global']['SplayRun'];
+            $rf.$this = $scope($Γ['global']['SplayRun'], 'splayTree', false)['splayTree'];
+            $rf['key'] = $lub(sec_lvl('key', null, true, $Γ['global']['SplayRun']), $Λ[$Λ.length - 1].l);
             $Λ.push({
-                l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp124', null, true, $Γ['global']['$tmp4']['run'])),
-                id: 'IF'
+                l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+                id: 'FUNC'
             });
-            if ($tmp124) {
-                this.v2 = 1;
-                $Γ['global']['$tmp4']['run']['$this']['v2'] = $Λ[$Λ.length - 1].l;
-            } else {
-            }
-            $Λ.pop();
-            $tmp126 = packet.a2;
-            $Γ['global']['$tmp4']['run']['$tmp126'] = sec_lvl('packet', 'a2', false, $Γ['global']['$tmp4']['run']);
-            $Γ['global']['$tmp4']['run']['$tmp126'] instanceof Object ? $Γ['global']['$tmp4']['run']['$tmp126'].Σ = $lub($Γ['global']['$tmp4']['run']['$tmp126'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp4']['run']['$tmp126'] = $lub($Γ['global']['$tmp4']['run']['$tmp126'], $Λ[$Λ.length - 1].l);
-            $tmp126[i] = this.v2;
-            $Γ['global']['$tmp4']['run']['$tmp126']['i'] = sec_lvl('$tmp4', 'v2', false, $Γ['global']['$tmp4']['run']);
-            _$tmp = sec_lvl('i', null, false, $Γ['global']['$tmp4']['run']) instanceof Object ? sec_lvl('i', null, false, $Γ['global']['$tmp4']['run']).Σ : sec_lvl('i', null, false, $Γ['global']['$tmp4']['run']);
-            $Γ['global']['$tmp4']['run']['$tmp126']['i'] instanceof Object ? $Γ['global']['$tmp4']['run']['$tmp126']['i'].Σ = $lub($Γ['global']['$tmp4']['run']['$tmp126']['i'].Σ, _$tmp, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp4']['run']['$tmp126']['i'] = $lub($Γ['global']['$tmp4']['run']['$tmp126']['i'], _$tmp, $Λ[$Λ.length - 1].l);
-            $tmp119 = i++;
-            $Γ['global']['$tmp4']['run']['$tmp119'] = sec_lvl('i', null, false, $Γ['global']['$tmp4']['run']);
-            $Γ['global']['$tmp4']['run']['$tmp119'] instanceof Object ? $Γ['global']['$tmp4']['run']['$tmp119'].Σ = $lub($Γ['global']['$tmp4']['run']['$tmp119'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp4']['run']['$tmp119'] = $lub($Γ['global']['$tmp4']['run']['$tmp119'], $Λ[$Λ.length - 1].l);
-            $tmp120 = i < DATA_SIZE;
-            $Γ['global']['$tmp4']['run']['$tmp120'] = $lub(sec_lvl('i', null, true, $Γ['global']['$tmp4']['run']), sec_lvl('DATA_SIZE', null, true, $Γ['global']['$tmp4']['run']));
-            $Γ['global']['$tmp4']['run']['$tmp120'] instanceof Object ? $Γ['global']['$tmp4']['run']['$tmp120'].Σ = $lub($Γ['global']['$tmp4']['run']['$tmp120'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp4']['run']['$tmp120'] = $lub($Γ['global']['$tmp4']['run']['$tmp120'], $Λ[$Λ.length - 1].l);
+            $tmp64 = splayTree.remove(key);
+            $Γ['global']['SplayRun']['$tmp64'] = $Λ.pop().l;
+            $Γ['global']['SplayRun']['$tmp64'] instanceof Object ? $Γ['global']['SplayRun']['$tmp64'].Σ = $lub($Γ['global']['SplayRun']['$tmp64'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplayRun']['$tmp64'] = $lub($Γ['global']['SplayRun']['$tmp64'], $Λ[$Λ.length - 1].l);
+        } else {
+            $upgrade(['$tmp64'], $Λ[$Λ.length - 1].l, $Γ['global']['SplayRun']);
+            var $tmp65, $tmp66;
+            $Γ['global']['SplayRun']['$tmp66'] = $Γ['global']['SplayRun']['$tmp65'] = 0;
+            $tmp66 = greatest.key;
+            $Γ['global']['SplayRun']['$tmp66'] = sec_lvl('greatest', 'key', false, $Γ['global']['SplayRun']);
+            $Γ['global']['SplayRun']['$tmp66'] instanceof Object ? $Γ['global']['SplayRun']['$tmp66'].Σ = $lub($Γ['global']['SplayRun']['$tmp66'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplayRun']['$tmp66'] = $lub($Γ['global']['SplayRun']['$tmp66'], $Λ[$Λ.length - 1].l);
+            $rf = $prop('splayTree', 'remove', $Γ['global']['SplayRun']);
+            $rf.scope = $Γ['global']['SplayRun'];
+            $rf.$this = $scope($Γ['global']['SplayRun'], 'splayTree', false)['splayTree'];
+            $rf['key'] = $lub(sec_lvl('$tmp66', null, true, $Γ['global']['SplayRun']), $Λ[$Λ.length - 1].l);
+            $Λ.push({
+                l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+                id: 'FUNC'
+            });
+            $tmp65 = splayTree.remove($tmp66);
+            $Γ['global']['SplayRun']['$tmp65'] = $Λ.pop().l;
+            $Γ['global']['SplayRun']['$tmp65'] instanceof Object ? $Γ['global']['SplayRun']['$tmp65'].Σ = $lub($Γ['global']['SplayRun']['$tmp65'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplayRun']['$tmp65'] = $lub($Γ['global']['SplayRun']['$tmp65'], $Λ[$Λ.length - 1].l);
         }
         $Λ.pop();
-        $tmp104 = this.scheduler;
-        $Γ['global']['$tmp4']['run']['$tmp104'] = sec_lvl('$tmp4', 'scheduler', false, $Γ['global']['$tmp4']['run']);
-        $Γ['global']['$tmp4']['run']['$tmp104'] instanceof Object ? $Γ['global']['$tmp4']['run']['$tmp104'].Σ = $lub($Γ['global']['$tmp4']['run']['$tmp104'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp4']['run']['$tmp104'] = $lub($Γ['global']['$tmp4']['run']['$tmp104'], $Λ[$Λ.length - 1].l);
-        $tmp121 = $tmp104.queue(packet);
-        return $tmp121;
-        var $shouldComp = { 'lbl': 'FUNC' };
+        $tmp59 = i++;
+        $Γ['global']['SplayRun']['$tmp59'] = sec_lvl('i', null, false, $Γ['global']['SplayRun']);
+        $Γ['global']['SplayRun']['$tmp59'] instanceof Object ? $Γ['global']['SplayRun']['$tmp59'].Σ = $lub($Γ['global']['SplayRun']['$tmp59'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplayRun']['$tmp59'] = $lub($Γ['global']['SplayRun']['$tmp59'], $Λ[$Λ.length - 1].l);
+        $tmp60 = i < kSplayTreeModifications;
+        $Γ['global']['SplayRun']['$tmp60'] = $lub(sec_lvl('i', null, true, $Γ['global']['SplayRun']), sec_lvl('kSplayTreeModifications', null, true, $Γ['global']['SplayRun']));
+        $Γ['global']['SplayRun']['$tmp60'] instanceof Object ? $Γ['global']['SplayRun']['$tmp60'].Σ = $lub($Γ['global']['SplayRun']['$tmp60'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplayRun']['$tmp60'] = $lub($Γ['global']['SplayRun']['$tmp60'], $Λ[$Λ.length - 1].l);
     }
-    if ($shouldComp)
-        $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
+    $upgrade([
+        'key',
+        'greatest',
+        '$tmp64',
+        '$tmp65'
+    ], $Λ[$Λ.length - 1].l, $Γ['global']['SplayRun']);
     $Λ.pop();
+    $tmp62 = performance.now();
+    $rf = $scope($Γ['global']['SplayRun'], 'SplayUpdateStats', false)['SplayUpdateStats'];
+    $rf.scope = $Γ['global']['SplayRun'];
+    $rf.$this = $Γ['global'];
+    $rf['time'] = $lub(sec_lvl('$tmp62', null, true, $Γ['global']['SplayRun']), $Λ[$Λ.length - 1].l);
+    $Λ.push({
+        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+        id: 'FUNC'
+    });
+    $tmp61 = SplayUpdateStats($tmp62);
+    $Γ['global']['SplayRun']['$tmp61'] = $Λ.pop().l;
+    $Γ['global']['SplayRun']['$tmp61'] instanceof Object ? $Γ['global']['SplayRun']['$tmp61'].Σ = $lub($Γ['global']['SplayRun']['$tmp61'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplayRun']['$tmp61'] = $lub($Γ['global']['SplayRun']['$tmp61'], $Λ[$Λ.length - 1].l);
     return;
+}
+function SplayTree() {
+    return;
+}
+;
+$tmp1 = SplayTree.prototype;
+$Γ['global']['$tmp1'] = sec_lvl('SplayTree', 'prototype', false, $Γ['global']);
+$Γ['global']['$tmp1'] instanceof Object ? $Γ['global']['$tmp1'].Σ = $lub($Γ['global']['$tmp1'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1'] = $lub($Γ['global']['$tmp1'], $Λ[$Λ.length - 1].l);
+$tmp1.root_ = null;
+$Γ['global']['$tmp1']['root_'] = $Λ[$Λ.length - 1].l;
+$tmp1 = SplayTree.prototype;
+$Γ['global']['$tmp1'] = sec_lvl('SplayTree', 'prototype', false, $Γ['global']);
+$Γ['global']['$tmp1'] instanceof Object ? $Γ['global']['$tmp1'].Σ = $lub($Γ['global']['$tmp1'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1'] = $lub($Γ['global']['$tmp1'], $Λ[$Λ.length - 1].l);
+$tmp1.isEmpty = function () {
+    var $tmp67, $tmp68;
+    $Γ['global']['$tmp1']['isEmpty']['$tmp68'] = $Γ['global']['$tmp1']['isEmpty']['$tmp67'] = 0;
+    $tmp68 = this.root_;
+    $Γ['global']['$tmp1']['isEmpty']['$tmp68'] = sec_lvl('$tmp1', 'root_', false, $Γ['global']['$tmp1']['isEmpty']);
+    $Γ['global']['$tmp1']['isEmpty']['$tmp68'] instanceof Object ? $Γ['global']['$tmp1']['isEmpty']['$tmp68'].Σ = $lub($Γ['global']['$tmp1']['isEmpty']['$tmp68'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['isEmpty']['$tmp68'] = $lub($Γ['global']['$tmp1']['isEmpty']['$tmp68'], $Λ[$Λ.length - 1].l);
+    $tmp67 = !$tmp68;
+    $Γ['global']['$tmp1']['isEmpty']['$tmp67'] = sec_lvl('$tmp68', null, false, $Γ['global']['$tmp1']['isEmpty']);
+    $Γ['global']['$tmp1']['isEmpty']['$tmp67'] instanceof Object ? $Γ['global']['$tmp1']['isEmpty']['$tmp67'].Σ = $lub($Γ['global']['$tmp1']['isEmpty']['$tmp67'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['isEmpty']['$tmp67'] = $lub($Γ['global']['$tmp1']['isEmpty']['$tmp67'], $Λ[$Λ.length - 1].l);
+    return $tmp67;
 };
-$Γ['global']['$tmp4']['run'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global'],
-    packet: $Λ[$Λ.length - 1].l
-};
-$tmp4 = WorkerTask.prototype;
-$Γ['global']['$tmp4'] = sec_lvl('WorkerTask', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp4'] instanceof Object ? $Γ['global']['$tmp4'].Σ = $lub($Γ['global']['$tmp4'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp4'] = $lub($Γ['global']['$tmp4'], $Λ[$Λ.length - 1].l);
-$tmp4.toString = function () {
-    var $tmp127;
-    $Γ['global']['$tmp4']['toString']['$tmp127'] = 0;
-    $tmp127 = 'WorkerTask';
-    $Γ['global']['$tmp4']['toString']['$tmp127'] = $Λ[$Λ.length - 1].l;
-    return $tmp127;
-};
-$Γ['global']['$tmp4']['toString'] = {
+$Γ['global']['$tmp1']['isEmpty'] = {
     $fscope: $Λ[$Λ.length - 1].l,
     prototype: { Σ: $Λ[$Λ.length - 1].l },
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global']
 };
-function HandlerTask(scheduler) {
-    this.scheduler = scheduler;
-    $Γ['global']['HandlerTask']['$this']['scheduler'] = sec_lvl('scheduler', null, false, $Γ['global']['HandlerTask']);
-    $Γ['global']['HandlerTask']['$this']['scheduler'] instanceof Object ? $Γ['global']['HandlerTask']['$this']['scheduler'].Σ = $lub($Γ['global']['HandlerTask']['$this']['scheduler'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['HandlerTask']['$this']['scheduler'] = $lub($Γ['global']['HandlerTask']['$this']['scheduler'], $Λ[$Λ.length - 1].l);
-    this.v1 = null;
-    $Γ['global']['HandlerTask']['$this']['v1'] = $Λ[$Λ.length - 1].l;
-    this.v2 = null;
-    $Γ['global']['HandlerTask']['$this']['v2'] = $Λ[$Λ.length - 1].l;
-    return;
-}
-$tmp5 = HandlerTask.prototype;
-$Γ['global']['$tmp5'] = sec_lvl('HandlerTask', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp5'] instanceof Object ? $Γ['global']['$tmp5'].Σ = $lub($Γ['global']['$tmp5'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp5'] = $lub($Γ['global']['$tmp5'], $Λ[$Λ.length - 1].l);
-$tmp5.run = function (packet) {
-    var $tmp128, $tmp129, $tmp130, $tmp131, $tmp104;
-    $Γ['global']['$tmp5']['run']['$tmp104'] = $Γ['global']['$tmp5']['run']['$tmp131'] = $Γ['global']['$tmp5']['run']['$tmp130'] = $Γ['global']['$tmp5']['run']['$tmp129'] = $Γ['global']['$tmp5']['run']['$tmp128'] = 0;
-    $tmp128 = packet != null;
-    $Γ['global']['$tmp5']['run']['$tmp128'] = $lub(sec_lvl('packet', null, true, $Γ['global']['$tmp5']['run']), $Λ[$Λ.length - 1].l);
-    $Γ['global']['$tmp5']['run']['$tmp128'] instanceof Object ? $Γ['global']['$tmp5']['run']['$tmp128'].Σ = $lub($Γ['global']['$tmp5']['run']['$tmp128'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp5']['run']['$tmp128'] = $lub($Γ['global']['$tmp5']['run']['$tmp128'], $Λ[$Λ.length - 1].l);
+$tmp1 = SplayTree.prototype;
+$Γ['global']['$tmp1'] = sec_lvl('SplayTree', 'prototype', false, $Γ['global']);
+$Γ['global']['$tmp1'] instanceof Object ? $Γ['global']['$tmp1'].Σ = $lub($Γ['global']['$tmp1'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1'] = $lub($Γ['global']['$tmp1'], $Λ[$Λ.length - 1].l);
+$tmp1.insert = function (key, value) {
+    var $tmp69, $tmp70, $tmp71, $tmp72, $tmp73, node, $tmp74, $tmp75;
+    $Γ['global']['$tmp1']['insert']['$tmp75'] = $Γ['global']['$tmp1']['insert']['$tmp74'] = $Γ['global']['$tmp1']['insert']['node'] = $Γ['global']['$tmp1']['insert']['$tmp73'] = $Γ['global']['$tmp1']['insert']['$tmp72'] = $Γ['global']['$tmp1']['insert']['$tmp71'] = $Γ['global']['$tmp1']['insert']['$tmp70'] = $Γ['global']['$tmp1']['insert']['$tmp69'] = 0;
+    $rf = $prop('$tmp1', 'isEmpty', $Γ['global']['$tmp1']['insert']);
+    $rf.scope = $Γ['global']['$tmp1']['insert'];
+    $rf.$this = $Γ['global']['$tmp1']['insert']['$this'];
     $Λ.push({
-        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp128', null, true, $Γ['global']['$tmp5']['run'])),
+        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+        id: 'FUNC'
+    });
+    $tmp69 = this.isEmpty();
+    $Γ['global']['$tmp1']['insert']['$tmp69'] = $Λ.pop().l;
+    $Γ['global']['$tmp1']['insert']['$tmp69'] instanceof Object ? $Γ['global']['$tmp1']['insert']['$tmp69'].Σ = $lub($Γ['global']['$tmp1']['insert']['$tmp69'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['insert']['$tmp69'] = $lub($Γ['global']['$tmp1']['insert']['$tmp69'], $Λ[$Λ.length - 1].l);
+    $Λ.push({
+        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp69', null, true, $Γ['global']['$tmp1']['insert'])),
+        id: 'IF'
+    });
+    if ($tmp69) {
+        $rf = $prop('SplayTree', 'Node', $Γ['global']['$tmp1']['insert']);
+        $rf.scope = $Γ['global']['$tmp1']['insert'];
+        $rf.$this = {
+            Σ: $Λ[$Λ.length - 1].l,
+            __$proto__: $rf.prototype
+        };
+        $rf['key'] = $lub(sec_lvl('key', null, true, $Γ['global']['$tmp1']['insert']), $Λ[$Λ.length - 1].l);
+        $rf['value'] = $lub(sec_lvl('value', null, true, $Γ['global']['$tmp1']['insert']), $Λ[$Λ.length - 1].l);
+        $rf.InvokedAsContr = true;
+        $Λ.push({
+            l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+            id: 'FUNC'
+        });
+        this.root_ = new SplayTree.Node(key, value);
+        $Γ['global']['$tmp1']['insert']['$this']['root_'] = $Λ.pop().l;
+        $Γ['global']['$tmp1']['insert']['$this']['root_'] instanceof Object ? $Γ['global']['$tmp1']['insert']['$this']['root_'].Σ = $lub($Γ['global']['$tmp1']['insert']['$this']['root_'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['insert']['$this']['root_'] = $lub($Γ['global']['$tmp1']['insert']['$this']['root_'], $Λ[$Λ.length - 1].l);
+        return;
+        var $shouldComp = { 'lbl': 'FUNC' };
+    } else {
+        $upgrade(['this'], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp1']['insert']);
+    }
+    if ($shouldComp)
+        $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
+    $Λ.pop();
+    $rf = $prop('$tmp1', 'splay_', $Γ['global']['$tmp1']['insert']);
+    $rf.scope = $Γ['global']['$tmp1']['insert'];
+    $rf.$this = $Γ['global']['$tmp1']['insert']['$this'];
+    $rf['key'] = $lub(sec_lvl('key', null, true, $Γ['global']['$tmp1']['insert']), $Λ[$Λ.length - 1].l);
+    $Λ.push({
+        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+        id: 'FUNC'
+    });
+    $tmp70 = this.splay_(key);
+    $Γ['global']['$tmp1']['insert']['$tmp70'] = $Λ.pop().l;
+    $Γ['global']['$tmp1']['insert']['$tmp70'] instanceof Object ? $Γ['global']['$tmp1']['insert']['$tmp70'].Σ = $lub($Γ['global']['$tmp1']['insert']['$tmp70'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['insert']['$tmp70'] = $lub($Γ['global']['$tmp1']['insert']['$tmp70'], $Λ[$Λ.length - 1].l);
+    $tmp73 = this.root_;
+    $Γ['global']['$tmp1']['insert']['$tmp73'] = sec_lvl('$tmp1', 'root_', false, $Γ['global']['$tmp1']['insert']);
+    $Γ['global']['$tmp1']['insert']['$tmp73'] instanceof Object ? $Γ['global']['$tmp1']['insert']['$tmp73'].Σ = $lub($Γ['global']['$tmp1']['insert']['$tmp73'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['insert']['$tmp73'] = $lub($Γ['global']['$tmp1']['insert']['$tmp73'], $Λ[$Λ.length - 1].l);
+    $tmp72 = $tmp73.key;
+    $Γ['global']['$tmp1']['insert']['$tmp72'] = sec_lvl('$tmp73', 'key', false, $Γ['global']['$tmp1']['insert']);
+    $Γ['global']['$tmp1']['insert']['$tmp72'] instanceof Object ? $Γ['global']['$tmp1']['insert']['$tmp72'].Σ = $lub($Γ['global']['$tmp1']['insert']['$tmp72'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['insert']['$tmp72'] = $lub($Γ['global']['$tmp1']['insert']['$tmp72'], $Λ[$Λ.length - 1].l);
+    $tmp71 = $tmp72 == key;
+    $Γ['global']['$tmp1']['insert']['$tmp71'] = $lub(sec_lvl('$tmp72', null, true, $Γ['global']['$tmp1']['insert']), sec_lvl('key', null, true, $Γ['global']['$tmp1']['insert']));
+    $Γ['global']['$tmp1']['insert']['$tmp71'] instanceof Object ? $Γ['global']['$tmp1']['insert']['$tmp71'].Σ = $lub($Γ['global']['$tmp1']['insert']['$tmp71'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['insert']['$tmp71'] = $lub($Γ['global']['$tmp1']['insert']['$tmp71'], $Λ[$Λ.length - 1].l);
+    $Λ.push({
+        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp71', null, true, $Γ['global']['$tmp1']['insert'])),
+        id: 'IF'
+    });
+    if ($tmp71) {
+        return;
+        var $shouldComp = { 'lbl': 'FUNC' };
+    } else {
+    }
+    if ($shouldComp)
+        $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
+    $Λ.pop();
+    $rf = $prop('SplayTree', 'Node', $Γ['global']['$tmp1']['insert']);
+    $rf.scope = $Γ['global']['$tmp1']['insert'];
+    $rf.$this = {
+        Σ: $Λ[$Λ.length - 1].l,
+        __$proto__: $rf.prototype
+    };
+    $rf['key'] = $lub(sec_lvl('key', null, true, $Γ['global']['$tmp1']['insert']), $Λ[$Λ.length - 1].l);
+    $rf['value'] = $lub(sec_lvl('value', null, true, $Γ['global']['$tmp1']['insert']), $Λ[$Λ.length - 1].l);
+    $rf.InvokedAsContr = true;
+    $Λ.push({
+        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+        id: 'FUNC'
+    });
+    node = new SplayTree.Node(key, value);
+    $scope($Γ['global']['$tmp1']['insert'], 'node', true)['node'] = $Λ.pop().l;
+    $scope($Γ['global']['$tmp1']['insert'], 'node', true)['node'] instanceof Object ? $scope($Γ['global']['$tmp1']['insert'], 'node', true)['node'].Σ = $lub($scope($Γ['global']['$tmp1']['insert'], 'node', true)['node'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['insert'], 'node', true)['node'] = $lub($scope($Γ['global']['$tmp1']['insert'], 'node', true)['node'], $Λ[$Λ.length - 1].l);
+    $tmp73 = this.root_;
+    $Γ['global']['$tmp1']['insert']['$tmp73'] = sec_lvl('$tmp1', 'root_', false, $Γ['global']['$tmp1']['insert']);
+    $Γ['global']['$tmp1']['insert']['$tmp73'] instanceof Object ? $Γ['global']['$tmp1']['insert']['$tmp73'].Σ = $lub($Γ['global']['$tmp1']['insert']['$tmp73'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['insert']['$tmp73'] = $lub($Γ['global']['$tmp1']['insert']['$tmp73'], $Λ[$Λ.length - 1].l);
+    $tmp75 = $tmp73.key;
+    $Γ['global']['$tmp1']['insert']['$tmp75'] = sec_lvl('$tmp73', 'key', false, $Γ['global']['$tmp1']['insert']);
+    $Γ['global']['$tmp1']['insert']['$tmp75'] instanceof Object ? $Γ['global']['$tmp1']['insert']['$tmp75'].Σ = $lub($Γ['global']['$tmp1']['insert']['$tmp75'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['insert']['$tmp75'] = $lub($Γ['global']['$tmp1']['insert']['$tmp75'], $Λ[$Λ.length - 1].l);
+    $tmp74 = key > $tmp75;
+    $Γ['global']['$tmp1']['insert']['$tmp74'] = $lub(sec_lvl('key', null, true, $Γ['global']['$tmp1']['insert']), sec_lvl('$tmp75', null, true, $Γ['global']['$tmp1']['insert']));
+    $Γ['global']['$tmp1']['insert']['$tmp74'] instanceof Object ? $Γ['global']['$tmp1']['insert']['$tmp74'].Σ = $lub($Γ['global']['$tmp1']['insert']['$tmp74'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['insert']['$tmp74'] = $lub($Γ['global']['$tmp1']['insert']['$tmp74'], $Λ[$Λ.length - 1].l);
+    $Λ.push({
+        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp74', null, true, $Γ['global']['$tmp1']['insert'])),
+        id: 'IF'
+    });
+    if ($tmp74) {
+        node.left = this.root_;
+        $scope($Γ['global']['$tmp1']['insert'], 'node', false)['left'] = sec_lvl('$tmp1', 'root_', false, $Γ['global']['$tmp1']['insert']);
+        $scope($Γ['global']['$tmp1']['insert'], 'node', false)['left'] instanceof Object ? $scope($Γ['global']['$tmp1']['insert'], 'node', false)['left'].Σ = $lub($scope($Γ['global']['$tmp1']['insert'], 'node', false)['left'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['insert'], 'node', false)['left'] = $lub($scope($Γ['global']['$tmp1']['insert'], 'node', false)['left'], $Λ[$Λ.length - 1].l);
+        var $tmp73;
+        $Γ['global']['$tmp1']['insert']['$tmp73'] = 0;
+        $tmp73 = this.root_;
+        $Γ['global']['$tmp1']['insert']['$tmp73'] = sec_lvl('$tmp1', 'root_', false, $Γ['global']['$tmp1']['insert']);
+        $Γ['global']['$tmp1']['insert']['$tmp73'] instanceof Object ? $Γ['global']['$tmp1']['insert']['$tmp73'].Σ = $lub($Γ['global']['$tmp1']['insert']['$tmp73'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['insert']['$tmp73'] = $lub($Γ['global']['$tmp1']['insert']['$tmp73'], $Λ[$Λ.length - 1].l);
+        node.right = $tmp73.right;
+        $scope($Γ['global']['$tmp1']['insert'], 'node', false)['right'] = sec_lvl('$tmp73', 'right', false, $Γ['global']['$tmp1']['insert']);
+        $scope($Γ['global']['$tmp1']['insert'], 'node', false)['right'] instanceof Object ? $scope($Γ['global']['$tmp1']['insert'], 'node', false)['right'].Σ = $lub($scope($Γ['global']['$tmp1']['insert'], 'node', false)['right'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['insert'], 'node', false)['right'] = $lub($scope($Γ['global']['$tmp1']['insert'], 'node', false)['right'], $Λ[$Λ.length - 1].l);
+        $tmp73 = this.root_;
+        $Γ['global']['$tmp1']['insert']['$tmp73'] = sec_lvl('$tmp1', 'root_', false, $Γ['global']['$tmp1']['insert']);
+        $Γ['global']['$tmp1']['insert']['$tmp73'] instanceof Object ? $Γ['global']['$tmp1']['insert']['$tmp73'].Σ = $lub($Γ['global']['$tmp1']['insert']['$tmp73'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['insert']['$tmp73'] = $lub($Γ['global']['$tmp1']['insert']['$tmp73'], $Λ[$Λ.length - 1].l);
+        $tmp73.right = null;
+        $Γ['global']['$tmp1']['insert']['$tmp73']['right'] = $Λ[$Λ.length - 1].l;
+    } else {
+        node.right = this.root_;
+        $scope($Γ['global']['$tmp1']['insert'], 'node', false)['right'] = sec_lvl('$tmp1', 'root_', false, $Γ['global']['$tmp1']['insert']);
+        $scope($Γ['global']['$tmp1']['insert'], 'node', false)['right'] instanceof Object ? $scope($Γ['global']['$tmp1']['insert'], 'node', false)['right'].Σ = $lub($scope($Γ['global']['$tmp1']['insert'], 'node', false)['right'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['insert'], 'node', false)['right'] = $lub($scope($Γ['global']['$tmp1']['insert'], 'node', false)['right'], $Λ[$Λ.length - 1].l);
+        var $tmp73;
+        $Γ['global']['$tmp1']['insert']['$tmp73'] = 0;
+        $tmp73 = this.root_;
+        $Γ['global']['$tmp1']['insert']['$tmp73'] = sec_lvl('$tmp1', 'root_', false, $Γ['global']['$tmp1']['insert']);
+        $Γ['global']['$tmp1']['insert']['$tmp73'] instanceof Object ? $Γ['global']['$tmp1']['insert']['$tmp73'].Σ = $lub($Γ['global']['$tmp1']['insert']['$tmp73'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['insert']['$tmp73'] = $lub($Γ['global']['$tmp1']['insert']['$tmp73'], $Λ[$Λ.length - 1].l);
+        node.left = $tmp73.left;
+        $scope($Γ['global']['$tmp1']['insert'], 'node', false)['left'] = sec_lvl('$tmp73', 'left', false, $Γ['global']['$tmp1']['insert']);
+        $scope($Γ['global']['$tmp1']['insert'], 'node', false)['left'] instanceof Object ? $scope($Γ['global']['$tmp1']['insert'], 'node', false)['left'].Σ = $lub($scope($Γ['global']['$tmp1']['insert'], 'node', false)['left'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['insert'], 'node', false)['left'] = $lub($scope($Γ['global']['$tmp1']['insert'], 'node', false)['left'], $Λ[$Λ.length - 1].l);
+        $tmp73 = this.root_;
+        $Γ['global']['$tmp1']['insert']['$tmp73'] = sec_lvl('$tmp1', 'root_', false, $Γ['global']['$tmp1']['insert']);
+        $Γ['global']['$tmp1']['insert']['$tmp73'] instanceof Object ? $Γ['global']['$tmp1']['insert']['$tmp73'].Σ = $lub($Γ['global']['$tmp1']['insert']['$tmp73'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['insert']['$tmp73'] = $lub($Γ['global']['$tmp1']['insert']['$tmp73'], $Λ[$Λ.length - 1].l);
+        $tmp73.left = null;
+        $Γ['global']['$tmp1']['insert']['$tmp73']['left'] = $Λ[$Λ.length - 1].l;
+    }
+    $Λ.pop();
+    this.root_ = node;
+    $Γ['global']['$tmp1']['insert']['$this']['root_'] = sec_lvl('node', null, false, $Γ['global']['$tmp1']['insert']);
+    $Γ['global']['$tmp1']['insert']['$this']['root_'] instanceof Object ? $Γ['global']['$tmp1']['insert']['$this']['root_'].Σ = $lub($Γ['global']['$tmp1']['insert']['$this']['root_'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['insert']['$this']['root_'] = $lub($Γ['global']['$tmp1']['insert']['$this']['root_'], $Λ[$Λ.length - 1].l);
+    return;
+};
+$Γ['global']['$tmp1']['insert'] = {
+    $fscope: $Λ[$Λ.length - 1].l,
+    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    Σ: $Λ[$Λ.length - 1].l,
+    scope: $Γ['global'],
+    key: $Λ[$Λ.length - 1].l,
+    value: $Λ[$Λ.length - 1].l
+};
+$tmp1 = SplayTree.prototype;
+$Γ['global']['$tmp1'] = sec_lvl('SplayTree', 'prototype', false, $Γ['global']);
+$Γ['global']['$tmp1'] instanceof Object ? $Γ['global']['$tmp1'].Σ = $lub($Γ['global']['$tmp1'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1'] = $lub($Γ['global']['$tmp1'], $Λ[$Λ.length - 1].l);
+$tmp1.remove = function (key) {
+    var $tmp76, $tmp77, $tmp78, $tmp79, $tmp73, removed, $tmp80, $tmp81;
+    $Γ['global']['$tmp1']['remove']['$tmp81'] = $Γ['global']['$tmp1']['remove']['$tmp80'] = $Γ['global']['$tmp1']['remove']['removed'] = $Γ['global']['$tmp1']['remove']['$tmp73'] = $Γ['global']['$tmp1']['remove']['$tmp79'] = $Γ['global']['$tmp1']['remove']['$tmp78'] = $Γ['global']['$tmp1']['remove']['$tmp77'] = $Γ['global']['$tmp1']['remove']['$tmp76'] = 0;
+    $rf = $prop('$tmp1', 'isEmpty', $Γ['global']['$tmp1']['remove']);
+    $rf.scope = $Γ['global']['$tmp1']['remove'];
+    $rf.$this = $Γ['global']['$tmp1']['remove']['$this'];
+    $Λ.push({
+        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+        id: 'FUNC'
+    });
+    $tmp76 = this.isEmpty();
+    $Γ['global']['$tmp1']['remove']['$tmp76'] = $Λ.pop().l;
+    $Γ['global']['$tmp1']['remove']['$tmp76'] instanceof Object ? $Γ['global']['$tmp1']['remove']['$tmp76'].Σ = $lub($Γ['global']['$tmp1']['remove']['$tmp76'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['remove']['$tmp76'] = $lub($Γ['global']['$tmp1']['remove']['$tmp76'], $Λ[$Λ.length - 1].l);
+    $Λ.push({
+        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp76', null, true, $Γ['global']['$tmp1']['remove'])),
+        id: 'IF'
+    });
+    if ($tmp76) {
+        var $tmp82, $tmp83;
+        $Γ['global']['$tmp1']['remove']['$tmp83'] = $Γ['global']['$tmp1']['remove']['$tmp82'] = 0;
+        $tmp83 = 'Key not found: ' + key;
+        $Γ['global']['$tmp1']['remove']['$tmp83'] = $lub($Λ[$Λ.length - 1].l, sec_lvl('key', null, true, $Γ['global']['$tmp1']['remove']));
+        $Γ['global']['$tmp1']['remove']['$tmp83'] instanceof Object ? $Γ['global']['$tmp1']['remove']['$tmp83'].Σ = $lub($Γ['global']['$tmp1']['remove']['$tmp83'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['remove']['$tmp83'] = $lub($Γ['global']['$tmp1']['remove']['$tmp83'], $Λ[$Λ.length - 1].l);
+        $tmp82 = Error($tmp83);
+        $old_pc = $pc();
+        while ($pc().id !== 'FUNC' && $pc().id !== 'TRY') {
+            $Λ.pop();
+        }
+        $Λ[$Λ.length - 1] = { 'l': $lub($old_pc.l, sec_lvl('$tmp82', null, true, $Γ['global']['$tmp1']['remove'])) };
+        throw $tmp82;
+        var $shouldComp = { 'lbl': 'FUNC' };
+    } else {
+        $upgrade([
+            'Error',
+            '$tmp82'
+        ], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp1']['remove']);
+    }
+    if ($shouldComp)
+        $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
+    $Λ.pop();
+    $rf = $prop('$tmp1', 'splay_', $Γ['global']['$tmp1']['remove']);
+    $rf.scope = $Γ['global']['$tmp1']['remove'];
+    $rf.$this = $Γ['global']['$tmp1']['remove']['$this'];
+    $rf['key'] = $lub(sec_lvl('key', null, true, $Γ['global']['$tmp1']['remove']), $Λ[$Λ.length - 1].l);
+    $Λ.push({
+        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+        id: 'FUNC'
+    });
+    $tmp77 = this.splay_(key);
+    $Γ['global']['$tmp1']['remove']['$tmp77'] = $Λ.pop().l;
+    $Γ['global']['$tmp1']['remove']['$tmp77'] instanceof Object ? $Γ['global']['$tmp1']['remove']['$tmp77'].Σ = $lub($Γ['global']['$tmp1']['remove']['$tmp77'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['remove']['$tmp77'] = $lub($Γ['global']['$tmp1']['remove']['$tmp77'], $Λ[$Λ.length - 1].l);
+    $tmp73 = this.root_;
+    $Γ['global']['$tmp1']['remove']['$tmp73'] = sec_lvl('$tmp1', 'root_', false, $Γ['global']['$tmp1']['remove']);
+    $Γ['global']['$tmp1']['remove']['$tmp73'] instanceof Object ? $Γ['global']['$tmp1']['remove']['$tmp73'].Σ = $lub($Γ['global']['$tmp1']['remove']['$tmp73'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['remove']['$tmp73'] = $lub($Γ['global']['$tmp1']['remove']['$tmp73'], $Λ[$Λ.length - 1].l);
+    $tmp79 = $tmp73.key;
+    $Γ['global']['$tmp1']['remove']['$tmp79'] = sec_lvl('$tmp73', 'key', false, $Γ['global']['$tmp1']['remove']);
+    $Γ['global']['$tmp1']['remove']['$tmp79'] instanceof Object ? $Γ['global']['$tmp1']['remove']['$tmp79'].Σ = $lub($Γ['global']['$tmp1']['remove']['$tmp79'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['remove']['$tmp79'] = $lub($Γ['global']['$tmp1']['remove']['$tmp79'], $Λ[$Λ.length - 1].l);
+    $tmp78 = $tmp79 != key;
+    $Γ['global']['$tmp1']['remove']['$tmp78'] = $lub(sec_lvl('$tmp79', null, true, $Γ['global']['$tmp1']['remove']), sec_lvl('key', null, true, $Γ['global']['$tmp1']['remove']));
+    $Γ['global']['$tmp1']['remove']['$tmp78'] instanceof Object ? $Γ['global']['$tmp1']['remove']['$tmp78'].Σ = $lub($Γ['global']['$tmp1']['remove']['$tmp78'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['remove']['$tmp78'] = $lub($Γ['global']['$tmp1']['remove']['$tmp78'], $Λ[$Λ.length - 1].l);
+    $Λ.push({
+        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp78', null, true, $Γ['global']['$tmp1']['remove'])),
+        id: 'IF'
+    });
+    if ($tmp78) {
+        var $tmp84, $tmp85;
+        $Γ['global']['$tmp1']['remove']['$tmp85'] = $Γ['global']['$tmp1']['remove']['$tmp84'] = 0;
+        $tmp85 = 'Key not found: ' + key;
+        $Γ['global']['$tmp1']['remove']['$tmp85'] = $lub($Λ[$Λ.length - 1].l, sec_lvl('key', null, true, $Γ['global']['$tmp1']['remove']));
+        $Γ['global']['$tmp1']['remove']['$tmp85'] instanceof Object ? $Γ['global']['$tmp1']['remove']['$tmp85'].Σ = $lub($Γ['global']['$tmp1']['remove']['$tmp85'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['remove']['$tmp85'] = $lub($Γ['global']['$tmp1']['remove']['$tmp85'], $Λ[$Λ.length - 1].l);
+        $tmp84 = Error($tmp85);
+        $old_pc = $pc();
+        while ($pc().id !== 'FUNC' && $pc().id !== 'TRY') {
+            $Λ.pop();
+        }
+        $Λ[$Λ.length - 1] = { 'l': $lub($old_pc.l, sec_lvl('$tmp84', null, true, $Γ['global']['$tmp1']['remove'])) };
+        throw $tmp84;
+        var $shouldComp = { 'lbl': 'FUNC' };
+    } else {
+        $upgrade([
+            'Error',
+            '$tmp84'
+        ], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp1']['remove']);
+    }
+    if ($shouldComp)
+        $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
+    $Λ.pop();
+    removed = this.root_;
+    $scope($Γ['global']['$tmp1']['remove'], 'removed', true)['removed'] = sec_lvl('$tmp1', 'root_', false, $Γ['global']['$tmp1']['remove']);
+    $scope($Γ['global']['$tmp1']['remove'], 'removed', true)['removed'] instanceof Object ? $scope($Γ['global']['$tmp1']['remove'], 'removed', true)['removed'].Σ = $lub($scope($Γ['global']['$tmp1']['remove'], 'removed', true)['removed'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['remove'], 'removed', true)['removed'] = $lub($scope($Γ['global']['$tmp1']['remove'], 'removed', true)['removed'], $Λ[$Λ.length - 1].l);
+    $tmp73 = this.root_;
+    $Γ['global']['$tmp1']['remove']['$tmp73'] = sec_lvl('$tmp1', 'root_', false, $Γ['global']['$tmp1']['remove']);
+    $Γ['global']['$tmp1']['remove']['$tmp73'] instanceof Object ? $Γ['global']['$tmp1']['remove']['$tmp73'].Σ = $lub($Γ['global']['$tmp1']['remove']['$tmp73'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['remove']['$tmp73'] = $lub($Γ['global']['$tmp1']['remove']['$tmp73'], $Λ[$Λ.length - 1].l);
+    $tmp81 = $tmp73.left;
+    $Γ['global']['$tmp1']['remove']['$tmp81'] = sec_lvl('$tmp73', 'left', false, $Γ['global']['$tmp1']['remove']);
+    $Γ['global']['$tmp1']['remove']['$tmp81'] instanceof Object ? $Γ['global']['$tmp1']['remove']['$tmp81'].Σ = $lub($Γ['global']['$tmp1']['remove']['$tmp81'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['remove']['$tmp81'] = $lub($Γ['global']['$tmp1']['remove']['$tmp81'], $Λ[$Λ.length - 1].l);
+    $tmp80 = !$tmp81;
+    $Γ['global']['$tmp1']['remove']['$tmp80'] = sec_lvl('$tmp81', null, false, $Γ['global']['$tmp1']['remove']);
+    $Γ['global']['$tmp1']['remove']['$tmp80'] instanceof Object ? $Γ['global']['$tmp1']['remove']['$tmp80'].Σ = $lub($Γ['global']['$tmp1']['remove']['$tmp80'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['remove']['$tmp80'] = $lub($Γ['global']['$tmp1']['remove']['$tmp80'], $Λ[$Λ.length - 1].l);
+    $Λ.push({
+        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp80', null, true, $Γ['global']['$tmp1']['remove'])),
+        id: 'IF'
+    });
+    if ($tmp80) {
+        $upgrade(['$tmp86'], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp1']['remove']);
+        var $tmp73;
+        $Γ['global']['$tmp1']['remove']['$tmp73'] = 0;
+        $tmp73 = this.root_;
+        $Γ['global']['$tmp1']['remove']['$tmp73'] = sec_lvl('$tmp1', 'root_', false, $Γ['global']['$tmp1']['remove']);
+        $Γ['global']['$tmp1']['remove']['$tmp73'] instanceof Object ? $Γ['global']['$tmp1']['remove']['$tmp73'].Σ = $lub($Γ['global']['$tmp1']['remove']['$tmp73'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['remove']['$tmp73'] = $lub($Γ['global']['$tmp1']['remove']['$tmp73'], $Λ[$Λ.length - 1].l);
+        this.root_ = $tmp73.right;
+        $Γ['global']['$tmp1']['remove']['$this']['root_'] = sec_lvl('$tmp73', 'right', false, $Γ['global']['$tmp1']['remove']);
+        $Γ['global']['$tmp1']['remove']['$this']['root_'] instanceof Object ? $Γ['global']['$tmp1']['remove']['$this']['root_'].Σ = $lub($Γ['global']['$tmp1']['remove']['$this']['root_'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['remove']['$this']['root_'] = $lub($Γ['global']['$tmp1']['remove']['$this']['root_'], $Λ[$Λ.length - 1].l);
+    } else {
+        var right, $tmp73, $tmp86;
+        $Γ['global']['$tmp1']['remove']['$tmp86'] = $Γ['global']['$tmp1']['remove']['$tmp73'] = $Γ['global']['$tmp1']['remove']['right'] = 0;
+        $tmp73 = this.root_;
+        $Γ['global']['$tmp1']['remove']['$tmp73'] = sec_lvl('$tmp1', 'root_', false, $Γ['global']['$tmp1']['remove']);
+        $Γ['global']['$tmp1']['remove']['$tmp73'] instanceof Object ? $Γ['global']['$tmp1']['remove']['$tmp73'].Σ = $lub($Γ['global']['$tmp1']['remove']['$tmp73'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['remove']['$tmp73'] = $lub($Γ['global']['$tmp1']['remove']['$tmp73'], $Λ[$Λ.length - 1].l);
+        right = $tmp73.right;
+        $scope($Γ['global']['$tmp1']['remove'], 'right', true)['right'] = sec_lvl('$tmp73', 'right', false, $Γ['global']['$tmp1']['remove']);
+        $scope($Γ['global']['$tmp1']['remove'], 'right', true)['right'] instanceof Object ? $scope($Γ['global']['$tmp1']['remove'], 'right', true)['right'].Σ = $lub($scope($Γ['global']['$tmp1']['remove'], 'right', true)['right'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['remove'], 'right', true)['right'] = $lub($scope($Γ['global']['$tmp1']['remove'], 'right', true)['right'], $Λ[$Λ.length - 1].l);
+        $tmp73 = this.root_;
+        $Γ['global']['$tmp1']['remove']['$tmp73'] = sec_lvl('$tmp1', 'root_', false, $Γ['global']['$tmp1']['remove']);
+        $Γ['global']['$tmp1']['remove']['$tmp73'] instanceof Object ? $Γ['global']['$tmp1']['remove']['$tmp73'].Σ = $lub($Γ['global']['$tmp1']['remove']['$tmp73'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['remove']['$tmp73'] = $lub($Γ['global']['$tmp1']['remove']['$tmp73'], $Λ[$Λ.length - 1].l);
+        this.root_ = $tmp73.left;
+        $Γ['global']['$tmp1']['remove']['$this']['root_'] = sec_lvl('$tmp73', 'left', false, $Γ['global']['$tmp1']['remove']);
+        $Γ['global']['$tmp1']['remove']['$this']['root_'] instanceof Object ? $Γ['global']['$tmp1']['remove']['$this']['root_'].Σ = $lub($Γ['global']['$tmp1']['remove']['$this']['root_'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['remove']['$this']['root_'] = $lub($Γ['global']['$tmp1']['remove']['$this']['root_'], $Λ[$Λ.length - 1].l);
+        $rf = $prop('$tmp1', 'splay_', $Γ['global']['$tmp1']['remove']);
+        $rf.scope = $Γ['global']['$tmp1']['remove'];
+        $rf.$this = $Γ['global']['$tmp1']['remove']['$this'];
+        $rf['key'] = $lub(sec_lvl('key', null, true, $Γ['global']['$tmp1']['remove']), $Λ[$Λ.length - 1].l);
+        $Λ.push({
+            l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+            id: 'FUNC'
+        });
+        $tmp86 = this.splay_(key);
+        $Γ['global']['$tmp1']['remove']['$tmp86'] = $Λ.pop().l;
+        $Γ['global']['$tmp1']['remove']['$tmp86'] instanceof Object ? $Γ['global']['$tmp1']['remove']['$tmp86'].Σ = $lub($Γ['global']['$tmp1']['remove']['$tmp86'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['remove']['$tmp86'] = $lub($Γ['global']['$tmp1']['remove']['$tmp86'], $Λ[$Λ.length - 1].l);
+        $tmp73 = this.root_;
+        $Γ['global']['$tmp1']['remove']['$tmp73'] = sec_lvl('$tmp1', 'root_', false, $Γ['global']['$tmp1']['remove']);
+        $Γ['global']['$tmp1']['remove']['$tmp73'] instanceof Object ? $Γ['global']['$tmp1']['remove']['$tmp73'].Σ = $lub($Γ['global']['$tmp1']['remove']['$tmp73'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['remove']['$tmp73'] = $lub($Γ['global']['$tmp1']['remove']['$tmp73'], $Λ[$Λ.length - 1].l);
+        $tmp73.right = right;
+        $Γ['global']['$tmp1']['remove']['$tmp73']['right'] = sec_lvl('right', null, false, $Γ['global']['$tmp1']['remove']);
+        $Γ['global']['$tmp1']['remove']['$tmp73']['right'] instanceof Object ? $Γ['global']['$tmp1']['remove']['$tmp73']['right'].Σ = $lub($Γ['global']['$tmp1']['remove']['$tmp73']['right'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['remove']['$tmp73']['right'] = $lub($Γ['global']['$tmp1']['remove']['$tmp73']['right'], $Λ[$Λ.length - 1].l);
+    }
+    $Λ.pop();
+    return removed;
+};
+$Γ['global']['$tmp1']['remove'] = {
+    $fscope: $Λ[$Λ.length - 1].l,
+    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    Σ: $Λ[$Λ.length - 1].l,
+    scope: $Γ['global'],
+    key: $Λ[$Λ.length - 1].l
+};
+$tmp1 = SplayTree.prototype;
+$Γ['global']['$tmp1'] = sec_lvl('SplayTree', 'prototype', false, $Γ['global']);
+$Γ['global']['$tmp1'] instanceof Object ? $Γ['global']['$tmp1'].Σ = $lub($Γ['global']['$tmp1'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1'] = $lub($Γ['global']['$tmp1'], $Λ[$Λ.length - 1].l);
+$tmp1.find = function (key) {
+    var $tmp87, $tmp88, $tmp89, $tmp128, $tmp129, $tmp73;
+    $Γ['global']['$tmp1']['find']['$tmp73'] = $Γ['global']['$tmp1']['find']['$tmp129'] = $Γ['global']['$tmp1']['find']['$tmp128'] = $Γ['global']['$tmp1']['find']['$tmp89'] = $Γ['global']['$tmp1']['find']['$tmp88'] = $Γ['global']['$tmp1']['find']['$tmp87'] = 0;
+    $rf = $prop('$tmp1', 'isEmpty', $Γ['global']['$tmp1']['find']);
+    $rf.scope = $Γ['global']['$tmp1']['find'];
+    $rf.$this = $Γ['global']['$tmp1']['find']['$this'];
+    $Λ.push({
+        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+        id: 'FUNC'
+    });
+    $tmp87 = this.isEmpty();
+    $Γ['global']['$tmp1']['find']['$tmp87'] = $Λ.pop().l;
+    $Γ['global']['$tmp1']['find']['$tmp87'] instanceof Object ? $Γ['global']['$tmp1']['find']['$tmp87'].Σ = $lub($Γ['global']['$tmp1']['find']['$tmp87'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['find']['$tmp87'] = $lub($Γ['global']['$tmp1']['find']['$tmp87'], $Λ[$Λ.length - 1].l);
+    $Λ.push({
+        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp87', null, true, $Γ['global']['$tmp1']['find'])),
+        id: 'IF'
+    });
+    if ($tmp87) {
+        var $tmp90;
+        $Γ['global']['$tmp1']['find']['$tmp90'] = 0;
+        $tmp90 = null;
+        $Γ['global']['$tmp1']['find']['$tmp90'] = $Λ[$Λ.length - 1].l;
+        return $tmp90;
+        var $shouldComp = { 'lbl': 'FUNC' };
+    } else {
+    }
+    if ($shouldComp)
+        $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
+    $Λ.pop();
+    $rf = $prop('$tmp1', 'splay_', $Γ['global']['$tmp1']['find']);
+    $rf.scope = $Γ['global']['$tmp1']['find'];
+    $rf.$this = $Γ['global']['$tmp1']['find']['$this'];
+    $rf['key'] = $lub(sec_lvl('key', null, true, $Γ['global']['$tmp1']['find']), $Λ[$Λ.length - 1].l);
+    $Λ.push({
+        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+        id: 'FUNC'
+    });
+    $tmp88 = this.splay_(key);
+    $Γ['global']['$tmp1']['find']['$tmp88'] = $Λ.pop().l;
+    $Γ['global']['$tmp1']['find']['$tmp88'] instanceof Object ? $Γ['global']['$tmp1']['find']['$tmp88'].Σ = $lub($Γ['global']['$tmp1']['find']['$tmp88'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['find']['$tmp88'] = $lub($Γ['global']['$tmp1']['find']['$tmp88'], $Λ[$Λ.length - 1].l);
+    $tmp73 = this.root_;
+    $Γ['global']['$tmp1']['find']['$tmp73'] = sec_lvl('$tmp1', 'root_', false, $Γ['global']['$tmp1']['find']);
+    $Γ['global']['$tmp1']['find']['$tmp73'] instanceof Object ? $Γ['global']['$tmp1']['find']['$tmp73'].Σ = $lub($Γ['global']['$tmp1']['find']['$tmp73'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['find']['$tmp73'] = $lub($Γ['global']['$tmp1']['find']['$tmp73'], $Λ[$Λ.length - 1].l);
+    $tmp129 = $tmp73.key;
+    $Γ['global']['$tmp1']['find']['$tmp129'] = sec_lvl('$tmp73', 'key', false, $Γ['global']['$tmp1']['find']);
+    $Γ['global']['$tmp1']['find']['$tmp129'] instanceof Object ? $Γ['global']['$tmp1']['find']['$tmp129'].Σ = $lub($Γ['global']['$tmp1']['find']['$tmp129'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['find']['$tmp129'] = $lub($Γ['global']['$tmp1']['find']['$tmp129'], $Λ[$Λ.length - 1].l);
+    $tmp128 = $tmp129 == key;
+    $Γ['global']['$tmp1']['find']['$tmp128'] = $lub(sec_lvl('$tmp129', null, true, $Γ['global']['$tmp1']['find']), sec_lvl('key', null, true, $Γ['global']['$tmp1']['find']));
+    $Γ['global']['$tmp1']['find']['$tmp128'] instanceof Object ? $Γ['global']['$tmp1']['find']['$tmp128'].Σ = $lub($Γ['global']['$tmp1']['find']['$tmp128'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['find']['$tmp128'] = $lub($Γ['global']['$tmp1']['find']['$tmp128'], $Λ[$Λ.length - 1].l);
+    $Λ.push({
+        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp128', null, true, $Γ['global']['$tmp1']['find'])),
         id: 'IF'
     });
     if ($tmp128) {
-        var $tmp132, $tmp133;
-        $Γ['global']['$tmp5']['run']['$tmp133'] = $Γ['global']['$tmp5']['run']['$tmp132'] = 0;
-        $tmp133 = packet.kind;
-        $Γ['global']['$tmp5']['run']['$tmp133'] = sec_lvl('packet', 'kind', false, $Γ['global']['$tmp5']['run']);
-        $Γ['global']['$tmp5']['run']['$tmp133'] instanceof Object ? $Γ['global']['$tmp5']['run']['$tmp133'].Σ = $lub($Γ['global']['$tmp5']['run']['$tmp133'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp5']['run']['$tmp133'] = $lub($Γ['global']['$tmp5']['run']['$tmp133'], $Λ[$Λ.length - 1].l);
-        $tmp132 = $tmp133 == KIND_WORK;
-        $Γ['global']['$tmp5']['run']['$tmp132'] = $lub(sec_lvl('$tmp133', null, true, $Γ['global']['$tmp5']['run']), sec_lvl('KIND_WORK', null, true, $Γ['global']['$tmp5']['run']));
-        $Γ['global']['$tmp5']['run']['$tmp132'] instanceof Object ? $Γ['global']['$tmp5']['run']['$tmp132'].Σ = $lub($Γ['global']['$tmp5']['run']['$tmp132'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp5']['run']['$tmp132'] = $lub($Γ['global']['$tmp5']['run']['$tmp132'], $Λ[$Λ.length - 1].l);
-        $Λ.push({
-            l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp132', null, true, $Γ['global']['$tmp5']['run'])),
-            id: 'IF'
-        });
-        if ($tmp132) {
-            $upgrade([
-                'packet.addTo',
-                'this'
-            ], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp5']['run']);
-            var $tmp134;
-            $Γ['global']['$tmp5']['run']['$tmp134'] = 0;
-            $tmp134 = this.v1;
-            $Γ['global']['$tmp5']['run']['$tmp134'] = sec_lvl('$tmp5', 'v1', false, $Γ['global']['$tmp5']['run']);
-            $Γ['global']['$tmp5']['run']['$tmp134'] instanceof Object ? $Γ['global']['$tmp5']['run']['$tmp134'].Σ = $lub($Γ['global']['$tmp5']['run']['$tmp134'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp5']['run']['$tmp134'] = $lub($Γ['global']['$tmp5']['run']['$tmp134'], $Λ[$Λ.length - 1].l);
-            this.v1 = packet.addTo($tmp134);
-        } else {
-            $upgrade([
-                'packet.addTo',
-                'this'
-            ], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp5']['run']);
-            var $tmp135;
-            $Γ['global']['$tmp5']['run']['$tmp135'] = 0;
-            $tmp135 = this.v2;
-            $Γ['global']['$tmp5']['run']['$tmp135'] = sec_lvl('$tmp5', 'v2', false, $Γ['global']['$tmp5']['run']);
-            $Γ['global']['$tmp5']['run']['$tmp135'] instanceof Object ? $Γ['global']['$tmp5']['run']['$tmp135'].Σ = $lub($Γ['global']['$tmp5']['run']['$tmp135'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp5']['run']['$tmp135'] = $lub($Γ['global']['$tmp5']['run']['$tmp135'], $Λ[$Λ.length - 1].l);
-            this.v2 = packet.addTo($tmp135);
-        }
-        $Λ.pop();
+        $tmp89 = this.root_;
+        $Γ['global']['$tmp1']['find']['$tmp89'] = sec_lvl('$tmp1', 'root_', false, $Γ['global']['$tmp1']['find']);
+        $Γ['global']['$tmp1']['find']['$tmp89'] instanceof Object ? $Γ['global']['$tmp1']['find']['$tmp89'].Σ = $lub($Γ['global']['$tmp1']['find']['$tmp89'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['find']['$tmp89'] = $lub($Γ['global']['$tmp1']['find']['$tmp89'], $Λ[$Λ.length - 1].l);
     } else {
-        $upgrade([
-            'packet.addTo',
-            'this'
-        ], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp5']['run']);
+        $tmp89 = null;
+        $Γ['global']['$tmp1']['find']['$tmp89'] = $Λ[$Λ.length - 1].l;
     }
     $Λ.pop();
-    $tmp130 = this.v1;
-    $Γ['global']['$tmp5']['run']['$tmp130'] = sec_lvl('$tmp5', 'v1', false, $Γ['global']['$tmp5']['run']);
-    $Γ['global']['$tmp5']['run']['$tmp130'] instanceof Object ? $Γ['global']['$tmp5']['run']['$tmp130'].Σ = $lub($Γ['global']['$tmp5']['run']['$tmp130'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp5']['run']['$tmp130'] = $lub($Γ['global']['$tmp5']['run']['$tmp130'], $Λ[$Λ.length - 1].l);
-    $tmp129 = $tmp130 != null;
-    $Γ['global']['$tmp5']['run']['$tmp129'] = $lub(sec_lvl('$tmp130', null, true, $Γ['global']['$tmp5']['run']), $Λ[$Λ.length - 1].l);
-    $Γ['global']['$tmp5']['run']['$tmp129'] instanceof Object ? $Γ['global']['$tmp5']['run']['$tmp129'].Σ = $lub($Γ['global']['$tmp5']['run']['$tmp129'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp5']['run']['$tmp129'] = $lub($Γ['global']['$tmp5']['run']['$tmp129'], $Λ[$Λ.length - 1].l);
+    return $tmp89;
+};
+$Γ['global']['$tmp1']['find'] = {
+    $fscope: $Λ[$Λ.length - 1].l,
+    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    Σ: $Λ[$Λ.length - 1].l,
+    scope: $Γ['global'],
+    key: $Λ[$Λ.length - 1].l
+};
+$tmp1 = SplayTree.prototype;
+$Γ['global']['$tmp1'] = sec_lvl('SplayTree', 'prototype', false, $Γ['global']);
+$Γ['global']['$tmp1'] instanceof Object ? $Γ['global']['$tmp1'].Σ = $lub($Γ['global']['$tmp1'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1'] = $lub($Γ['global']['$tmp1'], $Λ[$Λ.length - 1].l);
+$tmp1.findMax = function (opt_startNode) {
+    var $tmp91, current, $tmp92, $tmp93;
+    $Γ['global']['$tmp1']['findMax']['$tmp93'] = $Γ['global']['$tmp1']['findMax']['$tmp92'] = $Γ['global']['$tmp1']['findMax']['current'] = $Γ['global']['$tmp1']['findMax']['$tmp91'] = 0;
+    $rf = $prop('$tmp1', 'isEmpty', $Γ['global']['$tmp1']['findMax']);
+    $rf.scope = $Γ['global']['$tmp1']['findMax'];
+    $rf.$this = $Γ['global']['$tmp1']['findMax']['$this'];
     $Λ.push({
-        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp129', null, true, $Γ['global']['$tmp5']['run'])),
+        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+        id: 'FUNC'
+    });
+    $tmp91 = this.isEmpty();
+    $Γ['global']['$tmp1']['findMax']['$tmp91'] = $Λ.pop().l;
+    $Γ['global']['$tmp1']['findMax']['$tmp91'] instanceof Object ? $Γ['global']['$tmp1']['findMax']['$tmp91'].Σ = $lub($Γ['global']['$tmp1']['findMax']['$tmp91'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['findMax']['$tmp91'] = $lub($Γ['global']['$tmp1']['findMax']['$tmp91'], $Λ[$Λ.length - 1].l);
+    $Λ.push({
+        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp91', null, true, $Γ['global']['$tmp1']['findMax'])),
         id: 'IF'
     });
-    if ($tmp129) {
-        var count, $tmp136, v, $tmp137;
-        $Γ['global']['$tmp5']['run']['$tmp137'] = $Γ['global']['$tmp5']['run']['v'] = $Γ['global']['$tmp5']['run']['$tmp136'] = $Γ['global']['$tmp5']['run']['count'] = 0;
-        $tmp136 = this.v1;
-        $Γ['global']['$tmp5']['run']['$tmp136'] = sec_lvl('$tmp5', 'v1', false, $Γ['global']['$tmp5']['run']);
-        $Γ['global']['$tmp5']['run']['$tmp136'] instanceof Object ? $Γ['global']['$tmp5']['run']['$tmp136'].Σ = $lub($Γ['global']['$tmp5']['run']['$tmp136'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp5']['run']['$tmp136'] = $lub($Γ['global']['$tmp5']['run']['$tmp136'], $Λ[$Λ.length - 1].l);
-        count = $tmp136.a1;
-        $scope($Γ['global']['$tmp5']['run'], 'count', true)['count'] = sec_lvl('$tmp136', 'a1', false, $Γ['global']['$tmp5']['run']);
-        $scope($Γ['global']['$tmp5']['run'], 'count', true)['count'] instanceof Object ? $scope($Γ['global']['$tmp5']['run'], 'count', true)['count'].Σ = $lub($scope($Γ['global']['$tmp5']['run'], 'count', true)['count'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp5']['run'], 'count', true)['count'] = $lub($scope($Γ['global']['$tmp5']['run'], 'count', true)['count'], $Λ[$Λ.length - 1].l);
-        $tmp137 = count < DATA_SIZE;
-        $Γ['global']['$tmp5']['run']['$tmp137'] = $lub(sec_lvl('count', null, true, $Γ['global']['$tmp5']['run']), sec_lvl('DATA_SIZE', null, true, $Γ['global']['$tmp5']['run']));
-        $Γ['global']['$tmp5']['run']['$tmp137'] instanceof Object ? $Γ['global']['$tmp5']['run']['$tmp137'].Σ = $lub($Γ['global']['$tmp5']['run']['$tmp137'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp5']['run']['$tmp137'] = $lub($Γ['global']['$tmp5']['run']['$tmp137'], $Λ[$Λ.length - 1].l);
+    if ($tmp91) {
+        var $tmp94;
+        $Γ['global']['$tmp1']['findMax']['$tmp94'] = 0;
+        $tmp94 = null;
+        $Γ['global']['$tmp1']['findMax']['$tmp94'] = $Λ[$Λ.length - 1].l;
+        return $tmp94;
+        var $shouldComp = { 'lbl': 'FUNC' };
+    } else {
+    }
+    if ($shouldComp)
+        $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
+    $Λ.pop();
+    $tmp92 = this.root_;
+    $Γ['global']['$tmp1']['findMax']['$tmp92'] = sec_lvl('$tmp1', 'root_', false, $Γ['global']['$tmp1']['findMax']);
+    $Γ['global']['$tmp1']['findMax']['$tmp92'] instanceof Object ? $Γ['global']['$tmp1']['findMax']['$tmp92'].Σ = $lub($Γ['global']['$tmp1']['findMax']['$tmp92'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['findMax']['$tmp92'] = $lub($Γ['global']['$tmp1']['findMax']['$tmp92'], $Λ[$Λ.length - 1].l);
+    current = opt_startNode || $tmp92;
+    $scope($Γ['global']['$tmp1']['findMax'], 'current', true)['current'] = $lub(sec_lvl('opt_startNode', null, true, $Γ['global']['$tmp1']['findMax']), sec_lvl('$tmp92', null, true, $Γ['global']['$tmp1']['findMax']));
+    $scope($Γ['global']['$tmp1']['findMax'], 'current', true)['current'] instanceof Object ? $scope($Γ['global']['$tmp1']['findMax'], 'current', true)['current'].Σ = $lub($scope($Γ['global']['$tmp1']['findMax'], 'current', true)['current'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['findMax'], 'current', true)['current'] = $lub($scope($Γ['global']['$tmp1']['findMax'], 'current', true)['current'], $Λ[$Λ.length - 1].l);
+    $tmp93 = current.right;
+    $Γ['global']['$tmp1']['findMax']['$tmp93'] = sec_lvl('current', 'right', false, $Γ['global']['$tmp1']['findMax']);
+    $Γ['global']['$tmp1']['findMax']['$tmp93'] instanceof Object ? $Γ['global']['$tmp1']['findMax']['$tmp93'].Σ = $lub($Γ['global']['$tmp1']['findMax']['$tmp93'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['findMax']['$tmp93'] = $lub($Γ['global']['$tmp1']['findMax']['$tmp93'], $Λ[$Λ.length - 1].l);
+    $Λ.push({
+        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp93', null, true, $Γ['global']['$tmp1']['findMax'])),
+        id: 'LOOP'
+    });
+    while ($tmp93) {
+        current = current.right;
+        $scope($Γ['global']['$tmp1']['findMax'], 'current', true)['current'] = sec_lvl('current', 'right', false, $Γ['global']['$tmp1']['findMax']);
+        $scope($Γ['global']['$tmp1']['findMax'], 'current', true)['current'] instanceof Object ? $scope($Γ['global']['$tmp1']['findMax'], 'current', true)['current'].Σ = $lub($scope($Γ['global']['$tmp1']['findMax'], 'current', true)['current'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['findMax'], 'current', true)['current'] = $lub($scope($Γ['global']['$tmp1']['findMax'], 'current', true)['current'], $Λ[$Λ.length - 1].l);
+        var $tmp93;
+        $Γ['global']['$tmp1']['findMax']['$tmp93'] = 0;
+        $tmp93 = current.right;
+        $Γ['global']['$tmp1']['findMax']['$tmp93'] = sec_lvl('current', 'right', false, $Γ['global']['$tmp1']['findMax']);
+        $Γ['global']['$tmp1']['findMax']['$tmp93'] instanceof Object ? $Γ['global']['$tmp1']['findMax']['$tmp93'].Σ = $lub($Γ['global']['$tmp1']['findMax']['$tmp93'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['findMax']['$tmp93'] = $lub($Γ['global']['$tmp1']['findMax']['$tmp93'], $Λ[$Λ.length - 1].l);
+    }
+    $Λ.pop();
+    return current;
+};
+$Γ['global']['$tmp1']['findMax'] = {
+    $fscope: $Λ[$Λ.length - 1].l,
+    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    Σ: $Λ[$Λ.length - 1].l,
+    scope: $Γ['global'],
+    opt_startNode: $Λ[$Λ.length - 1].l
+};
+$tmp1 = SplayTree.prototype;
+$Γ['global']['$tmp1'] = sec_lvl('SplayTree', 'prototype', false, $Γ['global']);
+$Γ['global']['$tmp1'] instanceof Object ? $Γ['global']['$tmp1'].Σ = $lub($Γ['global']['$tmp1'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1'] = $lub($Γ['global']['$tmp1'], $Λ[$Λ.length - 1].l);
+$tmp1.findGreatestLessThan = function (key) {
+    var $tmp95, $tmp96, $tmp97, $tmp98, $tmp73;
+    $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp73'] = $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp98'] = $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp97'] = $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp96'] = $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp95'] = 0;
+    $rf = $prop('$tmp1', 'isEmpty', $Γ['global']['$tmp1']['findGreatestLessThan']);
+    $rf.scope = $Γ['global']['$tmp1']['findGreatestLessThan'];
+    $rf.$this = $Γ['global']['$tmp1']['findGreatestLessThan']['$this'];
+    $Λ.push({
+        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+        id: 'FUNC'
+    });
+    $tmp95 = this.isEmpty();
+    $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp95'] = $Λ.pop().l;
+    $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp95'] instanceof Object ? $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp95'].Σ = $lub($Γ['global']['$tmp1']['findGreatestLessThan']['$tmp95'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp95'] = $lub($Γ['global']['$tmp1']['findGreatestLessThan']['$tmp95'], $Λ[$Λ.length - 1].l);
+    $Λ.push({
+        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp95', null, true, $Γ['global']['$tmp1']['findGreatestLessThan'])),
+        id: 'IF'
+    });
+    if ($tmp95) {
+        var $tmp99;
+        $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp99'] = 0;
+        $tmp99 = null;
+        $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp99'] = $Λ[$Λ.length - 1].l;
+        return $tmp99;
+        var $shouldComp = { 'lbl': 'FUNC' };
+    } else {
+    }
+    if ($shouldComp)
+        $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
+    $Λ.pop();
+    $rf = $prop('$tmp1', 'splay_', $Γ['global']['$tmp1']['findGreatestLessThan']);
+    $rf.scope = $Γ['global']['$tmp1']['findGreatestLessThan'];
+    $rf.$this = $Γ['global']['$tmp1']['findGreatestLessThan']['$this'];
+    $rf['key'] = $lub(sec_lvl('key', null, true, $Γ['global']['$tmp1']['findGreatestLessThan']), $Λ[$Λ.length - 1].l);
+    $Λ.push({
+        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+        id: 'FUNC'
+    });
+    $tmp96 = this.splay_(key);
+    $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp96'] = $Λ.pop().l;
+    $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp96'] instanceof Object ? $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp96'].Σ = $lub($Γ['global']['$tmp1']['findGreatestLessThan']['$tmp96'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp96'] = $lub($Γ['global']['$tmp1']['findGreatestLessThan']['$tmp96'], $Λ[$Λ.length - 1].l);
+    $tmp73 = this.root_;
+    $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp73'] = sec_lvl('$tmp1', 'root_', false, $Γ['global']['$tmp1']['findGreatestLessThan']);
+    $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp73'] instanceof Object ? $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp73'].Σ = $lub($Γ['global']['$tmp1']['findGreatestLessThan']['$tmp73'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp73'] = $lub($Γ['global']['$tmp1']['findGreatestLessThan']['$tmp73'], $Λ[$Λ.length - 1].l);
+    $tmp98 = $tmp73.key;
+    $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp98'] = sec_lvl('$tmp73', 'key', false, $Γ['global']['$tmp1']['findGreatestLessThan']);
+    $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp98'] instanceof Object ? $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp98'].Σ = $lub($Γ['global']['$tmp1']['findGreatestLessThan']['$tmp98'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp98'] = $lub($Γ['global']['$tmp1']['findGreatestLessThan']['$tmp98'], $Λ[$Λ.length - 1].l);
+    $tmp97 = $tmp98 < key;
+    $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp97'] = $lub(sec_lvl('$tmp98', null, true, $Γ['global']['$tmp1']['findGreatestLessThan']), sec_lvl('key', null, true, $Γ['global']['$tmp1']['findGreatestLessThan']));
+    $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp97'] instanceof Object ? $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp97'].Σ = $lub($Γ['global']['$tmp1']['findGreatestLessThan']['$tmp97'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp97'] = $lub($Γ['global']['$tmp1']['findGreatestLessThan']['$tmp97'], $Λ[$Λ.length - 1].l);
+    $Λ.push({
+        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp97', null, true, $Γ['global']['$tmp1']['findGreatestLessThan'])),
+        id: 'IF'
+    });
+    if ($tmp97) {
+        $upgrade(['$tmp101'], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp1']['findGreatestLessThan']);
+        var $tmp100;
+        $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp100'] = 0;
+        $tmp100 = this.root_;
+        $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp100'] = sec_lvl('$tmp1', 'root_', false, $Γ['global']['$tmp1']['findGreatestLessThan']);
+        $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp100'] instanceof Object ? $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp100'].Σ = $lub($Γ['global']['$tmp1']['findGreatestLessThan']['$tmp100'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp100'] = $lub($Γ['global']['$tmp1']['findGreatestLessThan']['$tmp100'], $Λ[$Λ.length - 1].l);
+        return $tmp100;
+        var $shouldComp = { 'lbl': 'FUNC' };
+    } else {
+        var $tmp130, $tmp73;
+        $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp73'] = $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp130'] = 0;
+        $tmp73 = this.root_;
+        $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp73'] = sec_lvl('$tmp1', 'root_', false, $Γ['global']['$tmp1']['findGreatestLessThan']);
+        $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp73'] instanceof Object ? $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp73'].Σ = $lub($Γ['global']['$tmp1']['findGreatestLessThan']['$tmp73'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp73'] = $lub($Γ['global']['$tmp1']['findGreatestLessThan']['$tmp73'], $Λ[$Λ.length - 1].l);
+        $tmp130 = $tmp73.left;
+        $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp130'] = sec_lvl('$tmp73', 'left', false, $Γ['global']['$tmp1']['findGreatestLessThan']);
+        $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp130'] instanceof Object ? $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp130'].Σ = $lub($Γ['global']['$tmp1']['findGreatestLessThan']['$tmp130'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp130'] = $lub($Γ['global']['$tmp1']['findGreatestLessThan']['$tmp130'], $Λ[$Λ.length - 1].l);
         $Λ.push({
-            l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp137', null, true, $Γ['global']['$tmp5']['run'])),
+            l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp130', null, true, $Γ['global']['$tmp1']['findGreatestLessThan'])),
             id: 'IF'
         });
-        if ($tmp137) {
-            $upgrade([
-                '$tmp104.queue',
-                '$tmp142'
-            ], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp5']['run']);
-            var $tmp138, $tmp139;
-            $Γ['global']['$tmp5']['run']['$tmp139'] = $Γ['global']['$tmp5']['run']['$tmp138'] = 0;
-            $tmp139 = this.v2;
-            $Γ['global']['$tmp5']['run']['$tmp139'] = sec_lvl('$tmp5', 'v2', false, $Γ['global']['$tmp5']['run']);
-            $Γ['global']['$tmp5']['run']['$tmp139'] instanceof Object ? $Γ['global']['$tmp5']['run']['$tmp139'].Σ = $lub($Γ['global']['$tmp5']['run']['$tmp139'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp5']['run']['$tmp139'] = $lub($Γ['global']['$tmp5']['run']['$tmp139'], $Λ[$Λ.length - 1].l);
-            $tmp138 = $tmp139 != null;
-            $Γ['global']['$tmp5']['run']['$tmp138'] = $lub(sec_lvl('$tmp139', null, true, $Γ['global']['$tmp5']['run']), $Λ[$Λ.length - 1].l);
-            $Γ['global']['$tmp5']['run']['$tmp138'] instanceof Object ? $Γ['global']['$tmp5']['run']['$tmp138'].Σ = $lub($Γ['global']['$tmp5']['run']['$tmp138'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp5']['run']['$tmp138'] = $lub($Γ['global']['$tmp5']['run']['$tmp138'], $Λ[$Λ.length - 1].l);
+        if ($tmp130) {
+            var $tmp101, $tmp102, $tmp73;
+            $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp73'] = $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp102'] = $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp101'] = 0;
+            $tmp73 = this.root_;
+            $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp73'] = sec_lvl('$tmp1', 'root_', false, $Γ['global']['$tmp1']['findGreatestLessThan']);
+            $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp73'] instanceof Object ? $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp73'].Σ = $lub($Γ['global']['$tmp1']['findGreatestLessThan']['$tmp73'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp73'] = $lub($Γ['global']['$tmp1']['findGreatestLessThan']['$tmp73'], $Λ[$Λ.length - 1].l);
+            $tmp102 = $tmp73.left;
+            $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp102'] = sec_lvl('$tmp73', 'left', false, $Γ['global']['$tmp1']['findGreatestLessThan']);
+            $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp102'] instanceof Object ? $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp102'].Σ = $lub($Γ['global']['$tmp1']['findGreatestLessThan']['$tmp102'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp102'] = $lub($Γ['global']['$tmp1']['findGreatestLessThan']['$tmp102'], $Λ[$Λ.length - 1].l);
+            $rf = $prop('$tmp1', 'findMax', $Γ['global']['$tmp1']['findGreatestLessThan']);
+            $rf.scope = $Γ['global']['$tmp1']['findGreatestLessThan'];
+            $rf.$this = $Γ['global']['$tmp1']['findGreatestLessThan']['$this'];
+            $rf['opt_startNode'] = $lub(sec_lvl('$tmp102', null, true, $Γ['global']['$tmp1']['findGreatestLessThan']), $Λ[$Λ.length - 1].l);
             $Λ.push({
-                l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp138', null, true, $Γ['global']['$tmp5']['run'])),
+                l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+                id: 'FUNC'
+            });
+            $tmp101 = this.findMax($tmp102);
+            $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp101'] = $Λ.pop().l;
+            $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp101'] instanceof Object ? $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp101'].Σ = $lub($Γ['global']['$tmp1']['findGreatestLessThan']['$tmp101'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp101'] = $lub($Γ['global']['$tmp1']['findGreatestLessThan']['$tmp101'], $Λ[$Λ.length - 1].l);
+            return $tmp101;
+            var $shouldComp = { 'lbl': 'FUNC' };
+        } else {
+            $upgrade(['$tmp101'], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp1']['findGreatestLessThan']);
+            var $tmp103;
+            $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp103'] = 0;
+            $tmp103 = null;
+            $Γ['global']['$tmp1']['findGreatestLessThan']['$tmp103'] = $Λ[$Λ.length - 1].l;
+            return $tmp103;
+            var $shouldComp = { 'lbl': 'FUNC' };
+        }
+        if ($shouldComp)
+            $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
+        $Λ.pop();
+    }
+    if ($shouldComp)
+        $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
+    $Λ.pop();
+    return;
+};
+$Γ['global']['$tmp1']['findGreatestLessThan'] = {
+    $fscope: $Λ[$Λ.length - 1].l,
+    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    Σ: $Λ[$Λ.length - 1].l,
+    scope: $Γ['global'],
+    key: $Λ[$Λ.length - 1].l
+};
+$tmp1 = SplayTree.prototype;
+$Γ['global']['$tmp1'] = sec_lvl('SplayTree', 'prototype', false, $Γ['global']);
+$Γ['global']['$tmp1'] instanceof Object ? $Γ['global']['$tmp1'].Σ = $lub($Γ['global']['$tmp1'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1'] = $lub($Γ['global']['$tmp1'], $Λ[$Λ.length - 1].l);
+$tmp1.exportKeys = function () {
+    var result, $tmp104, $tmp105;
+    $Γ['global']['$tmp1']['exportKeys']['$tmp105'] = $Γ['global']['$tmp1']['exportKeys']['$tmp104'] = $Γ['global']['$tmp1']['exportKeys']['result'] = 0;
+    result = [];
+    $Γ['global']['$tmp1']['exportKeys']['result'] = {
+        __proto__: {},
+        scope: $Γ['global']['$tmp1']['exportKeys'],
+        Σ: $lub($Λ[$Λ.length - 1].l)
+    };
+    $rf = $prop('$tmp1', 'isEmpty', $Γ['global']['$tmp1']['exportKeys']);
+    $rf.scope = $Γ['global']['$tmp1']['exportKeys'];
+    $rf.$this = $Γ['global']['$tmp1']['exportKeys']['$this'];
+    $Λ.push({
+        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+        id: 'FUNC'
+    });
+    $tmp105 = this.isEmpty();
+    $Γ['global']['$tmp1']['exportKeys']['$tmp105'] = $Λ.pop().l;
+    $Γ['global']['$tmp1']['exportKeys']['$tmp105'] instanceof Object ? $Γ['global']['$tmp1']['exportKeys']['$tmp105'].Σ = $lub($Γ['global']['$tmp1']['exportKeys']['$tmp105'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['exportKeys']['$tmp105'] = $lub($Γ['global']['$tmp1']['exportKeys']['$tmp105'], $Λ[$Λ.length - 1].l);
+    $tmp104 = !$tmp105;
+    $Γ['global']['$tmp1']['exportKeys']['$tmp104'] = sec_lvl('$tmp105', null, false, $Γ['global']['$tmp1']['exportKeys']);
+    $Γ['global']['$tmp1']['exportKeys']['$tmp104'] instanceof Object ? $Γ['global']['$tmp1']['exportKeys']['$tmp104'].Σ = $lub($Γ['global']['$tmp1']['exportKeys']['$tmp104'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['exportKeys']['$tmp104'] = $lub($Γ['global']['$tmp1']['exportKeys']['$tmp104'], $Λ[$Λ.length - 1].l);
+    $Λ.push({
+        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp104', null, true, $Γ['global']['$tmp1']['exportKeys'])),
+        id: 'IF'
+    });
+    if ($tmp104) {
+        var $tmp106, $tmp73, $tmp107;
+        $Γ['global']['$tmp1']['exportKeys']['$tmp107'] = $Γ['global']['$tmp1']['exportKeys']['$tmp73'] = $Γ['global']['$tmp1']['exportKeys']['$tmp106'] = 0;
+        $tmp73 = this.root_;
+        $Γ['global']['$tmp1']['exportKeys']['$tmp73'] = sec_lvl('$tmp1', 'root_', false, $Γ['global']['$tmp1']['exportKeys']);
+        $Γ['global']['$tmp1']['exportKeys']['$tmp73'] instanceof Object ? $Γ['global']['$tmp1']['exportKeys']['$tmp73'].Σ = $lub($Γ['global']['$tmp1']['exportKeys']['$tmp73'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['exportKeys']['$tmp73'] = $lub($Γ['global']['$tmp1']['exportKeys']['$tmp73'], $Λ[$Λ.length - 1].l);
+        $tmp107 = function (node) {
+            var $tmp108, $tmp109;
+            $Γ['global']['$tmp1']['exportKeys']['$tmp107']['$tmp109'] = $Γ['global']['$tmp1']['exportKeys']['$tmp107']['$tmp108'] = 0;
+            $tmp109 = node.key;
+            $Γ['global']['$tmp1']['exportKeys']['$tmp107']['$tmp109'] = sec_lvl('node', 'key', false, $Γ['global']['$tmp1']['exportKeys']['$tmp107']);
+            $Γ['global']['$tmp1']['exportKeys']['$tmp107']['$tmp109'] instanceof Object ? $Γ['global']['$tmp1']['exportKeys']['$tmp107']['$tmp109'].Σ = $lub($Γ['global']['$tmp1']['exportKeys']['$tmp107']['$tmp109'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['exportKeys']['$tmp107']['$tmp109'] = $lub($Γ['global']['$tmp1']['exportKeys']['$tmp107']['$tmp109'], $Λ[$Λ.length - 1].l);
+            $tmp108 = result.push($tmp109);
+            return;
+        };
+        $Γ['global']['$tmp1']['exportKeys']['$tmp107'] = {
+            $fscope: $Λ[$Λ.length - 1].l,
+            prototype: { Σ: $Λ[$Λ.length - 1].l },
+            Σ: $Λ[$Λ.length - 1].l,
+            scope: $Γ['global']['$tmp1']['exportKeys'],
+            node: $Λ[$Λ.length - 1].l
+        };
+        $tmp106 = $tmp73.traverse_($tmp107);
+    } else {
+        $upgrade([
+            'result.push',
+            '$tmp108',
+            '$tmp107',
+            '$tmp73.traverse_',
+            '$tmp106'
+        ], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp1']['exportKeys']);
+    }
+    $Λ.pop();
+    return result;
+};
+$Γ['global']['$tmp1']['exportKeys'] = {
+    $fscope: $Λ[$Λ.length - 1].l,
+    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    Σ: $Λ[$Λ.length - 1].l,
+    scope: $Γ['global']
+};
+$tmp1 = SplayTree.prototype;
+$Γ['global']['$tmp1'] = sec_lvl('SplayTree', 'prototype', false, $Γ['global']);
+$Γ['global']['$tmp1'] instanceof Object ? $Γ['global']['$tmp1'].Σ = $lub($Γ['global']['$tmp1'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1'] = $lub($Γ['global']['$tmp1'], $Λ[$Λ.length - 1].l);
+$tmp1.splay_ = function (key) {
+    var $tmp110, dummy, left, right, current;
+    $Γ['global']['$tmp1']['splay_']['current'] = $Γ['global']['$tmp1']['splay_']['right'] = $Γ['global']['$tmp1']['splay_']['left'] = $Γ['global']['$tmp1']['splay_']['dummy'] = $Γ['global']['$tmp1']['splay_']['$tmp110'] = 0;
+    $rf = $prop('$tmp1', 'isEmpty', $Γ['global']['$tmp1']['splay_']);
+    $rf.scope = $Γ['global']['$tmp1']['splay_'];
+    $rf.$this = $Γ['global']['$tmp1']['splay_']['$this'];
+    $Λ.push({
+        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+        id: 'FUNC'
+    });
+    $tmp110 = this.isEmpty();
+    $Γ['global']['$tmp1']['splay_']['$tmp110'] = $Λ.pop().l;
+    $Γ['global']['$tmp1']['splay_']['$tmp110'] instanceof Object ? $Γ['global']['$tmp1']['splay_']['$tmp110'].Σ = $lub($Γ['global']['$tmp1']['splay_']['$tmp110'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['splay_']['$tmp110'] = $lub($Γ['global']['$tmp1']['splay_']['$tmp110'], $Λ[$Λ.length - 1].l);
+    $Λ.push({
+        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp110', null, true, $Γ['global']['$tmp1']['splay_'])),
+        id: 'IF'
+    });
+    if ($tmp110) {
+        return;
+        var $shouldComp = { 'lbl': 'FUNC' };
+    } else {
+    }
+    if ($shouldComp)
+        $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
+    $Λ.pop();
+    $rf = $prop('SplayTree', 'Node', $Γ['global']['$tmp1']['splay_']);
+    $rf.scope = $Γ['global']['$tmp1']['splay_'];
+    $rf.$this = {
+        Σ: $Λ[$Λ.length - 1].l,
+        __$proto__: $rf.prototype
+    };
+    $rf['key'] = $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l);
+    $rf['value'] = $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l);
+    $rf.InvokedAsContr = true;
+    $Λ.push({
+        l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+        id: 'FUNC'
+    });
+    right = new SplayTree.Node(null, null);
+    $scope($Γ['global']['$tmp1']['splay_'], 'right', true)['right'] = $Λ.pop().l;
+    $scope($Γ['global']['$tmp1']['splay_'], 'right', true)['right'] instanceof Object ? $scope($Γ['global']['$tmp1']['splay_'], 'right', true)['right'].Σ = $lub($scope($Γ['global']['$tmp1']['splay_'], 'right', true)['right'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['splay_'], 'right', true)['right'] = $lub($scope($Γ['global']['$tmp1']['splay_'], 'right', true)['right'], $Λ[$Λ.length - 1].l);
+    left = right;
+    $scope($Γ['global']['$tmp1']['splay_'], 'left', true)['left'] = sec_lvl('right', null, false, $Γ['global']['$tmp1']['splay_']);
+    $scope($Γ['global']['$tmp1']['splay_'], 'left', true)['left'] instanceof Object ? $scope($Γ['global']['$tmp1']['splay_'], 'left', true)['left'].Σ = $lub($scope($Γ['global']['$tmp1']['splay_'], 'left', true)['left'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['splay_'], 'left', true)['left'] = $lub($scope($Γ['global']['$tmp1']['splay_'], 'left', true)['left'], $Λ[$Λ.length - 1].l);
+    dummy = left;
+    $scope($Γ['global']['$tmp1']['splay_'], 'dummy', true)['dummy'] = sec_lvl('left', null, false, $Γ['global']['$tmp1']['splay_']);
+    $scope($Γ['global']['$tmp1']['splay_'], 'dummy', true)['dummy'] instanceof Object ? $scope($Γ['global']['$tmp1']['splay_'], 'dummy', true)['dummy'].Σ = $lub($scope($Γ['global']['$tmp1']['splay_'], 'dummy', true)['dummy'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['splay_'], 'dummy', true)['dummy'] = $lub($scope($Γ['global']['$tmp1']['splay_'], 'dummy', true)['dummy'], $Λ[$Λ.length - 1].l);
+    current = this.root_;
+    $scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'] = sec_lvl('$tmp1', 'root_', false, $Γ['global']['$tmp1']['splay_']);
+    $scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'] instanceof Object ? $scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'].Σ = $lub($scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'] = $lub($scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'], $Λ[$Λ.length - 1].l);
+    $Λ.push({
+        l: $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l),
+        id: 'LOOP'
+    });
+    while (true) {
+        var $tmp111, $tmp112;
+        $Γ['global']['$tmp1']['splay_']['$tmp112'] = $Γ['global']['$tmp1']['splay_']['$tmp111'] = 0;
+        $tmp112 = current.key;
+        $Γ['global']['$tmp1']['splay_']['$tmp112'] = sec_lvl('current', 'key', false, $Γ['global']['$tmp1']['splay_']);
+        $Γ['global']['$tmp1']['splay_']['$tmp112'] instanceof Object ? $Γ['global']['$tmp1']['splay_']['$tmp112'].Σ = $lub($Γ['global']['$tmp1']['splay_']['$tmp112'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['splay_']['$tmp112'] = $lub($Γ['global']['$tmp1']['splay_']['$tmp112'], $Λ[$Λ.length - 1].l);
+        $tmp111 = key < $tmp112;
+        $Γ['global']['$tmp1']['splay_']['$tmp111'] = $lub(sec_lvl('key', null, true, $Γ['global']['$tmp1']['splay_']), sec_lvl('$tmp112', null, true, $Γ['global']['$tmp1']['splay_']));
+        $Γ['global']['$tmp1']['splay_']['$tmp111'] instanceof Object ? $Γ['global']['$tmp1']['splay_']['$tmp111'].Σ = $lub($Γ['global']['$tmp1']['splay_']['$tmp111'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['splay_']['$tmp111'] = $lub($Γ['global']['$tmp1']['splay_']['$tmp111'], $Λ[$Λ.length - 1].l);
+        $Λ.push({
+            l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp111', null, true, $Γ['global']['$tmp1']['splay_'])),
+            id: 'IF'
+        });
+        if ($tmp111) {
+            var $tmp113, $tmp114, $tmp115, $tmp116, $tmp117;
+            $Γ['global']['$tmp1']['splay_']['$tmp117'] = $Γ['global']['$tmp1']['splay_']['$tmp116'] = $Γ['global']['$tmp1']['splay_']['$tmp115'] = $Γ['global']['$tmp1']['splay_']['$tmp114'] = $Γ['global']['$tmp1']['splay_']['$tmp113'] = 0;
+            $tmp114 = current.left;
+            $Γ['global']['$tmp1']['splay_']['$tmp114'] = sec_lvl('current', 'left', false, $Γ['global']['$tmp1']['splay_']);
+            $Γ['global']['$tmp1']['splay_']['$tmp114'] instanceof Object ? $Γ['global']['$tmp1']['splay_']['$tmp114'].Σ = $lub($Γ['global']['$tmp1']['splay_']['$tmp114'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['splay_']['$tmp114'] = $lub($Γ['global']['$tmp1']['splay_']['$tmp114'], $Λ[$Λ.length - 1].l);
+            $tmp113 = !$tmp114;
+            $Γ['global']['$tmp1']['splay_']['$tmp113'] = sec_lvl('$tmp114', null, false, $Γ['global']['$tmp1']['splay_']);
+            $Γ['global']['$tmp1']['splay_']['$tmp113'] instanceof Object ? $Γ['global']['$tmp1']['splay_']['$tmp113'].Σ = $lub($Γ['global']['$tmp1']['splay_']['$tmp113'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['splay_']['$tmp113'] = $lub($Γ['global']['$tmp1']['splay_']['$tmp113'], $Λ[$Λ.length - 1].l);
+            $Λ.push({
+                l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp113', null, true, $Γ['global']['$tmp1']['splay_'])),
                 id: 'IF'
             });
-            if ($tmp138) {
-                v = this.v2;
-                $scope($Γ['global']['$tmp5']['run'], 'v', true)['v'] = sec_lvl('$tmp5', 'v2', false, $Γ['global']['$tmp5']['run']);
-                $scope($Γ['global']['$tmp5']['run'], 'v', true)['v'] instanceof Object ? $scope($Γ['global']['$tmp5']['run'], 'v', true)['v'].Σ = $lub($scope($Γ['global']['$tmp5']['run'], 'v', true)['v'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp5']['run'], 'v', true)['v'] = $lub($scope($Γ['global']['$tmp5']['run'], 'v', true)['v'], $Λ[$Λ.length - 1].l);
-                var $tmp140, $tmp136, $tmp141, $tmp104;
-                $Γ['global']['$tmp5']['run']['$tmp104'] = $Γ['global']['$tmp5']['run']['$tmp141'] = $Γ['global']['$tmp5']['run']['$tmp136'] = $Γ['global']['$tmp5']['run']['$tmp140'] = 0;
-                $tmp140 = this.v2;
-                $Γ['global']['$tmp5']['run']['$tmp140'] = sec_lvl('$tmp5', 'v2', false, $Γ['global']['$tmp5']['run']);
-                $Γ['global']['$tmp5']['run']['$tmp140'] instanceof Object ? $Γ['global']['$tmp5']['run']['$tmp140'].Σ = $lub($Γ['global']['$tmp5']['run']['$tmp140'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp5']['run']['$tmp140'] = $lub($Γ['global']['$tmp5']['run']['$tmp140'], $Λ[$Λ.length - 1].l);
-                this.v2 = $tmp140.link;
-                $Γ['global']['$tmp5']['run']['$this']['v2'] = sec_lvl('$tmp140', 'link', false, $Γ['global']['$tmp5']['run']);
-                $Γ['global']['$tmp5']['run']['$this']['v2'] instanceof Object ? $Γ['global']['$tmp5']['run']['$this']['v2'].Σ = $lub($Γ['global']['$tmp5']['run']['$this']['v2'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp5']['run']['$this']['v2'] = $lub($Γ['global']['$tmp5']['run']['$this']['v2'], $Λ[$Λ.length - 1].l);
-                $tmp136 = this.v1;
-                $Γ['global']['$tmp5']['run']['$tmp136'] = sec_lvl('$tmp5', 'v1', false, $Γ['global']['$tmp5']['run']);
-                $Γ['global']['$tmp5']['run']['$tmp136'] instanceof Object ? $Γ['global']['$tmp5']['run']['$tmp136'].Σ = $lub($Γ['global']['$tmp5']['run']['$tmp136'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp5']['run']['$tmp136'] = $lub($Γ['global']['$tmp5']['run']['$tmp136'], $Λ[$Λ.length - 1].l);
-                $tmp = $tmp136.a2;
-                $Γ['global']['$tmp5']['run']['$tmp'] = sec_lvl('$tmp136', 'a2', false, $Γ['global']['$tmp5']['run']);
-                $Γ['global']['$tmp5']['run']['$tmp'] instanceof Object ? $Γ['global']['$tmp5']['run']['$tmp'].Σ = $lub($Γ['global']['$tmp5']['run']['$tmp'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp5']['run']['$tmp'] = $lub($Γ['global']['$tmp5']['run']['$tmp'], $Λ[$Λ.length - 1].l);
-                v.a1 = $tmp[count];
-                $scope($Γ['global']['$tmp5']['run'], 'v', false)['a1'] = sec_lvl('$tmp', count, false, $Γ['global']['$tmp5']['run']);
-                $scope($Γ['global']['$tmp5']['run'], 'v', false)['a1'] instanceof Object ? $scope($Γ['global']['$tmp5']['run'], 'v', false)['a1'].Σ = $lub($scope($Γ['global']['$tmp5']['run'], 'v', false)['a1'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp5']['run'], 'v', false)['a1'] = $lub($scope($Γ['global']['$tmp5']['run'], 'v', false)['a1'], $Λ[$Λ.length - 1].l);
-                $tmp136 = this.v1;
-                $Γ['global']['$tmp5']['run']['$tmp136'] = sec_lvl('$tmp5', 'v1', false, $Γ['global']['$tmp5']['run']);
-                $Γ['global']['$tmp5']['run']['$tmp136'] instanceof Object ? $Γ['global']['$tmp5']['run']['$tmp136'].Σ = $lub($Γ['global']['$tmp5']['run']['$tmp136'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp5']['run']['$tmp136'] = $lub($Γ['global']['$tmp5']['run']['$tmp136'], $Λ[$Λ.length - 1].l);
-                $tmp136.a1 = count + 1;
-                $Γ['global']['$tmp5']['run']['$tmp136']['a1'] = $lub(sec_lvl('count', null, true, $Γ['global']['$tmp5']['run']), $Λ[$Λ.length - 1].l);
-                $Γ['global']['$tmp5']['run']['$tmp136']['a1'] instanceof Object ? $Γ['global']['$tmp5']['run']['$tmp136']['a1'].Σ = $lub($Γ['global']['$tmp5']['run']['$tmp136']['a1'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp5']['run']['$tmp136']['a1'] = $lub($Γ['global']['$tmp5']['run']['$tmp136']['a1'], $Λ[$Λ.length - 1].l);
-                $tmp104 = this.scheduler;
-                $Γ['global']['$tmp5']['run']['$tmp104'] = sec_lvl('$tmp5', 'scheduler', false, $Γ['global']['$tmp5']['run']);
-                $Γ['global']['$tmp5']['run']['$tmp104'] instanceof Object ? $Γ['global']['$tmp5']['run']['$tmp104'].Σ = $lub($Γ['global']['$tmp5']['run']['$tmp104'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp5']['run']['$tmp104'] = $lub($Γ['global']['$tmp5']['run']['$tmp104'], $Λ[$Λ.length - 1].l);
-                $tmp141 = $tmp104.queue(v);
-                return $tmp141;
-                var $shouldComp = { 'lbl': 'FUNC' };
+            if ($tmp113) {
+                break;
+                var $shouldComp = { 'lbl': 'LOOP' };
             } else {
-                $upgrade([
-                    '$tmp104.queue',
-                    '$tmp141'
-                ], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp5']['run']);
             }
             if ($shouldComp)
                 $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
             $Λ.pop();
+            $tmp117 = current.left;
+            $Γ['global']['$tmp1']['splay_']['$tmp117'] = sec_lvl('current', 'left', false, $Γ['global']['$tmp1']['splay_']);
+            $Γ['global']['$tmp1']['splay_']['$tmp117'] instanceof Object ? $Γ['global']['$tmp1']['splay_']['$tmp117'].Σ = $lub($Γ['global']['$tmp1']['splay_']['$tmp117'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['splay_']['$tmp117'] = $lub($Γ['global']['$tmp1']['splay_']['$tmp117'], $Λ[$Λ.length - 1].l);
+            $tmp116 = $tmp117.key;
+            $Γ['global']['$tmp1']['splay_']['$tmp116'] = sec_lvl('$tmp117', 'key', false, $Γ['global']['$tmp1']['splay_']);
+            $Γ['global']['$tmp1']['splay_']['$tmp116'] instanceof Object ? $Γ['global']['$tmp1']['splay_']['$tmp116'].Σ = $lub($Γ['global']['$tmp1']['splay_']['$tmp116'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['splay_']['$tmp116'] = $lub($Γ['global']['$tmp1']['splay_']['$tmp116'], $Λ[$Λ.length - 1].l);
+            $tmp115 = key < $tmp116;
+            $Γ['global']['$tmp1']['splay_']['$tmp115'] = $lub(sec_lvl('key', null, true, $Γ['global']['$tmp1']['splay_']), sec_lvl('$tmp116', null, true, $Γ['global']['$tmp1']['splay_']));
+            $Γ['global']['$tmp1']['splay_']['$tmp115'] instanceof Object ? $Γ['global']['$tmp1']['splay_']['$tmp115'].Σ = $lub($Γ['global']['$tmp1']['splay_']['$tmp115'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['splay_']['$tmp115'] = $lub($Γ['global']['$tmp1']['splay_']['$tmp115'], $Λ[$Λ.length - 1].l);
+            $Λ.push({
+                l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp115', null, true, $Γ['global']['$tmp1']['splay_'])),
+                id: 'IF'
+            });
+            if ($tmp115) {
+                var tmp, $tmp118, $tmp119;
+                $Γ['global']['$tmp1']['splay_']['$tmp119'] = $Γ['global']['$tmp1']['splay_']['$tmp118'] = $Γ['global']['$tmp1']['splay_']['tmp'] = 0;
+                tmp = current.left;
+                $scope($Γ['global']['$tmp1']['splay_'], 'tmp', true)['tmp'] = sec_lvl('current', 'left', false, $Γ['global']['$tmp1']['splay_']);
+                $scope($Γ['global']['$tmp1']['splay_'], 'tmp', true)['tmp'] instanceof Object ? $scope($Γ['global']['$tmp1']['splay_'], 'tmp', true)['tmp'].Σ = $lub($scope($Γ['global']['$tmp1']['splay_'], 'tmp', true)['tmp'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['splay_'], 'tmp', true)['tmp'] = $lub($scope($Γ['global']['$tmp1']['splay_'], 'tmp', true)['tmp'], $Λ[$Λ.length - 1].l);
+                current.left = tmp.right;
+                $scope($Γ['global']['$tmp1']['splay_'], 'current', false)['left'] = sec_lvl('tmp', 'right', false, $Γ['global']['$tmp1']['splay_']);
+                $scope($Γ['global']['$tmp1']['splay_'], 'current', false)['left'] instanceof Object ? $scope($Γ['global']['$tmp1']['splay_'], 'current', false)['left'].Σ = $lub($scope($Γ['global']['$tmp1']['splay_'], 'current', false)['left'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['splay_'], 'current', false)['left'] = $lub($scope($Γ['global']['$tmp1']['splay_'], 'current', false)['left'], $Λ[$Λ.length - 1].l);
+                tmp.right = current;
+                $scope($Γ['global']['$tmp1']['splay_'], 'tmp', false)['right'] = sec_lvl('current', null, false, $Γ['global']['$tmp1']['splay_']);
+                $scope($Γ['global']['$tmp1']['splay_'], 'tmp', false)['right'] instanceof Object ? $scope($Γ['global']['$tmp1']['splay_'], 'tmp', false)['right'].Σ = $lub($scope($Γ['global']['$tmp1']['splay_'], 'tmp', false)['right'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['splay_'], 'tmp', false)['right'] = $lub($scope($Γ['global']['$tmp1']['splay_'], 'tmp', false)['right'], $Λ[$Λ.length - 1].l);
+                current = tmp;
+                $scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'] = sec_lvl('tmp', null, false, $Γ['global']['$tmp1']['splay_']);
+                $scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'] instanceof Object ? $scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'].Σ = $lub($scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'] = $lub($scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'], $Λ[$Λ.length - 1].l);
+                $tmp119 = current.left;
+                $Γ['global']['$tmp1']['splay_']['$tmp119'] = sec_lvl('current', 'left', false, $Γ['global']['$tmp1']['splay_']);
+                $Γ['global']['$tmp1']['splay_']['$tmp119'] instanceof Object ? $Γ['global']['$tmp1']['splay_']['$tmp119'].Σ = $lub($Γ['global']['$tmp1']['splay_']['$tmp119'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['splay_']['$tmp119'] = $lub($Γ['global']['$tmp1']['splay_']['$tmp119'], $Λ[$Λ.length - 1].l);
+                $tmp118 = !$tmp119;
+                $Γ['global']['$tmp1']['splay_']['$tmp118'] = sec_lvl('$tmp119', null, false, $Γ['global']['$tmp1']['splay_']);
+                $Γ['global']['$tmp1']['splay_']['$tmp118'] instanceof Object ? $Γ['global']['$tmp1']['splay_']['$tmp118'].Σ = $lub($Γ['global']['$tmp1']['splay_']['$tmp118'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['splay_']['$tmp118'] = $lub($Γ['global']['$tmp1']['splay_']['$tmp118'], $Λ[$Λ.length - 1].l);
+                $Λ.push({
+                    l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp118', null, true, $Γ['global']['$tmp1']['splay_'])),
+                    id: 'IF'
+                });
+                if ($tmp118) {
+                    break;
+                    var $shouldComp = { 'lbl': 'LOOP' };
+                } else {
+                }
+                if ($shouldComp)
+                    $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
+                $Λ.pop();
+            } else {
+            }
+            $Λ.pop();
+            right.left = current;
+            $scope($Γ['global']['$tmp1']['splay_'], 'right', false)['left'] = sec_lvl('current', null, false, $Γ['global']['$tmp1']['splay_']);
+            $scope($Γ['global']['$tmp1']['splay_'], 'right', false)['left'] instanceof Object ? $scope($Γ['global']['$tmp1']['splay_'], 'right', false)['left'].Σ = $lub($scope($Γ['global']['$tmp1']['splay_'], 'right', false)['left'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['splay_'], 'right', false)['left'] = $lub($scope($Γ['global']['$tmp1']['splay_'], 'right', false)['left'], $Λ[$Λ.length - 1].l);
+            right = current;
+            $scope($Γ['global']['$tmp1']['splay_'], 'right', true)['right'] = sec_lvl('current', null, false, $Γ['global']['$tmp1']['splay_']);
+            $scope($Γ['global']['$tmp1']['splay_'], 'right', true)['right'] instanceof Object ? $scope($Γ['global']['$tmp1']['splay_'], 'right', true)['right'].Σ = $lub($scope($Γ['global']['$tmp1']['splay_'], 'right', true)['right'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['splay_'], 'right', true)['right'] = $lub($scope($Γ['global']['$tmp1']['splay_'], 'right', true)['right'], $Λ[$Λ.length - 1].l);
+            current = current.left;
+            $scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'] = sec_lvl('current', 'left', false, $Γ['global']['$tmp1']['splay_']);
+            $scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'] instanceof Object ? $scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'].Σ = $lub($scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'] = $lub($scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'], $Λ[$Λ.length - 1].l);
         } else {
-            $upgrade([
-                '$tmp104.queue',
-                '$tmp141'
-            ], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp5']['run']);
-            v = this.v1;
-            $scope($Γ['global']['$tmp5']['run'], 'v', true)['v'] = sec_lvl('$tmp5', 'v1', false, $Γ['global']['$tmp5']['run']);
-            $scope($Γ['global']['$tmp5']['run'], 'v', true)['v'] instanceof Object ? $scope($Γ['global']['$tmp5']['run'], 'v', true)['v'].Σ = $lub($scope($Γ['global']['$tmp5']['run'], 'v', true)['v'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp5']['run'], 'v', true)['v'] = $lub($scope($Γ['global']['$tmp5']['run'], 'v', true)['v'], $Λ[$Λ.length - 1].l);
-            var $tmp136, $tmp142, $tmp104;
-            $Γ['global']['$tmp5']['run']['$tmp104'] = $Γ['global']['$tmp5']['run']['$tmp142'] = $Γ['global']['$tmp5']['run']['$tmp136'] = 0;
-            $tmp136 = this.v1;
-            $Γ['global']['$tmp5']['run']['$tmp136'] = sec_lvl('$tmp5', 'v1', false, $Γ['global']['$tmp5']['run']);
-            $Γ['global']['$tmp5']['run']['$tmp136'] instanceof Object ? $Γ['global']['$tmp5']['run']['$tmp136'].Σ = $lub($Γ['global']['$tmp5']['run']['$tmp136'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp5']['run']['$tmp136'] = $lub($Γ['global']['$tmp5']['run']['$tmp136'], $Λ[$Λ.length - 1].l);
-            this.v1 = $tmp136.link;
-            $Γ['global']['$tmp5']['run']['$this']['v1'] = sec_lvl('$tmp136', 'link', false, $Γ['global']['$tmp5']['run']);
-            $Γ['global']['$tmp5']['run']['$this']['v1'] instanceof Object ? $Γ['global']['$tmp5']['run']['$this']['v1'].Σ = $lub($Γ['global']['$tmp5']['run']['$this']['v1'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp5']['run']['$this']['v1'] = $lub($Γ['global']['$tmp5']['run']['$this']['v1'], $Λ[$Λ.length - 1].l);
-            $tmp104 = this.scheduler;
-            $Γ['global']['$tmp5']['run']['$tmp104'] = sec_lvl('$tmp5', 'scheduler', false, $Γ['global']['$tmp5']['run']);
-            $Γ['global']['$tmp5']['run']['$tmp104'] instanceof Object ? $Γ['global']['$tmp5']['run']['$tmp104'].Σ = $lub($Γ['global']['$tmp5']['run']['$tmp104'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp5']['run']['$tmp104'] = $lub($Γ['global']['$tmp5']['run']['$tmp104'], $Λ[$Λ.length - 1].l);
-            $tmp142 = $tmp104.queue(v);
-            return $tmp142;
-            var $shouldComp = { 'lbl': 'FUNC' };
+            var $tmp131, $tmp132;
+            $Γ['global']['$tmp1']['splay_']['$tmp132'] = $Γ['global']['$tmp1']['splay_']['$tmp131'] = 0;
+            $tmp132 = current.key;
+            $Γ['global']['$tmp1']['splay_']['$tmp132'] = sec_lvl('current', 'key', false, $Γ['global']['$tmp1']['splay_']);
+            $Γ['global']['$tmp1']['splay_']['$tmp132'] instanceof Object ? $Γ['global']['$tmp1']['splay_']['$tmp132'].Σ = $lub($Γ['global']['$tmp1']['splay_']['$tmp132'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['splay_']['$tmp132'] = $lub($Γ['global']['$tmp1']['splay_']['$tmp132'], $Λ[$Λ.length - 1].l);
+            $tmp131 = key > $tmp132;
+            $Γ['global']['$tmp1']['splay_']['$tmp131'] = $lub(sec_lvl('key', null, true, $Γ['global']['$tmp1']['splay_']), sec_lvl('$tmp132', null, true, $Γ['global']['$tmp1']['splay_']));
+            $Γ['global']['$tmp1']['splay_']['$tmp131'] instanceof Object ? $Γ['global']['$tmp1']['splay_']['$tmp131'].Σ = $lub($Γ['global']['$tmp1']['splay_']['$tmp131'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['splay_']['$tmp131'] = $lub($Γ['global']['$tmp1']['splay_']['$tmp131'], $Λ[$Λ.length - 1].l);
+            $Λ.push({
+                l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp131', null, true, $Γ['global']['$tmp1']['splay_'])),
+                id: 'IF'
+            });
+            if ($tmp131) {
+                var $tmp120, $tmp121, $tmp122, $tmp123, $tmp124;
+                $Γ['global']['$tmp1']['splay_']['$tmp124'] = $Γ['global']['$tmp1']['splay_']['$tmp123'] = $Γ['global']['$tmp1']['splay_']['$tmp122'] = $Γ['global']['$tmp1']['splay_']['$tmp121'] = $Γ['global']['$tmp1']['splay_']['$tmp120'] = 0;
+                $tmp121 = current.right;
+                $Γ['global']['$tmp1']['splay_']['$tmp121'] = sec_lvl('current', 'right', false, $Γ['global']['$tmp1']['splay_']);
+                $Γ['global']['$tmp1']['splay_']['$tmp121'] instanceof Object ? $Γ['global']['$tmp1']['splay_']['$tmp121'].Σ = $lub($Γ['global']['$tmp1']['splay_']['$tmp121'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['splay_']['$tmp121'] = $lub($Γ['global']['$tmp1']['splay_']['$tmp121'], $Λ[$Λ.length - 1].l);
+                $tmp120 = !$tmp121;
+                $Γ['global']['$tmp1']['splay_']['$tmp120'] = sec_lvl('$tmp121', null, false, $Γ['global']['$tmp1']['splay_']);
+                $Γ['global']['$tmp1']['splay_']['$tmp120'] instanceof Object ? $Γ['global']['$tmp1']['splay_']['$tmp120'].Σ = $lub($Γ['global']['$tmp1']['splay_']['$tmp120'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['splay_']['$tmp120'] = $lub($Γ['global']['$tmp1']['splay_']['$tmp120'], $Λ[$Λ.length - 1].l);
+                $Λ.push({
+                    l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp120', null, true, $Γ['global']['$tmp1']['splay_'])),
+                    id: 'IF'
+                });
+                if ($tmp120) {
+                    break;
+                    var $shouldComp = { 'lbl': 'LOOP' };
+                } else {
+                }
+                if ($shouldComp)
+                    $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
+                $Λ.pop();
+                $tmp124 = current.right;
+                $Γ['global']['$tmp1']['splay_']['$tmp124'] = sec_lvl('current', 'right', false, $Γ['global']['$tmp1']['splay_']);
+                $Γ['global']['$tmp1']['splay_']['$tmp124'] instanceof Object ? $Γ['global']['$tmp1']['splay_']['$tmp124'].Σ = $lub($Γ['global']['$tmp1']['splay_']['$tmp124'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['splay_']['$tmp124'] = $lub($Γ['global']['$tmp1']['splay_']['$tmp124'], $Λ[$Λ.length - 1].l);
+                $tmp123 = $tmp124.key;
+                $Γ['global']['$tmp1']['splay_']['$tmp123'] = sec_lvl('$tmp124', 'key', false, $Γ['global']['$tmp1']['splay_']);
+                $Γ['global']['$tmp1']['splay_']['$tmp123'] instanceof Object ? $Γ['global']['$tmp1']['splay_']['$tmp123'].Σ = $lub($Γ['global']['$tmp1']['splay_']['$tmp123'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['splay_']['$tmp123'] = $lub($Γ['global']['$tmp1']['splay_']['$tmp123'], $Λ[$Λ.length - 1].l);
+                $tmp122 = key > $tmp123;
+                $Γ['global']['$tmp1']['splay_']['$tmp122'] = $lub(sec_lvl('key', null, true, $Γ['global']['$tmp1']['splay_']), sec_lvl('$tmp123', null, true, $Γ['global']['$tmp1']['splay_']));
+                $Γ['global']['$tmp1']['splay_']['$tmp122'] instanceof Object ? $Γ['global']['$tmp1']['splay_']['$tmp122'].Σ = $lub($Γ['global']['$tmp1']['splay_']['$tmp122'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['splay_']['$tmp122'] = $lub($Γ['global']['$tmp1']['splay_']['$tmp122'], $Λ[$Λ.length - 1].l);
+                $Λ.push({
+                    l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp122', null, true, $Γ['global']['$tmp1']['splay_'])),
+                    id: 'IF'
+                });
+                if ($tmp122) {
+                    var tmp, $tmp125, $tmp126;
+                    $Γ['global']['$tmp1']['splay_']['$tmp126'] = $Γ['global']['$tmp1']['splay_']['$tmp125'] = $Γ['global']['$tmp1']['splay_']['tmp'] = 0;
+                    tmp = current.right;
+                    $scope($Γ['global']['$tmp1']['splay_'], 'tmp', true)['tmp'] = sec_lvl('current', 'right', false, $Γ['global']['$tmp1']['splay_']);
+                    $scope($Γ['global']['$tmp1']['splay_'], 'tmp', true)['tmp'] instanceof Object ? $scope($Γ['global']['$tmp1']['splay_'], 'tmp', true)['tmp'].Σ = $lub($scope($Γ['global']['$tmp1']['splay_'], 'tmp', true)['tmp'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['splay_'], 'tmp', true)['tmp'] = $lub($scope($Γ['global']['$tmp1']['splay_'], 'tmp', true)['tmp'], $Λ[$Λ.length - 1].l);
+                    current.right = tmp.left;
+                    $scope($Γ['global']['$tmp1']['splay_'], 'current', false)['right'] = sec_lvl('tmp', 'left', false, $Γ['global']['$tmp1']['splay_']);
+                    $scope($Γ['global']['$tmp1']['splay_'], 'current', false)['right'] instanceof Object ? $scope($Γ['global']['$tmp1']['splay_'], 'current', false)['right'].Σ = $lub($scope($Γ['global']['$tmp1']['splay_'], 'current', false)['right'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['splay_'], 'current', false)['right'] = $lub($scope($Γ['global']['$tmp1']['splay_'], 'current', false)['right'], $Λ[$Λ.length - 1].l);
+                    tmp.left = current;
+                    $scope($Γ['global']['$tmp1']['splay_'], 'tmp', false)['left'] = sec_lvl('current', null, false, $Γ['global']['$tmp1']['splay_']);
+                    $scope($Γ['global']['$tmp1']['splay_'], 'tmp', false)['left'] instanceof Object ? $scope($Γ['global']['$tmp1']['splay_'], 'tmp', false)['left'].Σ = $lub($scope($Γ['global']['$tmp1']['splay_'], 'tmp', false)['left'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['splay_'], 'tmp', false)['left'] = $lub($scope($Γ['global']['$tmp1']['splay_'], 'tmp', false)['left'], $Λ[$Λ.length - 1].l);
+                    current = tmp;
+                    $scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'] = sec_lvl('tmp', null, false, $Γ['global']['$tmp1']['splay_']);
+                    $scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'] instanceof Object ? $scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'].Σ = $lub($scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'] = $lub($scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'], $Λ[$Λ.length - 1].l);
+                    $tmp126 = current.right;
+                    $Γ['global']['$tmp1']['splay_']['$tmp126'] = sec_lvl('current', 'right', false, $Γ['global']['$tmp1']['splay_']);
+                    $Γ['global']['$tmp1']['splay_']['$tmp126'] instanceof Object ? $Γ['global']['$tmp1']['splay_']['$tmp126'].Σ = $lub($Γ['global']['$tmp1']['splay_']['$tmp126'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['splay_']['$tmp126'] = $lub($Γ['global']['$tmp1']['splay_']['$tmp126'], $Λ[$Λ.length - 1].l);
+                    $tmp125 = !$tmp126;
+                    $Γ['global']['$tmp1']['splay_']['$tmp125'] = sec_lvl('$tmp126', null, false, $Γ['global']['$tmp1']['splay_']);
+                    $Γ['global']['$tmp1']['splay_']['$tmp125'] instanceof Object ? $Γ['global']['$tmp1']['splay_']['$tmp125'].Σ = $lub($Γ['global']['$tmp1']['splay_']['$tmp125'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['splay_']['$tmp125'] = $lub($Γ['global']['$tmp1']['splay_']['$tmp125'], $Λ[$Λ.length - 1].l);
+                    $Λ.push({
+                        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp125', null, true, $Γ['global']['$tmp1']['splay_'])),
+                        id: 'IF'
+                    });
+                    if ($tmp125) {
+                        break;
+                        var $shouldComp = { 'lbl': 'LOOP' };
+                    } else {
+                    }
+                    if ($shouldComp)
+                        $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
+                    $Λ.pop();
+                } else {
+                }
+                $Λ.pop();
+                left.right = current;
+                $scope($Γ['global']['$tmp1']['splay_'], 'left', false)['right'] = sec_lvl('current', null, false, $Γ['global']['$tmp1']['splay_']);
+                $scope($Γ['global']['$tmp1']['splay_'], 'left', false)['right'] instanceof Object ? $scope($Γ['global']['$tmp1']['splay_'], 'left', false)['right'].Σ = $lub($scope($Γ['global']['$tmp1']['splay_'], 'left', false)['right'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['splay_'], 'left', false)['right'] = $lub($scope($Γ['global']['$tmp1']['splay_'], 'left', false)['right'], $Λ[$Λ.length - 1].l);
+                left = current;
+                $scope($Γ['global']['$tmp1']['splay_'], 'left', true)['left'] = sec_lvl('current', null, false, $Γ['global']['$tmp1']['splay_']);
+                $scope($Γ['global']['$tmp1']['splay_'], 'left', true)['left'] instanceof Object ? $scope($Γ['global']['$tmp1']['splay_'], 'left', true)['left'].Σ = $lub($scope($Γ['global']['$tmp1']['splay_'], 'left', true)['left'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['splay_'], 'left', true)['left'] = $lub($scope($Γ['global']['$tmp1']['splay_'], 'left', true)['left'], $Λ[$Λ.length - 1].l);
+                current = current.right;
+                $scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'] = sec_lvl('current', 'right', false, $Γ['global']['$tmp1']['splay_']);
+                $scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'] instanceof Object ? $scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'].Σ = $lub($scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'] = $lub($scope($Γ['global']['$tmp1']['splay_'], 'current', true)['current'], $Λ[$Λ.length - 1].l);
+            } else {
+                break;
+                var $shouldComp = { 'lbl': 'LOOP' };
+            }
+            if ($shouldComp)
+                $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
+            $Λ.pop();
         }
-        if ($shouldComp)
-            $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
         $Λ.pop();
-    } else {
-        $upgrade([
-            '$tmp104.queue',
-            '$tmp141',
-            '$tmp142'
-        ], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp5']['run']);
     }
     $Λ.pop();
-    $tmp104 = this.scheduler;
-    $Γ['global']['$tmp5']['run']['$tmp104'] = sec_lvl('$tmp5', 'scheduler', false, $Γ['global']['$tmp5']['run']);
-    $Γ['global']['$tmp5']['run']['$tmp104'] instanceof Object ? $Γ['global']['$tmp5']['run']['$tmp104'].Σ = $lub($Γ['global']['$tmp5']['run']['$tmp104'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp5']['run']['$tmp104'] = $lub($Γ['global']['$tmp5']['run']['$tmp104'], $Λ[$Λ.length - 1].l);
-    $tmp131 = $tmp104.suspendCurrent();
-    return $tmp131;
+    left.right = current.left;
+    $scope($Γ['global']['$tmp1']['splay_'], 'left', false)['right'] = sec_lvl('current', 'left', false, $Γ['global']['$tmp1']['splay_']);
+    $scope($Γ['global']['$tmp1']['splay_'], 'left', false)['right'] instanceof Object ? $scope($Γ['global']['$tmp1']['splay_'], 'left', false)['right'].Σ = $lub($scope($Γ['global']['$tmp1']['splay_'], 'left', false)['right'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['splay_'], 'left', false)['right'] = $lub($scope($Γ['global']['$tmp1']['splay_'], 'left', false)['right'], $Λ[$Λ.length - 1].l);
+    right.left = current.right;
+    $scope($Γ['global']['$tmp1']['splay_'], 'right', false)['left'] = sec_lvl('current', 'right', false, $Γ['global']['$tmp1']['splay_']);
+    $scope($Γ['global']['$tmp1']['splay_'], 'right', false)['left'] instanceof Object ? $scope($Γ['global']['$tmp1']['splay_'], 'right', false)['left'].Σ = $lub($scope($Γ['global']['$tmp1']['splay_'], 'right', false)['left'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['splay_'], 'right', false)['left'] = $lub($scope($Γ['global']['$tmp1']['splay_'], 'right', false)['left'], $Λ[$Λ.length - 1].l);
+    current.left = dummy.right;
+    $scope($Γ['global']['$tmp1']['splay_'], 'current', false)['left'] = sec_lvl('dummy', 'right', false, $Γ['global']['$tmp1']['splay_']);
+    $scope($Γ['global']['$tmp1']['splay_'], 'current', false)['left'] instanceof Object ? $scope($Γ['global']['$tmp1']['splay_'], 'current', false)['left'].Σ = $lub($scope($Γ['global']['$tmp1']['splay_'], 'current', false)['left'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['splay_'], 'current', false)['left'] = $lub($scope($Γ['global']['$tmp1']['splay_'], 'current', false)['left'], $Λ[$Λ.length - 1].l);
+    current.right = dummy.left;
+    $scope($Γ['global']['$tmp1']['splay_'], 'current', false)['right'] = sec_lvl('dummy', 'left', false, $Γ['global']['$tmp1']['splay_']);
+    $scope($Γ['global']['$tmp1']['splay_'], 'current', false)['right'] instanceof Object ? $scope($Γ['global']['$tmp1']['splay_'], 'current', false)['right'].Σ = $lub($scope($Γ['global']['$tmp1']['splay_'], 'current', false)['right'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp1']['splay_'], 'current', false)['right'] = $lub($scope($Γ['global']['$tmp1']['splay_'], 'current', false)['right'], $Λ[$Λ.length - 1].l);
+    this.root_ = current;
+    $Γ['global']['$tmp1']['splay_']['$this']['root_'] = sec_lvl('current', null, false, $Γ['global']['$tmp1']['splay_']);
+    $Γ['global']['$tmp1']['splay_']['$this']['root_'] instanceof Object ? $Γ['global']['$tmp1']['splay_']['$this']['root_'].Σ = $lub($Γ['global']['$tmp1']['splay_']['$this']['root_'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp1']['splay_']['$this']['root_'] = $lub($Γ['global']['$tmp1']['splay_']['$this']['root_'], $Λ[$Λ.length - 1].l);
+    return;
 };
-$Γ['global']['$tmp5']['run'] = {
+$Γ['global']['$tmp1']['splay_'] = {
     $fscope: $Λ[$Λ.length - 1].l,
     prototype: { Σ: $Λ[$Λ.length - 1].l },
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global'],
-    packet: $Λ[$Λ.length - 1].l
+    key: $Λ[$Λ.length - 1].l
 };
-$tmp5 = HandlerTask.prototype;
-$Γ['global']['$tmp5'] = sec_lvl('HandlerTask', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp5'] instanceof Object ? $Γ['global']['$tmp5'].Σ = $lub($Γ['global']['$tmp5'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp5'] = $lub($Γ['global']['$tmp5'], $Λ[$Λ.length - 1].l);
-$tmp5.toString = function () {
-    var $tmp143;
-    $Γ['global']['$tmp5']['toString']['$tmp143'] = 0;
-    $tmp143 = 'HandlerTask';
-    $Γ['global']['$tmp5']['toString']['$tmp143'] = $Λ[$Λ.length - 1].l;
-    return $tmp143;
+SplayTree.Node = function (key, value) {
+    this.key = key;
+    $Γ['global']['SplayTree']['Node']['$this']['key'] = sec_lvl('key', null, false, $Γ['global']['SplayTree']['Node']);
+    $Γ['global']['SplayTree']['Node']['$this']['key'] instanceof Object ? $Γ['global']['SplayTree']['Node']['$this']['key'].Σ = $lub($Γ['global']['SplayTree']['Node']['$this']['key'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplayTree']['Node']['$this']['key'] = $lub($Γ['global']['SplayTree']['Node']['$this']['key'], $Λ[$Λ.length - 1].l);
+    this.value = value;
+    $Γ['global']['SplayTree']['Node']['$this']['value'] = sec_lvl('value', null, false, $Γ['global']['SplayTree']['Node']);
+    $Γ['global']['SplayTree']['Node']['$this']['value'] instanceof Object ? $Γ['global']['SplayTree']['Node']['$this']['value'].Σ = $lub($Γ['global']['SplayTree']['Node']['$this']['value'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['SplayTree']['Node']['$this']['value'] = $lub($Γ['global']['SplayTree']['Node']['$this']['value'], $Λ[$Λ.length - 1].l);
+    return;
 };
-$Γ['global']['$tmp5']['toString'] = {
+$Γ['global']['SplayTree']['Node'] = {
     $fscope: $Λ[$Λ.length - 1].l,
     prototype: { Σ: $Λ[$Λ.length - 1].l },
     Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global']
+    scope: $Γ['global'],
+    key: $Λ[$Λ.length - 1].l,
+    value: $Λ[$Λ.length - 1].l
 };
-DATA_SIZE = 4;
-$Γ['global']['DATA_SIZE'] = $Λ[$Λ.length - 1].l;
-function Packet(link, id, kind) {
-    this.link = link;
-    $Γ['global']['Packet']['$this']['link'] = sec_lvl('link', null, false, $Γ['global']['Packet']);
-    $Γ['global']['Packet']['$this']['link'] instanceof Object ? $Γ['global']['Packet']['$this']['link'].Σ = $lub($Γ['global']['Packet']['$this']['link'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['Packet']['$this']['link'] = $lub($Γ['global']['Packet']['$this']['link'], $Λ[$Λ.length - 1].l);
-    this.id = id;
-    $Γ['global']['Packet']['$this']['id'] = sec_lvl('id', null, false, $Γ['global']['Packet']);
-    $Γ['global']['Packet']['$this']['id'] instanceof Object ? $Γ['global']['Packet']['$this']['id'].Σ = $lub($Γ['global']['Packet']['$this']['id'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['Packet']['$this']['id'] = $lub($Γ['global']['Packet']['$this']['id'], $Λ[$Λ.length - 1].l);
-    this.kind = kind;
-    $Γ['global']['Packet']['$this']['kind'] = sec_lvl('kind', null, false, $Γ['global']['Packet']);
-    $Γ['global']['Packet']['$this']['kind'] instanceof Object ? $Γ['global']['Packet']['$this']['kind'].Σ = $lub($Γ['global']['Packet']['$this']['kind'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['Packet']['$this']['kind'] = $lub($Γ['global']['Packet']['$this']['kind'], $Λ[$Λ.length - 1].l);
-    this.a1 = 0;
-    $Γ['global']['Packet']['$this']['a1'] = $Λ[$Λ.length - 1].l;
-    this.a2 = new Array(DATA_SIZE);
-    return;
-}
-$tmp6 = Packet.prototype;
-$Γ['global']['$tmp6'] = sec_lvl('Packet', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp6'] instanceof Object ? $Γ['global']['$tmp6'].Σ = $lub($Γ['global']['$tmp6'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp6'] = $lub($Γ['global']['$tmp6'], $Λ[$Λ.length - 1].l);
-$tmp6.addTo = function (queue) {
-    this.link = null;
-    $Γ['global']['$tmp6']['addTo']['$this']['link'] = $Λ[$Λ.length - 1].l;
-    var $tmp144, peek, next, $tmp145, $tmp146;
-    $Γ['global']['$tmp6']['addTo']['$tmp146'] = $Γ['global']['$tmp6']['addTo']['$tmp145'] = $Γ['global']['$tmp6']['addTo']['next'] = $Γ['global']['$tmp6']['addTo']['peek'] = $Γ['global']['$tmp6']['addTo']['$tmp144'] = 0;
-    $tmp144 = queue == null;
-    $Γ['global']['$tmp6']['addTo']['$tmp144'] = $lub(sec_lvl('queue', null, true, $Γ['global']['$tmp6']['addTo']), $Λ[$Λ.length - 1].l);
-    $Γ['global']['$tmp6']['addTo']['$tmp144'] instanceof Object ? $Γ['global']['$tmp6']['addTo']['$tmp144'].Σ = $lub($Γ['global']['$tmp6']['addTo']['$tmp144'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp6']['addTo']['$tmp144'] = $lub($Γ['global']['$tmp6']['addTo']['$tmp144'], $Λ[$Λ.length - 1].l);
+$tmp2 = SplayTree.Node;
+$Γ['global']['$tmp2'] = sec_lvl('SplayTree', 'Node', false, $Γ['global']);
+$Γ['global']['$tmp2'] instanceof Object ? $Γ['global']['$tmp2'].Σ = $lub($Γ['global']['$tmp2'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp2'] = $lub($Γ['global']['$tmp2'], $Λ[$Λ.length - 1].l);
+$tmp = $tmp2.prototype;
+$Γ['global']['$tmp'] = sec_lvl('$tmp2', 'prototype', false, $Γ['global']);
+$Γ['global']['$tmp'] instanceof Object ? $Γ['global']['$tmp'].Σ = $lub($Γ['global']['$tmp'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp'] = $lub($Γ['global']['$tmp'], $Λ[$Λ.length - 1].l);
+$tmp.left = null;
+$Γ['global']['$tmp']['left'] = $Λ[$Λ.length - 1].l;
+$tmp2 = SplayTree.Node;
+$Γ['global']['$tmp2'] = sec_lvl('SplayTree', 'Node', false, $Γ['global']);
+$Γ['global']['$tmp2'] instanceof Object ? $Γ['global']['$tmp2'].Σ = $lub($Γ['global']['$tmp2'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp2'] = $lub($Γ['global']['$tmp2'], $Λ[$Λ.length - 1].l);
+$tmp = $tmp2.prototype;
+$Γ['global']['$tmp'] = sec_lvl('$tmp2', 'prototype', false, $Γ['global']);
+$Γ['global']['$tmp'] instanceof Object ? $Γ['global']['$tmp'].Σ = $lub($Γ['global']['$tmp'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp'] = $lub($Γ['global']['$tmp'], $Λ[$Λ.length - 1].l);
+$tmp.right = null;
+$Γ['global']['$tmp']['right'] = $Λ[$Λ.length - 1].l;
+$tmp2 = SplayTree.Node;
+$Γ['global']['$tmp2'] = sec_lvl('SplayTree', 'Node', false, $Γ['global']);
+$Γ['global']['$tmp2'] instanceof Object ? $Γ['global']['$tmp2'].Σ = $lub($Γ['global']['$tmp2'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp2'] = $lub($Γ['global']['$tmp2'], $Λ[$Λ.length - 1].l);
+$tmp = $tmp2.prototype;
+$Γ['global']['$tmp'] = sec_lvl('$tmp2', 'prototype', false, $Γ['global']);
+$Γ['global']['$tmp'] instanceof Object ? $Γ['global']['$tmp'].Σ = $lub($Γ['global']['$tmp'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp'] = $lub($Γ['global']['$tmp'], $Λ[$Λ.length - 1].l);
+$tmp.traverse_ = function (f) {
+    var current;
+    $Γ['global']['$tmp']['traverse_']['current'] = 0;
+    current = this;
+    $scope($Γ['global']['$tmp']['traverse_'], 'current', true)['current'] = $Γ['global']['$tmp']['traverse_'].$this;
+    $scope($Γ['global']['$tmp']['traverse_'], 'current', true)['current'] instanceof Object ? $scope($Γ['global']['$tmp']['traverse_'], 'current', true)['current'].Σ = $lub($scope($Γ['global']['$tmp']['traverse_'], 'current', true)['current'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp']['traverse_'], 'current', true)['current'] = $lub($scope($Γ['global']['$tmp']['traverse_'], 'current', true)['current'], $Λ[$Λ.length - 1].l);
     $Λ.push({
-        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp144', null, true, $Γ['global']['$tmp6']['addTo'])),
-        id: 'IF'
-    });
-    if ($tmp144) {
-        var $tmp152;
-        $Γ['global']['$tmp6']['addTo']['$tmp152'] = 0;
-        $tmp152 = this;
-        $Γ['global']['$tmp6']['addTo']['$tmp152'] = $Γ['global']['$tmp6']['addTo'].$this;
-        $Γ['global']['$tmp6']['addTo']['$tmp152'] instanceof Object ? $Γ['global']['$tmp6']['addTo']['$tmp152'].Σ = $lub($Γ['global']['$tmp6']['addTo']['$tmp152'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp6']['addTo']['$tmp152'] = $lub($Γ['global']['$tmp6']['addTo']['$tmp152'], $Λ[$Λ.length - 1].l);
-        return $tmp152;
-        var $shouldComp = { 'lbl': 'FUNC' };
-    } else {
-    }
-    if ($shouldComp)
-        $comp($shouldComp.lbl, $Λ[$Λ.length - 1].l);
-    $Λ.pop();
-    next = queue;
-    $scope($Γ['global']['$tmp6']['addTo'], 'next', true)['next'] = sec_lvl('queue', null, false, $Γ['global']['$tmp6']['addTo']);
-    $scope($Γ['global']['$tmp6']['addTo'], 'next', true)['next'] instanceof Object ? $scope($Γ['global']['$tmp6']['addTo'], 'next', true)['next'].Σ = $lub($scope($Γ['global']['$tmp6']['addTo'], 'next', true)['next'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp6']['addTo'], 'next', true)['next'] = $lub($scope($Γ['global']['$tmp6']['addTo'], 'next', true)['next'], $Λ[$Λ.length - 1].l);
-    peek = next.link;
-    $scope($Γ['global']['$tmp6']['addTo'], 'peek', true)['peek'] = sec_lvl('next', 'link', false, $Γ['global']['$tmp6']['addTo']);
-    $scope($Γ['global']['$tmp6']['addTo'], 'peek', true)['peek'] instanceof Object ? $scope($Γ['global']['$tmp6']['addTo'], 'peek', true)['peek'].Σ = $lub($scope($Γ['global']['$tmp6']['addTo'], 'peek', true)['peek'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp6']['addTo'], 'peek', true)['peek'] = $lub($scope($Γ['global']['$tmp6']['addTo'], 'peek', true)['peek'], $Λ[$Λ.length - 1].l);
-    $tmp146 = peek;
-    $Γ['global']['$tmp6']['addTo']['$tmp146'] = sec_lvl('peek', null, false, $Γ['global']['$tmp6']['addTo']);
-    $Γ['global']['$tmp6']['addTo']['$tmp146'] instanceof Object ? $Γ['global']['$tmp6']['addTo']['$tmp146'].Σ = $lub($Γ['global']['$tmp6']['addTo']['$tmp146'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp6']['addTo']['$tmp146'] = $lub($Γ['global']['$tmp6']['addTo']['$tmp146'], $Λ[$Λ.length - 1].l);
-    $tmp145 = $tmp146 != null;
-    $Γ['global']['$tmp6']['addTo']['$tmp145'] = $lub(sec_lvl('$tmp146', null, true, $Γ['global']['$tmp6']['addTo']), $Λ[$Λ.length - 1].l);
-    $Γ['global']['$tmp6']['addTo']['$tmp145'] instanceof Object ? $Γ['global']['$tmp6']['addTo']['$tmp145'].Σ = $lub($Γ['global']['$tmp6']['addTo']['$tmp145'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp6']['addTo']['$tmp145'] = $lub($Γ['global']['$tmp6']['addTo']['$tmp145'], $Λ[$Λ.length - 1].l);
-    $Λ.push({
-        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp145', null, true, $Γ['global']['$tmp6']['addTo'])),
+        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('current', null, true, $Γ['global']['$tmp']['traverse_'])),
         id: 'LOOP'
     });
-    while ($tmp145) {
-        next = peek;
-        $scope($Γ['global']['$tmp6']['addTo'], 'next', true)['next'] = sec_lvl('peek', null, false, $Γ['global']['$tmp6']['addTo']);
-        $scope($Γ['global']['$tmp6']['addTo'], 'next', true)['next'] instanceof Object ? $scope($Γ['global']['$tmp6']['addTo'], 'next', true)['next'].Σ = $lub($scope($Γ['global']['$tmp6']['addTo'], 'next', true)['next'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp6']['addTo'], 'next', true)['next'] = $lub($scope($Γ['global']['$tmp6']['addTo'], 'next', true)['next'], $Λ[$Λ.length - 1].l);
-        var $tmp145, $tmp147;
-        $Γ['global']['$tmp6']['addTo']['$tmp147'] = $Γ['global']['$tmp6']['addTo']['$tmp145'] = 0;
-        peek = next.link;
-        $scope($Γ['global']['$tmp6']['addTo'], 'peek', true)['peek'] = sec_lvl('next', 'link', false, $Γ['global']['$tmp6']['addTo']);
-        $scope($Γ['global']['$tmp6']['addTo'], 'peek', true)['peek'] instanceof Object ? $scope($Γ['global']['$tmp6']['addTo'], 'peek', true)['peek'].Σ = $lub($scope($Γ['global']['$tmp6']['addTo'], 'peek', true)['peek'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp6']['addTo'], 'peek', true)['peek'] = $lub($scope($Γ['global']['$tmp6']['addTo'], 'peek', true)['peek'], $Λ[$Λ.length - 1].l);
-        $tmp147 = peek;
-        $Γ['global']['$tmp6']['addTo']['$tmp147'] = sec_lvl('peek', null, false, $Γ['global']['$tmp6']['addTo']);
-        $Γ['global']['$tmp6']['addTo']['$tmp147'] instanceof Object ? $Γ['global']['$tmp6']['addTo']['$tmp147'].Σ = $lub($Γ['global']['$tmp6']['addTo']['$tmp147'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp6']['addTo']['$tmp147'] = $lub($Γ['global']['$tmp6']['addTo']['$tmp147'], $Λ[$Λ.length - 1].l);
-        $tmp145 = $tmp147 != null;
-        $Γ['global']['$tmp6']['addTo']['$tmp145'] = $lub(sec_lvl('$tmp147', null, true, $Γ['global']['$tmp6']['addTo']), $Λ[$Λ.length - 1].l);
-        $Γ['global']['$tmp6']['addTo']['$tmp145'] instanceof Object ? $Γ['global']['$tmp6']['addTo']['$tmp145'].Σ = $lub($Γ['global']['$tmp6']['addTo']['$tmp145'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp6']['addTo']['$tmp145'] = $lub($Γ['global']['$tmp6']['addTo']['$tmp145'], $Λ[$Λ.length - 1].l);
+    while (current) {
+        var left, $tmp127;
+        $Γ['global']['$tmp']['traverse_']['$tmp127'] = $Γ['global']['$tmp']['traverse_']['left'] = 0;
+        left = current.left;
+        $scope($Γ['global']['$tmp']['traverse_'], 'left', true)['left'] = sec_lvl('current', 'left', false, $Γ['global']['$tmp']['traverse_']);
+        $scope($Γ['global']['$tmp']['traverse_'], 'left', true)['left'] instanceof Object ? $scope($Γ['global']['$tmp']['traverse_'], 'left', true)['left'].Σ = $lub($scope($Γ['global']['$tmp']['traverse_'], 'left', true)['left'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp']['traverse_'], 'left', true)['left'] = $lub($scope($Γ['global']['$tmp']['traverse_'], 'left', true)['left'], $Λ[$Λ.length - 1].l);
+        $Λ.push({
+            l: $lub($Λ[$Λ.length - 1].l, sec_lvl('left', null, true, $Γ['global']['$tmp']['traverse_'])),
+            id: 'IF'
+        });
+        if (left) {
+            var $tmp133;
+            $Γ['global']['$tmp']['traverse_']['$tmp133'] = 0;
+            $tmp133 = left.traverse_(f);
+        } else {
+            $upgrade([
+                'left.traverse_',
+                '$tmp133'
+            ], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp']['traverse_']);
+        }
+        $Λ.pop();
+        $tmp127 = f(current);
+        current = current.right;
+        $scope($Γ['global']['$tmp']['traverse_'], 'current', true)['current'] = sec_lvl('current', 'right', false, $Γ['global']['$tmp']['traverse_']);
+        $scope($Γ['global']['$tmp']['traverse_'], 'current', true)['current'] instanceof Object ? $scope($Γ['global']['$tmp']['traverse_'], 'current', true)['current'].Σ = $lub($scope($Γ['global']['$tmp']['traverse_'], 'current', true)['current'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp']['traverse_'], 'current', true)['current'] = $lub($scope($Γ['global']['$tmp']['traverse_'], 'current', true)['current'], $Λ[$Λ.length - 1].l);
     }
+    $upgrade([
+        'left.traverse_',
+        '$tmp133',
+        'f',
+        '$tmp127'
+    ], $Λ[$Λ.length - 1].l, $Γ['global']['$tmp']['traverse_']);
     $Λ.pop();
-    next.link = this;
-    $scope($Γ['global']['$tmp6']['addTo'], 'next', false)['link'] = $Γ['global']['$tmp6']['addTo'].$this;
-    $scope($Γ['global']['$tmp6']['addTo'], 'next', false)['link'] instanceof Object ? $scope($Γ['global']['$tmp6']['addTo'], 'next', false)['link'].Σ = $lub($scope($Γ['global']['$tmp6']['addTo'], 'next', false)['link'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['$tmp6']['addTo'], 'next', false)['link'] = $lub($scope($Γ['global']['$tmp6']['addTo'], 'next', false)['link'], $Λ[$Λ.length - 1].l);
-    return queue;
+    return;
 };
-$Γ['global']['$tmp6']['addTo'] = {
+$Γ['global']['$tmp']['traverse_'] = {
     $fscope: $Λ[$Λ.length - 1].l,
     prototype: { Σ: $Λ[$Λ.length - 1].l },
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global'],
-    queue: $Λ[$Λ.length - 1].l
+    f: $Λ[$Λ.length - 1].l
 };
-$tmp6 = Packet.prototype;
-$Γ['global']['$tmp6'] = sec_lvl('Packet', 'prototype', false, $Γ['global']);
-$Γ['global']['$tmp6'] instanceof Object ? $Γ['global']['$tmp6'].Σ = $lub($Γ['global']['$tmp6'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp6'] = $lub($Γ['global']['$tmp6'], $Λ[$Λ.length - 1].l);
-$tmp6.toString = function () {
-    var $tmp148;
-    $Γ['global']['$tmp6']['toString']['$tmp148'] = 0;
-    $tmp148 = 'Packet';
-    $Γ['global']['$tmp6']['toString']['$tmp148'] = $Λ[$Λ.length - 1].l;
-    return $tmp148;
-};
-$Γ['global']['$tmp6']['toString'] = {
-    $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
-    Σ: $Λ[$Λ.length - 1].l,
-    scope: $Γ['global']
-};
-$rf = $scope($Γ['global'], 'runRichards', false)['runRichards'];
+$rf = $scope($Γ['global'], 'SplaySetup', false)['SplaySetup'];
 $rf.scope = $Γ['global'];
 $rf.$this = $Γ['global'];
 $Λ.push({
     l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
     id: 'FUNC'
 });
-$tmp7 = runRichards();
-$Γ['global']['$tmp7'] = $Λ.pop().l;
-$Γ['global']['$tmp7'] instanceof Object ? $Γ['global']['$tmp7'].Σ = $lub($Γ['global']['$tmp7'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp7'] = $lub($Γ['global']['$tmp7'], $Λ[$Λ.length - 1].l);
+$tmp3 = SplaySetup();
+$Γ['global']['$tmp3'] = $Λ.pop().l;
+$Γ['global']['$tmp3'] instanceof Object ? $Γ['global']['$tmp3'].Σ = $lub($Γ['global']['$tmp3'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp3'] = $lub($Γ['global']['$tmp3'], $Λ[$Λ.length - 1].l);
+$rf = $scope($Γ['global'], 'SplayRun', false)['SplayRun'];
+$rf.scope = $Γ['global'];
+$rf.$this = $Γ['global'];
+$Λ.push({
+    l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+    id: 'FUNC'
+});
+$tmp4 = SplayRun();
+$Γ['global']['$tmp4'] = $Λ.pop().l;
+$Γ['global']['$tmp4'] instanceof Object ? $Γ['global']['$tmp4'].Σ = $lub($Γ['global']['$tmp4'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp4'] = $lub($Γ['global']['$tmp4'], $Λ[$Λ.length - 1].l);
+$rf = $scope($Γ['global'], 'SplayTearDown', false)['SplayTearDown'];
+$rf.scope = $Γ['global'];
+$rf.$this = $Γ['global'];
+$Λ.push({
+    l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+    id: 'FUNC'
+});
+$tmp5 = SplayTearDown();
+$Γ['global']['$tmp5'] = $Λ.pop().l;
+$Γ['global']['$tmp5'] instanceof Object ? $Γ['global']['$tmp5'].Σ = $lub($Γ['global']['$tmp5'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['$tmp5'] = $lub($Γ['global']['$tmp5'], $Λ[$Λ.length - 1].l);
