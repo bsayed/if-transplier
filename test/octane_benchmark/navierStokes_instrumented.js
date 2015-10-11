@@ -9,8 +9,6 @@ function $pc() {
     return $Λ[$Λ.length - 1];
 }
 function $lub() {
-    return 0;
-
     var args = Array.prototype.slice.call(arguments, 0);
     return args.sort(function (a, b) {
         return (b - a);
@@ -71,8 +69,6 @@ function $upgrade(varArray, lvl, $$cs) {
 }
 
 function sec_lvl(obj, prop, getValue, $$cs) {
-    return 0;
-
     var result;
     // special case of looking up 'this'
     if (obj === 'this') {
@@ -138,8 +134,8 @@ $Γ['global']['solver'] = $Λ[$Λ.length - 1].l;
 function runNavierStokes() {
     var $tmp3;
     $Γ['global']['runNavierStokes']['$tmp3'] = 0;
-    $rf = $prop('FluidField', 'update', $Γ['global']['runNavierStokes']);
-    $rf.scope = $scope($Γ['global']['runNavierStokes'], 'FluidField', false)['FluidField'];
+    $rf = $prop('solver', 'update', $Γ['global']['runNavierStokes']);
+    $rf.scope = $scope($Γ['global']['setupNavierStokes'], 'FluidField', false)['FluidField'];// $Γ['global']['runNavierStokes'];
     $rf.$this = $scope($Γ['global']['runNavierStokes'], 'solver', false)['solver'];
     $Λ.push({
         l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
@@ -168,8 +164,8 @@ function setupNavierStokes() {
     $scope($Γ['global']['setupNavierStokes'], 'solver', true)['solver'] instanceof Object ? $scope($Γ['global']['setupNavierStokes'], 'solver', true)['solver'].Σ = $lub($scope($Γ['global']['setupNavierStokes'], 'solver', true)['solver'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['setupNavierStokes'], 'solver', true)['solver'] = $lub($scope($Γ['global']['setupNavierStokes'], 'solver', true)['solver'], $Λ[$Λ.length - 1].l);
     var $tmp4, $tmp5, $tmp6, $tmp7, $tmp8, $tmp9;
     $Γ['global']['setupNavierStokes']['$tmp9'] = $Γ['global']['setupNavierStokes']['$tmp8'] = $Γ['global']['setupNavierStokes']['$tmp7'] = $Γ['global']['setupNavierStokes']['$tmp6'] = $Γ['global']['setupNavierStokes']['$tmp5'] = $Γ['global']['setupNavierStokes']['$tmp4'] = 0;
-    $rf = $prop('FluidField', 'setResolution', $Γ['global']['setupNavierStokes']);
-    $rf.scope = $scope($Γ['global']['setupNavierStokes'], 'FluidField', false)['FluidField'];
+    $rf = $prop('solver', 'setResolution', $Γ['global']['setupNavierStokes']);
+    $rf.scope =$scope($Γ['global']['setupNavierStokes'], 'FluidField', false)['FluidField']; //$Γ['global']['setupNavierStokes'];
     $rf.$this = $scope($Γ['global']['setupNavierStokes'], 'solver', false)['solver'];
     $rf['hRes'] = $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l);
     $rf['wRes'] = $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l);
@@ -180,8 +176,8 @@ function setupNavierStokes() {
     $tmp4 = solver.setResolution(128, 128);
     $Γ['global']['setupNavierStokes']['$tmp4'] = $Λ.pop().l;
     $Γ['global']['setupNavierStokes']['$tmp4'] instanceof Object ? $Γ['global']['setupNavierStokes']['$tmp4'].Σ = $lub($Γ['global']['setupNavierStokes']['$tmp4'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['setupNavierStokes']['$tmp4'] = $lub($Γ['global']['setupNavierStokes']['$tmp4'], $Λ[$Λ.length - 1].l);
-    $rf = $prop('FluidField', 'setIterations', $Γ['global']['setupNavierStokes']);
-    $rf.scope = $scope($Γ['global']['setupNavierStokes'], 'FluidField', false)['FluidField'];
+    $rf = $prop('solver', 'setIterations', $Γ['global']['setupNavierStokes']);
+    $rf.scope = $Γ['global']['setupNavierStokes'];
     $rf.$this = $scope($Γ['global']['setupNavierStokes'], 'solver', false)['solver'];
     $rf['iters'] = $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l);
     $Λ.push({
@@ -200,8 +196,8 @@ function setupNavierStokes() {
         Σ: $Λ[$Λ.length - 1].l,
         scope: $Γ['global']['setupNavierStokes']
     };
-    $rf = $prop('FluidField', 'setDisplayFunction', $Γ['global']['setupNavierStokes']);
-    $rf.scope = $scope($Γ['global']['setupNavierStokes'], 'FluidField', false)['FluidField'];
+    $rf = $prop('solver', 'setDisplayFunction', $Γ['global']['setupNavierStokes']);
+    $rf.scope = $Γ['global']['setupNavierStokes'];
     $rf.$this = $scope($Γ['global']['setupNavierStokes'], 'solver', false)['solver'];
     $rf['func'] = $lub(sec_lvl('$tmp7', null, true, $Γ['global']['setupNavierStokes']), $Λ[$Λ.length - 1].l);
     $Λ.push({
@@ -211,8 +207,8 @@ function setupNavierStokes() {
     $tmp6 = solver.setDisplayFunction($tmp7);
     $Γ['global']['setupNavierStokes']['$tmp6'] = $Λ.pop().l;
     $Γ['global']['setupNavierStokes']['$tmp6'] instanceof Object ? $Γ['global']['setupNavierStokes']['$tmp6'].Σ = $lub($Γ['global']['setupNavierStokes']['$tmp6'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['setupNavierStokes']['$tmp6'] = $lub($Γ['global']['setupNavierStokes']['$tmp6'], $Λ[$Λ.length - 1].l);
-    $rf = $prop('FluidField', 'setUICallback', $Γ['global']['setupNavierStokes']);
-    $rf.scope = $scope($Γ['global']['setupNavierStokes'], 'FluidField', false)['FluidField'];
+    $rf = $prop('solver', 'setUICallback', $Γ['global']['setupNavierStokes']);
+    $rf.scope = $Γ['global']['setupNavierStokes'];
     $rf.$this = $scope($Γ['global']['setupNavierStokes'], 'solver', false)['solver'];
     $rf['callback'] = $lub(sec_lvl('prepareFrame', null, true, $Γ['global']['setupNavierStokes']), $Λ[$Λ.length - 1].l);
     $Λ.push({
@@ -222,8 +218,8 @@ function setupNavierStokes() {
     $tmp8 = solver.setUICallback(prepareFrame);
     $Γ['global']['setupNavierStokes']['$tmp8'] = $Λ.pop().l;
     $Γ['global']['setupNavierStokes']['$tmp8'] instanceof Object ? $Γ['global']['setupNavierStokes']['$tmp8'].Σ = $lub($Γ['global']['setupNavierStokes']['$tmp8'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['setupNavierStokes']['$tmp8'] = $lub($Γ['global']['setupNavierStokes']['$tmp8'], $Λ[$Λ.length - 1].l);
-    $rf = $prop('FluidField', 'reset', $Γ['global']['setupNavierStokes']);
-    $rf.scope = $scope($Γ['global']['setupNavierStokes'], 'FluidField', false)['FluidField'];
+    $rf = $prop('solver', 'reset', $Γ['global']['setupNavierStokes']);
+    $rf.scope = $scope($Γ['global']['setupNavierStokes'], 'FluidField', false)['FluidField'];//$Γ['global']['setupNavierStokes'];
     $rf.$this = $scope($Γ['global']['setupNavierStokes'], 'solver', false)['solver'];
     $Λ.push({
         l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
@@ -232,6 +228,8 @@ function setupNavierStokes() {
     $tmp9 = solver.reset();
     $Γ['global']['setupNavierStokes']['$tmp9'] = $Λ.pop().l;
     $Γ['global']['setupNavierStokes']['$tmp9'] instanceof Object ? $Γ['global']['setupNavierStokes']['$tmp9'].Σ = $lub($Γ['global']['setupNavierStokes']['$tmp9'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['setupNavierStokes']['$tmp9'] = $lub($Γ['global']['setupNavierStokes']['$tmp9'], $Λ[$Λ.length - 1].l);
+
+
     return;
 }
 function tearDownNavierStokes() {
@@ -300,7 +298,9 @@ function addPoints(field) {
         $Γ['global']['addPoints']['$tmp11'] instanceof Object ? $Γ['global']['addPoints']['$tmp11'].Σ = $lub($Γ['global']['addPoints']['$tmp11'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['addPoints']['$tmp11'] = $lub($Γ['global']['addPoints']['$tmp11'], $Λ[$Λ.length - 1].l);
     }
     $upgrade([
+        'field.setVelocity',
         '$tmp12',
+        'field.setDensity',
         '$tmp13',
         '$tmp14',
         '$tmp18',
@@ -2850,6 +2850,17 @@ function FluidField(canvas) {
         wRes: $Λ[$Λ.length - 1].l
     };
     $tmp32 = this.setResolution(64, 64);
+
+    $old_pc = $pc();
+    while ($pc().id !== 'FUNC') {
+        $Λ.pop();
+    }
+    if ($Γ['global']['FluidField'].InvokedAsContr) {
+        $Γ['global']['FluidField'].$this.Σ = $lub($Γ['global']['FluidField'].$this.Σ, $old_pc.l);
+        $Λ[$Λ.length - 1] = { 'l': $Γ['global']['FluidField'].$this };
+    } else {
+        $Λ[$Λ.length - 1] = { 'l': $old_pc.l };
+    }
     return;
 }
 $rf = $scope($Γ['global'], 'setupNavierStokes', false)['setupNavierStokes'];
