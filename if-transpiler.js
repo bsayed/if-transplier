@@ -141,6 +141,7 @@ function iFTranspily () {
             preserveCompletionValue: argv.preserveCompletionValue
         });
 
+        //console.log(JSON.stringify(tree, null, 4));
         // Then perform the inlining
         tree = ifTranspiler.inline(tree);
 

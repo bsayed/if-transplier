@@ -9,7 +9,6 @@ function $pc() {
     return $Λ[$Λ.length - 1];
 }
 function $lub() {
-    return 0;
 
     var args = Array.prototype.slice.call(arguments, 0);
     return args.sort(function (a, b) {
@@ -71,7 +70,6 @@ function $upgrade(varArray, lvl, $$cs) {
 }
 
 function sec_lvl(obj, prop, getValue, $$cs) {
-    return 0;
 
     var result;
     // special case of looking up 'this'
