@@ -402,7 +402,8 @@ $Λ.push({
     l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
     id: 'FUNC'
 });
-comp = LZW.compress('TOBEORNOTTOBEORTOBEORNOT');
+//comp = LZW.compress("although It's just a matter of separating out the real and imaginary parts of jw is not a helpful quotethe actual formula I found here and the rest was just fiddling / testing and comparing with correct results. http://cboard.cprogramming.com/c-programming/89116-how-implement-complex-exponential-functions-c.html#post637921");
+comp = LZW.compress('OTTOBEORNOTTONOTTOBEORTOBEORNOTTOBEORNOTTOBEORTOBEORNOTTOBEORNOTTOBEORTOBEORNOTTOBEORNOTTOBEORTOBEORNOTTOBEORNOTTOBEORTOBEORNOTTOBEORNOTTOBEORTOBEORNOTTOBEORNOTTOBEORTOBEORNOTTOBEORNOTTOBEORTOBEORNOTTOBEORNOTTOBEORTOBEORNOTTOBEORNOTTOBEORTOBEORNOT');
 $Γ['global']['comp'] = $Λ.pop().l;
 $Γ['global']['comp'] instanceof Object ? $Γ['global']['comp'].Σ = $lub($Γ['global']['comp'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['comp'] = $lub($Γ['global']['comp'], $Λ[$Λ.length - 1].l);
 $rf = $prop('LZW', 'decompress', $Γ['global']);
