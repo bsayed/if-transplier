@@ -9,8 +9,6 @@ function $pc() {
     return $Λ[$Λ.length - 1];
 }
 function $lub() {
-    return 0;
-
     var args = Array.prototype.slice.call(arguments, 0);
     return args.sort(function (a, b) {
         return (b - a);
