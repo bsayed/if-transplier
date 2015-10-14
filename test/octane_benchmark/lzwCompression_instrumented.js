@@ -4,7 +4,7 @@ var _$tmp;
 
 $Γ['global'].$this = $Γ['global'];
 
-$Λ = [{ 'l': 0, id: 'global' }];
+$Λ = [{'l': 0, id: 'global'}];
 $Δ = [];
 function $pc() {
     return $Λ[$Λ.length - 1];
@@ -105,7 +105,7 @@ LZW.decompress = function (compressed) {
     $Γ['global']['LZW']['decompress']['dictionary'] = {
         __proto__: {},
         scope: $Γ['global']['LZW']['decompress'],
-        Σ: $lub($Λ[$Λ.length - 1].l)
+        Σ: $Λ[$Λ.length - 1].l
     };
     entry = '';
     $scope($Γ['global']['LZW']['decompress'], 'entry', true)['entry'] = $Λ[$Λ.length - 1].l;
@@ -115,12 +115,12 @@ LZW.decompress = function (compressed) {
     $scope($Γ['global']['LZW']['decompress'], 'i', true)['i'] = $Λ[$Λ.length - 1].l;
     $tmp2 = i;
     $Γ['global']['LZW']['decompress']['$tmp2'] = sec_lvl('i', null, false, $Γ['global']['LZW']['decompress']);
-    $Γ['global']['LZW']['decompress']['$tmp2'] instanceof Object ? $Γ['global']['LZW']['decompress']['$tmp2'].Σ = $lub($Γ['global']['LZW']['decompress']['$tmp2'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['LZW']['decompress']['$tmp2'] = $lub($Γ['global']['LZW']['decompress']['$tmp2'], $Λ[$Λ.length - 1].l);
+    $Γ['global']['LZW']['decompress']['$tmp2'] instanceof Object ? $Γ['global']['LZW']['decompress']['$tmp2'].Σ = $Γ['global']['LZW']['decompress']['$tmp2'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['decompress']['$tmp2'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['LZW']['decompress']['$tmp2'] = $Γ['global']['LZW']['decompress']['$tmp2'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['decompress']['$tmp2'] : $Λ[$Λ.length - 1].l;
     $tmp4 = i < 256;
-    $Γ['global']['LZW']['decompress']['$tmp4'] = $lub(sec_lvl('i', null, true, $Γ['global']['LZW']['decompress']), $Λ[$Λ.length - 1].l);
-    $Γ['global']['LZW']['decompress']['$tmp4'] instanceof Object ? $Γ['global']['LZW']['decompress']['$tmp4'].Σ = $lub($Γ['global']['LZW']['decompress']['$tmp4'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['LZW']['decompress']['$tmp4'] = $lub($Γ['global']['LZW']['decompress']['$tmp4'], $Λ[$Λ.length - 1].l);
+    $Γ['global']['LZW']['decompress']['$tmp4'] = sec_lvl('i', null, true, $Γ['global']['LZW']['decompress']) >= $Λ[$Λ.length - 1].l ? sec_lvl('i', null, true, $Γ['global']['LZW']['decompress']) : $Λ[$Λ.length - 1].l;
+    $Γ['global']['LZW']['decompress']['$tmp4'] instanceof Object ? $Γ['global']['LZW']['decompress']['$tmp4'].Σ = $Γ['global']['LZW']['decompress']['$tmp4'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['decompress']['$tmp4'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['LZW']['decompress']['$tmp4'] = $Γ['global']['LZW']['decompress']['$tmp4'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['decompress']['$tmp4'] : $Λ[$Λ.length - 1].l;
     $Λ.push({
-        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp4', null, true, $Γ['global']['LZW']['decompress'])),
+        l: $Λ[$Λ.length - 1].l >= sec_lvl('$tmp4', null, true, $Γ['global']['LZW']['decompress']) ? $Λ[$Λ.length - 1].l : sec_lvl('$tmp4', null, true, $Γ['global']['LZW']['decompress']),
         id: 'LOOP'
     });
     for (; $tmp4;) {
@@ -131,61 +131,61 @@ LZW.decompress = function (compressed) {
         $scope($Γ['global']['LZW']['decompress'], 'i', true)['i'] = $Λ[$Λ.length - 1].l;
         $tmp3 = i;
         $Γ['global']['LZW']['decompress']['$tmp3'] = sec_lvl('i', null, false, $Γ['global']['LZW']['decompress']);
-        $Γ['global']['LZW']['decompress']['$tmp3'] instanceof Object ? $Γ['global']['LZW']['decompress']['$tmp3'].Σ = $lub($Γ['global']['LZW']['decompress']['$tmp3'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['LZW']['decompress']['$tmp3'] = $lub($Γ['global']['LZW']['decompress']['$tmp3'], $Λ[$Λ.length - 1].l);
+        $Γ['global']['LZW']['decompress']['$tmp3'] instanceof Object ? $Γ['global']['LZW']['decompress']['$tmp3'].Σ = $Γ['global']['LZW']['decompress']['$tmp3'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['decompress']['$tmp3'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['LZW']['decompress']['$tmp3'] = $Γ['global']['LZW']['decompress']['$tmp3'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['decompress']['$tmp3'] : $Λ[$Λ.length - 1].l;
         $tmp4 = i < 256;
-        $Γ['global']['LZW']['decompress']['$tmp4'] = $lub(sec_lvl('i', null, true, $Γ['global']['LZW']['decompress']), $Λ[$Λ.length - 1].l);
-        $Γ['global']['LZW']['decompress']['$tmp4'] instanceof Object ? $Γ['global']['LZW']['decompress']['$tmp4'].Σ = $lub($Γ['global']['LZW']['decompress']['$tmp4'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['LZW']['decompress']['$tmp4'] = $lub($Γ['global']['LZW']['decompress']['$tmp4'], $Λ[$Λ.length - 1].l);
+        $Γ['global']['LZW']['decompress']['$tmp4'] = sec_lvl('i', null, true, $Γ['global']['LZW']['decompress']) >= $Λ[$Λ.length - 1].l ? sec_lvl('i', null, true, $Γ['global']['LZW']['decompress']) : $Λ[$Λ.length - 1].l;
+        $Γ['global']['LZW']['decompress']['$tmp4'] instanceof Object ? $Γ['global']['LZW']['decompress']['$tmp4'].Σ = $Γ['global']['LZW']['decompress']['$tmp4'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['decompress']['$tmp4'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['LZW']['decompress']['$tmp4'] = $Γ['global']['LZW']['decompress']['$tmp4'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['decompress']['$tmp4'] : $Λ[$Λ.length - 1].l;
     }
     $upgrade(['dictionary'], $Λ[$Λ.length - 1].l, $Γ['global']['LZW']['decompress']);
     $Λ.pop();
     $tmp5 = compressed[0];
     $Γ['global']['LZW']['decompress']['$tmp5'] = sec_lvl('compressed', 0, false, $Γ['global']['LZW']['decompress']);
-    $Γ['global']['LZW']['decompress']['$tmp5'] instanceof Object ? $Γ['global']['LZW']['decompress']['$tmp5'].Σ = $lub($Γ['global']['LZW']['decompress']['$tmp5'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['LZW']['decompress']['$tmp5'] = $lub($Γ['global']['LZW']['decompress']['$tmp5'], $Λ[$Λ.length - 1].l);
+    $Γ['global']['LZW']['decompress']['$tmp5'] instanceof Object ? $Γ['global']['LZW']['decompress']['$tmp5'].Σ = $Γ['global']['LZW']['decompress']['$tmp5'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['decompress']['$tmp5'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['LZW']['decompress']['$tmp5'] = $Γ['global']['LZW']['decompress']['$tmp5'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['decompress']['$tmp5'] : $Λ[$Λ.length - 1].l;
     w = String.fromCharCode($tmp5);
     result = w;
     $scope($Γ['global']['LZW']['decompress'], 'result', true)['result'] = sec_lvl('w', null, false, $Γ['global']['LZW']['decompress']);
-    $scope($Γ['global']['LZW']['decompress'], 'result', true)['result'] instanceof Object ? $scope($Γ['global']['LZW']['decompress'], 'result', true)['result'].Σ = $lub($scope($Γ['global']['LZW']['decompress'], 'result', true)['result'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['LZW']['decompress'], 'result', true)['result'] = $lub($scope($Γ['global']['LZW']['decompress'], 'result', true)['result'], $Λ[$Λ.length - 1].l);
+    $scope($Γ['global']['LZW']['decompress'], 'result', true)['result'] instanceof Object ? $scope($Γ['global']['LZW']['decompress'], 'result', true)['result'].Σ = $scope($Γ['global']['LZW']['decompress'], 'result', true)['result'].Σ >= $Λ[$Λ.length - 1].l ? $scope($Γ['global']['LZW']['decompress'], 'result', true)['result'].Σ : $Λ[$Λ.length - 1].l : $scope($Γ['global']['LZW']['decompress'], 'result', true)['result'] = $scope($Γ['global']['LZW']['decompress'], 'result', true)['result'] >= $Λ[$Λ.length - 1].l ? $scope($Γ['global']['LZW']['decompress'], 'result', true)['result'] : $Λ[$Λ.length - 1].l;
     i = 1;
     $scope($Γ['global']['LZW']['decompress'], 'i', true)['i'] = $Λ[$Λ.length - 1].l;
     $tmp6 = i;
     $Γ['global']['LZW']['decompress']['$tmp6'] = sec_lvl('i', null, false, $Γ['global']['LZW']['decompress']);
-    $Γ['global']['LZW']['decompress']['$tmp6'] instanceof Object ? $Γ['global']['LZW']['decompress']['$tmp6'].Σ = $lub($Γ['global']['LZW']['decompress']['$tmp6'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['LZW']['decompress']['$tmp6'] = $lub($Γ['global']['LZW']['decompress']['$tmp6'], $Λ[$Λ.length - 1].l);
+    $Γ['global']['LZW']['decompress']['$tmp6'] instanceof Object ? $Γ['global']['LZW']['decompress']['$tmp6'].Σ = $Γ['global']['LZW']['decompress']['$tmp6'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['decompress']['$tmp6'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['LZW']['decompress']['$tmp6'] = $Γ['global']['LZW']['decompress']['$tmp6'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['decompress']['$tmp6'] : $Λ[$Λ.length - 1].l;
     $tmp9 = compressed.length;
     $Γ['global']['LZW']['decompress']['$tmp9'] = sec_lvl('compressed', 'length', false, $Γ['global']['LZW']['decompress']);
-    $Γ['global']['LZW']['decompress']['$tmp9'] instanceof Object ? $Γ['global']['LZW']['decompress']['$tmp9'].Σ = $lub($Γ['global']['LZW']['decompress']['$tmp9'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['LZW']['decompress']['$tmp9'] = $lub($Γ['global']['LZW']['decompress']['$tmp9'], $Λ[$Λ.length - 1].l);
+    $Γ['global']['LZW']['decompress']['$tmp9'] instanceof Object ? $Γ['global']['LZW']['decompress']['$tmp9'].Σ = $Γ['global']['LZW']['decompress']['$tmp9'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['decompress']['$tmp9'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['LZW']['decompress']['$tmp9'] = $Γ['global']['LZW']['decompress']['$tmp9'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['decompress']['$tmp9'] : $Λ[$Λ.length - 1].l;
     $tmp8 = i < $tmp9;
-    $Γ['global']['LZW']['decompress']['$tmp8'] = $lub(sec_lvl('i', null, true, $Γ['global']['LZW']['decompress']), sec_lvl('$tmp9', null, true, $Γ['global']['LZW']['decompress']));
-    $Γ['global']['LZW']['decompress']['$tmp8'] instanceof Object ? $Γ['global']['LZW']['decompress']['$tmp8'].Σ = $lub($Γ['global']['LZW']['decompress']['$tmp8'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['LZW']['decompress']['$tmp8'] = $lub($Γ['global']['LZW']['decompress']['$tmp8'], $Λ[$Λ.length - 1].l);
+    $Γ['global']['LZW']['decompress']['$tmp8'] = sec_lvl('i', null, true, $Γ['global']['LZW']['decompress']) >= sec_lvl('$tmp9', null, true, $Γ['global']['LZW']['decompress']) ? sec_lvl('i', null, true, $Γ['global']['LZW']['decompress']) : sec_lvl('$tmp9', null, true, $Γ['global']['LZW']['decompress']);
+    $Γ['global']['LZW']['decompress']['$tmp8'] instanceof Object ? $Γ['global']['LZW']['decompress']['$tmp8'].Σ = $Γ['global']['LZW']['decompress']['$tmp8'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['decompress']['$tmp8'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['LZW']['decompress']['$tmp8'] = $Γ['global']['LZW']['decompress']['$tmp8'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['decompress']['$tmp8'] : $Λ[$Λ.length - 1].l;
     $Λ.push({
-        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp8', null, true, $Γ['global']['LZW']['decompress'])),
+        l: $Λ[$Λ.length - 1].l >= sec_lvl('$tmp8', null, true, $Γ['global']['LZW']['decompress']) ? $Λ[$Λ.length - 1].l : sec_lvl('$tmp8', null, true, $Γ['global']['LZW']['decompress']),
         id: 'LOOP'
     });
     for (; $tmp8;) {
         k = compressed[i];
         $scope($Γ['global']['LZW']['decompress'], 'k', true)['k'] = sec_lvl('compressed', i, false, $Γ['global']['LZW']['decompress']);
-        $scope($Γ['global']['LZW']['decompress'], 'k', true)['k'] instanceof Object ? $scope($Γ['global']['LZW']['decompress'], 'k', true)['k'].Σ = $lub($scope($Γ['global']['LZW']['decompress'], 'k', true)['k'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['LZW']['decompress'], 'k', true)['k'] = $lub($scope($Γ['global']['LZW']['decompress'], 'k', true)['k'], $Λ[$Λ.length - 1].l);
+        $scope($Γ['global']['LZW']['decompress'], 'k', true)['k'] instanceof Object ? $scope($Γ['global']['LZW']['decompress'], 'k', true)['k'].Σ = $scope($Γ['global']['LZW']['decompress'], 'k', true)['k'].Σ >= $Λ[$Λ.length - 1].l ? $scope($Γ['global']['LZW']['decompress'], 'k', true)['k'].Σ : $Λ[$Λ.length - 1].l : $scope($Γ['global']['LZW']['decompress'], 'k', true)['k'] = $scope($Γ['global']['LZW']['decompress'], 'k', true)['k'] >= $Λ[$Λ.length - 1].l ? $scope($Γ['global']['LZW']['decompress'], 'k', true)['k'] : $Λ[$Λ.length - 1].l;
         var $tmp10, $tmp11, $tmp12, $tmp7, $tmp8, $tmp13;
         $Γ['global']['LZW']['decompress']['$tmp13'] = $Γ['global']['LZW']['decompress']['$tmp8'] = $Γ['global']['LZW']['decompress']['$tmp7'] = $Γ['global']['LZW']['decompress']['$tmp12'] = $Γ['global']['LZW']['decompress']['$tmp11'] = $Γ['global']['LZW']['decompress']['$tmp10'] = 0;
         $tmp10 = dictionary[k];
         $Γ['global']['LZW']['decompress']['$tmp10'] = sec_lvl('dictionary', k, false, $Γ['global']['LZW']['decompress']);
-        $Γ['global']['LZW']['decompress']['$tmp10'] instanceof Object ? $Γ['global']['LZW']['decompress']['$tmp10'].Σ = $lub($Γ['global']['LZW']['decompress']['$tmp10'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['LZW']['decompress']['$tmp10'] = $lub($Γ['global']['LZW']['decompress']['$tmp10'], $Λ[$Λ.length - 1].l);
+        $Γ['global']['LZW']['decompress']['$tmp10'] instanceof Object ? $Γ['global']['LZW']['decompress']['$tmp10'].Σ = $Γ['global']['LZW']['decompress']['$tmp10'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['decompress']['$tmp10'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['LZW']['decompress']['$tmp10'] = $Γ['global']['LZW']['decompress']['$tmp10'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['decompress']['$tmp10'] : $Λ[$Λ.length - 1].l;
         $Λ.push({
-            l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp10', null, true, $Γ['global']['LZW']['decompress'])),
+            l: $Λ[$Λ.length - 1].l >= sec_lvl('$tmp10', null, true, $Γ['global']['LZW']['decompress']) ? $Λ[$Λ.length - 1].l : sec_lvl('$tmp10', null, true, $Γ['global']['LZW']['decompress']),
             id: 'IF'
         });
         if ($tmp10) {
             $upgrade(['$tmp15'], $Λ[$Λ.length - 1].l, $Γ['global']['LZW']['decompress']);
             entry = dictionary[k];
             $scope($Γ['global']['LZW']['decompress'], 'entry', true)['entry'] = sec_lvl('dictionary', k, false, $Γ['global']['LZW']['decompress']);
-            $scope($Γ['global']['LZW']['decompress'], 'entry', true)['entry'] instanceof Object ? $scope($Γ['global']['LZW']['decompress'], 'entry', true)['entry'].Σ = $lub($scope($Γ['global']['LZW']['decompress'], 'entry', true)['entry'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['LZW']['decompress'], 'entry', true)['entry'] = $lub($scope($Γ['global']['LZW']['decompress'], 'entry', true)['entry'], $Λ[$Λ.length - 1].l);
+            $scope($Γ['global']['LZW']['decompress'], 'entry', true)['entry'] instanceof Object ? $scope($Γ['global']['LZW']['decompress'], 'entry', true)['entry'].Σ = $scope($Γ['global']['LZW']['decompress'], 'entry', true)['entry'].Σ >= $Λ[$Λ.length - 1].l ? $scope($Γ['global']['LZW']['decompress'], 'entry', true)['entry'].Σ : $Λ[$Λ.length - 1].l : $scope($Γ['global']['LZW']['decompress'], 'entry', true)['entry'] = $scope($Γ['global']['LZW']['decompress'], 'entry', true)['entry'] >= $Λ[$Λ.length - 1].l ? $scope($Γ['global']['LZW']['decompress'], 'entry', true)['entry'] : $Λ[$Λ.length - 1].l;
         } else {
             var $tmp14;
             $Γ['global']['LZW']['decompress']['$tmp14'] = 0;
             $tmp14 = k === dictSize;
-            $Γ['global']['LZW']['decompress']['$tmp14'] = $lub(sec_lvl('k', null, true, $Γ['global']['LZW']['decompress']), sec_lvl('dictSize', null, true, $Γ['global']['LZW']['decompress']));
-            $Γ['global']['LZW']['decompress']['$tmp14'] instanceof Object ? $Γ['global']['LZW']['decompress']['$tmp14'].Σ = $lub($Γ['global']['LZW']['decompress']['$tmp14'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['LZW']['decompress']['$tmp14'] = $lub($Γ['global']['LZW']['decompress']['$tmp14'], $Λ[$Λ.length - 1].l);
+            $Γ['global']['LZW']['decompress']['$tmp14'] = sec_lvl('k', null, true, $Γ['global']['LZW']['decompress']) >= sec_lvl('dictSize', null, true, $Γ['global']['LZW']['decompress']) ? sec_lvl('k', null, true, $Γ['global']['LZW']['decompress']) : sec_lvl('dictSize', null, true, $Γ['global']['LZW']['decompress']);
+            $Γ['global']['LZW']['decompress']['$tmp14'] instanceof Object ? $Γ['global']['LZW']['decompress']['$tmp14'].Σ = $Γ['global']['LZW']['decompress']['$tmp14'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['decompress']['$tmp14'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['LZW']['decompress']['$tmp14'] = $Γ['global']['LZW']['decompress']['$tmp14'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['decompress']['$tmp14'] : $Λ[$Λ.length - 1].l;
             $Λ.push({
-                l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp14', null, true, $Γ['global']['LZW']['decompress'])),
+                l: $Λ[$Λ.length - 1].l >= sec_lvl('$tmp14', null, true, $Γ['global']['LZW']['decompress']) ? $Λ[$Λ.length - 1].l : sec_lvl('$tmp14', null, true, $Γ['global']['LZW']['decompress']),
                 id: 'IF'
             });
             if ($tmp14) {
@@ -193,8 +193,8 @@ LZW.decompress = function (compressed) {
                 $Γ['global']['LZW']['decompress']['$tmp15'] = 0;
                 $tmp15 = w.charAt(0);
                 entry = w + $tmp15;
-                $scope($Γ['global']['LZW']['decompress'], 'entry', true)['entry'] = $lub(sec_lvl('w', null, true, $Γ['global']['LZW']['decompress']), sec_lvl('$tmp15', null, true, $Γ['global']['LZW']['decompress']));
-                $scope($Γ['global']['LZW']['decompress'], 'entry', true)['entry'] instanceof Object ? $scope($Γ['global']['LZW']['decompress'], 'entry', true)['entry'].Σ = $lub($scope($Γ['global']['LZW']['decompress'], 'entry', true)['entry'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['LZW']['decompress'], 'entry', true)['entry'] = $lub($scope($Γ['global']['LZW']['decompress'], 'entry', true)['entry'], $Λ[$Λ.length - 1].l);
+                $scope($Γ['global']['LZW']['decompress'], 'entry', true)['entry'] = sec_lvl('w', null, true, $Γ['global']['LZW']['decompress']) >= sec_lvl('$tmp15', null, true, $Γ['global']['LZW']['decompress']) ? sec_lvl('w', null, true, $Γ['global']['LZW']['decompress']) : sec_lvl('$tmp15', null, true, $Γ['global']['LZW']['decompress']);
+                $scope($Γ['global']['LZW']['decompress'], 'entry', true)['entry'] instanceof Object ? $scope($Γ['global']['LZW']['decompress'], 'entry', true)['entry'].Σ = $scope($Γ['global']['LZW']['decompress'], 'entry', true)['entry'].Σ >= $Λ[$Λ.length - 1].l ? $scope($Γ['global']['LZW']['decompress'], 'entry', true)['entry'].Σ : $Λ[$Λ.length - 1].l : $scope($Γ['global']['LZW']['decompress'], 'entry', true)['entry'] = $scope($Γ['global']['LZW']['decompress'], 'entry', true)['entry'] >= $Λ[$Λ.length - 1].l ? $scope($Γ['global']['LZW']['decompress'], 'entry', true)['entry'] : $Λ[$Λ.length - 1].l;
             } else {
                 $upgrade(['$tmp15'], $Λ[$Λ.length - 1].l, $Γ['global']['LZW']['decompress']);
                 var $tmp16;
@@ -211,29 +211,29 @@ LZW.decompress = function (compressed) {
         $Λ.pop();
         result += entry;
         $scope($Γ['global']['LZW']['decompress'], 'result', true)['result'] = sec_lvl('entry', null, false, $Γ['global']['LZW']['decompress']);
-        $scope($Γ['global']['LZW']['decompress'], 'result', true)['result'] instanceof Object ? $scope($Γ['global']['LZW']['decompress'], 'result', true)['result'].Σ = $lub($scope($Γ['global']['LZW']['decompress'], 'result', true)['result'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['LZW']['decompress'], 'result', true)['result'] = $lub($scope($Γ['global']['LZW']['decompress'], 'result', true)['result'], $Λ[$Λ.length - 1].l);
+        $scope($Γ['global']['LZW']['decompress'], 'result', true)['result'] instanceof Object ? $scope($Γ['global']['LZW']['decompress'], 'result', true)['result'].Σ = $scope($Γ['global']['LZW']['decompress'], 'result', true)['result'].Σ >= $Λ[$Λ.length - 1].l ? $scope($Γ['global']['LZW']['decompress'], 'result', true)['result'].Σ : $Λ[$Λ.length - 1].l : $scope($Γ['global']['LZW']['decompress'], 'result', true)['result'] = $scope($Γ['global']['LZW']['decompress'], 'result', true)['result'] >= $Λ[$Λ.length - 1].l ? $scope($Γ['global']['LZW']['decompress'], 'result', true)['result'] : $Λ[$Λ.length - 1].l;
         $tmp11 = dictSize++;
         $Γ['global']['LZW']['decompress']['$tmp11'] = sec_lvl('dictSize', null, false, $Γ['global']['LZW']['decompress']);
-        $Γ['global']['LZW']['decompress']['$tmp11'] instanceof Object ? $Γ['global']['LZW']['decompress']['$tmp11'].Σ = $lub($Γ['global']['LZW']['decompress']['$tmp11'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['LZW']['decompress']['$tmp11'] = $lub($Γ['global']['LZW']['decompress']['$tmp11'], $Λ[$Λ.length - 1].l);
+        $Γ['global']['LZW']['decompress']['$tmp11'] instanceof Object ? $Γ['global']['LZW']['decompress']['$tmp11'].Σ = $Γ['global']['LZW']['decompress']['$tmp11'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['decompress']['$tmp11'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['LZW']['decompress']['$tmp11'] = $Γ['global']['LZW']['decompress']['$tmp11'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['decompress']['$tmp11'] : $Λ[$Λ.length - 1].l;
         $tmp12 = entry.charAt(0);
         dictionary[$tmp11] = w + $tmp12;
-        $scope($Γ['global']['LZW']['decompress'], 'dictionary', false)[$tmp11] = $lub(sec_lvl('w', null, true, $Γ['global']['LZW']['decompress']), sec_lvl('$tmp12', null, true, $Γ['global']['LZW']['decompress']));
+        $scope($Γ['global']['LZW']['decompress'], 'dictionary', false)[$tmp11] = sec_lvl('w', null, true, $Γ['global']['LZW']['decompress']) >= sec_lvl('$tmp12', null, true, $Γ['global']['LZW']['decompress']) ? sec_lvl('w', null, true, $Γ['global']['LZW']['decompress']) : sec_lvl('$tmp12', null, true, $Γ['global']['LZW']['decompress']);
         _$tmp = sec_lvl('$tmp11', null, false, $Γ['global']['LZW']['decompress']) instanceof Object ? sec_lvl('$tmp11', null, false, $Γ['global']['LZW']['decompress']).Σ : sec_lvl('$tmp11', null, false, $Γ['global']['LZW']['decompress']);
-        $scope($Γ['global']['LZW']['decompress'], 'dictionary', false)[$tmp11] instanceof Object ? $scope($Γ['global']['LZW']['decompress'], 'dictionary', false)[$tmp11].Σ = $lub($scope($Γ['global']['LZW']['decompress'], 'dictionary', false)[$tmp11].Σ, _$tmp, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['LZW']['decompress'], 'dictionary', false)[$tmp11] = $lub($scope($Γ['global']['LZW']['decompress'], 'dictionary', false)[$tmp11], _$tmp, $Λ[$Λ.length - 1].l);
+        $scope($Γ['global']['LZW']['decompress'], 'dictionary', false)[$tmp11] instanceof Object ? $scope($Γ['global']['LZW']['decompress'], 'dictionary', false)[$tmp11].Σ = $scope($Γ['global']['LZW']['decompress'], 'dictionary', false)[$tmp11].Σ : $scope($Γ['global']['LZW']['decompress'], 'dictionary', false)[$tmp11] = $scope($Γ['global']['LZW']['decompress'], 'dictionary', false)[$tmp11];
         w = entry;
         $scope($Γ['global']['LZW']['decompress'], 'w', true)['w'] = sec_lvl('entry', null, false, $Γ['global']['LZW']['decompress']);
-        $scope($Γ['global']['LZW']['decompress'], 'w', true)['w'] instanceof Object ? $scope($Γ['global']['LZW']['decompress'], 'w', true)['w'].Σ = $lub($scope($Γ['global']['LZW']['decompress'], 'w', true)['w'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['LZW']['decompress'], 'w', true)['w'] = $lub($scope($Γ['global']['LZW']['decompress'], 'w', true)['w'], $Λ[$Λ.length - 1].l);
+        $scope($Γ['global']['LZW']['decompress'], 'w', true)['w'] instanceof Object ? $scope($Γ['global']['LZW']['decompress'], 'w', true)['w'].Σ = $scope($Γ['global']['LZW']['decompress'], 'w', true)['w'].Σ >= $Λ[$Λ.length - 1].l ? $scope($Γ['global']['LZW']['decompress'], 'w', true)['w'].Σ : $Λ[$Λ.length - 1].l : $scope($Γ['global']['LZW']['decompress'], 'w', true)['w'] = $scope($Γ['global']['LZW']['decompress'], 'w', true)['w'] >= $Λ[$Λ.length - 1].l ? $scope($Γ['global']['LZW']['decompress'], 'w', true)['w'] : $Λ[$Λ.length - 1].l;
         i += 1;
         $scope($Γ['global']['LZW']['decompress'], 'i', true)['i'] = $Λ[$Λ.length - 1].l;
         $tmp7 = i;
         $Γ['global']['LZW']['decompress']['$tmp7'] = sec_lvl('i', null, false, $Γ['global']['LZW']['decompress']);
-        $Γ['global']['LZW']['decompress']['$tmp7'] instanceof Object ? $Γ['global']['LZW']['decompress']['$tmp7'].Σ = $lub($Γ['global']['LZW']['decompress']['$tmp7'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['LZW']['decompress']['$tmp7'] = $lub($Γ['global']['LZW']['decompress']['$tmp7'], $Λ[$Λ.length - 1].l);
+        $Γ['global']['LZW']['decompress']['$tmp7'] instanceof Object ? $Γ['global']['LZW']['decompress']['$tmp7'].Σ = $Γ['global']['LZW']['decompress']['$tmp7'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['decompress']['$tmp7'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['LZW']['decompress']['$tmp7'] = $Γ['global']['LZW']['decompress']['$tmp7'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['decompress']['$tmp7'] : $Λ[$Λ.length - 1].l;
         $tmp13 = compressed.length;
         $Γ['global']['LZW']['decompress']['$tmp13'] = sec_lvl('compressed', 'length', false, $Γ['global']['LZW']['decompress']);
-        $Γ['global']['LZW']['decompress']['$tmp13'] instanceof Object ? $Γ['global']['LZW']['decompress']['$tmp13'].Σ = $lub($Γ['global']['LZW']['decompress']['$tmp13'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['LZW']['decompress']['$tmp13'] = $lub($Γ['global']['LZW']['decompress']['$tmp13'], $Λ[$Λ.length - 1].l);
+        $Γ['global']['LZW']['decompress']['$tmp13'] instanceof Object ? $Γ['global']['LZW']['decompress']['$tmp13'].Σ = $Γ['global']['LZW']['decompress']['$tmp13'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['decompress']['$tmp13'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['LZW']['decompress']['$tmp13'] = $Γ['global']['LZW']['decompress']['$tmp13'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['decompress']['$tmp13'] : $Λ[$Λ.length - 1].l;
         $tmp8 = i < $tmp13;
-        $Γ['global']['LZW']['decompress']['$tmp8'] = $lub(sec_lvl('i', null, true, $Γ['global']['LZW']['decompress']), sec_lvl('$tmp13', null, true, $Γ['global']['LZW']['decompress']));
-        $Γ['global']['LZW']['decompress']['$tmp8'] instanceof Object ? $Γ['global']['LZW']['decompress']['$tmp8'].Σ = $lub($Γ['global']['LZW']['decompress']['$tmp8'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['LZW']['decompress']['$tmp8'] = $lub($Γ['global']['LZW']['decompress']['$tmp8'], $Λ[$Λ.length - 1].l);
+        $Γ['global']['LZW']['decompress']['$tmp8'] = sec_lvl('i', null, true, $Γ['global']['LZW']['decompress']) >= sec_lvl('$tmp13', null, true, $Γ['global']['LZW']['decompress']) ? sec_lvl('i', null, true, $Γ['global']['LZW']['decompress']) : sec_lvl('$tmp13', null, true, $Γ['global']['LZW']['decompress']);
+        $Γ['global']['LZW']['decompress']['$tmp8'] instanceof Object ? $Γ['global']['LZW']['decompress']['$tmp8'].Σ = $Γ['global']['LZW']['decompress']['$tmp8'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['decompress']['$tmp8'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['LZW']['decompress']['$tmp8'] = $Γ['global']['LZW']['decompress']['$tmp8'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['decompress']['$tmp8'] : $Λ[$Λ.length - 1].l;
     }
     $upgrade([
         '$tmp15',
@@ -264,7 +264,7 @@ LZW.compress = function (uncompressed) {
     $Γ['global']['LZW']['compress']['result'] = {
         __proto__: {},
         scope: $Γ['global']['LZW']['compress'],
-        Σ: $lub($Λ[$Λ.length - 1].l)
+        Σ: $Λ[$Λ.length - 1].l
     };
     dictSize = 256;
     $scope($Γ['global']['LZW']['compress'], 'dictSize', true)['dictSize'] = $Λ[$Λ.length - 1].l;
@@ -272,12 +272,12 @@ LZW.compress = function (uncompressed) {
     $scope($Γ['global']['LZW']['compress'], 'i', true)['i'] = $Λ[$Λ.length - 1].l;
     $tmp17 = i;
     $Γ['global']['LZW']['compress']['$tmp17'] = sec_lvl('i', null, false, $Γ['global']['LZW']['compress']);
-    $Γ['global']['LZW']['compress']['$tmp17'] instanceof Object ? $Γ['global']['LZW']['compress']['$tmp17'].Σ = $lub($Γ['global']['LZW']['compress']['$tmp17'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['LZW']['compress']['$tmp17'] = $lub($Γ['global']['LZW']['compress']['$tmp17'], $Λ[$Λ.length - 1].l);
+    $Γ['global']['LZW']['compress']['$tmp17'] instanceof Object ? $Γ['global']['LZW']['compress']['$tmp17'].Σ = $Γ['global']['LZW']['compress']['$tmp17'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['compress']['$tmp17'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['LZW']['compress']['$tmp17'] = $Γ['global']['LZW']['compress']['$tmp17'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['compress']['$tmp17'] : $Λ[$Λ.length - 1].l;
     $tmp19 = i < 256;
-    $Γ['global']['LZW']['compress']['$tmp19'] = $lub(sec_lvl('i', null, true, $Γ['global']['LZW']['compress']), $Λ[$Λ.length - 1].l);
-    $Γ['global']['LZW']['compress']['$tmp19'] instanceof Object ? $Γ['global']['LZW']['compress']['$tmp19'].Σ = $lub($Γ['global']['LZW']['compress']['$tmp19'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['LZW']['compress']['$tmp19'] = $lub($Γ['global']['LZW']['compress']['$tmp19'], $Λ[$Λ.length - 1].l);
+    $Γ['global']['LZW']['compress']['$tmp19'] = sec_lvl('i', null, true, $Γ['global']['LZW']['compress']) >= $Λ[$Λ.length - 1].l ? sec_lvl('i', null, true, $Γ['global']['LZW']['compress']) : $Λ[$Λ.length - 1].l;
+    $Γ['global']['LZW']['compress']['$tmp19'] instanceof Object ? $Γ['global']['LZW']['compress']['$tmp19'].Σ = $Γ['global']['LZW']['compress']['$tmp19'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['compress']['$tmp19'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['LZW']['compress']['$tmp19'] = $Γ['global']['LZW']['compress']['$tmp19'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['compress']['$tmp19'] : $Λ[$Λ.length - 1].l;
     $Λ.push({
-        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp19', null, true, $Γ['global']['LZW']['compress'])),
+        l: $Λ[$Λ.length - 1].l >= sec_lvl('$tmp19', null, true, $Γ['global']['LZW']['compress']) ? $Λ[$Λ.length - 1].l : sec_lvl('$tmp19', null, true, $Γ['global']['LZW']['compress']),
         id: 'LOOP'
     });
     for (; $tmp19;) {
@@ -287,15 +287,15 @@ LZW.compress = function (uncompressed) {
         dictionary[$tmp25] = i;
         $scope($Γ['global']['LZW']['compress'], 'dictionary', false)[$tmp25] = sec_lvl('i', null, false, $Γ['global']['LZW']['compress']);
         _$tmp = sec_lvl('$tmp25', null, false, $Γ['global']['LZW']['compress']) instanceof Object ? sec_lvl('$tmp25', null, false, $Γ['global']['LZW']['compress']).Σ : sec_lvl('$tmp25', null, false, $Γ['global']['LZW']['compress']);
-        $scope($Γ['global']['LZW']['compress'], 'dictionary', false)[$tmp25] instanceof Object ? $scope($Γ['global']['LZW']['compress'], 'dictionary', false)[$tmp25].Σ = $lub($scope($Γ['global']['LZW']['compress'], 'dictionary', false)[$tmp25].Σ, _$tmp, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['LZW']['compress'], 'dictionary', false)[$tmp25] = $lub($scope($Γ['global']['LZW']['compress'], 'dictionary', false)[$tmp25], _$tmp, $Λ[$Λ.length - 1].l);
+        $scope($Γ['global']['LZW']['compress'], 'dictionary', false)[$tmp25] instanceof Object ? $scope($Γ['global']['LZW']['compress'], 'dictionary', false)[$tmp25].Σ = $scope($Γ['global']['LZW']['compress'], 'dictionary', false)[$tmp25].Σ : $scope($Γ['global']['LZW']['compress'], 'dictionary', false)[$tmp25] = $scope($Γ['global']['LZW']['compress'], 'dictionary', false)[$tmp25];
         i += 1;
         $scope($Γ['global']['LZW']['compress'], 'i', true)['i'] = $Λ[$Λ.length - 1].l;
         $tmp18 = i;
         $Γ['global']['LZW']['compress']['$tmp18'] = sec_lvl('i', null, false, $Γ['global']['LZW']['compress']);
-        $Γ['global']['LZW']['compress']['$tmp18'] instanceof Object ? $Γ['global']['LZW']['compress']['$tmp18'].Σ = $lub($Γ['global']['LZW']['compress']['$tmp18'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['LZW']['compress']['$tmp18'] = $lub($Γ['global']['LZW']['compress']['$tmp18'], $Λ[$Λ.length - 1].l);
+        $Γ['global']['LZW']['compress']['$tmp18'] instanceof Object ? $Γ['global']['LZW']['compress']['$tmp18'].Σ = $Γ['global']['LZW']['compress']['$tmp18'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['compress']['$tmp18'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['LZW']['compress']['$tmp18'] = $Γ['global']['LZW']['compress']['$tmp18'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['compress']['$tmp18'] : $Λ[$Λ.length - 1].l;
         $tmp19 = i < 256;
-        $Γ['global']['LZW']['compress']['$tmp19'] = $lub(sec_lvl('i', null, true, $Γ['global']['LZW']['compress']), $Λ[$Λ.length - 1].l);
-        $Γ['global']['LZW']['compress']['$tmp19'] instanceof Object ? $Γ['global']['LZW']['compress']['$tmp19'].Σ = $lub($Γ['global']['LZW']['compress']['$tmp19'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['LZW']['compress']['$tmp19'] = $lub($Γ['global']['LZW']['compress']['$tmp19'], $Λ[$Λ.length - 1].l);
+        $Γ['global']['LZW']['compress']['$tmp19'] = sec_lvl('i', null, true, $Γ['global']['LZW']['compress']) >= $Λ[$Λ.length - 1].l ? sec_lvl('i', null, true, $Γ['global']['LZW']['compress']) : $Λ[$Λ.length - 1].l;
+        $Γ['global']['LZW']['compress']['$tmp19'] instanceof Object ? $Γ['global']['LZW']['compress']['$tmp19'].Σ = $Γ['global']['LZW']['compress']['$tmp19'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['compress']['$tmp19'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['LZW']['compress']['$tmp19'] = $Γ['global']['LZW']['compress']['$tmp19'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['compress']['$tmp19'] : $Λ[$Λ.length - 1].l;
     }
     $upgrade(['$tmp25'], $Λ[$Λ.length - 1].l, $Γ['global']['LZW']['compress']);
     $Λ.pop();
@@ -303,27 +303,27 @@ LZW.compress = function (uncompressed) {
     $scope($Γ['global']['LZW']['compress'], 'i', true)['i'] = $Λ[$Λ.length - 1].l;
     $tmp20 = i;
     $Γ['global']['LZW']['compress']['$tmp20'] = sec_lvl('i', null, false, $Γ['global']['LZW']['compress']);
-    $Γ['global']['LZW']['compress']['$tmp20'] instanceof Object ? $Γ['global']['LZW']['compress']['$tmp20'].Σ = $lub($Γ['global']['LZW']['compress']['$tmp20'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['LZW']['compress']['$tmp20'] = $lub($Γ['global']['LZW']['compress']['$tmp20'], $Λ[$Λ.length - 1].l);
+    $Γ['global']['LZW']['compress']['$tmp20'] instanceof Object ? $Γ['global']['LZW']['compress']['$tmp20'].Σ = $Γ['global']['LZW']['compress']['$tmp20'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['compress']['$tmp20'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['LZW']['compress']['$tmp20'] = $Γ['global']['LZW']['compress']['$tmp20'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['compress']['$tmp20'] : $Λ[$Λ.length - 1].l;
     $tmp23 = uncompressed.length;
     $Γ['global']['LZW']['compress']['$tmp23'] = sec_lvl('uncompressed', 'length', false, $Γ['global']['LZW']['compress']);
-    $Γ['global']['LZW']['compress']['$tmp23'] instanceof Object ? $Γ['global']['LZW']['compress']['$tmp23'].Σ = $lub($Γ['global']['LZW']['compress']['$tmp23'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['LZW']['compress']['$tmp23'] = $lub($Γ['global']['LZW']['compress']['$tmp23'], $Λ[$Λ.length - 1].l);
+    $Γ['global']['LZW']['compress']['$tmp23'] instanceof Object ? $Γ['global']['LZW']['compress']['$tmp23'].Σ = $Γ['global']['LZW']['compress']['$tmp23'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['compress']['$tmp23'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['LZW']['compress']['$tmp23'] = $Γ['global']['LZW']['compress']['$tmp23'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['compress']['$tmp23'] : $Λ[$Λ.length - 1].l;
     $tmp22 = i < $tmp23;
-    $Γ['global']['LZW']['compress']['$tmp22'] = $lub(sec_lvl('i', null, true, $Γ['global']['LZW']['compress']), sec_lvl('$tmp23', null, true, $Γ['global']['LZW']['compress']));
-    $Γ['global']['LZW']['compress']['$tmp22'] instanceof Object ? $Γ['global']['LZW']['compress']['$tmp22'].Σ = $lub($Γ['global']['LZW']['compress']['$tmp22'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['LZW']['compress']['$tmp22'] = $lub($Γ['global']['LZW']['compress']['$tmp22'], $Λ[$Λ.length - 1].l);
+    $Γ['global']['LZW']['compress']['$tmp22'] = sec_lvl('i', null, true, $Γ['global']['LZW']['compress']) >= sec_lvl('$tmp23', null, true, $Γ['global']['LZW']['compress']) ? sec_lvl('i', null, true, $Γ['global']['LZW']['compress']) : sec_lvl('$tmp23', null, true, $Γ['global']['LZW']['compress']);
+    $Γ['global']['LZW']['compress']['$tmp22'] instanceof Object ? $Γ['global']['LZW']['compress']['$tmp22'].Σ = $Γ['global']['LZW']['compress']['$tmp22'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['compress']['$tmp22'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['LZW']['compress']['$tmp22'] = $Γ['global']['LZW']['compress']['$tmp22'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['compress']['$tmp22'] : $Λ[$Λ.length - 1].l;
     $Λ.push({
-        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp22', null, true, $Γ['global']['LZW']['compress'])),
+        l: $Λ[$Λ.length - 1].l >= sec_lvl('$tmp22', null, true, $Γ['global']['LZW']['compress']) ? $Λ[$Λ.length - 1].l : sec_lvl('$tmp22', null, true, $Γ['global']['LZW']['compress']),
         id: 'LOOP'
     });
     for (; $tmp22;) {
         c = uncompressed.charAt(i);
         wc = w + c;
-        $scope($Γ['global']['LZW']['compress'], 'wc', true)['wc'] = $lub(sec_lvl('w', null, true, $Γ['global']['LZW']['compress']), sec_lvl('c', null, true, $Γ['global']['LZW']['compress']));
-        $scope($Γ['global']['LZW']['compress'], 'wc', true)['wc'] instanceof Object ? $scope($Γ['global']['LZW']['compress'], 'wc', true)['wc'].Σ = $lub($scope($Γ['global']['LZW']['compress'], 'wc', true)['wc'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['LZW']['compress'], 'wc', true)['wc'] = $lub($scope($Γ['global']['LZW']['compress'], 'wc', true)['wc'], $Λ[$Λ.length - 1].l);
+        $scope($Γ['global']['LZW']['compress'], 'wc', true)['wc'] = sec_lvl('w', null, true, $Γ['global']['LZW']['compress']) >= sec_lvl('c', null, true, $Γ['global']['LZW']['compress']) ? sec_lvl('w', null, true, $Γ['global']['LZW']['compress']) : sec_lvl('c', null, true, $Γ['global']['LZW']['compress']);
+        $scope($Γ['global']['LZW']['compress'], 'wc', true)['wc'] instanceof Object ? $scope($Γ['global']['LZW']['compress'], 'wc', true)['wc'].Σ = $scope($Γ['global']['LZW']['compress'], 'wc', true)['wc'].Σ >= $Λ[$Λ.length - 1].l ? $scope($Γ['global']['LZW']['compress'], 'wc', true)['wc'].Σ : $Λ[$Λ.length - 1].l : $scope($Γ['global']['LZW']['compress'], 'wc', true)['wc'] = $scope($Γ['global']['LZW']['compress'], 'wc', true)['wc'] >= $Λ[$Λ.length - 1].l ? $scope($Γ['global']['LZW']['compress'], 'wc', true)['wc'] : $Λ[$Λ.length - 1].l;
         var $tmp26, $tmp21, $tmp22, $tmp27;
         $Γ['global']['LZW']['compress']['$tmp27'] = $Γ['global']['LZW']['compress']['$tmp22'] = $Γ['global']['LZW']['compress']['$tmp21'] = $Γ['global']['LZW']['compress']['$tmp26'] = 0;
         $tmp26 = dictionary.hasOwnProperty(wc);
         $Λ.push({
-            l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp26', null, true, $Γ['global']['LZW']['compress'])),
+            l: $Λ[$Λ.length - 1].l >= sec_lvl('$tmp26', null, true, $Γ['global']['LZW']['compress']) ? $Λ[$Λ.length - 1].l : sec_lvl('$tmp26', null, true, $Γ['global']['LZW']['compress']),
             id: 'IF'
         });
         if ($tmp26) {
@@ -333,18 +333,18 @@ LZW.compress = function (uncompressed) {
             ], $Λ[$Λ.length - 1].l, $Γ['global']['LZW']['compress']);
             w = wc;
             $scope($Γ['global']['LZW']['compress'], 'w', true)['w'] = sec_lvl('wc', null, false, $Γ['global']['LZW']['compress']);
-            $scope($Γ['global']['LZW']['compress'], 'w', true)['w'] instanceof Object ? $scope($Γ['global']['LZW']['compress'], 'w', true)['w'].Σ = $lub($scope($Γ['global']['LZW']['compress'], 'w', true)['w'].Σ, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['LZW']['compress'], 'w', true)['w'] = $lub($scope($Γ['global']['LZW']['compress'], 'w', true)['w'], $Λ[$Λ.length - 1].l);
+            $scope($Γ['global']['LZW']['compress'], 'w', true)['w'] instanceof Object ? $scope($Γ['global']['LZW']['compress'], 'w', true)['w'].Σ = $scope($Γ['global']['LZW']['compress'], 'w', true)['w'].Σ >= $Λ[$Λ.length - 1].l ? $scope($Γ['global']['LZW']['compress'], 'w', true)['w'].Σ : $Λ[$Λ.length - 1].l : $scope($Γ['global']['LZW']['compress'], 'w', true)['w'] = $scope($Γ['global']['LZW']['compress'], 'w', true)['w'] >= $Λ[$Λ.length - 1].l ? $scope($Γ['global']['LZW']['compress'], 'w', true)['w'] : $Λ[$Λ.length - 1].l;
         } else {
             var $tmp28, $tmp29;
             $Γ['global']['LZW']['compress']['$tmp29'] = $Γ['global']['LZW']['compress']['$tmp28'] = 0;
             $tmp29 = dictionary[w];
             $Γ['global']['LZW']['compress']['$tmp29'] = sec_lvl('dictionary', w, false, $Γ['global']['LZW']['compress']);
-            $Γ['global']['LZW']['compress']['$tmp29'] instanceof Object ? $Γ['global']['LZW']['compress']['$tmp29'].Σ = $lub($Γ['global']['LZW']['compress']['$tmp29'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['LZW']['compress']['$tmp29'] = $lub($Γ['global']['LZW']['compress']['$tmp29'], $Λ[$Λ.length - 1].l);
+            $Γ['global']['LZW']['compress']['$tmp29'] instanceof Object ? $Γ['global']['LZW']['compress']['$tmp29'].Σ = $Γ['global']['LZW']['compress']['$tmp29'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['compress']['$tmp29'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['LZW']['compress']['$tmp29'] = $Γ['global']['LZW']['compress']['$tmp29'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['compress']['$tmp29'] : $Λ[$Λ.length - 1].l;
             $tmp28 = result.push($tmp29);
             dictionary[wc] = dictSize++;
             $scope($Γ['global']['LZW']['compress'], 'dictionary', false)[wc] = sec_lvl('dictSize', null, false, $Γ['global']['LZW']['compress']);
             _$tmp = sec_lvl('wc', null, false, $Γ['global']['LZW']['compress']) instanceof Object ? sec_lvl('wc', null, false, $Γ['global']['LZW']['compress']).Σ : sec_lvl('wc', null, false, $Γ['global']['LZW']['compress']);
-            $scope($Γ['global']['LZW']['compress'], 'dictionary', false)[wc] instanceof Object ? $scope($Γ['global']['LZW']['compress'], 'dictionary', false)[wc].Σ = $lub($scope($Γ['global']['LZW']['compress'], 'dictionary', false)[wc].Σ, _$tmp, $Λ[$Λ.length - 1].l) : $scope($Γ['global']['LZW']['compress'], 'dictionary', false)[wc] = $lub($scope($Γ['global']['LZW']['compress'], 'dictionary', false)[wc], _$tmp, $Λ[$Λ.length - 1].l);
+            $scope($Γ['global']['LZW']['compress'], 'dictionary', false)[wc] instanceof Object ? $scope($Γ['global']['LZW']['compress'], 'dictionary', false)[wc].Σ = $scope($Γ['global']['LZW']['compress'], 'dictionary', false)[wc].Σ : $scope($Γ['global']['LZW']['compress'], 'dictionary', false)[wc] = $scope($Γ['global']['LZW']['compress'], 'dictionary', false)[wc];
             w = String(c);
         }
         $Λ.pop();
@@ -352,13 +352,13 @@ LZW.compress = function (uncompressed) {
         $scope($Γ['global']['LZW']['compress'], 'i', true)['i'] = $Λ[$Λ.length - 1].l;
         $tmp21 = i;
         $Γ['global']['LZW']['compress']['$tmp21'] = sec_lvl('i', null, false, $Γ['global']['LZW']['compress']);
-        $Γ['global']['LZW']['compress']['$tmp21'] instanceof Object ? $Γ['global']['LZW']['compress']['$tmp21'].Σ = $lub($Γ['global']['LZW']['compress']['$tmp21'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['LZW']['compress']['$tmp21'] = $lub($Γ['global']['LZW']['compress']['$tmp21'], $Λ[$Λ.length - 1].l);
+        $Γ['global']['LZW']['compress']['$tmp21'] instanceof Object ? $Γ['global']['LZW']['compress']['$tmp21'].Σ = $Γ['global']['LZW']['compress']['$tmp21'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['compress']['$tmp21'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['LZW']['compress']['$tmp21'] = $Γ['global']['LZW']['compress']['$tmp21'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['compress']['$tmp21'] : $Λ[$Λ.length - 1].l;
         $tmp27 = uncompressed.length;
         $Γ['global']['LZW']['compress']['$tmp27'] = sec_lvl('uncompressed', 'length', false, $Γ['global']['LZW']['compress']);
-        $Γ['global']['LZW']['compress']['$tmp27'] instanceof Object ? $Γ['global']['LZW']['compress']['$tmp27'].Σ = $lub($Γ['global']['LZW']['compress']['$tmp27'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['LZW']['compress']['$tmp27'] = $lub($Γ['global']['LZW']['compress']['$tmp27'], $Λ[$Λ.length - 1].l);
+        $Γ['global']['LZW']['compress']['$tmp27'] instanceof Object ? $Γ['global']['LZW']['compress']['$tmp27'].Σ = $Γ['global']['LZW']['compress']['$tmp27'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['compress']['$tmp27'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['LZW']['compress']['$tmp27'] = $Γ['global']['LZW']['compress']['$tmp27'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['compress']['$tmp27'] : $Λ[$Λ.length - 1].l;
         $tmp22 = i < $tmp27;
-        $Γ['global']['LZW']['compress']['$tmp22'] = $lub(sec_lvl('i', null, true, $Γ['global']['LZW']['compress']), sec_lvl('$tmp27', null, true, $Γ['global']['LZW']['compress']));
-        $Γ['global']['LZW']['compress']['$tmp22'] instanceof Object ? $Γ['global']['LZW']['compress']['$tmp22'].Σ = $lub($Γ['global']['LZW']['compress']['$tmp22'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['LZW']['compress']['$tmp22'] = $lub($Γ['global']['LZW']['compress']['$tmp22'], $Λ[$Λ.length - 1].l);
+        $Γ['global']['LZW']['compress']['$tmp22'] = sec_lvl('i', null, true, $Γ['global']['LZW']['compress']) >= sec_lvl('$tmp27', null, true, $Γ['global']['LZW']['compress']) ? sec_lvl('i', null, true, $Γ['global']['LZW']['compress']) : sec_lvl('$tmp27', null, true, $Γ['global']['LZW']['compress']);
+        $Γ['global']['LZW']['compress']['$tmp22'] instanceof Object ? $Γ['global']['LZW']['compress']['$tmp22'].Σ = $Γ['global']['LZW']['compress']['$tmp22'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['compress']['$tmp22'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['LZW']['compress']['$tmp22'] = $Γ['global']['LZW']['compress']['$tmp22'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['compress']['$tmp22'] : $Λ[$Λ.length - 1].l;
     }
     $upgrade([
         'c',
@@ -368,10 +368,10 @@ LZW.compress = function (uncompressed) {
     ], $Λ[$Λ.length - 1].l, $Γ['global']['LZW']['compress']);
     $Λ.pop();
     $tmp24 = w !== '';
-    $Γ['global']['LZW']['compress']['$tmp24'] = $lub(sec_lvl('w', null, true, $Γ['global']['LZW']['compress']), $Λ[$Λ.length - 1].l);
-    $Γ['global']['LZW']['compress']['$tmp24'] instanceof Object ? $Γ['global']['LZW']['compress']['$tmp24'].Σ = $lub($Γ['global']['LZW']['compress']['$tmp24'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['LZW']['compress']['$tmp24'] = $lub($Γ['global']['LZW']['compress']['$tmp24'], $Λ[$Λ.length - 1].l);
+    $Γ['global']['LZW']['compress']['$tmp24'] = sec_lvl('w', null, true, $Γ['global']['LZW']['compress']) >= $Λ[$Λ.length - 1].l ? sec_lvl('w', null, true, $Γ['global']['LZW']['compress']) : $Λ[$Λ.length - 1].l;
+    $Γ['global']['LZW']['compress']['$tmp24'] instanceof Object ? $Γ['global']['LZW']['compress']['$tmp24'].Σ = $Γ['global']['LZW']['compress']['$tmp24'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['compress']['$tmp24'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['LZW']['compress']['$tmp24'] = $Γ['global']['LZW']['compress']['$tmp24'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['compress']['$tmp24'] : $Λ[$Λ.length - 1].l;
     $Λ.push({
-        l: $lub($Λ[$Λ.length - 1].l, sec_lvl('$tmp24', null, true, $Γ['global']['LZW']['compress'])),
+        l: $Λ[$Λ.length - 1].l >= sec_lvl('$tmp24', null, true, $Γ['global']['LZW']['compress']) ? $Λ[$Λ.length - 1].l : sec_lvl('$tmp24', null, true, $Γ['global']['LZW']['compress']),
         id: 'IF'
     });
     if ($tmp24) {
@@ -379,7 +379,7 @@ LZW.compress = function (uncompressed) {
         $Γ['global']['LZW']['compress']['$tmp31'] = $Γ['global']['LZW']['compress']['$tmp30'] = 0;
         $tmp31 = dictionary[w];
         $Γ['global']['LZW']['compress']['$tmp31'] = sec_lvl('dictionary', w, false, $Γ['global']['LZW']['compress']);
-        $Γ['global']['LZW']['compress']['$tmp31'] instanceof Object ? $Γ['global']['LZW']['compress']['$tmp31'].Σ = $lub($Γ['global']['LZW']['compress']['$tmp31'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['LZW']['compress']['$tmp31'] = $lub($Γ['global']['LZW']['compress']['$tmp31'], $Λ[$Λ.length - 1].l);
+        $Γ['global']['LZW']['compress']['$tmp31'] instanceof Object ? $Γ['global']['LZW']['compress']['$tmp31'].Σ = $Γ['global']['LZW']['compress']['$tmp31'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['compress']['$tmp31'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['LZW']['compress']['$tmp31'] = $Γ['global']['LZW']['compress']['$tmp31'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['LZW']['compress']['$tmp31'] : $Λ[$Λ.length - 1].l;
         $tmp30 = result.push($tmp31);
     } else {
         $upgrade(['$tmp30'], $Λ[$Λ.length - 1].l, $Γ['global']['LZW']['compress']);
@@ -397,25 +397,24 @@ $Γ['global']['LZW']['compress'] = {
 $rf = $prop('LZW', 'compress', $Γ['global']);
 $rf.scope = $scope($Γ['global'], 'LZW', false)['LZW'];
 $rf.$this = $scope($Γ['global'], 'LZW', false)['LZW'];
-$rf['uncompressed'] = $lub($Λ[$Λ.length - 1].l, $Λ[$Λ.length - 1].l);
+$rf['uncompressed'] = $Λ[$Λ.length - 1].l;
 $Λ.push({
-    l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+    l: $rf.$fscope,
     id: 'FUNC'
 });
-//comp = LZW.compress("although It's just a matter of separating out the real and imaginary parts of jw is not a helpful quotethe actual formula I found here and the rest was just fiddling / testing and comparing with correct results. http://cboard.cprogramming.com/c-programming/89116-how-implement-complex-exponential-functions-c.html#post637921");
-comp = LZW.compress('OTTOBEORNOTTONOTTOBEORTOBEORNOTTOBEORNOTTOBEORTOBEORNOTTOBEORNOTTOBEORTOBEORNOTTOBEORNOTTOBEORTOBEORNOTTOBEORNOTTOBEORTOBEORNOTTOBEORNOTTOBEORTOBEORNOTTOBEORNOTTOBEORTOBEORNOTTOBEORNOTTOBEORTOBEORNOTTOBEORNOTTOBEORTOBEORNOTTOBEORNOTTOBEORTOBEORNOT');
+comp = LZW.compress('TOBEORNOTTOBEORTOBEORNOT');
 $Γ['global']['comp'] = $Λ.pop().l;
-$Γ['global']['comp'] instanceof Object ? $Γ['global']['comp'].Σ = $lub($Γ['global']['comp'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['comp'] = $lub($Γ['global']['comp'], $Λ[$Λ.length - 1].l);
+$Γ['global']['comp'] instanceof Object ? $Γ['global']['comp'].Σ = $Γ['global']['comp'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['comp'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['comp'] = $Γ['global']['comp'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['comp'] : $Λ[$Λ.length - 1].l;
 $rf = $prop('LZW', 'decompress', $Γ['global']);
 $rf.scope = $scope($Γ['global'], 'LZW', false)['LZW'];
 $rf.$this = $scope($Γ['global'], 'LZW', false)['LZW'];
-$rf['compressed'] = $lub(sec_lvl('comp', null, true, $Γ['global']), $Λ[$Λ.length - 1].l);
+$rf['compressed'] = sec_lvl('comp', null, true, $Γ['global']) >= $Λ[$Λ.length - 1].l ? sec_lvl('comp', null, true, $Γ['global']) : $Λ[$Λ.length - 1].l;
 $Λ.push({
-    l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
+    l: $rf.$fscope,
     id: 'FUNC'
 });
 decomp = LZW.decompress(comp);
 $Γ['global']['decomp'] = $Λ.pop().l;
-$Γ['global']['decomp'] instanceof Object ? $Γ['global']['decomp'].Σ = $lub($Γ['global']['decomp'].Σ, $Λ[$Λ.length - 1].l) : $Γ['global']['decomp'] = $lub($Γ['global']['decomp'], $Λ[$Λ.length - 1].l);
+$Γ['global']['decomp'] instanceof Object ? $Γ['global']['decomp'].Σ = $Γ['global']['decomp'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['decomp'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['decomp'] = $Γ['global']['decomp'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['decomp'] : $Λ[$Λ.length - 1].l;
 $tmp0 = console.log(comp);
 $tmp1 = console.log(decomp);
