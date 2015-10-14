@@ -169,7 +169,7 @@ function runRichards() {
         id: 'FUNC'
     });
     scheduler = new Scheduler();
-    $scope($Γ['global']['runRichards'], 'scheduler', true)['scheduler'] = $Λ.pop().l;
+    $scope($Γ['global']['runRichards'], 'scheduler', true)['scheduler'] = $Γ['global']['Scheduler']['$this'];
     $scope($Γ['global']['runRichards'], 'scheduler', true)['scheduler'] instanceof Object ? $scope($Γ['global']['runRichards'], 'scheduler', true)['scheduler'].Σ = $scope($Γ['global']['runRichards'], 'scheduler', true)['scheduler'].Σ >= $Λ[$Λ.length - 1].l ? $scope($Γ['global']['runRichards'], 'scheduler', true)['scheduler'].Σ : $Λ[$Λ.length - 1].l : $scope($Γ['global']['runRichards'], 'scheduler', true)['scheduler'] = $scope($Γ['global']['runRichards'], 'scheduler', true)['scheduler'] >= $Λ[$Λ.length - 1].l ? $scope($Γ['global']['runRichards'], 'scheduler', true)['scheduler'] : $Λ[$Λ.length - 1].l;
     $rf = $prop('Scheduler', 'addIdleTask', $Γ['global']['runRichards']);
     $rf.scope = $scope($Γ['global']['runRichards'], 'Scheduler', false)['Scheduler'];

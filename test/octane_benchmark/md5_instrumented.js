@@ -1,5 +1,4 @@
-
-var $Γ = { 'global': { 'scope': null, 'Σ': 0 } };
+var $Γ = {'global': {'scope': null, 'Σ': 0}};
 var _$tmp;
 
 $Γ['global'].$this = $Γ['global'];
@@ -66,7 +65,24 @@ function $comp(lbl, lvl) {
 }
 
 function $upgrade(varArray, lvl, $$cs) {
-
+    var variable;
+    for (var e in varArray) {
+        var i = varArray[e].indexOf('.');
+        try {
+            if (i == -1) {
+                variable = $scope($$cs, varArray[e], false)[varArray[e]];
+                variable instanceof Object ? variable.Σ = (variable.Σ >= lvl) ? variable.Σ : lvl :
+                    $scope($$cs, varArray[e], false)[varArray[e]] = (variable >= lvl) ? variable : lvl;
+            }
+            else {
+                var obj = varArray[e].split('.')[0], prop = varArray[e].split('.')[1];
+                variable = $prop(obj, prop, $$cs);
+                variable instanceof Object ? variable.Σ = (variable.Σ >= lvl) ? variable.Σ : lvl :
+                    $scope($$cs, obj, false)[obj][prop] = (variable >= lvl) ? variable : lvl;
+            }
+        } catch (e) {
+        }
+    }
 }
 
 function sec_lvl(obj, prop, getValue, $$cs) {
@@ -92,7 +108,7 @@ function sec_lvl(obj, prop, getValue, $$cs) {
 
 $Γ['global']['bit_rol'] = {
     $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    prototype: {Σ: $Λ[$Λ.length - 1].l},
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global'],
     num: $Λ[$Λ.length - 1].l,
@@ -100,7 +116,7 @@ $Γ['global']['bit_rol'] = {
 };
 $Γ['global']['safe_add'] = {
     $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    prototype: {Σ: $Λ[$Λ.length - 1].l},
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global'],
     x: $Λ[$Λ.length - 1].l,
@@ -108,7 +124,7 @@ $Γ['global']['safe_add'] = {
 };
 $Γ['global']['md5_ii'] = {
     $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    prototype: {Σ: $Λ[$Λ.length - 1].l},
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global'],
     a: $Λ[$Λ.length - 1].l,
@@ -121,7 +137,7 @@ $Γ['global']['md5_ii'] = {
 };
 $Γ['global']['md5_hh'] = {
     $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    prototype: {Σ: $Λ[$Λ.length - 1].l},
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global'],
     a: $Λ[$Λ.length - 1].l,
@@ -134,7 +150,7 @@ $Γ['global']['md5_hh'] = {
 };
 $Γ['global']['md5_gg'] = {
     $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    prototype: {Σ: $Λ[$Λ.length - 1].l},
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global'],
     a: $Λ[$Λ.length - 1].l,
@@ -147,7 +163,7 @@ $Γ['global']['md5_gg'] = {
 };
 $Γ['global']['md5_ff'] = {
     $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    prototype: {Σ: $Λ[$Λ.length - 1].l},
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global'],
     a: $Λ[$Λ.length - 1].l,
@@ -160,7 +176,7 @@ $Γ['global']['md5_ff'] = {
 };
 $Γ['global']['md5_cmn'] = {
     $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    prototype: {Σ: $Λ[$Λ.length - 1].l},
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global'],
     q: $Λ[$Λ.length - 1].l,
@@ -172,7 +188,7 @@ $Γ['global']['md5_cmn'] = {
 };
 $Γ['global']['binl_md5'] = {
     $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    prototype: {Σ: $Λ[$Λ.length - 1].l},
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global'],
     x: $Λ[$Λ.length - 1].l,
@@ -180,42 +196,42 @@ $Γ['global']['binl_md5'] = {
 };
 $Γ['global']['binl2rstr'] = {
     $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    prototype: {Σ: $Λ[$Λ.length - 1].l},
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global'],
     input: $Λ[$Λ.length - 1].l
 };
 $Γ['global']['rstr2binl'] = {
     $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    prototype: {Σ: $Λ[$Λ.length - 1].l},
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global'],
     input: $Λ[$Λ.length - 1].l
 };
 $Γ['global']['str2rstr_utf16be'] = {
     $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    prototype: {Σ: $Λ[$Λ.length - 1].l},
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global'],
     input: $Λ[$Λ.length - 1].l
 };
 $Γ['global']['str2rstr_utf16le'] = {
     $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    prototype: {Σ: $Λ[$Λ.length - 1].l},
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global'],
     input: $Λ[$Λ.length - 1].l
 };
 $Γ['global']['str2rstr_utf8'] = {
     $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    prototype: {Σ: $Λ[$Λ.length - 1].l},
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global'],
     input: $Λ[$Λ.length - 1].l
 };
 $Γ['global']['rstr2any'] = {
     $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    prototype: {Σ: $Λ[$Λ.length - 1].l},
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global'],
     input: $Λ[$Λ.length - 1].l,
@@ -223,21 +239,21 @@ $Γ['global']['rstr2any'] = {
 };
 $Γ['global']['rstr2b64'] = {
     $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    prototype: {Σ: $Λ[$Λ.length - 1].l},
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global'],
     input: $Λ[$Λ.length - 1].l
 };
 $Γ['global']['rstr2hex'] = {
     $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    prototype: {Σ: $Λ[$Λ.length - 1].l},
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global'],
     input: $Λ[$Λ.length - 1].l
 };
 $Γ['global']['rstr_hmac_md5'] = {
     $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    prototype: {Σ: $Λ[$Λ.length - 1].l},
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global'],
     key: $Λ[$Λ.length - 1].l,
@@ -245,20 +261,20 @@ $Γ['global']['rstr_hmac_md5'] = {
 };
 $Γ['global']['rstr_md5'] = {
     $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    prototype: {Σ: $Λ[$Λ.length - 1].l},
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global'],
     s: $Λ[$Λ.length - 1].l
 };
 $Γ['global']['md5_vm_test'] = {
     $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    prototype: {Σ: $Λ[$Λ.length - 1].l},
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global']
 };
 $Γ['global']['any_hmac_md5'] = {
     $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    prototype: {Σ: $Λ[$Λ.length - 1].l},
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global'],
     k: $Λ[$Λ.length - 1].l,
@@ -267,7 +283,7 @@ $Γ['global']['any_hmac_md5'] = {
 };
 $Γ['global']['b64_hmac_md5'] = {
     $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    prototype: {Σ: $Λ[$Λ.length - 1].l},
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global'],
     k: $Λ[$Λ.length - 1].l,
@@ -275,7 +291,7 @@ $Γ['global']['b64_hmac_md5'] = {
 };
 $Γ['global']['hex_hmac_md5'] = {
     $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    prototype: {Σ: $Λ[$Λ.length - 1].l},
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global'],
     k: $Λ[$Λ.length - 1].l,
@@ -283,7 +299,7 @@ $Γ['global']['hex_hmac_md5'] = {
 };
 $Γ['global']['any_md5'] = {
     $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    prototype: {Σ: $Λ[$Λ.length - 1].l},
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global'],
     s: $Λ[$Λ.length - 1].l,
@@ -291,14 +307,14 @@ $Γ['global']['any_md5'] = {
 };
 $Γ['global']['b64_md5'] = {
     $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    prototype: {Σ: $Λ[$Λ.length - 1].l},
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global'],
     s: $Λ[$Λ.length - 1].l
 };
 $Γ['global']['hex_md5'] = {
     $fscope: $Λ[$Λ.length - 1].l,
-    prototype: { Σ: $Λ[$Λ.length - 1].l },
+    prototype: {Σ: $Λ[$Λ.length - 1].l},
     Σ: $Λ[$Λ.length - 1].l,
     scope: $Γ['global'],
     s: $Λ[$Λ.length - 1].l

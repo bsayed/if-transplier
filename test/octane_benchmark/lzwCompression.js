@@ -79,7 +79,7 @@ var LZW = {
             return result;
         }
     }, // For Test Purposes
-    comp = LZW.compress("TOBEORNOTTOBEORTOBEORNOT"),
+    comp = LZW.compress("The quick brown fox jumps over the lazy dogThe quick brown fox jumps over the lazy dogThe quick brown fox jumps over the lazy dogThe quick brown fox jumps over the lazy dog"),
     decomp = LZW.decompress(comp);
 console.log(comp);
 console.log(decomp);

@@ -66,7 +66,24 @@ function $comp(lbl, lvl) {
 }
 
 function $upgrade(varArray, lvl, $$cs) {
-
+    var variable;
+    for (var e in varArray) {
+        var i = varArray[e].indexOf('.');
+        try {
+            if (i == -1) {
+                variable = $scope($$cs, varArray[e], false)[varArray[e]];
+                variable instanceof Object ? variable.Σ = (variable.Σ >= lvl) ? variable.Σ : lvl :
+                    $scope($$cs, varArray[e], false)[varArray[e]] = (variable >= lvl) ? variable : lvl;
+            }
+            else {
+                var obj = varArray[e].split('.')[0], prop = varArray[e].split('.')[1];
+                variable = $prop(obj, prop, $$cs);
+                variable instanceof Object ? variable.Σ = (variable.Σ >= lvl) ? variable.Σ : lvl :
+                    $scope($$cs, obj, false)[obj][prop] = (variable >= lvl) ? variable : lvl;
+            }
+        } catch (e) {
+        }
+    }
 }
 
 function sec_lvl(obj, prop, getValue, $$cs) {
