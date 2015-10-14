@@ -1,84 +1,117 @@
-var _primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37];
-
-function log(text) {
-    console.log(text);
+/*
+ basic complex number arithmetic from
+ http://rosettacode.org/wiki/Fast_Fourier_transform#Scala
+ */
+function Complex(re, im)
+{
+    this.re = re;
+    this.im = im || 0.0;
+}
+Complex.prototype.add = function(other, dst)
+{
+    dst.re = this.re + other.re;
+    dst.im = this.im + other.im;
+    return dst;
+}
+Complex.prototype.sub = function(other, dst)
+{
+    dst.re = this.re - other.re;
+    dst.im = this.im - other.im;
+    return dst;
+}
+Complex.prototype.mul = function(other, dst)
+{
+    //cache re in case dst === this
+    var r = this.re * other.re - this.im * other.im;
+    dst.im = this.re * other.im + this.im * other.re;
+    dst.re = r;
+    return dst;
+}
+Complex.prototype.cexp = function(dst)
+{
+    var er = Math.exp(this.re);
+    dst.re = er * Math.cos(this.im);
+    dst.im = er * Math.sin(this.im);
+    return dst;
+}
+Complex.prototype.log = function()
+{
+    /*
+     although 'It's just a matter of separating out the real and imaginary parts of jw.' is not a helpful quote
+     the actual formula I found here and the rest was just fiddling / testing and comparing with correct results.
+     http://cboard.cprogramming.com/c-programming/89116-how-implement-complex-exponential-functions-c.html#post637921
+     */
+    if( !this.re )
+        console.log(this.im.toString()+'j');
+    else if( this.im < 0 )
+        console.log(this.re.toString()+this.im.toString()+'j');
+    else
+        console.log(this.re.toString()+'+'+this.im.toString()+'j');
 }
 
-function big(exponents) {
-    var i, e, val = 1;
-    for (i = 0; i < exponents.length; i++)
-        for (e = 0; e < exponents[i]; e++)
-            val = val * (_primes[i]);
-    return val.toString();
+/*
+ complex fast fourier transform and inverse from
+ http://rosettacode.org/wiki/Fast_Fourier_transform#C.2B.2B
+ */
+function icfft(amplitudes)
+{
+    var N = amplitudes.length;
+    var iN = 1 / N;
+
+    //conjugate if imaginary part is not 0
+    for(var i = 0 ; i < N; ++i)
+        if(amplitudes[i] instanceof Complex)
+            amplitudes[i].im = -amplitudes[i].im;
+
+    //apply fourier transform
+    amplitudes = cfft(amplitudes)
+
+    for(var i = 0 ; i < N; ++i)
+    {
+        //conjugate again
+        amplitudes[i].im = -amplitudes[i].im;
+        //scale
+        amplitudes[i].re *= iN;
+        amplitudes[i].im *= iN;
+    }
+    return amplitudes;
 }
 
-function hamming(n, nprimes) {
-    var i, iter, p, q, min, equal, x;
+function cfft(amplitudes)
+{
+    var N = amplitudes.length;
+    if( N <= 1 )
+        return amplitudes;
 
-    var hammings = new Array(n);                            // array of hamming #s we generate
-    hammings[0] = new Array(nprimes);
-    for (p = 0; p < nprimes; p++) {
-        hammings[0][p] = 0;
+    var hN = N / 2;
+    var even = [];
+    var odd = [];
+    even.length = hN;
+    odd.length = hN;
+    for(var i = 0; i < hN; ++i)
+    {
+        even[i] = amplitudes[i*2];
+        odd[i] = amplitudes[i*2+1];
     }
+    even = cfft(even);
+    odd = cfft(odd);
 
-    var hammlogs = new Array(n);                            // log values for above
-    hammlogs[0] = 0;
-
-    var primelogs = new Array(nprimes);                     // pre-calculated prime log values
-    var listlogs = new Array(nprimes);                     // log values of list heads
-    for (p = 0; p < nprimes; p++) {
-        primelogs[p] = listlogs[p] = Math.log(_primes[p]);
+    var a = -2*Math.PI;
+    for(var k = 0; k < hN; ++k)
+    {
+        if(!(even[k] instanceof Complex))
+            even[k] = new Complex(even[k], 0);
+        if(!(odd[k] instanceof Complex))
+            odd[k] = new Complex(odd[k], 0);
+        var p = k/N;
+        var t = new Complex(0, a * p);
+        t.cexp(t).mul(odd[k], t);
+        amplitudes[k] = even[k].add(t, odd[k]);
+        amplitudes[k + hN] = even[k].sub(t, even[k]);
     }
-
-    var indexes = new Array(nprimes);                       // intermediate hamming values as indexes into hammings
-    for (p = 0; p < nprimes; p++) {
-        indexes[p] = 0;
-    }
-
-    var listheads = new Array(nprimes);                     // intermediate hamming list heads
-    for (p = 0; p < nprimes; p++) {
-        listheads[p] = new Array(nprimes);
-        for (q = 0; q < nprimes; q++) {
-            listheads[p][q] = 0;
-        }
-        listheads[p][p] = 1;
-    }
-
-    for (iter = 1; iter < n; iter++) {
-        min = 0;
-        for (p = 1; p < nprimes; p++)
-            if (listlogs[p] < listlogs[min])
-                min = p;
-        hammlogs[iter] = listlogs[min];                     // that's the next hamming number
-        hammings[iter] = listheads[min].slice();
-        for (p = 0; p < nprimes; p++) {                     // update each list head if it matches new value
-            equal = true;                                   // test each exponent to see if number matches
-            for (i = 0; i < nprimes; i++) {
-                if (hammings[iter][i] != listheads[p][i]) {
-                    equal = false;
-                    break;
-                }
-            }
-            if (equal) {                                    // if it matches...
-                x = ++indexes[p];                           // set index to next hamming number
-                listheads[p] = hammings[x].slice();         // copy hamming number
-                listheads[p][p] += 1;                       // increment exponent = mult by prime
-                listlogs[p] = hammlogs[x] + primelogs[p];   // add log(prime) to log(value) = mult by prime
-            }
-        }
-    }
-
-    return hammings[n - 1];
+    return amplitudes;
 }
 
-var i, nprimes;
-var t = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 1691];
-
-for (nprimes = 3; nprimes <= 4; nprimes++) {
-    //var start = new Date();
-    log(_primes[nprimes - 1] + '-Smooth:');
-    for (i = 0; i < t.length; i++)
-        console.log(t[i] + ':' + big(hamming(t[i], nprimes)));
-    //var end = new Date();
-    //log('Elapsed time:' + (end - start) / 1000 + ' seconds');
-}
+//test code
+console.log( cfft([1,1,1,1,0,0,0,0]) );
+console.log( icfft(cfft([1,1,1,1,0,0,0,0])) );
