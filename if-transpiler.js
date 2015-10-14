@@ -147,6 +147,7 @@ function iFTranspily () {
 
 
 
+
         if (propagateLicenseComment) {
             tree.leadingComments = licenses;
         }
