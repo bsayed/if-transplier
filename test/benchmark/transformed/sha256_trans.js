@@ -1,5 +1,5 @@
 'use strict';
-var Sha256, $tmp0, $tmp1;
+var Sha256, $tmp0, $tmp1,_$tmp,$tmp;
 Sha256 = {};
 Sha256.hash = function (msg) {
     msg = Sha256.utf8Encode(msg);
