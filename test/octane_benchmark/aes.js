@@ -245,8 +245,8 @@ Aes.Ctr = {};
 Aes.Ctr.encrypt = function(plaintext, password, nBits) {
     var blockSize = 16;  // block size fixed at 16 bytes / 128 bits (Nb=4) for AES
     if (!(nBits==128 || nBits==192 || nBits==256)) return ''; // standard allows 128/192/256 bit keys
-    plaintext = String(plaintext).utf8Encode();
-    password = String(password).utf8Encode();
+    plaintext = Aes.utf8Encode(plaintext);
+    password = Aes.utf8Encode(password);
 
     // use AES itself to encrypt password to get cipher key (using plain password as source for key
     // expansion) - gives us well encrypted key (though hashed key might be preferred for prod'n use)
@@ -303,7 +303,7 @@ Aes.Ctr.encrypt = function(plaintext, password, nBits) {
 
     // use Array.join() for better performance than repeated string appends
     var ciphertext = ctrTxt + ciphertxt.join('');
-    ciphertext = ciphertext.base64Encode();
+    ciphertext = Aes.base64Encode(ciphertext);
 
     return ciphertext;
 };
@@ -323,8 +323,8 @@ Aes.Ctr.encrypt = function(plaintext, password, nBits) {
 Aes.Ctr.decrypt = function(ciphertext, password, nBits) {
     var blockSize = 16;  // block size fixed at 16 bytes / 128 bits (Nb=4) for AES
     if (!(nBits==128 || nBits==192 || nBits==256)) return ''; // standard allows 128/192/256 bit keys
-    ciphertext = String(ciphertext).base64Decode();
-    password = String(password).utf8Encode();
+    ciphertext = Aes.base64Decode(ciphertext+'');
+    password = Aes.utf8Encode(password+'');
 
     // use AES to encrypt password (mirroring encrypt routine)
     var nBytes = nBits/8;  // no bytes in key
@@ -370,7 +370,7 @@ Aes.Ctr.decrypt = function(ciphertext, password, nBits) {
 
     // join array of blocks into single plaintext string
     var plaintext = plaintxt.join('');
-    plaintext = plaintext.utf8Decode();  // decode from UTF8 back to Unicode multi-byte chars
+    plaintext = Aes.utf8Decode(plaintext);  // decode from UTF8 back to Unicode multi-byte chars
 
     return plaintext;
 };
@@ -381,46 +381,37 @@ Aes.Ctr.decrypt = function(ciphertext, password, nBits) {
 
 /** Extend String object with method to encode multi-byte string to utf8
  *  - monsur.hossa.in/2012/07/20/utf-8-in-javascript.html */
-if (typeof String.prototype.utf8Encode == 'undefined') {
-    String.prototype.utf8Encode = function() {
-        return unescape( encodeURIComponent( this ) );
-    };
-}
+Aes.utf8Encode = function(str) {
+    return  encodeURIComponent( str) ;
+};
 
 /** Extend String object with method to decode utf8 string to multi-byte */
-if (typeof String.prototype.utf8Decode == 'undefined') {
-    String.prototype.utf8Decode = function() {
-        try {
-            return decodeURIComponent( escape( this ) );
-        } catch (e) {
-            return this; // invalid UTF-8? return as-is
-        }
-    };
-}
+Aes.utf8Decode = function(str) {
+    try {
+        return decodeURIComponent( str );
+    } catch (e) {
+        return str; // invalid UTF-8? return as-is
+    }
+};
 
 
 /** Extend String object with method to encode base64
  *  - developer.mozilla.org/en-US/docs/Web/API/window.btoa, nodejs.org/api/buffer.html
  *  note: if btoa()/atob() are not available (eg IE9-), try github.com/davidchambers/Base64.js */
-if (typeof String.prototype.base64Encode == 'undefined') {
-    String.prototype.base64Encode = function() {
-        //if (typeof btoa != 'undefined') return btoa(this); // browser
-        if (typeof Buffer != 'undefined') return new Buffer(this, 'utf8').toString('base64'); // Node.js
-        throw new Error('No Base64 Encode');
-    };
-}
+Aes.base64Encode = function(str) {
+    //if (typeof btoa != 'undefined') return btoa(this); // browser
+    if (typeof Buffer != 'undefined') return new Buffer(str, 'utf8').toString('base64'); // Node.js
+    throw new Error('No Base64 Encode');
+};
 
 /** Extend String object with method to decode base64 */
-if (typeof String.prototype.base64Decode == 'undefined') {
-    String.prototype.base64Decode = function() {
-        //if (typeof atob != 'undefined') return atob(this); // browser
-        if (typeof Buffer != 'undefined') return new Buffer(this, 'base64').toString('utf8'); // Node.js
-        throw new Error('No Base64 Decode');
-    };
-}
+Aes.base64Decode = function(str) {
+    //if (typeof atob != 'undefined') return atob(this); // browser
+    if (typeof Buffer != 'undefined') return new Buffer(str, 'base64').toString('utf8'); // Node.js
+    throw new Error('No Base64 Decode');
+};
 
 var encr = Aes.Ctr.encrypt('In this section we present the results of two experiments. The first experiment compares our modified JavaScript code that contains the information flow statements to the original code.', 'password', 256);
 var decr = Aes.Ctr.decrypt(encr, 'password', 256);
-var print = print || console.log;
-print('encr output ==> ' + encr);
-print('decr output ==> ' + decr);
+console.log('encr output ==> ' + encr);
+console.log('decr output ==> ' + decr);
