@@ -35,3 +35,6 @@ node_modules
 
 # Visual Studio code folder
 .vscode
+
+# Microsoft Excel temp files
+~$*
