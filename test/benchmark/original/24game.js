@@ -1,5 +1,3 @@
-
-
 var ar=[],order=[0,1,2],op=[],val=[];
 var NOVAL=9999,oper="+-*/",out;
 

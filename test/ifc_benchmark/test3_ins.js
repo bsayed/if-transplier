@@ -53,7 +53,7 @@ function $prop(obj, prop, $$cs) {
 
     // if we looked up a property that doesn't exist return
     // the objects sec level.
-    return $t.Σ ? $t.Σ: $t;
+    return $t.Σ;
 }
 
 function $comp(lbl, lvl) {
@@ -160,22 +160,29 @@ $tmp0 = chkpassword(pass);
 $Γ['global']['$tmp0'] = $Λ.pop().l;
 $Γ['global']['$tmp0'] instanceof Object ? $Γ['global']['$tmp0'].Σ = $Γ['global']['$tmp0'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['$tmp0'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['$tmp0'] = $Γ['global']['$tmp0'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['$tmp0'] : $Λ[$Λ.length - 1].l;
 function chkpassword(pwd) {
-    var i;
-    $Γ['global']['chkpassword']['i'] = 0;
+    var i, $tmp2;
+    $Γ['global']['chkpassword']['$tmp2'] = $Γ['global']['chkpassword']['i'] = 0;
+    i = 0;
+    $scope($Γ['global']['chkpassword'], 'i', true)['i'] = $Λ[$Λ.length - 1].l;
+    $tmp2 = i < 1;
+    $Γ['global']['chkpassword']['$tmp2'] = sec_lvl('i', null, true, $Γ['global']['chkpassword']) >= $Λ[$Λ.length - 1].l ? sec_lvl('i', null, true, $Γ['global']['chkpassword']) : $Λ[$Λ.length - 1].l;
+    $Γ['global']['chkpassword']['$tmp2'] instanceof Object ? $Γ['global']['chkpassword']['$tmp2'].Σ = $Γ['global']['chkpassword']['$tmp2'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['chkpassword']['$tmp2'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['chkpassword']['$tmp2'] = $Γ['global']['chkpassword']['$tmp2'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['chkpassword']['$tmp2'] : $Λ[$Λ.length - 1].l;
     $Λ.push({
-        l: $Λ[$Λ.length - 1].l,
+        l: $Λ[$Λ.length - 1].l >= sec_lvl('$tmp2', null, true, $Γ['global']['chkpassword']) ? $Λ[$Λ.length - 1].l : sec_lvl('$tmp2', null, true, $Γ['global']['chkpassword']),
         id: 'LOOP'
     });
-    for (i in pwd) {
-        var $tmp1, $tmp2;
-        $Γ['global']['chkpassword']['$tmp2'] = $Γ['global']['chkpassword']['$tmp1'] = 0;
-        $tmp2 = pwd[i];
-        $Γ['global']['chkpassword']['$tmp2'] = sec_lvl('pwd', i, false, $Γ['global']['chkpassword']);
+    for (; $tmp2;) {
+        var $tmp3, $tmp1, $tmp2;
+        $Γ['global']['chkpassword']['$tmp2'] = $Γ['global']['chkpassword']['$tmp1'] = $Γ['global']['chkpassword']['$tmp3'] = 0;
+        $tmp3 = $output('pwd',pwd,$Γ['global']['chkpassword'],0,'suppress');
+        $tmp1 = i++;
+        $Γ['global']['chkpassword']['$tmp1'] = sec_lvl('i', null, false, $Γ['global']['chkpassword']);
+        $Γ['global']['chkpassword']['$tmp1'] instanceof Object ? $Γ['global']['chkpassword']['$tmp1'].Σ = $Γ['global']['chkpassword']['$tmp1'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['chkpassword']['$tmp1'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['chkpassword']['$tmp1'] = $Γ['global']['chkpassword']['$tmp1'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['chkpassword']['$tmp1'] : $Λ[$Λ.length - 1].l;
+        $tmp2 = i < 1;
+        $Γ['global']['chkpassword']['$tmp2'] = sec_lvl('i', null, true, $Γ['global']['chkpassword']) >= $Λ[$Λ.length - 1].l ? sec_lvl('i', null, true, $Γ['global']['chkpassword']) : $Λ[$Λ.length - 1].l;
         $Γ['global']['chkpassword']['$tmp2'] instanceof Object ? $Γ['global']['chkpassword']['$tmp2'].Σ = $Γ['global']['chkpassword']['$tmp2'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['chkpassword']['$tmp2'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['chkpassword']['$tmp2'] = $Γ['global']['chkpassword']['$tmp2'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['chkpassword']['$tmp2'] : $Λ[$Λ.length - 1].l;
-        $tmp1 = $output('$tmp2',$tmp2,$Γ['global']['chkpassword'],0,'suppress');
     }
-    $upgrade(['$tmp1'], $Λ[$Λ.length - 1].l, $Γ['global']['chkpassword']);
-
+    $upgrade(['$tmp3'], $Λ[$Λ.length - 1].l, $Γ['global']['chkpassword']);
     $old_pc = $pc();
     while ($pc().id !== 'FUNC') {
         $Λ.pop();
@@ -187,7 +194,6 @@ function chkpassword(pwd) {
         $Λ[$Λ.length - 1] = { 'l': $old_pc.l };
     }
 
-    //$output('pwd',pwd,$Γ['global']['chkpassword'],0,'suppress');
 
     return;
 }

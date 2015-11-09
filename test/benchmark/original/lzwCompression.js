@@ -1,6 +1,3 @@
-
-
-
 //LZW Compression/Decompression for Strings
 var LZW = {
         compress: function (uncompressed) {
@@ -83,4 +80,3 @@ var LZW = {
     decomp = LZW.decompress(comp);
 console.log(comp);
 console.log(decomp);
-
