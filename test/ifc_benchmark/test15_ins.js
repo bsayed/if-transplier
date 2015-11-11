@@ -1,4 +1,5 @@
 
+
 var $Γ = { 'global': { 'scope': null, 'Σ': 0 } };
 var _$tmp,$tmp,$rf;
 
@@ -146,6 +147,7 @@ $Γ['global']['foo'] = {
 var pass, $tmp0, $tmp1;
 $Γ['global']['$tmp1'] = $Γ['global']['$tmp0'] = $Γ['global']['pass'] = 0;
 pass = 'temp1234';
+
 $Γ['global']['pass'] = 1;
 
 $Γ['global']['pass'] instanceof Object ? $Γ['global']['pass'].Σ = $Γ['global']['pass'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['pass'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['pass'] = $Γ['global']['pass'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['pass'] : $Λ[$Λ.length - 1].l;
@@ -154,28 +156,17 @@ function foo(pwd) {
 	$Γ['global']['foo']['$this']['i'] = sec_lvl('pwd', 'length', false, $Γ['global']['foo']);
 	$Γ['global']['foo']['$this']['i'] instanceof Object ? $Γ['global']['foo']['$this']['i'].Σ = $Γ['global']['foo']['$this']['i'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['foo']['$this']['i'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['foo']['$this']['i'] = $Γ['global']['foo']['$this']['i'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['foo']['$this']['i'] : $Λ[$Λ.length - 1].l;
 	$Γ['global']['foo']['$this']['\u03A3'] = $Γ['global']['foo']['$this']['\u03A3'] >= sec_lvl('global', 'i', true, $Γ['global']['foo']) ? $Γ['global']['foo']['$this']['\u03A3'] : sec_lvl('global', 'i', true, $Γ['global']['foo']);
-	var $tmp2;
-	$Γ['global']['foo']['$tmp2'] = 0;
-	$tmp2 = 5;
-	$Γ['global']['foo']['$tmp2'] = $Λ[$Λ.length - 1].l;
-	$Γ['global']['foo']['$tmp2'] instanceof Object ? $Γ['global']['foo']['$tmp2'].Σ = $Γ['global']['foo']['$tmp2'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['foo']['$tmp2'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['foo']['$tmp2'] = $Γ['global']['foo']['$tmp2'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['foo']['$tmp2'] : $Λ[$Λ.length - 1].l;
 	$old_pc = $pc();
 	while ($pc().id !== 'FUNC') {
 		$Λ.pop();
 	}
-	$rx = $scope($Γ['global']['foo'], '$tmp2')['$tmp2'];
-	if ($rx instanceof Object) {
-		$rx.Σ = $rx.Σ >= $old_pc.l ? $rx.Σ : $old_pc.l;
-		$Λ[$Λ.length - 1] = { 'l': $rx };
+	if ($Γ['global']['foo'].InvokedAsContr) {
+		$Γ['global']['foo'].$this.Σ = $Γ['global']['foo'].$this.Σ >= $old_pc.l ? $Γ['global']['foo'].$this.Σ : $old_pc.l;
+		$Λ[$Λ.length - 1] = { 'l': $Γ['global']['foo'].$this };
 	} else {
-		if ($Γ['global']['foo'].InvokedAsContr) {
-			$Γ['global']['foo'].$this.Σ = $Γ['global']['foo'].$this.Σ >= $old_pc.l ? $Γ['global']['foo'].$this.Σ : $old_pc.l;
-			$Λ[$Λ.length - 1] = { 'l': $Γ['global']['foo'].$this };
-		} else {
-			$Λ[$Λ.length - 1] = { 'l': $old_pc.l };
-		}
+		$Λ[$Λ.length - 1] = { 'l': $old_pc.l };
 	}
-	return $tmp2;
+	return;
 }
 $rf = $scope($Γ['global'], 'foo', false)['foo'];
 $rf.scope = $Γ['global'];

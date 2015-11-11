@@ -136,63 +136,57 @@ function $output(arg,argValue,$$cs,ch_lvl,policy,pcLvl) {
 
 }
 //-------------------------------------------------------------------------------
-$Γ['global']['foo'] = {
-	$fscope: $Λ[$Λ.length - 1].l,
-	prototype: { Σ: $Λ[$Λ.length - 1].l },
-	Σ: $Λ[$Λ.length - 1].l,
-	scope: $Γ['global'],
-	pwd: $Λ[$Λ.length - 1].l
-};
-var pass, $tmp0, $tmp1;
-$Γ['global']['$tmp1'] = $Γ['global']['$tmp0'] = $Γ['global']['pass'] = 0;
+var pass, obj, $tmp0;
+$Γ['global']['$tmp0'] = $Γ['global']['obj'] = $Γ['global']['pass'] = 0;
 pass = 'temp1234';
+// changed the pass variable security level to 1 to make it private.
 $Γ['global']['pass'] = 1;
 
 $Γ['global']['pass'] instanceof Object ? $Γ['global']['pass'].Σ = $Γ['global']['pass'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['pass'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['pass'] = $Γ['global']['pass'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['pass'] : $Λ[$Λ.length - 1].l;
-function foo(pwd) {
-	this.i = pwd.length;
-	$Γ['global']['foo']['$this']['i'] = sec_lvl('pwd', 'length', false, $Γ['global']['foo']);
-	$Γ['global']['foo']['$this']['i'] instanceof Object ? $Γ['global']['foo']['$this']['i'].Σ = $Γ['global']['foo']['$this']['i'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['foo']['$this']['i'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['foo']['$this']['i'] = $Γ['global']['foo']['$this']['i'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['foo']['$this']['i'] : $Λ[$Λ.length - 1].l;
-	$Γ['global']['foo']['$this']['\u03A3'] = $Γ['global']['foo']['$this']['\u03A3'] >= sec_lvl('global', 'i', true, $Γ['global']['foo']) ? $Γ['global']['foo']['$this']['\u03A3'] : sec_lvl('global', 'i', true, $Γ['global']['foo']);
-	var $tmp2;
-	$Γ['global']['foo']['$tmp2'] = 0;
-	$tmp2 = 5;
-	$Γ['global']['foo']['$tmp2'] = $Λ[$Λ.length - 1].l;
-	$Γ['global']['foo']['$tmp2'] instanceof Object ? $Γ['global']['foo']['$tmp2'].Σ = $Γ['global']['foo']['$tmp2'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['foo']['$tmp2'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['foo']['$tmp2'] = $Γ['global']['foo']['$tmp2'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['foo']['$tmp2'] : $Λ[$Λ.length - 1].l;
+obj = {};
+$Γ['global']['obj'] = {
+	__proto__: {},
+	scope: $Γ['global'],
+	Σ: $Λ[$Λ.length - 1].l
+};
+obj['i'] = pass.length;
+$Γ['global']['obj']['i'] = sec_lvl('pass', 'length', false, $Γ['global']);
+_$tmp = 0;
+$Γ['global']['obj']['i'] instanceof Object ? $Γ['global']['obj']['i'].Σ = $lub($Γ['global']['obj']['i'].Σ, _$tmp, $Λ[$Λ.length - 1].l) : $Γ['global']['obj']['i'] = $lub($Γ['global']['obj']['i'], _$tmp, $Λ[$Λ.length - 1].l);
+$scope($Γ['global'], 'obj', false)['obj']['\u03A3'] = $scope($Γ['global'], 'obj', false)['obj']['\u03A3'] >= sec_lvl('obj', 'i', true, $Γ['global']) ? $scope($Γ['global'], 'obj', false)['obj']['\u03A3'] : sec_lvl('obj', 'i', true, $Γ['global']);
+obj.foo = function () {
+	var $tmp1, $tmp2;
+	$Γ['global']['obj']['foo']['$tmp2'] = $Γ['global']['obj']['foo']['$tmp1'] = 0;
+	$tmp2 = this.i;
+	$Γ['global']['obj']['foo']['$tmp2'] = sec_lvl('obj', 'i', false, $Γ['global']['obj']['foo']);
+	$Γ['global']['obj']['foo']['$tmp2'] instanceof Object ? $Γ['global']['obj']['foo']['$tmp2'].Σ = $Γ['global']['obj']['foo']['$tmp2'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['obj']['foo']['$tmp2'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['obj']['foo']['$tmp2'] = $Γ['global']['obj']['foo']['$tmp2'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['obj']['foo']['$tmp2'] : $Λ[$Λ.length - 1].l;
+	$tmp1 = $output('$tmp2',$tmp2,$Γ['global']['obj']['foo'],0,'suppress',$Λ[$Λ.length - 1].l);
 	$old_pc = $pc();
 	while ($pc().id !== 'FUNC') {
 		$Λ.pop();
 	}
-	$rx = $scope($Γ['global']['foo'], '$tmp2')['$tmp2'];
-	if ($rx instanceof Object) {
-		$rx.Σ = $rx.Σ >= $old_pc.l ? $rx.Σ : $old_pc.l;
-		$Λ[$Λ.length - 1] = { 'l': $rx };
+	if ($Γ['global']['obj']['foo'].InvokedAsContr) {
+		$Γ['global']['obj']['foo'].$this.Σ = $Γ['global']['obj']['foo'].$this.Σ >= $old_pc.l ? $Γ['global']['obj']['foo'].$this.Σ : $old_pc.l;
+		$Λ[$Λ.length - 1] = { 'l': $Γ['global']['obj']['foo'].$this };
 	} else {
-		if ($Γ['global']['foo'].InvokedAsContr) {
-			$Γ['global']['foo'].$this.Σ = $Γ['global']['foo'].$this.Σ >= $old_pc.l ? $Γ['global']['foo'].$this.Σ : $old_pc.l;
-			$Λ[$Λ.length - 1] = { 'l': $Γ['global']['foo'].$this };
-		} else {
-			$Λ[$Λ.length - 1] = { 'l': $old_pc.l };
-		}
+		$Λ[$Λ.length - 1] = { 'l': $old_pc.l };
 	}
-	return $tmp2;
-}
-$rf = $scope($Γ['global'], 'foo', false)['foo'];
-$rf.scope = $Γ['global'];
-$rf.$this = {
-	Σ: $Λ[$Λ.length - 1].l,
-	__$proto__: $rf.prototype
+	return;
 };
-$rf['pwd'] = sec_lvl('pass', null, true, $Γ['global']) >= $Λ[$Λ.length - 1].l ? sec_lvl('pass', null, true, $Γ['global']) : $Λ[$Λ.length - 1].l;
-$rf.InvokedAsContr = true;
+$Γ['global']['obj']['foo'] = {
+	$fscope: $Λ[$Λ.length - 1].l,
+	prototype: { Σ: $Λ[$Λ.length - 1].l },
+	Σ: $Λ[$Λ.length - 1].l,
+	scope: $Γ['global']
+};
+$rf = $prop('obj', 'foo', $Γ['global']);
+$rf.scope = $scope($Γ['global'], 'obj', false)['obj'];
+$rf.$this = $scope($Γ['global'], 'obj', false)['obj'];
 $Λ.push({
 	l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
 	id: 'FUNC'
 });
-$tmp = new foo(pass);
-$Γ['global']['$tmp'] = $Λ.pop().l;
-$Γ['global']['$tmp'] instanceof Object ? $Γ['global']['$tmp'].Σ = $Γ['global']['$tmp'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['$tmp'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['$tmp'] = $Γ['global']['$tmp'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['$tmp'] : $Λ[$Λ.length - 1].l;
-$tmp1 = $tmp['i'];
-$Γ['global']['$tmp1'] = sec_lvl('$tmp', 'i', false, $Γ['global']);
-$Γ['global']['$tmp1'] instanceof Object ? $Γ['global']['$tmp1'].Σ = $Γ['global']['$tmp1'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['$tmp1'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['$tmp1'] = $Γ['global']['$tmp1'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['$tmp1'] : $Λ[$Λ.length - 1].l;
-$tmp0 = $output('$tmp1',$tmp1,$Γ['global'],0,'suppress',$Λ[$Λ.length - 1].l );
+$tmp0 = obj.foo();
+$Γ['global']['$tmp0'] = $Λ.pop().l;
+$Γ['global']['$tmp0'] instanceof Object ? $Γ['global']['$tmp0'].Σ = $Γ['global']['$tmp0'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['$tmp0'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['$tmp0'] = $Γ['global']['$tmp0'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['$tmp0'] : $Λ[$Λ.length - 1].l;
+

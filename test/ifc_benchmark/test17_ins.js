@@ -1,4 +1,5 @@
 
+
 var $Γ = { 'global': { 'scope': null, 'Σ': 0 } };
 var _$tmp,$tmp,$rf;
 
@@ -147,23 +148,25 @@ var pass, $tmp0, $tmp1;
 $Γ['global']['$tmp1'] = $Γ['global']['$tmp0'] = $Γ['global']['pass'] = 0;
 pass = 'temp1234';
 $Γ['global']['pass'] = 1;
-
 $Γ['global']['pass'] instanceof Object ? $Γ['global']['pass'].Σ = $Γ['global']['pass'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['pass'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['pass'] = $Γ['global']['pass'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['pass'] : $Λ[$Λ.length - 1].l;
 function foo(pwd) {
-	this.i = pwd.length;
-	$Γ['global']['foo']['$this']['i'] = sec_lvl('pwd', 'length', false, $Γ['global']['foo']);
-	$Γ['global']['foo']['$this']['i'] instanceof Object ? $Γ['global']['foo']['$this']['i'].Σ = $Γ['global']['foo']['$this']['i'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['foo']['$this']['i'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['foo']['$this']['i'] = $Γ['global']['foo']['$this']['i'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['foo']['$this']['i'] : $Λ[$Λ.length - 1].l;
-	$Γ['global']['foo']['$this']['\u03A3'] = $Γ['global']['foo']['$this']['\u03A3'] >= sec_lvl('global', 'i', true, $Γ['global']['foo']) ? $Γ['global']['foo']['$this']['\u03A3'] : sec_lvl('global', 'i', true, $Γ['global']['foo']);
-	var $tmp2;
-	$Γ['global']['foo']['$tmp2'] = 0;
-	$tmp2 = 5;
-	$Γ['global']['foo']['$tmp2'] = $Λ[$Λ.length - 1].l;
-	$Γ['global']['foo']['$tmp2'] instanceof Object ? $Γ['global']['foo']['$tmp2'].Σ = $Γ['global']['foo']['$tmp2'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['foo']['$tmp2'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['foo']['$tmp2'] = $Γ['global']['foo']['$tmp2'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['foo']['$tmp2'] : $Λ[$Λ.length - 1].l;
+	var obj;
+	$Γ['global']['foo']['obj'] = 0;
+	obj = {};
+	$Γ['global']['foo']['obj'] = {
+		__proto__: {},
+		scope: $Γ['global']['foo'],
+		Σ: $Λ[$Λ.length - 1].l
+	};
+	obj.i = pwd.length;
+	$scope($Γ['global']['foo'], 'obj', false)['obj']['i'] = sec_lvl('pwd', 'length', false, $Γ['global']['foo']);
+	$scope($Γ['global']['foo'], 'obj', false)['obj']['i'] instanceof Object ? $scope($Γ['global']['foo'], 'obj', false)['obj']['i'].Σ = $scope($Γ['global']['foo'], 'obj', false)['obj']['i'].Σ >= $Λ[$Λ.length - 1].l ? $scope($Γ['global']['foo'], 'obj', false)['obj']['i'].Σ : $Λ[$Λ.length - 1].l : $scope($Γ['global']['foo'], 'obj', false)['obj']['i'] = $scope($Γ['global']['foo'], 'obj', false)['obj']['i'] >= $Λ[$Λ.length - 1].l ? $scope($Γ['global']['foo'], 'obj', false)['obj']['i'] : $Λ[$Λ.length - 1].l;
+	$scope($Γ['global']['foo'], 'obj', false)['obj']['\u03A3'] = $scope($Γ['global']['foo'], 'obj', false)['obj']['\u03A3'] >= sec_lvl('obj', 'i', true, $Γ['global']['foo']) ? $scope($Γ['global']['foo'], 'obj', false)['obj']['\u03A3'] : sec_lvl('obj', 'i', true, $Γ['global']['foo']);
 	$old_pc = $pc();
 	while ($pc().id !== 'FUNC') {
 		$Λ.pop();
 	}
-	$rx = $scope($Γ['global']['foo'], '$tmp2')['$tmp2'];
+	$rx = $scope($Γ['global']['foo'], 'obj')['obj'];
 	if ($rx instanceof Object) {
 		$rx.Σ = $rx.Σ >= $old_pc.l ? $rx.Σ : $old_pc.l;
 		$Λ[$Λ.length - 1] = { 'l': $rx };
@@ -175,7 +178,7 @@ function foo(pwd) {
 			$Λ[$Λ.length - 1] = { 'l': $old_pc.l };
 		}
 	}
-	return $tmp2;
+	return obj;
 }
 $rf = $scope($Γ['global'], 'foo', false)['foo'];
 $rf.scope = $Γ['global'];
