@@ -5,55 +5,83 @@ $Γ['global']['foo'] = {
     scope: $Γ['global'],
     pwd: $Λ[$Λ.length - 1].l
 };
-var pass, $tmp0, $tmp1;
-$Γ['global']['$tmp1'] = $Γ['global']['$tmp0'] = $Γ['global']['pass'] = 0;
+var pass, pwdLengthGreaterThan10, $tmp0, $tmp1;
+$Γ['global']['$tmp1'] = $Γ['global']['$tmp0'] = $Γ['global']['pwdLengthGreaterThan10'] = $Γ['global']['pass'] = 0;
 pass = 'temp1234';
 $Γ['global']['pass'] = $Λ[$Λ.length - 1].l;
 $Γ['global']['pass'] instanceof Object ? $Γ['global']['pass'].Σ = $Γ['global']['pass'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['pass'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['pass'] = $Γ['global']['pass'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['pass'] : $Λ[$Λ.length - 1].l;
+pwdLengthGreaterThan10 = true;
+$Γ['global']['pwdLengthGreaterThan10'] = $Λ[$Λ.length - 1].l;
+$Γ['global']['pwdLengthGreaterThan10'] instanceof Object ? $Γ['global']['pwdLengthGreaterThan10'].Σ = $Γ['global']['pwdLengthGreaterThan10'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['pwdLengthGreaterThan10'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['pwdLengthGreaterThan10'] = $Γ['global']['pwdLengthGreaterThan10'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['pwdLengthGreaterThan10'] : $Λ[$Λ.length - 1].l;
 function foo(pwd) {
-    this.i = pwd.length;
-    $Γ['global']['foo']['$this']['i'] = sec_lvl('pwd', 'length', false, $Γ['global']['foo']);
-    $Γ['global']['foo']['$this']['i'] instanceof Object ? $Γ['global']['foo']['$this']['i'].Σ = $Γ['global']['foo']['$this']['i'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['foo']['$this']['i'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['foo']['$this']['i'] = $Γ['global']['foo']['$this']['i'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['foo']['$this']['i'] : $Λ[$Λ.length - 1].l;
-    $Γ['global']['foo']['$this']['\u03A3'] = $Γ['global']['foo']['$this']['\u03A3'] >= sec_lvl('global', 'i', true, $Γ['global']['foo']) ? $Γ['global']['foo']['$this']['\u03A3'] : sec_lvl('global', 'i', true, $Γ['global']['foo']);
-    var $tmp2;
-    $Γ['global']['foo']['$tmp2'] = 0;
-    $tmp2 = 5;
-    $Γ['global']['foo']['$tmp2'] = $Λ[$Λ.length - 1].l;
-    $Γ['global']['foo']['$tmp2'] instanceof Object ? $Γ['global']['foo']['$tmp2'].Σ = $Γ['global']['foo']['$tmp2'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['foo']['$tmp2'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['foo']['$tmp2'] = $Γ['global']['foo']['$tmp2'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['foo']['$tmp2'] : $Λ[$Λ.length - 1].l;
+    $Λ.push({
+        l: $Λ[$Λ.length - 1].l,
+        id: 'IF'
+    });
+    if (true) {
+        $Λ.push({
+            l: $Λ[$Λ.length - 1].l,
+            id: 'IF'
+        });
+        if (true) {
+            var $tmp2, $tmp3;
+            $Γ['global']['foo']['$tmp3'] = $Γ['global']['foo']['$tmp2'] = 0;
+            $tmp3 = pwd.length;
+            $Γ['global']['foo']['$tmp3'] = sec_lvl('pwd', 'length', false, $Γ['global']['foo']);
+            $Γ['global']['foo']['$tmp3'] instanceof Object ? $Γ['global']['foo']['$tmp3'].Σ = $Γ['global']['foo']['$tmp3'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['foo']['$tmp3'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['foo']['$tmp3'] = $Γ['global']['foo']['$tmp3'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['foo']['$tmp3'] : $Λ[$Λ.length - 1].l;
+            $tmp2 = $tmp3 > 10;
+            $Γ['global']['foo']['$tmp2'] = sec_lvl('$tmp3', null, true, $Γ['global']['foo']) >= $Λ[$Λ.length - 1].l ? sec_lvl('$tmp3', null, true, $Γ['global']['foo']) : $Λ[$Λ.length - 1].l;
+            $Γ['global']['foo']['$tmp2'] instanceof Object ? $Γ['global']['foo']['$tmp2'].Σ = $Γ['global']['foo']['$tmp2'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['foo']['$tmp2'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['foo']['$tmp2'] = $Γ['global']['foo']['$tmp2'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['foo']['$tmp2'] : $Λ[$Λ.length - 1].l;
+            $Λ.push({
+                l: $Λ[$Λ.length - 1].l >= sec_lvl('$tmp2', null, true, $Γ['global']['foo']) ? $Λ[$Λ.length - 1].l : sec_lvl('$tmp2', null, true, $Γ['global']['foo']),
+                id: 'IF'
+            });
+            if ($tmp2) {
+                $old_pc = $pc();
+                while ($pc().id !== 'FUNC') {
+                    $Λ.pop();
+                }
+                if ($Γ['global']['foo'].InvokedAsContr) {
+                    $Γ['global']['foo'].$this.Σ = $Γ['global']['foo'].$this.Σ >= $old_pc.l ? $Γ['global']['foo'].$this.Σ : $old_pc.l;
+                    $Λ[$Λ.length - 1] = { 'l': $Γ['global']['foo'].$this };
+                } else {
+                    $Λ[$Λ.length - 1] = { 'l': $old_pc.l };
+                }
+                return;
+            } else {
+            }
+            $comp({ 'lbl': 'FUNC' }, $Λ[$Λ.length - 1].l);
+            $Λ.pop();
+        } else {
+        }
+        $Λ.pop();
+        pwdLengthGreaterThan10 = false;
+        $scope($Γ['global']['foo'], 'pwdLengthGreaterThan10', true)['pwdLengthGreaterThan10'] = $Λ[$Λ.length - 1].l;
+        $scope($Γ['global']['foo'], 'pwdLengthGreaterThan10', true)['pwdLengthGreaterThan10'] instanceof Object ? $scope($Γ['global']['foo'], 'pwdLengthGreaterThan10', true)['pwdLengthGreaterThan10'].Σ = $scope($Γ['global']['foo'], 'pwdLengthGreaterThan10', true)['pwdLengthGreaterThan10'].Σ >= $Λ[$Λ.length - 1].l ? $scope($Γ['global']['foo'], 'pwdLengthGreaterThan10', true)['pwdLengthGreaterThan10'].Σ : $Λ[$Λ.length - 1].l : $scope($Γ['global']['foo'], 'pwdLengthGreaterThan10', true)['pwdLengthGreaterThan10'] = $scope($Γ['global']['foo'], 'pwdLengthGreaterThan10', true)['pwdLengthGreaterThan10'] >= $Λ[$Λ.length - 1].l ? $scope($Γ['global']['foo'], 'pwdLengthGreaterThan10', true)['pwdLengthGreaterThan10'] : $Λ[$Λ.length - 1].l;
+    } else {
+    }
+    $Λ.pop();
     $old_pc = $pc();
     while ($pc().id !== 'FUNC') {
         $Λ.pop();
     }
-    $rx = $scope($Γ['global']['foo'], '$tmp2')['$tmp2'];
-    if ($rx instanceof Object) {
-        $rx.Σ = $rx.Σ >= $old_pc.l ? $rx.Σ : $old_pc.l;
-        $Λ[$Λ.length - 1] = { 'l': $rx };
+    if ($Γ['global']['foo'].InvokedAsContr) {
+        $Γ['global']['foo'].$this.Σ = $Γ['global']['foo'].$this.Σ >= $old_pc.l ? $Γ['global']['foo'].$this.Σ : $old_pc.l;
+        $Λ[$Λ.length - 1] = { 'l': $Γ['global']['foo'].$this };
     } else {
-        if ($Γ['global']['foo'].InvokedAsContr) {
-            $Γ['global']['foo'].$this.Σ = $Γ['global']['foo'].$this.Σ >= $old_pc.l ? $Γ['global']['foo'].$this.Σ : $old_pc.l;
-            $Λ[$Λ.length - 1] = { 'l': $Γ['global']['foo'].$this };
-        } else {
-            $Λ[$Λ.length - 1] = { 'l': $old_pc.l };
-        }
+        $Λ[$Λ.length - 1] = { 'l': $old_pc.l };
     }
-    return $tmp2;
+    return;
 }
 $rf = $scope($Γ['global'], 'foo', false)['foo'];
 $rf.scope = $Γ['global'];
-$rf.$this = {
-    Σ: $Λ[$Λ.length - 1].l,
-    __$proto__: $rf.prototype
-};
+$rf.$this = $Γ['global'];
 $rf['pwd'] = sec_lvl('pass', null, true, $Γ['global']) >= $Λ[$Λ.length - 1].l ? sec_lvl('pass', null, true, $Γ['global']) : $Λ[$Λ.length - 1].l;
-$rf.InvokedAsContr = true;
 $Λ.push({
     l: $lub($rf.$fscope, $Λ[$Λ.length - 1].l, $rf.Σ),
     id: 'FUNC'
 });
-$tmp = new foo(pass);
-$Γ['global']['$tmp'] = $Λ.pop().l;
-$Γ['global']['$tmp'] instanceof Object ? $Γ['global']['$tmp'].Σ = $Γ['global']['$tmp'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['$tmp'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['$tmp'] = $Γ['global']['$tmp'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['$tmp'] : $Λ[$Λ.length - 1].l;
-$tmp1 = $tmp['i'];
-$Γ['global']['$tmp1'] = sec_lvl('$tmp', 'i', false, $Γ['global']);
-$Γ['global']['$tmp1'] instanceof Object ? $Γ['global']['$tmp1'].Σ = $Γ['global']['$tmp1'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['$tmp1'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['$tmp1'] = $Γ['global']['$tmp1'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['$tmp1'] : $Λ[$Λ.length - 1].l;
-$tmp0 = console.log($tmp1);
+$tmp0 = foo(pass);
+$Γ['global']['$tmp0'] = $Λ.pop().l;
+$Γ['global']['$tmp0'] instanceof Object ? $Γ['global']['$tmp0'].Σ = $Γ['global']['$tmp0'].Σ >= $Λ[$Λ.length - 1].l ? $Γ['global']['$tmp0'].Σ : $Λ[$Λ.length - 1].l : $Γ['global']['$tmp0'] = $Γ['global']['$tmp0'] >= $Λ[$Λ.length - 1].l ? $Γ['global']['$tmp0'] : $Λ[$Λ.length - 1].l;
+$tmp1 = console.log(pwdLengthGreaterThan10);
