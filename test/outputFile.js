@@ -1,4 +1,4 @@
-var pass = "temp1234";
+var pass = upg("temp1234");
 
 function foo(i) {
 	this.i = i
