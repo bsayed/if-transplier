@@ -1,13 +1,28 @@
-var pass = upg("temp1234");
+var pass = "temp1234";
 
-function foo(i) {
-	this.i = i
+//var obj = {};
+
+function foo() {
+	console.log("Password Size is 8");
+}
+
+function bar() {
+	console.log("Password Size is NOT equal to 8");
+}
+
+function outerfunction() {
+	if (pass.length == 8) {
+		return function () {
+			foo();
+		}
+
+	} else {
+		return function () {
+			bar();
+		}
+
+	}
 };
 
-foo.prototype.getI = function () {
-	return this.i;
-};
+outerfunction()();
 
-var obj = new foo(pass.length);
-
-console.log(obj.getI());
