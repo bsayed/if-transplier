@@ -1,28 +1,8 @@
-var pass = "temp1234";
 
-//var obj = {};
-
-function foo() {
-	console.log("Password Size is 8");
+with() {
+	y = 8;
+	console.log('Inside with')
 }
 
-function bar() {
-	console.log("Password Size is NOT equal to 8");
-}
-
-function outerfunction() {
-	if (pass.length == 8) {
-		return function () {
-			foo();
-		}
-
-	} else {
-		return function () {
-			bar();
-		}
-
-	}
-};
-
-outerfunction()();
-
+z = 44;
+console.log(y)

@@ -59,7 +59,7 @@ function iFTranspily () {
             },
             {
                 option: 'source-map',
-            type: 'Boolean',
+            	type: 'Boolean',
                 description: 'dump source-map'
             },
             {
@@ -82,7 +82,19 @@ function iFTranspily () {
                 alias: 'o',
                 type: 'String',
                 description: 'output file'
-            }
+            },
+			{
+				option: 'inline',
+				alias: 'i',
+				type: 'Boolean',
+				description: 'Only apply the transformation stage with no Inlining.'
+			},
+			{
+				option: 'show-ast-tree',
+				alias: 'ast',
+				type: 'Boolean',
+				description: 'Print the AST representation of the input code.'
+			}
         ]
     });
 
@@ -121,7 +133,8 @@ function iFTranspily () {
         });
 
         // Print the generated AST for inspection
-        //console.log(JSON.stringify(tree, null, 4));
+		if(argv.showAstTree)
+        	console.log(JSON.stringify(tree, null, 4));
 
         if (preserveLicenseComment || propagateLicenseComment) {
             licenses = tree.comments.filter(function (comment) {
@@ -142,8 +155,10 @@ function iFTranspily () {
         });
 
         //console.log(JSON.stringify(tree, null, 4));
+
         // Then perform the inlining
-        tree = ifTranspiler.inline(tree);
+		if(argv.inline)
+        	tree = ifTranspiler.inline(tree);
 
 
 
