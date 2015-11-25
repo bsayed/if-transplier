@@ -1,8 +1,8 @@
-
-with() {
-	y = 8;
-	console.log('Inside with')
+var passLenLessThan8;
+var o = {passLenLessThan8: false};
+with (o) {
+	if (pwd.length < 8) {
+		passLenLessThan8 = true;
+	}
 }
 
-z = 44;
-console.log(y)
