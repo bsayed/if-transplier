@@ -87,7 +87,7 @@ function iFTranspily () {
 				option: 'inline',
 				alias: 'i',
 				type: 'Boolean',
-				description: 'Only apply the transformation stage with no Inlining.'
+				description: 'Apply the inlining stage.'
 			},
 			{
 				option: 'show-ast-tree',

@@ -13,5 +13,5 @@ function foo(pwd) {
 
 foo(pass);
 
-//JSFlow failed to indicate that obj.pwdLength continas a private information
+//JSFlow failed to indicate that obj.pwdLength contains a private information
 lprint(obj.pwdLength);
